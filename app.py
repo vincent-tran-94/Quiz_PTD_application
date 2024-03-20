@@ -1,16 +1,21 @@
 from flask import Flask, render_template, request, redirect, url_for
-import sqlite3
+from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__, template_folder='template')
+app = Flask(__name__,template_folder='template')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///participants.db'
+db = SQLAlchemy(app)
 
-# Route pour afficher le formulaire
-@app.route('/')
-def index():
-    return render_template('formulaire.html')
+class Participant(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nom = db.Column(db.String(100))
+    prenom = db.Column(db.String(100))
+    email = db.Column(db.String(100))
+    niveau_etude = db.Column(db.String(100))
+    centre_interet = db.Column(db.String(100))
+    choix_categorie = db.Column(db.String(100))
 
-# Route pour traiter les données du formulaire
-@app.route('/', methods=['POST'])
-def submit():
+@app.route('/', methods=['GET', 'POST'])
+def formulaire():
     if request.method == 'POST':
         nom = request.form['nom']
         prenom = request.form['prenom']
@@ -19,39 +24,23 @@ def submit():
         centre_interet = request.form['centre_interet']
         choix_categorie = request.form['choix_categorie']
 
-        # Vérification si tous les champs sont remplis
         if not (nom and prenom and email and niveau_etude and centre_interet and choix_categorie):
             return render_template('formulaire.html', message="Veuillez remplir tous les champs.")
 
-        # Ajout des données à la base de données
-        conn = sqlite3.connect('databases/participants.db')
-        cursor = conn.cursor()
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS utilisateurs (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                nom TEXT,
-                prenom TEXT,
-                email TEXT,
-                niveau_etude TEXT,
-                centre_interet TEXT,
-                choix_categorie TEXT
-            )
-        ''')
-        cursor.execute('''
-            INSERT INTO utilisateurs (nom, prenom, email, niveau_etude, centre_interet, choix_categorie)
-            VALUES (?, ?, ?, ?, ?, ?)
-        ''', (nom, prenom, email, niveau_etude, centre_interet, choix_categorie))
-        conn.commit()
-        conn.close()
+        participant = Participant(nom=nom, prenom=prenom, email=email, niveau_etude=niveau_etude,
+                             centre_interet=centre_interet, choix_categorie=choix_categorie)
+        db.session.add(participant)
+        db.session.commit()
 
         return redirect(url_for('bienvenue'))
 
     return render_template('formulaire.html', message=None)
 
-# Route pour afficher la page de bienvenue
 @app.route('/bienvenue')
 def bienvenue():
-    return render_template('bienvenue.html')
+    return "Bienvenue à la deuxième page !"
 
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)
