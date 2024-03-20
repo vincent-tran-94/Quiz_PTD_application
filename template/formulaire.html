@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire à remplir pour l'association Préserve mon droit</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/formulaire.css') }}"> 
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Formulaire pour l'association Préserve ton droit</h1>
+        <form action="/" method="post" class="card p-4">
+            <div class="form-group">
+                <label for="nom">Votre Nom:</label>
+                <input type="text" id="nom" name="nom" required>
+            </div>
+
+            <div class="form-group">
+                <label for="prenom">Votre Prénom:</label>
+                <input type="text" id="prenom" name="prenom" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Votre Adresse Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="niveau_etude">Votre niveau d'étude :</label>
+                <input type="text" id="niveau_etude" name="niveau_etude" required>
+            </div>
+
+            <div class="form-group">
+                <label for="centre_interet">Quels sont vos centres d'intérêts ? </label>
+                <input type="text" id="centre_interet" name="centre_interet" required>
+            </div>
+
+            <div class="form-group">
+                <label for="choix_categorie">Choisissez votre catégorie préféré :</label>
+                <select id="choix_categorie" name="choix_categorie">
+                    <option value="Droit">Droit</option>
+                    <option value="Humaniste">Humaniste</option>
+                    <option value="Juridique">Juridique</option>
+                    <option value="Droit">Droit</option>
+                    <option value="Humaniste">Humaniste</option>
+                    <option value="Juridique">Juridique</option>
+                </select>
+            </div>
+            <div class="form-group text-center">
+                <input type="submit" class="btn btn-primary" value="Confirmer">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
