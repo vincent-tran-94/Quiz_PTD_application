@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}"> 
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="centered-text">Bienvenue à la page des Quiz ! Association Préserve ton droit</h1>
+        <h2 class="centered-text top-margin">Choisissez une des catégories suivantes que vous souhaitez prendre :</h2>
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <a href="{{ url_for('categorie', categorie='droit') }}" class="btn btn-primary btn-lg btn-block">Droit</a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ url_for('categorie', categorie='humaniste') }}" class="btn btn-success btn-lg btn-block">Humaniste</a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ url_for('categorie', categorie='juridique') }}" class="btn btn-warning btn-lg btn-block">Juridique</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

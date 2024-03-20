@@ -1,0 +1,52 @@
+{
+    "questions": [
+      {
+        "question": "Qu'est-ce que la présomption d'innocence ?",
+        "options": {
+          "a": "Un principe selon lequel une personne est considérée innocente jusqu'à preuve du contraire.",
+          "b": "Un principe selon lequel une personne est présumée coupable jusqu'à preuve du contraire.",
+          "c": "Un principe ne s'appliquant qu'aux crimes mineurs."
+        },
+        "reponse_correcte": "a",
+        "reponses": []
+      },
+      {
+        "question": "Qu'est-ce qu'un contrat de travail à durée déterminée (CDD) ?",
+        "options": {
+          "a": "Un contrat qui lie un employeur et un salarié sans limite de durée.",
+          "b": "Un contrat qui lie un employeur et un salarié pour une durée fixe.",
+          "c": "Un contrat n'existant pas dans le droit du travail."
+        },
+        "reponse_correcte": "b",
+        "reponses": []
+      },
+      {
+        "question": "Le harcèlement moral est-il interdit dans le cadre du travail ?",
+        "options": {
+          "a": "Vrai",
+          "b": "Faux"
+        },
+        "reponse_correcte": "a",
+        "reponses": []
+      },
+      {
+        "question": "Qu'est-ce que le principe de laïcité ?",
+        "options": {
+          "a": "La séparation de l'Église et de l'État.",
+          "b": "L'obligation de pratiquer une religion spécifique.",
+          "c": "L'obligation de subventionner les institutions religieuses."
+        },
+        "reponse_correcte": "a",
+        "reponses": []
+      },
+      {
+        "question": "Le vol est-il un délit puni par la loi ?",
+        "options": {
+          "a": "Vrai",
+          "b": "Faux"
+        },
+        "reponse_correcte": "a",
+        "reponses": []
+      }
+    ]
+}

@@ -32,13 +32,27 @@ def formulaire():
         db.session.add(participant)
         db.session.commit()
 
-        return redirect(url_for('bienvenue'))
+        return redirect(url_for('accueil'))
 
     return render_template('formulaire.html', message=None)
 
-@app.route('/bienvenue')
-def bienvenue():
-    return "Bienvenue à la deuxième page !"
+@app.route('/accueil')
+def accueil():
+    return render_template('home.html')
+
+@app.route('/categorie/<categorie>')
+def categorie(categorie):
+    if categorie == 'droit':
+        message = "Voici la troisième page pour le droit"
+    elif categorie == 'humaniste':
+        message = "Voici la troisième page pour le humaniste"
+    elif categorie == 'juridique':
+        message = "Voici la troisième page pour le juridique"
+    else:
+        message = "Catégorie non reconnue"
+
+    return render_template('categorie.html', message=message)
+
 
 if __name__ == '__main__':
     with app.app_context():
