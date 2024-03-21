@@ -7,10 +7,10 @@
 </head>
 <body>
     <div id="graph"></div>
+    <textarea id="graphData" style="display: none;">{{graph_json | safe }}</textarea>
     <script>
-        var graph = {{ graphJSON | safe }};
-
-        Plotly.newPlot('graph', graph.data, graph.layout);
+        var graphJson = document.getElementById('graphData').value;
+        Plotly.newPlot('graph', JSON.parse(graphJson));
     </script>
     <p><a href="{{ url_for('accueil') }}" class="btn btn-primary mt-3">Retour à l'accueil</a></p>
 </body>

@@ -134,9 +134,9 @@ def dashboard():
 
     fig = go.Figure(data=[bar_chart], layout=layout)
 
-    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    graph_json = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-    return render_template('dashboard.html', graphJSON=graphJSON)
+    return render_template('dashboard.html', graph_json=graph_json)
 
 
 
