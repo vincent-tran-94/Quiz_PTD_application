@@ -49,7 +49,8 @@ def formulaire():
 @app.route('/accueil')
 def accueil():
     image_filename = 'images/logo_PTD.jpg'
-    return render_template('home.html',image_filename=image_filename)
+    image_background = 'images/background_image.jpg'
+    return render_template('home.html',image_filename=image_filename,image_background=image_background)
 
 
 @app.route('/categorie/<categorie>', methods=['GET', 'POST'])
