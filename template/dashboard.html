@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard.css') }}"> 
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
@@ -12,7 +14,8 @@
         var graphJson = document.getElementById('graphData').value;
         Plotly.newPlot('graph', JSON.parse(graphJson));
     </script>
-    <p><a href="{{ url_for('accueil') }}" class="btn btn-primary mt-3">Retour à l'accueil</a></p>
+    <div class="centered">
+        <a href="{{ url_for('accueil') }}" class="btn btn-primary mt-3">Retour à l'accueil</a>
+    </div>
 </body>
 </html>
-
