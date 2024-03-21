@@ -1,15 +1,25 @@
 from models import *
 import uuid 
-from flask import render_template, request, redirect, url_for, session, send_file
+from flask import render_template, request, redirect, url_for, session
+from flask_login import LoginManager, login_user, login_required
 import plotly
 import plotly.graph_objs as go
 import json
+
+# Créez une instance de LoginManager
+login_manager = LoginManager()
+login_manager.init_app(app)
+
 
 def open_file_json(name_json):
     with open(f'questions/{name_json}.json', 'r',encoding='utf-8') as file:
         data_json = json.load(file)
         return data_json
 
+
+@login_manager.user_loader
+def load_user(user_id):
+    return db.session.query(Participant).get(user_id)
 
 @app.route('/', methods=['GET', 'POST'])
 def formulaire():
@@ -39,21 +49,32 @@ def formulaire():
                                   centre_interet=centre_interet, 
                                   choix_categorie=choix_categorie)
         
+        # Vérifiez si l'utilisateur existe déjà dans la base de données
+        user = Participant.query.filter_by(id=user_id).first()
+        if user:
+            login_user(user)  # Connectez l'utilisateur existant
+            return redirect(url_for('accueil'))
+
         db.session.add(participant)
         db.session.commit()
+        login_user(participant)  # Connectez le nouvel utilisateur
 
         return redirect(url_for('accueil'))
 
     return render_template('formulaire.html', message=None,image_filename=image_filename)
 
 @app.route('/accueil')
+@login_required
 def accueil():
-    image_filename = 'images/logo_PTD.jpg'
-    image_background = 'images/background_image.jpg'
-    return render_template('home.html',image_filename=image_filename,image_background=image_background)
-
+    if 'user_id' in session:
+        image_filename = 'images/logo_PTD.jpg'
+        image_background = 'images/background_image.jpg'
+        return render_template('home.html',image_filename=image_filename,image_background=image_background)
+    else:
+        return redirect(url_for('formulaire'))
 
 @app.route('/categorie/<categorie>', methods=['GET', 'POST'])
+@login_required
 def categorie_questions(categorie):
     if categorie == 'droit':
         message = "droit"
@@ -103,6 +124,7 @@ def traitement_reponses(data_json, categorie):
     db.session.commit()
 
 @app.route('/dashboard')
+@login_required
 def dashboard():
     categories = []
     success_percentages = []

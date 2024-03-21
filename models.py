@@ -17,6 +17,17 @@ class Participant(db.Model):
     choix_categorie = db.Column(db.String(100))
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
 
+    # Ajoutez la méthode is_active
+    def is_authenticated(self):
+        # Par défaut, tous les utilisateurs sont considérés comme actifs
+        return True
+    
+    def get_id(self):
+        return self.id
+
+    def is_active(self):
+        return True
+
 
 class ReponseParticipant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
