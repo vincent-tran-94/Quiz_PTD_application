@@ -3,13 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catégorie</title>
+    <title>Catégorie Droit</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
-        <h1>{{ message }}</h1>
-        <p><a href="{{ url_for('accueil') }}" class="btn btn-primary">Retour à l'accueil</a></p>
+        <h1>Questions sur le droit</h1>
+        <form method="post">*
+            <input type="hidden" name="participant_id" value="{{ participant_id }}">
+            {% for question in questions %}
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ question.question }}</h5>
+                    <div class="form-check">
+                        {% for option, text in question.options.items() %}
+                        <input class="form-check-input" type="radio" name="{{ question.question }}" id="{{ option }}" value="{{ option }}">
+                        <label class="form-check-label" for="{{ option }}">{{ text }}</label><br>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <input type="hidden" name="participant_id" value="{{ participant_id }}">
+            <button type="submit" class="btn btn-primary mt-3">Soumettre</button>
+        </form>
+        <p><a href="{{ url_for('accueil') }}" class="btn btn-primary mt-3">Retour à l'accueil</a></p>
     </div>
 </body>
 </html>
