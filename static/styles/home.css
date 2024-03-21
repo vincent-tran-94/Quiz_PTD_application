@@ -9,3 +9,13 @@
 .col-md-4 {
     margin-top: 100px;
 }
+
+
+.img-custom {
+    position: absolute;
+    width: 250px;
+    height: 220px;
+    top: 5%;
+    left: 85%;
+}
+

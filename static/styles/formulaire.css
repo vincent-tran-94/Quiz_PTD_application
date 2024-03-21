@@ -52,3 +52,16 @@ select {
 .btn-primary:active {
     background-color: #de2c48 !important;
 }
+
+.body-top-right {
+    position: relative;
+}
+
+.img-custom {
+    position: absolute;
+    right: 0;
+    width: 250px;
+    height: 220px;
+    margin-top: 200px; /* Ajustez cette valeur selon votre besoin */
+    margin-right: 250px; /* Ajustez cette valeur selon votre besoin */
+}

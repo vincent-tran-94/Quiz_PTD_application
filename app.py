@@ -1,6 +1,6 @@
 from models import *
 import uuid 
-from flask import render_template, request, redirect, url_for, session
+from flask import render_template, request, redirect, url_for, session, send_file
 import plotly
 import plotly.graph_objs as go
 import json
@@ -10,8 +10,10 @@ def open_file_json(name_json):
         data_json = json.load(file)
         return data_json
 
+
 @app.route('/', methods=['GET', 'POST'])
 def formulaire():
+    image_filename = 'images/logo_PTD.jpg'
     if request.method == 'POST':
         nom = request.form['nom']
         prenom = request.form['prenom']
@@ -42,11 +44,12 @@ def formulaire():
 
         return redirect(url_for('accueil'))
 
-    return render_template('formulaire.html', message=None)
+    return render_template('formulaire.html', message=None,image_filename=image_filename)
 
 @app.route('/accueil')
 def accueil():
-    return render_template('home.html')
+    image_filename = 'images/logo_PTD.jpg'
+    return render_template('home.html',image_filename=image_filename)
 
 
 @app.route('/categorie/<categorie>', methods=['GET', 'POST'])
@@ -108,10 +111,11 @@ def dashboard():
                                  .group_by(ReponseParticipant.categorie).all()
 
     # Palette de couleurs pour les catégories
-    colors = ['rgb(31, 119, 180)', 'rgb(255, 127, 14)', 'rgb(44, 160, 44)', 'rgb(214, 39, 40)', 
-              'rgb(148, 103, 189)', 'rgb(140, 86, 75)', 'rgb(227, 119, 194)', 'rgb(127, 127, 127)', 
-              'rgb(188, 189, 34)', 'rgb(23, 190, 207)']
-    
+    colors = {'droit': 'rgb(31, 119, 180)', 
+              'humanitaire': 'rgb(44, 160, 44)', 
+              'culturel': 'rgb(23, 190, 207)'}
+
+
     for _, (category, success_percentage) in enumerate(categories_data):
         categories.append(category)
         success_percentages.append(success_percentage)
@@ -122,7 +126,7 @@ def dashboard():
         y=success_percentages,
         text=success_percentages,
         textposition='auto',
-        marker=dict(color=colors[:len(categories)]),
+        marker=dict(color=[colors[cat.lower()] for cat in categories]),
         opacity=0.6
     )
 
