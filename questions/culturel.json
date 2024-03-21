@@ -1,0 +1,113 @@
+{
+    "thematique": "culturel",
+    "questions": [
+        {
+            "question": "Qu'est-ce que le droit d'auteur dans le contexte de la musique ?",
+            "options": {
+                "a": "Le droit qui protège les créateurs de musique en leur accordant le contrôle sur l'utilisation de leurs œuvres.",
+                "b": "Le droit exclusif des gouvernements sur la musique produite dans leur pays.",
+                "c": "Le droit des auditeurs à écouter gratuitement de la musique en ligne."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce qu'une licence de diffusion dans le contexte cinématographique ?",
+            "options": {
+                "a": "Une autorisation légale pour diffuser un film dans un cadre public ou privé.",
+                "b": "Un document certifiant la nationalité d'un film.",
+                "c": "Un permis permettant de tourner des scènes dans des lieux publics."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quel est le principe du droit à l'image dans le domaine du cinéma et de la télévision ?",
+            "options": {
+                "a": "Le droit des individus à contrôler l'utilisation commerciale de leur image.",
+                "b": "Le droit des réalisateurs à utiliser librement les images des personnes sans consentement.",
+                "c": "Le droit des producteurs à utiliser les images de célébrités sans compensation."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est l'importance des contrats dans l'industrie du cinéma et du théâtre ?",
+            "options": {
+                "a": "Ils définissent les droits et obligations des différentes parties impliquées dans la production.",
+                "b": "Ils sont uniquement nécessaires pour les artistes principaux.",
+                "c": "Ils sont facultatifs et n'ont pas de véritable impact sur la production."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce que le droit moral de l'auteur dans le domaine de la création artistique ?",
+            "options": {
+                "a": "Le droit de revendiquer la paternité de son œuvre et de s'opposer à toute déformation, mutilation ou modification préjudiciable à son honneur ou à sa réputation.",
+                "b": "Le droit exclusif de reproduire une œuvre pour un usage commercial.",
+                "c": "Le droit de vendre son œuvre à tout prix."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce que la contrefaçon dans le domaine de la musique et du cinéma ?",
+            "options": {
+                "a": "La reproduction non autorisée d'une œuvre protégée par des droits d'auteur.",
+                "b": "La production légale de copies d'œuvres sans compensation financière pour les artistes.",
+                "c": "La modification légale d'une œuvre existante pour en créer une nouvelle."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quel est le rôle des cessions de droits dans l'industrie du cinéma et de la musique ?",
+            "options": {
+                "a": "Transférer les droits d'exploitation d'une œuvre d'un créateur à une autre partie.",
+                "b": "Définir les quotas de diffusion d'une œuvre dans les médias.",
+                "c": "Établir les règles de distribution des bénéfices entre les différents acteurs."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce que le droit de représentation dans le contexte théâtral ?",
+            "options": {
+                "a": "Le droit d'interpréter publiquement une œuvre théâtrale.",
+                "b": "Le droit de représenter un personnage dans une pièce de théâtre.",
+                "c": "Le droit d'organiser des représentations théâtrales dans des lieux publics."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce que la bande originale d'un film ?",
+            "options": {
+                "a": "La musique spécialement composée pour accompagner un film.",
+                "b": "La musique issue d'autres œuvres préexistantes utilisée dans un film.",
+                "c": "La musique enregistrée pendant le tournage d'un film."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce que le droit de suite dans le domaine artistique ?",
+            "options": {
+                "a": "Le droit des artistes à percevoir une rémunération lors de la revente de leurs œuvres.",
+                "b": "Le droit de modifier une œuvre d'art sans consentement préalable.",
+                "c": "Le droit de suspendre la diffusion d'une œuvre d'art."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce que la piraterie audiovisuelle ?",
+            "options": {
+                "a": "La reproduction illégale et la diffusion non autorisée de contenus audiovisuels.",
+                "b": "La mise en scène de pièces de théâtre sans permission.",
+                "c": "La diffusion de films à des fins éducatives."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce qu'un storyboard dans l'industrie cinématographique ?",
+            "options": {
+                "a": "Une série de dessins ou de croquis qui illustrent séquentiellement les principales actions et scènes d'un film.",
+                "b": "Un document qui répertorie les différents décors nécessaires pour le tournage d'un film.",
+                "c": "Une bande-annonce préliminaire d'un film."
+            },
+            "reponse_correcte": "a"
+        }
+    ]
+}

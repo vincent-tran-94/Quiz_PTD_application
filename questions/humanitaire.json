@@ -1,0 +1,133 @@
+{
+    "thematique": "humanitaire",
+    "questions": [
+        {
+            "question": "Qu'est-ce que le droit d'asile ?",
+            "options": {
+                "a": "Un droit permettant à toute personne persécutée de demander refuge dans un autre pays.",
+                "b": "Un droit réservé uniquement aux citoyens des pays développés.",
+                "c": "Un droit limité aux seules personnes politiquement exposées."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quel organisme international est chargé de coordonner l'aide humanitaire dans le monde ?",
+            "options": {
+                "a": "La Croix-Rouge",
+                "b": "L'Organisation des Nations unies (ONU)",
+                "c": "Médecins Sans Frontières"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quel est le principal objectif de la Convention de Genève de 1951 ?",
+            "options": {
+                "a": "Protéger les droits des réfugiés.",
+                "b": "Définir les règles du commerce international.",
+                "c": "Promouvoir la coopération militaire entre les pays signataires."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce que le devoir de protection dans le cadre du droit international humanitaire ?",
+            "options": {
+                "a": "L'obligation pour les États de protéger les civils et les personnes hors combat pendant les conflits armés.",
+                "b": "La responsabilité exclusive des organisations humanitaires.",
+                "c": "L'interdiction totale de toute forme de violence pendant les conflits armés."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quel est le principe fondamental du droit international humanitaire ?",
+            "options": {
+                "a": "Le respect de la dignité humaine.",
+                "b": "La suprématie des intérêts nationaux.",
+                "c": "La domination militaire."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce que la neutralité humanitaire ?",
+            "options": {
+                "a": "Le principe selon lequel les acteurs humanitaires doivent rester impartiaux et ne pas prendre parti dans les conflits.",
+                "b": "L'absence d'engagement de la part des États dans les situations de crise humanitaire.",
+                "c": "La priorité donnée aux intérêts des grandes puissances dans la distribution de l'aide."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est la principale mission du Haut-Commissariat des Nations unies pour les réfugiés (HCR) ?",
+            "options": {
+                "a": "Protéger et assister les réfugiés dans le monde entier.",
+                "b": "Promouvoir l'immigration économique.",
+                "c": "Fournir des secours en cas de catastrophes naturelles."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce que la résolution 1325 du Conseil de sécurité des Nations unies ?",
+            "options": {
+                "a": "Une résolution sur les femmes, la paix et la sécurité, soulignant le rôle des femmes dans la prévention et la résolution des conflits.",
+                "b": "Une résolution visant à interdire toute forme de commerce d'armes.",
+                "c": "Une résolution condamnant les actes de terrorisme dans le monde."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quel est le principe de base du droit des réfugiés ?",
+            "options": {
+                "a": "Non-refoulement.",
+                "b": "Expulsion systématique.",
+                "c": "Exclusion totale."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce que le principe d'humanité dans le droit international humanitaire ?",
+            "options": {
+                "a": "Le principe exigeant le traitement humain des personnes protégées.",
+                "b": "Le principe de priorité donnée aux intérêts nationaux.",
+                "c": "Le principe de tolérance zéro envers les actions militaires."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce que la protection des civils dans les conflits armés ?",
+            "options": {
+                "a": "Une obligation pour les parties aux conflits de protéger les civils contre les effets des hostilités.",
+                "b": "Un droit réservé uniquement aux citoyens des pays en conflit.",
+                "c": "Une stratégie militaire visant à cibler délibérément les populations civiles."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce que le statut de réfugié ?",
+            "options": {
+                "a": "Une personne ayant fui son pays en raison de craintes de persécution.",
+                "b": "Une personne qui voyage pour des raisons de loisirs.",
+                "c": "Une personne expulsée de son pays pour des raisons criminelles."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est la mission principale de l'UNICEF ?",
+            "options": {
+                "a": "Protéger les droits des enfants et répondre à leurs besoins fondamentaux.",
+                "b": "Promouvoir l'éducation des adultes.",
+                "c": "Fournir des secours en cas de catastrophes naturelles."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est la signification de l'acronyme ONG ?",
+            "options": {
+                "a": "Organisation Non Gouvernementale",
+                "b": "Office des Nations unies pour la Gestion des Affaires Humanitaires",
+                "c": "Organisation Nationale de Gestion"
+            },
+            "reponse_correcte": "a"
+        }
+    ]
+}
+
+        
