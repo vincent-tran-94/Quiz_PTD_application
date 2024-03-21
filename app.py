@@ -127,7 +127,7 @@ def dashboard():
     )
 
     layout = go.Layout(
-        title='Pourcentage de succès par catégorie',
+        title='Pourcentage de succès par catégorie en moyenne',
         xaxis=dict(title='Catégorie'),
         yaxis=dict(title='Pourcentage de succès'),
     )
