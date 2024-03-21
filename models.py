@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 app = Flask(__name__,template_folder='template')
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
@@ -14,6 +15,8 @@ class Participant(db.Model):
     niveau_etude = db.Column(db.String(100))
     centre_interet = db.Column(db.String(100))
     choix_categorie = db.Column(db.String(100))
+    date_creation = db.Column(db.DateTime, default=datetime.utcnow)
+
 
 class ReponseParticipant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -22,3 +25,5 @@ class ReponseParticipant(db.Model):
     incorrect_answers = db.Column(db.Integer)
     success_percentage = db.Column(db.Float)
     categorie = db.Column(db.String(100))
+    date_creation = db.Column(db.DateTime, default=datetime.utcnow)
+

@@ -19,7 +19,12 @@
                 <a href="{{ url_for('categorie_questions', categorie='humanitaire') }}" class="btn btn-success btn-lg btn-block">Humanitaire</a>
             </div>
             <div class="col-md-4">
-                <a href="{{ url_for('categorie_questions', categorie='culturel') }}" class="btn btn-warning btn-lg btn-block">Culturel</a>
+                <a href="{{ url_for('categorie_questions', categorie='culturel') }}" class="btn btn-info btn-lg btn-block">Culturel</a>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-4 offset-md-4">
+            <a href="{{ url_for('dashboard', categorie='resultats') }}" class="btn btn-warning btn-lg btn-block">Résultats de Visualisation</a> 
             </div>
         </div>
     </div>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div id="graph"></div>
+    <script>
+        var graph = {{ graphJSON | safe }};
+
+        Plotly.newPlot('graph', graph.data, graph.layout);
+    </script>
+    <p><a href="{{ url_for('accueil') }}" class="btn btn-primary mt-3">Retour à l'accueil</a></p>
+</body>
+</html>
+
