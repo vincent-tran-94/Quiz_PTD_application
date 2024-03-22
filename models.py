@@ -17,6 +17,20 @@ class Participant(db.Model):
     choix_categorie = db.Column(db.String(100))
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
 
+class ReponseParticipant(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    participant_id = db.Column(db.String(36), db.ForeignKey('participant.id'), nullable=False)
+    correct_answers = db.Column(db.Integer)
+    incorrect_answers = db.Column(db.Integer)
+    success_percentage = db.Column(db.Float)
+    categorie = db.Column(db.String(100))
+    date_creation = db.Column(db.DateTime, default=datetime.utcnow)
+
+class EmailID(db.Model): 
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(100)) 
+    mail_id = db.Column(db.String(100))
+
     # Ajoutez la méthode is_active
     def is_authenticated(self):
         # Par défaut, tous les utilisateurs sont considérés comme actifs
@@ -27,14 +41,3 @@ class Participant(db.Model):
 
     def is_active(self):
         return True
-
-
-class ReponseParticipant(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    participant_id = db.Column(db.String(36), db.ForeignKey('participant.id'), nullable=False)
-    correct_answers = db.Column(db.Integer)
-    incorrect_answers = db.Column(db.Integer)
-    success_percentage = db.Column(db.Float)
-    categorie = db.Column(db.String(100))
-    date_creation = db.Column(db.DateTime, default=datetime.utcnow)
-
