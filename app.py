@@ -52,7 +52,6 @@ def formulaire():
         db.session.add(participant)
         db.session.commit()
         send_confirmation_email(user_id, email)
-        #login_user(participant)
 
         return render_template('mail_attente_confirmation.html', message='Un e-mail de confirmation a été envoyé à votre adresse.')
 

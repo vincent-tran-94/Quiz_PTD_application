@@ -5,11 +5,12 @@ from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadSignature
 
 app.config.from_pyfile('config.cfg')
+
 # Initialiser Flask-Mail
 mail = Mail(app)
 
 # Clé secrète pour la création de tokens
-SECRET_KEY = b'_5#y2L"F4Q8z\n\xec]/' # Changez ceci par une clé réelle et sécurisée
+SECRET_KEY = app.secret_key # Changez ceci par une clé réelle et sécurisée
 
 # Serializer pour générer et vérifier les tokens
 serializer = URLSafeTimedSerializer(SECRET_KEY)
