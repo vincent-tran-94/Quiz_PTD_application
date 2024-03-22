@@ -29,7 +29,7 @@ class ReponseParticipant(db.Model):
 class EmailID(db.Model): 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100)) 
-    mail_id = db.Column(db.String(100))
+    user_id = db.Column(db.String(36), db.ForeignKey('participant.id'), nullable=False)
 
     # Ajoutez la méthode is_active
     def is_authenticated(self):

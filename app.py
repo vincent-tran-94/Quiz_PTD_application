@@ -18,8 +18,8 @@ def open_file_json(name_json):
         return data_json
 
 @login_manager.user_loader
-def load_user(mail_id):
-    return db.session.get(EmailID, mail_id)
+def load_user(user_id):
+    return db.session.get(EmailID, user_id)
 
 @app.route('/', methods=['GET', 'POST'])
 def formulaire():
@@ -39,7 +39,7 @@ def formulaire():
         user_id = str(uuid.uuid4())
 
         #Stockage dans une variable temporaire
-        session['email'] = email
+        session['user_id'] = user_id
 
         participant = Participant(id=user_id,
                                   nom=nom, 
@@ -53,7 +53,7 @@ def formulaire():
         db.session.commit()
         send_confirmation_email(user_id, email)
 
-        return render_template('mail_attente_confirmation.html', message='Un e-mail de confirmation a été envoyé à votre adresse.')
+        return render_template('confirmation.html', message='Un e-mail de confirmation a été envoyé à votre adresse.')
 
     return render_template('formulaire.html', message=None,image_filename=image_filename)
 
