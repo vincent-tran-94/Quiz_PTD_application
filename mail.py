@@ -27,7 +27,7 @@ def send_confirmation_email(user_id, email):
     msg = Message('Confirmation d\'inscription',
                   sender=sender,  # Remplacez par votre adresse e-mail
                   recipients=[email])
-    msg.body = f'Cliquez sur le lien suivant pour confirmer votre inscription pour participer au quiz: {confirm_url} \n\nAssociation Préserve ton droit'
+    msg.body = f"Cliquez sur le lien suivant pour participer au quiz: {confirm_url}\n\nVous disposez d'une heure pour confirmer votre inscription\nAssociation Préserve ton droit"
     
     # Envoyer l'e-mail
     mail.send(msg)
@@ -40,7 +40,7 @@ def send_confirmation_email(user_id, email):
 @app.route('/confirm/<token>')
 def confirm_email(token):
     try:
-        # Récupérer l'user_id associé au token
+        # Récupérer l'user_id associé au token 
         user_id = serializer.loads(token, max_age=3600)  
 
         # Récupérer l'email à partir de l'user_id
@@ -52,8 +52,6 @@ def confirm_email(token):
             user_id = EmailID.query.filter_by(user_id=user_id).first()
 
             if user_id:
-                # Effectuer des opérations de confirmation
-                # Rediriger vers la page d'accueil avec un message de confirmation
                 login_user(user_id)  # Connecter l'utilisateur
                 return redirect(url_for('accueil'))
             else:

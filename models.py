@@ -31,7 +31,6 @@ class EmailID(db.Model):
     email = db.Column(db.String(100)) 
     user_id = db.Column(db.String(36), db.ForeignKey('participant.id'), nullable=False)
 
-    # Ajoutez la méthode is_active
     def is_authenticated(self):
         # Par défaut, tous les utilisateurs sont considérés comme actifs
         return True
