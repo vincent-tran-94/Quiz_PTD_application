@@ -1,7 +1,6 @@
 # Application web pédagogique sur un quiz interactif aux participants
 Dans ce projet, j'ai mis en place une application web pour mon association Préserve ton Droit en utilisant le Framework Flask. <br>
-L'objectif de cette application de répondre aux différents questions sur 3 catégories <br>
-(Droit,Humanitaire et Culturel) pour permettre aux participants d'apprendre et de découvrir le domaine juridique et humanitaire.  <br>
+L'objectif de cette application de répondre aux différents questions sur 3 catégories (Droit,Humanitaire et Culturel) pour permettre aux participants d'apprendre et de découvrir le domaine juridique et humanitaire.  <br>
 Cette application sera stockée dans les différents bases de données aux comptes d'utilisateurs ainsi que les résultats aux réponses des quiz. <br> 
 
 ## Description de l'application 
@@ -16,9 +15,9 @@ Cette application sera stockée dans les différents bases de données aux compt
 
 ## Base de données 
 - participants.db On dispose 3 tables:
-    => # participant : Une table contenant le nombre de participants ayant rempli le formulaire
-    => # reponse_participant : Le nombre de réponses effectués par un participant
-    => # email_id : Nombre de participants ayant reçu la confirmation par mail
+    - # participant : Une table contenant le nombre de participants ayant rempli le formulaire
+    - # reponse_participant : Le nombre de réponses effectués par un participant
+    - # email_id : Nombre de participants ayant reçu la confirmation par mail
 
 ## Installation
 - Version Python 3.11.7 
