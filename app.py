@@ -190,8 +190,6 @@ def dashboard():
     return render_template('dashboard.html', graph_json_success=graph_json_success, graph_json_participants=graph_json_participants)
 
 
-
-
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
