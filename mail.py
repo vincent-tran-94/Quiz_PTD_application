@@ -27,7 +27,11 @@ def send_confirmation_email(user_id, email):
     msg = Message('Confirmation d\'inscription',
                   sender=sender,  # Remplacez par votre adresse e-mail
                   recipients=[email])
-    msg.body = f"Cliquez sur le lien suivant pour participer au quiz: {confirm_url}\n\nVous disposez d'une heure pour confirmer votre inscription\nAssociation Préserve ton droit"
+    
+     # Corps du message au format HTML avec une image
+    msg.html = f"<p>Cliquez sur le lien suivant pour participer au quiz: <a href='{confirm_url}'>{confirm_url}</a></p>" \
+               f"<p>Vous disposez d'une heure pour confirmer votre inscription.</p>" \
+               f"<p>Association Préserve ton droit.</p>"
     
     # Envoyer l'e-mail
     mail.send(msg)
