@@ -5,15 +5,24 @@
     <title>Dashboard</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard.css') }}"> 
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_PTD.jpg') }}">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <div id="graph"></div>
-    <textarea id="graphData" style="display: none;">{{graph_json | safe }}</textarea>
+    <div id="graph_success"></div>
+    <div id="graph_participants"></div>
+
+    <textarea id="graphDataSuccess" style="display: none;">{{ graph_json_success | safe }}</textarea>
+    <textarea id="graphDataParticipants" style="display: none;">{{ graph_json_participants | safe }}</textarea>
+
     <script>
-        var graphJson = document.getElementById('graphData').value;
-        Plotly.newPlot('graph', JSON.parse(graphJson));
+        var graphJsonSuccess = document.getElementById('graphDataSuccess').value;
+        var graphJsonParticipants = document.getElementById('graphDataParticipants').value;
+
+        Plotly.newPlot('graph_success', JSON.parse(graphJsonSuccess));
+        Plotly.newPlot('graph_participants', JSON.parse(graphJsonParticipants));
     </script>
+
     <div class="centered">
         <a href="{{ url_for('accueil') }}" class="btn btn-primary mt-3">Retour à l'accueil</a>
     </div>

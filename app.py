@@ -29,10 +29,12 @@ def formulaire():
         prenom = request.form['prenom']
         email = request.form['email']
         niveau_etude = request.form['niveau_etude']
+        statut = request.form['statut']
         centre_interet = request.form['centre_interet']
         choix_categorie = request.form['choix_categorie']
+        champs_requis = [nom, prenom, email, niveau_etude, statut, centre_interet, choix_categorie]
 
-        if not (nom and prenom and email and niveau_etude and centre_interet and choix_categorie):
+        if not champs_requis:
             return render_template('formulaire.html', message="Veuillez remplir tous les champs.")
         
         # Générer un ID utilisateur unique
@@ -46,6 +48,7 @@ def formulaire():
                                   prenom=prenom, 
                                   email=email, 
                                   niveau_etude=niveau_etude,
+                                  statut=statut,
                                   centre_interet=centre_interet, 
                                   choix_categorie=choix_categorie)
 
@@ -115,9 +118,26 @@ def traitement_reponses(data_json, categorie):
     db.session.add(reponse_participant)
     db.session.commit()
 
+
+def get_participants_count_by_category():
+    categories = []
+    participants_counts = []
+
+    # Récupérer le nombre de participants pour chaque catégorie
+    categories_data = db.session.query(ReponseParticipant.categorie, db.func.count(ReponseParticipant.participant_id))\
+                                 .group_by(ReponseParticipant.categorie).all()
+
+    for _, (category, count) in enumerate(categories_data):
+        categories.append(category)
+        participants_counts.append(count)
+
+    return categories, participants_counts
+
+
 @app.route('/dashboard')
 @login_required
 def dashboard():
+    # Graphique pour le taux de réussite par catégorie
     categories = []
     success_percentages = []
 
@@ -125,18 +145,15 @@ def dashboard():
     categories_data = db.session.query(ReponseParticipant.categorie, db.func.avg(ReponseParticipant.success_percentage))\
                                  .group_by(ReponseParticipant.categorie).all()
 
-    # Palette de couleurs pour les catégories
-    colors = {'droit': 'rgb(31, 119, 180)', 
-              'humanitaire': 'rgb(44, 160, 44)', 
-              'culturel': 'rgb(23, 190, 207)'}
-
-
     for _, (category, success_percentage) in enumerate(categories_data):
         categories.append(category)
         success_percentages.append(success_percentage)
 
-    # Créer le graphique à barres avec des couleurs différentes pour chaque catégorie
-    bar_chart = go.Bar(
+    colors = {'droit': 'rgb(31, 119, 180)', 
+              'humanitaire': 'rgb(44, 160, 44)', 
+              'culturel': 'rgb(23, 190, 207)'}
+
+    bar_chart_success = go.Bar(
         x=categories,
         y=success_percentages,
         text=success_percentages,
@@ -145,17 +162,33 @@ def dashboard():
         opacity=0.6
     )
 
-    layout = go.Layout(
-        title='Pourcentage de succès par catégorie en moyenne',
+    layout_success = go.Layout(
+        title="Graphique illustrant la moyenne des taux de réussite par catégorie pour tous les participants.",
         xaxis=dict(title='Catégorie'),
         yaxis=dict(title='Pourcentage de succès'),
     )
 
-    fig = go.Figure(data=[bar_chart], layout=layout)
+    fig_success = go.Figure(data=[bar_chart_success], layout=layout_success)
+    graph_json_success = json.dumps(fig_success, cls=plotly.utils.PlotlyJSONEncoder)
 
-    graph_json = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    # Graphique pour le nombre de participants par catégorie (diagramme circulaire)
+    categories_participants, participants_counts = get_participants_count_by_category()
 
-    return render_template('dashboard.html', graph_json=graph_json)
+    pie_chart_participants = go.Pie(
+        labels=categories_participants,
+        values=participants_counts,
+        hole=0.3
+    )
+
+    layout_participants = go.Layout(
+        title="Nombre de participants par catégorie",
+    )
+
+    fig_participants = go.Figure(data=[pie_chart_participants], layout=layout_participants)
+    graph_json_participants = json.dumps(fig_participants, cls=plotly.utils.PlotlyJSONEncoder)
+
+    return render_template('dashboard.html', graph_json_success=graph_json_success, graph_json_participants=graph_json_participants)
+
 
 
 

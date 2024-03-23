@@ -13,6 +13,7 @@ class Participant(db.Model):
     prenom = db.Column(db.String(100))
     email = db.Column(db.String(100))
     niveau_etude = db.Column(db.String(100))
+    statut = db.Column(db.String(100))
     centre_interet = db.Column(db.String(100))
     choix_categorie = db.Column(db.String(100))
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
