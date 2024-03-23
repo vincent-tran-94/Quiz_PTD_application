@@ -5,11 +5,12 @@ Cette application sera stockée dans les différents bases de données aux compt
 
 ## Description de l'application 
 - app.py # Application principale 
+- models.py # Modélisation des données 
+- mail.py #Procédure de confirmation de mail
+- vizualisation.py #Visualisations des résultats sur les catégories
 - template/ # Liste des pages 
 - static/images # Liste des images
 - static/styles # Fichiers CSS
-- models.py # Modélisation des données 
-- mail.py #Procédure de confirmation de mail
 - questions/ # Fichiers JSON contenant une série de questions
 
 
