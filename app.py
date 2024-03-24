@@ -9,7 +9,6 @@ from mail import *
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-
 def open_file_json(name_json):
     with open(f'questions/{name_json}.json', 'r',encoding='utf-8') as file:
         data_json = json.load(file)
@@ -120,11 +119,16 @@ def traitement_reponses(data_json, categorie):
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    
+    image_filename = 'images/logo_PTD.jpg'
+
     graph_json_success = get_participants_success_percentage()
     graph_json_participants = get_participants_count_by_category()
+    graph_json_participants_month = get_participants_by_month()
 
-    return render_template('dashboard.html', graph_json_success=graph_json_success, graph_json_participants=graph_json_participants)
+    return render_template('dashboard.html', graph_json_success=graph_json_success, 
+                           graph_json_participants=graph_json_participants, 
+                           graph_json_participants_month= graph_json_participants_month,
+                           image_filename=image_filename)
 
 if __name__ == '__main__':
     with app.app_context():

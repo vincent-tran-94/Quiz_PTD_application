@@ -26,7 +26,7 @@
                 "b": "Définir les règles du commerce international.",
                 "c": "Promouvoir la coopération militaire entre les pays signataires."
             },
-            "reponse_correcte": "a"
+            "reponse_correcte": "b"
         },
         {
             "question": "Qu'est-ce que le devoir de protection dans le cadre du droit international humanitaire ?",
@@ -35,7 +35,7 @@
                 "b": "La responsabilité exclusive des organisations humanitaires.",
                 "c": "L'interdiction totale de toute forme de violence pendant les conflits armés."
             },
-            "reponse_correcte": "a"
+            "reponse_correcte": "c"
         },
         {
             "question": "Quel est le principe fondamental du droit international humanitaire ?",
@@ -44,7 +44,7 @@
                 "b": "La suprématie des intérêts nationaux.",
                 "c": "La domination militaire."
             },
-            "reponse_correcte": "a"
+            "reponse_correcte": "c"
         },
         {
             "question": "Qu'est-ce que la neutralité humanitaire ?",
@@ -53,7 +53,7 @@
                 "b": "L'absence d'engagement de la part des États dans les situations de crise humanitaire.",
                 "c": "La priorité donnée aux intérêts des grandes puissances dans la distribution de l'aide."
             },
-            "reponse_correcte": "a"
+            "reponse_correcte": "c"
         },
         {
             "question": "Quelle est la principale mission du Haut-Commissariat des Nations unies pour les réfugiés (HCR) ?",
@@ -62,7 +62,7 @@
                 "b": "Promouvoir l'immigration économique.",
                 "c": "Fournir des secours en cas de catastrophes naturelles."
             },
-            "reponse_correcte": "a"
+            "reponse_correcte": "b"
         },
         {
             "question": "Qu'est-ce que la résolution 1325 du Conseil de sécurité des Nations unies ?",
@@ -71,7 +71,7 @@
                 "b": "Une résolution visant à interdire toute forme de commerce d'armes.",
                 "c": "Une résolution condamnant les actes de terrorisme dans le monde."
             },
-            "reponse_correcte": "a"
+            "reponse_correcte": "c"
         },
         {
             "question": "Quel est le principe de base du droit des réfugiés ?",
@@ -80,7 +80,7 @@
                 "b": "Expulsion systématique.",
                 "c": "Exclusion totale."
             },
-            "reponse_correcte": "a"
+            "reponse_correcte": "b"
         },
         {
             "question": "Qu'est-ce que le principe d'humanité dans le droit international humanitaire ?",
@@ -89,7 +89,7 @@
                 "b": "Le principe de priorité donnée aux intérêts nationaux.",
                 "c": "Le principe de tolérance zéro envers les actions militaires."
             },
-            "reponse_correcte": "a"
+            "reponse_correcte": "b"
         },
         {
             "question": "Qu'est-ce que la protection des civils dans les conflits armés ?",
@@ -98,7 +98,7 @@
                 "b": "Un droit réservé uniquement aux citoyens des pays en conflit.",
                 "c": "Une stratégie militaire visant à cibler délibérément les populations civiles."
             },
-            "reponse_correcte": "a"
+            "reponse_correcte": "c"
         },
         {
             "question": "Qu'est-ce que le statut de réfugié ?",
@@ -129,5 +129,3 @@
         }
     ]
 }
-
-        

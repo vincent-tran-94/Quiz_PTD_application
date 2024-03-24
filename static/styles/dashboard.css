@@ -1,3 +1,41 @@
 .centered {
     text-align: center;
 }
+
+ /* Ajout de bordures et d'ombres pour les graphiques */
+ .graph-container {
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 5px; /* Coins arrondis */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Ombre */
+    padding: 10px; /* Espacement intérieur */
+    margin-bottom: 20px; /* Marge inférieure pour séparation */
+}
+
+body {
+    background-color: #f0f0f0; /* Couleur gris clair */
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(128, 128, 128, 0.5), transparent); /* Couleur gris foncé */
+    pointer-events: none;
+}
+
+.container {
+    position: relative;
+    z-index: 1; /* Assure que le contenu reste au-dessus de l'arrière-plan réfléchi */
+}
+
+.img-custom {
+    position: absolute;
+    width: 250px;
+    height: 220px;
+    top: 0%;
+    left: 95.2%;
+}
