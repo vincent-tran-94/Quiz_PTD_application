@@ -1,6 +1,6 @@
 # Application web pédagogique sur un quiz interactif aux participants
 Dans ce projet, j'ai mis en place une application web pour mon association Préserve ton Droit en utilisant le Framework Flask. <br>
-L'objectif de cette application de répondre aux différents questions sur 3 catégories (Droit,Humanitaire et Culturel) pour permettre aux participants d'apprendre et de découvrir le domaine juridique et humanitaire.  <br>
+L'objectif de cette application de répondre aux différents questions sur 4 catégories (Droit,Humanitaire, Culturel,Sociologie ) pour permettre aux participants d'apprendre et de découvrir la vision juridique,humanitaire, culturel et social.  <br>
 Cette application sera stockée dans les différents bases de données aux comptes d'utilisateurs ainsi que les résultats aux réponses des quiz. <br> 
 
 ## Description de l'application 
