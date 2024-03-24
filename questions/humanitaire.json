@@ -2,7 +2,7 @@
     "thematique": "humanitaire",
     "questions": [
         {
-            "question": "Qu'est-ce que le droit d'asile ?",
+            "question": "1- Qu'est-ce que le droit d'asile ?",
             "options": {
                 "a": "Un droit permettant à toute personne persécutée de demander refuge dans un autre pays.",
                 "b": "Un droit réservé uniquement aux citoyens des pays développés.",
@@ -11,7 +11,7 @@
             "reponse_correcte": "a"
         },
         {
-            "question": "Quel organisme international est chargé de coordonner l'aide humanitaire dans le monde ?",
+            "question": "2- Quel organisme international est chargé de coordonner l'aide humanitaire dans le monde ?",
             "options": {
                 "a": "La Croix-Rouge",
                 "b": "L'Organisation des Nations unies (ONU)",
@@ -20,7 +20,7 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "Quel est le principal objectif de la Convention de Genève de 1951 ?",
+            "question": "3- Quel est le principal objectif de la Convention de Genève de 1951 ?",
             "options": {
                 "a": "Protéger les droits des réfugiés.",
                 "b": "Définir les règles du commerce international.",
@@ -29,7 +29,7 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "Qu'est-ce que le devoir de protection dans le cadre du droit international humanitaire ?",
+            "question": "4- Qu'est-ce que le devoir de protection dans le cadre du droit international humanitaire ?",
             "options": {
                 "a": "L'obligation pour les États de protéger les civils et les personnes hors combat pendant les conflits armés.",
                 "b": "La responsabilité exclusive des organisations humanitaires.",
@@ -38,7 +38,7 @@
             "reponse_correcte": "c"
         },
         {
-            "question": "Quel est le principe fondamental du droit international humanitaire ?",
+            "question": "5- Quel est le principe fondamental du droit international humanitaire ?",
             "options": {
                 "a": "Le respect de la dignité humaine.",
                 "b": "La suprématie des intérêts nationaux.",
@@ -47,7 +47,7 @@
             "reponse_correcte": "c"
         },
         {
-            "question": "Qu'est-ce que la neutralité humanitaire ?",
+            "question": "6- Qu'est-ce que la neutralité humanitaire ?",
             "options": {
                 "a": "Le principe selon lequel les acteurs humanitaires doivent rester impartiaux et ne pas prendre parti dans les conflits.",
                 "b": "L'absence d'engagement de la part des États dans les situations de crise humanitaire.",
@@ -56,7 +56,7 @@
             "reponse_correcte": "c"
         },
         {
-            "question": "Quelle est la principale mission du Haut-Commissariat des Nations unies pour les réfugiés (HCR) ?",
+            "question": "7- Quelle est la principale mission du Haut-Commissariat des Nations unies pour les réfugiés (HCR) ?",
             "options": {
                 "a": "Protéger et assister les réfugiés dans le monde entier.",
                 "b": "Promouvoir l'immigration économique.",
@@ -65,7 +65,7 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "Qu'est-ce que la résolution 1325 du Conseil de sécurité des Nations unies ?",
+            "question": "8- Qu'est-ce que la résolution 1325 du Conseil de sécurité des Nations unies ?",
             "options": {
                 "a": "Une résolution sur les femmes, la paix et la sécurité, soulignant le rôle des femmes dans la prévention et la résolution des conflits.",
                 "b": "Une résolution visant à interdire toute forme de commerce d'armes.",
@@ -74,7 +74,7 @@
             "reponse_correcte": "c"
         },
         {
-            "question": "Quel est le principe de base du droit des réfugiés ?",
+            "question": "9- Quel est le principe de base du droit des réfugiés ?",
             "options": {
                 "a": "Non-refoulement.",
                 "b": "Expulsion systématique.",
@@ -83,7 +83,7 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "Qu'est-ce que le principe d'humanité dans le droit international humanitaire ?",
+            "question": "10- Qu'est-ce que le principe d'humanité dans le droit international humanitaire ?",
             "options": {
                 "a": "Le principe exigeant le traitement humain des personnes protégées.",
                 "b": "Le principe de priorité donnée aux intérêts nationaux.",
@@ -92,7 +92,7 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "Qu'est-ce que la protection des civils dans les conflits armés ?",
+            "question": "11- Qu'est-ce que la protection des civils dans les conflits armés ?",
             "options": {
                 "a": "Une obligation pour les parties aux conflits de protéger les civils contre les effets des hostilités.",
                 "b": "Un droit réservé uniquement aux citoyens des pays en conflit.",
@@ -101,7 +101,7 @@
             "reponse_correcte": "c"
         },
         {
-            "question": "Qu'est-ce que le statut de réfugié ?",
+            "question": "12- Qu'est-ce que le statut de réfugié ?",
             "options": {
                 "a": "Une personne ayant fui son pays en raison de craintes de persécution.",
                 "b": "Une personne qui voyage pour des raisons de loisirs.",
@@ -110,7 +110,7 @@
             "reponse_correcte": "a"
         },
         {
-            "question": "Quelle est la mission principale de l'UNICEF ?",
+            "question": "13- Quelle est la mission principale de l'UNICEF ?",
             "options": {
                 "a": "Protéger les droits des enfants et répondre à leurs besoins fondamentaux.",
                 "b": "Promouvoir l'éducation des adultes.",
@@ -119,7 +119,7 @@
             "reponse_correcte": "a"
         },
         {
-            "question": "Quelle est la signification de l'acronyme ONG ?",
+            "question": "14- Quelle est la signification de l'acronyme ONG ?",
             "options": {
                 "a": "Organisation Non Gouvernementale",
                 "b": "Office des Nations unies pour la Gestion des Affaires Humanitaires",

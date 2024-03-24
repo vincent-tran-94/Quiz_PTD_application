@@ -57,7 +57,7 @@ def get_participants_by_month():
     )
 
     layout = go.Layout(
-        title="Évolution mensuelle du nombre de participants ayant répondu aux questionnaires",
+        title="Évolution mensuelle en 2024 le nombre de participants ayant répondu aux questionnaires",
         xaxis=dict(title="Mois"),
         yaxis=dict(title="Nombre de participants",dtick=1),
         width=1070,  # Largeur en pixels
