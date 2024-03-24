@@ -6,10 +6,13 @@
     margin-top: 95px; 
 }
 
-.col-md-4 {
-    margin-top: 40px;
+.col-md-3 {
+    margin-top: 30px;
 }
 
+.col-md-4 {
+    margin-top: 30px;
+}
 
 .img-custom {
     position: absolute;

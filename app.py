@@ -80,6 +80,10 @@ def categorie_questions(categorie):
         message = "culturel"
         data_json = open_file_json(categorie)
     
+    elif categorie == 'sociologie':
+        message = "sociologie"
+        data_json = open_file_json(categorie)
+    
     elif categorie == 'resultats':
         return redirect(url_for('dashboard'))
     
