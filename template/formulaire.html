@@ -11,10 +11,9 @@
 </head>
 <body class="body-top-right">
     <img src="{{ url_for('static', filename=image_filename) }}" alt="Image PTD"  class="img-custom">
-    </div>
     <div class="container">
         <h1 class="text-center">Formulaire pour l'association Préserve ton droit</h1>
-        <form action="/" method="post" class="card p-4">
+        <form action="/formulaire" method="post" class="card p-4">
             <div class="form-group">
                 <label for="nom">Votre nom:</label>
                 <input type="text" id="nom" name="nom" required>

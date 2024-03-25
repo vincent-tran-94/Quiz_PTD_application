@@ -30,7 +30,7 @@ def send_confirmation_email(user_id, email):
     
      # Corps du message au format HTML avec une image
     msg.html = f"<p>Cliquez sur le lien suivant pour participer au quiz: <a href='{confirm_url}'>{confirm_url}</a></p>" \
-               f"<p>Vous disposez d'une heure pour confirmer votre inscription.</p>" \
+               f"Vous avez une heure pour vous inscrire"\
                f"<p>Association Préserve ton droit.</p>"
     
     # Envoyer l'e-mail
@@ -45,19 +45,20 @@ def send_confirmation_email(user_id, email):
 def confirm_email(token):
     try:
         # Récupérer l'user_id associé au token 
-        user_id = serializer.loads(token, max_age=3600)  
+        user_id_token = serializer.loads(token,max_age=3600)
+        print(user_id_token)
 
         # Récupérer l'email à partir de l'user_id
-        user = Participant.query.get(user_id)
-        email = user.email 
+        user = User.query.get(user_id_token)
+        email = user.email
 
         if email:
             # Récupérer l'EmailID associé au token
-            user_id = EmailID.query.filter_by(user_id=user_id).first()
+            user__confirmation_id = EmailID.query.filter_by(user_id=user_id_token).first()
 
-            if user_id:
-                login_user(user_id)  # Connecter l'utilisateur
-                return redirect(url_for('accueil'))
+            if user__confirmation_id:
+                #login_user(user)  # Connecter l'utilisateur
+                return redirect(url_for('login'))
             else:
                 return render_template('confirmation.html', message='User ID no detected')
         else:

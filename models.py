@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__,template_folder='template')
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
@@ -8,7 +9,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///participants.db'
 db = SQLAlchemy(app)
 
 class Participant(db.Model):
-    id = db.Column(db.String(36), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    participant_id = db.Column(db.String(36), db.ForeignKey('user.id'), nullable=False)
     nom = db.Column(db.String(100))
     prenom = db.Column(db.String(100))
     email = db.Column(db.String(100))
@@ -17,6 +19,7 @@ class Participant(db.Model):
     centre_interet = db.Column(db.String(100))
     choix_categorie = db.Column(db.String(100))
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
+
 
 class ReponseParticipant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -30,14 +33,30 @@ class ReponseParticipant(db.Model):
 class EmailID(db.Model): 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100)) 
-    user_id = db.Column(db.String(36), db.ForeignKey('participant.id'), nullable=False)
+    user_id = db.Column(db.String(36), nullable=False)
+
+class User(db.Model):
+    id = db.Column(db.String(36), primary_key=True)
+    nom =  db.Column(db.String(100))
+    prenom = db.Column(db.String(100))
+    email = db.Column(db.String(100))
+    password_hash = db.Column(db.String(100)) 
+    date_creation = db.Column(db.DateTime, default=datetime.utcnow)
 
     def is_authenticated(self):
         # Par défaut, tous les utilisateurs sont considérés comme actifs
         return True
     
-    def get_id(self):
-        return self.id
-
     def is_active(self):
         return True
+    
+    def get_id(self):
+        return self.id
+    
+    def set_password(self, password,method):
+        self.password_hash = generate_password_hash(password,method)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+

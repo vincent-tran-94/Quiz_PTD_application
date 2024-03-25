@@ -25,3 +25,9 @@
 body {
     margin-top: 420px; /* ajustez la valeur selon votre besoin */
 }
+
+.logout-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}

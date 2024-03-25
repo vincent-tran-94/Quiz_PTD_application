@@ -1,13 +1,14 @@
 from models import *
 import uuid 
-from flask import render_template, request, redirect, url_for, session
-from flask_login import LoginManager,login_required
+from flask import render_template, request, redirect, url_for, session, flash
+from flask_login import LoginManager,login_required, logout_user
 from vizualisation import *
 from mail import *
 
 # Créez une instance de LoginManager
 login_manager = LoginManager()
 login_manager.init_app(app)
+
 
 def open_file_json(name_json):
     with open(f'questions/{name_json}.json', 'r',encoding='utf-8') as file:
@@ -16,11 +17,75 @@ def open_file_json(name_json):
 
 @login_manager.user_loader
 def load_user(user_id):
-    return db.session.get(EmailID, user_id)
+    return db.session.get(User,user_id )
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    session.pop('user_id', None)
+    flash("Vous avez été déconnecté avec succès", "success")
+    return redirect(url_for('login'))
 
 @app.route('/', methods=['GET', 'POST'])
+def login():
+    image_filename = 'images/logo_PTD.jpg'
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        # Recherche de l'utilisateur dans la base de données
+        user = User.query.filter_by(email=email).first()
+
+        if user and user.check_password(password):
+            login_user(user)
+            session['user_id'] = user.id
+            participant = Participant.query.filter_by(participant_id=user.id).first()
+            if participant:
+                return redirect(url_for('accueil'))  # Rediriger vers la page de catégorie
+            else:
+                return redirect(url_for('formulaire'))  # Rediriger vers le formulaire si l'utilisateur n'a pas rempli
+        else:
+            flash("Nom d'utilisateur ou mot de passe invalide", "error")  # Message flash pour l'erreur
+        
+           
+
+        
+    return render_template('login.html',image_filename=image_filename )
+
+
+@app.route('/register/', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        nom = request.form['nom']
+        prenom = request.form['prenom']
+        email = request.form['email']
+        password = request.form['password']
+    
+        # Générer un ID utilisateur unique
+        user_id = str(uuid.uuid4())
+
+        inscription_user = User(id=user_id,
+                                  nom=nom, 
+                                  prenom=prenom, 
+                                  email=email)
+
+        inscription_user.set_password(password,method='pbkdf2:sha256')
+        db.session.add(inscription_user)
+        db.session.commit()
+        send_confirmation_email(user_id, email)
+
+        return render_template('confirmation.html', message='Un e-mail de confirmation a été envoyé à votre adresse.')
+
+    return render_template('register.html')
+
+
+
+@app.route('/formulaire', methods=['GET', 'POST'])
+@login_required
 def formulaire():
     image_filename = 'images/logo_PTD.jpg'
+    participant_id = session.get('user_id')
     if request.method == 'POST':
         nom = request.form['nom']
         prenom = request.form['prenom']
@@ -34,13 +99,8 @@ def formulaire():
         if not champs_requis:
             return render_template('formulaire.html', message="Veuillez remplir tous les champs.")
         
-        # Générer un ID utilisateur unique
-        user_id = str(uuid.uuid4())
 
-        #Stockage dans une variable temporaire
-        session['user_id'] = user_id
-
-        participant = Participant(id=user_id,
+        participant = Participant(participant_id=participant_id,
                                   nom=nom, 
                                   prenom=prenom, 
                                   email=email, 
@@ -51,9 +111,7 @@ def formulaire():
 
         db.session.add(participant)
         db.session.commit()
-        send_confirmation_email(user_id, email)
-
-        return render_template('confirmation.html', message='Un e-mail de confirmation a été envoyé à votre adresse.')
+        return redirect(url_for('accueil'))
 
     return render_template('formulaire.html', message=None,image_filename=image_filename)
 
