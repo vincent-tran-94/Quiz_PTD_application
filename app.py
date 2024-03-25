@@ -17,7 +17,7 @@ def open_file_json(name_json):
 
 @login_manager.user_loader
 def load_user(user_id):
-    return db.session.get(User,user_id )
+    return db.session.get(User,user_id)
 
 @app.route('/logout')
 @login_required
@@ -47,9 +47,6 @@ def login():
                 return redirect(url_for('formulaire'))  # Rediriger vers le formulaire si l'utilisateur n'a pas rempli
         else:
             flash("Nom d'utilisateur ou mot de passe invalide", "error")  # Message flash pour l'erreur
-        
-           
-
         
     return render_template('login.html',image_filename=image_filename )
 
@@ -183,14 +180,19 @@ def traitement_reponses(data_json, categorie):
 def dashboard():
     image_filename = 'images/logo_PTD.jpg'
 
-    graph_json_success = get_participants_success_percentage()
-    graph_json_participants = get_participants_count_by_category()
-    graph_json_participants_month = get_participants_by_month()
+    ReponsesParticipant = ReponseParticipant.query.all()
+    if ReponsesParticipant:
+        graph_json_success = get_participants_success_percentage()
+        graph_json_participants = get_participants_count_by_category()
+        graph_json_participants_month = get_participants_by_month()
 
-    return render_template('dashboard.html', graph_json_success=graph_json_success, 
-                           graph_json_participants=graph_json_participants, 
-                           graph_json_participants_month= graph_json_participants_month,
-                           image_filename=image_filename)
+        return render_template('dashboard.html', graph_json_success=graph_json_success, 
+                            graph_json_participants=graph_json_participants, 
+                            graph_json_participants_month= graph_json_participants_month,
+                            image_filename=image_filename)
+    else: 
+        return redirect(url_for('accueil'))
+
 
 if __name__ == '__main__':
     with app.app_context():
