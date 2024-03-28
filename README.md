@@ -6,7 +6,7 @@ Cette application sera stockée dans les différents bases de données aux compt
 Voici la consigne de l'application:
 
 - Fonctionnalité de login et d'inscription via par mail (on peut changer de mot de passe) 
-- Formulaire de renseignements pour renseigner la personne du participant si il gagnera le lot
+- Formulaire de renseignements pour renseigner la personne du participant s'il gagnera le lot
 - 4 catégories à choisir (droit, humanitaire, culturel, sociologie)
 - On a le droit de participer une fois par catégorie une fois qu'on a soumis les réponses des questionnaires
 - Chaque point de réponse (pour l'instant compte 1 point par bonne réponse) (je vais voir plus tard si c'est possible d'ajuster les points de réponses pour les nouvelles questionnaires)
