@@ -11,10 +11,10 @@ Voici la consigne de l'application:
 - On a le droit de participer une fois par catégorie une fois qu'on a soumis les réponses des questionnaires
 - Chaque point de réponse (pour l'instant compte 1 point par bonne réponse) (je vais voir plus tard si c'est possible d'ajuster les points de réponses pour les nouvelles questionnaires)
 - Les données des résultats seront affichés sur une page de visualisation qui contient:
-&rarr; Taux de réussite en moyenne calculé pour tout les participants à chaque catégorie
-&rarr; Le nombre de participants répondus par catégorie
-&rarr; Le nombre de participants répondus en fonction du mois (répartis sur tout les catégories)
-&rarr; Le classement des 3 meilleurs participants (pour chaque mois)
+&rarr; Taux de réussite en moyenne calculé pour tout les participants à chaque catégorie <br>
+&rarr; Le nombre de participants répondus par catégorie  <br>
+&rarr; Le nombre de participants répondus en fonction du mois (répartis sur tout les catégories)  <br>
+&rarr; Le classement des 3 meilleurs participants (pour chaque mois)  <br>
 
 Cette application va permet aux participants d'apprendre et de découvrir des notions sur le domaine  juridique, humanitaire, culturel et social dans notre société en général.
 
