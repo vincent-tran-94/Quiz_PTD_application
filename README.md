@@ -27,9 +27,9 @@ Cette application sera stockée dans les différents bases de données aux compt
 
 ## Base de données    
 - participants.db # On dispose 3 tables:
+    - User : Nombre de participants ayant inscrit l'application du quiz
     - participant : Le nombre de participants ayant rempli le formulaire
     - reponse_participant : Le nombre de réponses effectués par un participant
-    - email_id : Nombre de participants ayant reçu la confirmation par mail
 
 ## Installation
 - Version Python 3.11.7 
