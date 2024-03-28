@@ -20,7 +20,7 @@
                     Plotly.newPlot('graph_success', JSON.parse(graphJsonSuccess));
                 </script>
             </div>
-            <div class="col-md-6"> <!-- Changé en col-md-6 -->
+            <div class="col-md-6"> 
                 <div id="graph_participants"></div>
                 <textarea id="graphDataParticipants" style="display: none;">{{ graph_json_participants | safe }}</textarea>
                 <script>
@@ -28,12 +28,22 @@
                     Plotly.newPlot('graph_participants', JSON.parse(graphJsonParticipants));
                 </script>
             </div>
-            <div class="col-md-8"> <!-- Changé en col-md-6 -->
-                <div id="graph_json_participants_month"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"> 
+                <div id="graph_json_participants_month" class="graph-month-container"></div>
                 <textarea id="graphDataParticipantsMonth" style="display: none;">{{ graph_json_participants_month | safe }}</textarea>
                 <script>
                     var graph_json_participants_month = document.getElementById('graphDataParticipantsMonth').value;
                     Plotly.newPlot('graph_json_participants_month', JSON.parse(graph_json_participants_month));
+                </script>
+            </div>
+            <div class="col-md-1"> 
+                <div id="graph_top_participants" class="graph-top-container"></div>
+                <textarea id="graphDataTopParticipants" style="display: none;">{{ graph_json_top_participants | safe }}</textarea>
+                <script>
+                    var graphJsonTopParticipants = document.getElementById('graphDataTopParticipants').value;
+                    Plotly.newPlot('graph_top_participants', JSON.parse(graphJsonTopParticipants));
                 </script>
             </div>
         </div>

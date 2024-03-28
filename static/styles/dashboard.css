@@ -34,8 +34,13 @@ body::before {
 
 .img-custom {
     position: absolute;
-    width: 250px;
-    height: 220px;
+    width: 400px;
+    height: 400px;
     top: 0%;
     left: 95.2%;
+}
+
+
+.graph-top-container {
+    padding-left: 500px; /* Réglez la valeur de padding-left selon vos besoins */
 }

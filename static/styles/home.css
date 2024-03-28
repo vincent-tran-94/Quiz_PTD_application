@@ -3,7 +3,7 @@
 }
 
 .top-margin {
-    margin-top: 95px; 
+    margin-top: 40px; 
 }
 
 .col-md-3 {
@@ -30,4 +30,10 @@ body {
     position: absolute;
     top: 20px;
     right: 20px;
+}
+
+
+.alert {
+    max-width: 500px; /* Définissez la largeur maximale de la boîte d'alerte */
+    margin: 0 auto; /* Centrez la boîte d'alerte horizontalement */
 }

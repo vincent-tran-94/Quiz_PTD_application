@@ -20,3 +20,17 @@ p {
     color: #666666;
     font-size: 18px;
 }
+
+.regStr{
+    transition:.25s;
+    padding-bottom:4px;
+    border-bottom:2px solid gray;
+    color:#212519;
+  }
+  .regStr:hover{
+    border-bottom:2px solid #ff425f;
+    padding-bottom:8px;
+    transition:.25s;
+    text-decoration:none;
+    color:#212519;
+  }

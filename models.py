@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 
+
 app = Flask(__name__,template_folder='template')
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///participants.db'
@@ -13,7 +14,9 @@ class Participant(db.Model):
     participant_id = db.Column(db.String(36), db.ForeignKey('user.id'), nullable=False)
     nom = db.Column(db.String(100))
     prenom = db.Column(db.String(100))
-    email = db.Column(db.String(100))
+    adresse = db.Column(db.String(100))
+    code_postal = db.Column(db.Integer)
+    ville = db.Column(db.String(100))
     niveau_etude = db.Column(db.String(100))
     statut = db.Column(db.String(100))
     centre_interet = db.Column(db.String(100))
@@ -30,10 +33,6 @@ class ReponseParticipant(db.Model):
     categorie = db.Column(db.String(100))
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
 
-class EmailID(db.Model): 
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(100)) 
-    user_id = db.Column(db.String(36), nullable=False)
 
 class User(db.Model):
     id = db.Column(db.String(36), primary_key=True)

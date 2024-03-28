@@ -1,9 +1,11 @@
 from models import *
 import uuid 
 from flask import render_template, request, redirect, url_for, session, flash
-from flask_login import LoginManager,login_required, logout_user
+from flask_login import LoginManager,login_required, logout_user, login_user
+from sqlalchemy.orm.exc import NoResultFound
 from vizualisation import *
 from mail import *
+
 
 # Créez une instance de LoginManager
 login_manager = LoginManager()
@@ -59,24 +61,26 @@ def register():
         email = request.form['email']
         password = request.form['password']
     
-        # Générer un ID utilisateur unique
-        user_id = str(uuid.uuid4())
+        existing_email = User.query.filter_by(email=email).first()
+        if not existing_email:
+            # Générer un ID utilisateur unique
+            user_id = str(uuid.uuid4())
 
-        inscription_user = User(id=user_id,
-                                  nom=nom, 
-                                  prenom=prenom, 
-                                  email=email)
+            inscription_user = User(id=user_id,
+                                    nom=nom, 
+                                    prenom=prenom, 
+                                    email=email)
 
-        inscription_user.set_password(password,method='pbkdf2:sha256')
-        db.session.add(inscription_user)
-        db.session.commit()
-        send_confirmation_email(user_id, email)
+            inscription_user.set_password(password,method='pbkdf2:sha256')
+            db.session.add(inscription_user)
+            db.session.commit()
+            send_confirmation_email(user_id, email)
+            return render_template('confirmation.html', message='Un e-mail de confirmation a été envoyé à votre adresse.')
+        else:
+            return render_template('confirmation.html', message='Vous êtes déjà inscrit.')
 
-        return render_template('confirmation.html', message='Un e-mail de confirmation a été envoyé à votre adresse.')
 
     return render_template('register.html')
-
-
 
 @app.route('/formulaire', methods=['GET', 'POST'])
 @login_required
@@ -86,12 +90,14 @@ def formulaire():
     if request.method == 'POST':
         nom = request.form['nom']
         prenom = request.form['prenom']
-        email = request.form['email']
+        adresse = request.form['adresse']
+        code_postal = request.form['code_postal']
+        ville = request.form['ville']
         niveau_etude = request.form['niveau_etude']
         statut = request.form['statut']
         centre_interet = request.form['centre_interet']
         choix_categorie = request.form['choix_categorie']
-        champs_requis = [nom, prenom, email, niveau_etude, statut, centre_interet, choix_categorie]
+        champs_requis = [nom, prenom, adresse,code_postal,ville, niveau_etude, statut, centre_interet, choix_categorie]
 
         if not champs_requis:
             return render_template('formulaire.html', message="Veuillez remplir tous les champs.")
@@ -100,7 +106,9 @@ def formulaire():
         participant = Participant(participant_id=participant_id,
                                   nom=nom, 
                                   prenom=prenom, 
-                                  email=email, 
+                                  adresse=adresse,
+                                  code_postal=code_postal,
+                                  ville=ville,
                                   niveau_etude=niveau_etude,
                                   statut=statut,
                                   centre_interet=centre_interet, 
@@ -123,22 +131,17 @@ def accueil():
 @app.route('/categorie/<categorie>', methods=['GET', 'POST'])
 @login_required
 def categorie_questions(categorie):
-    if categorie == 'droit':
-        message = "droit"
+    participant_id = session.get('user_id')
+    reponse_existe = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
+
+    if categorie in ['droit', 'humanitaire', 'culturel', 'sociologie']:
         data_json = open_file_json(categorie)
 
-    elif categorie == 'humanitaire':
-        message = "humanitaire"
-        data_json = open_file_json(categorie)
+    if reponse_existe:
+        flash("Vous avez déjà soumis les réponses pour cette catégorie.", "info")
+        return redirect(url_for('accueil'))
 
-    elif categorie == 'culturel':
-        message = "culturel"
-        data_json = open_file_json(categorie)
-    
-    elif categorie == 'sociologie':
-        message = "sociologie"
-        data_json = open_file_json(categorie)
-    
+
     elif categorie == 'resultats':
         return redirect(url_for('dashboard'))
     
@@ -146,7 +149,7 @@ def categorie_questions(categorie):
         traitement_reponses(data_json, categorie)
         return redirect(url_for('accueil'))
     
-    return render_template('categorie.html', questions=data_json['questions'],message=message)
+    return render_template('categorie.html', questions=data_json['questions'],categorie=categorie)
 
 
 def traitement_reponses(data_json, categorie):
@@ -185,13 +188,29 @@ def dashboard():
         graph_json_success = get_participants_success_percentage()
         graph_json_participants = get_participants_count_by_category()
         graph_json_participants_month = get_participants_by_month()
+        graph_json_top_participants = get_top_participants()
 
         return render_template('dashboard.html', graph_json_success=graph_json_success, 
                             graph_json_participants=graph_json_participants, 
                             graph_json_participants_month= graph_json_participants_month,
+                            graph_json_top_participants=graph_json_top_participants,
                             image_filename=image_filename)
     else: 
         return redirect(url_for('accueil'))
+
+@app.route('/forgot_password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        email = request.form['email']
+        try:
+            user = User.query.filter_by(email=email).one()
+            reset_password_email(user)
+            return render_template('confirmation.html', message='Un lien de réinitialisation de mot de passe a été envoyé à votre adresse e-mail.')
+        except NoResultFound:
+            return render_template('confirmation.html', message='Adresse e-mail non trouvée.')
+        
+    return render_template('forgot_password.html')
+
 
 
 if __name__ == '__main__':
