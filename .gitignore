@@ -124,6 +124,7 @@ celerybeat.pid
 .venv
 env/
 venv/
+env_ia/
 ENV/
 env.bak/
 venv.bak/
@@ -160,6 +161,5 @@ cython_debug/
 #.idea/
 
 llama-2-7b-chat.Q8_0.gguf
-models.py
 new_questions.py
-env_ia/
+test_llama.py
