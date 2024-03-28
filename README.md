@@ -3,6 +3,21 @@ Dans ce projet, j'ai mis en place une application web pour mon association Prés
 L'objectif de cette application de répondre aux différents questions sur 4 catégories (Droit,Humanitaire, Culturel,Sociologie ) pour permettre aux participants d'apprendre et de découvrir la vision juridique,humanitaire, culturel et social.  <br>
 Cette application sera stockée dans les différents bases de données aux comptes d'utilisateurs ainsi que les résultats aux réponses des quiz. <br> 
 
+Voici la consigne de l'application:
+
+- Fonctionnalité de login et d'inscription via par mail (on peut changer de mot de passe) 
+- Formulaire de renseignements pour renseigner la personne du participant si il gagnera le lot
+- 4 catégories à choisir (droit, humanitaire, culturel, sociologie)
+- On a le droit de participer une fois par catégorie une fois qu'on a soumis les réponses des questionnaires
+- Chaque point de réponse (pour l'instant compte 1 point par bonne réponse) (je vais voir plus tard si c'est possible d'ajuster les points de réponses pour les nouvelles questionnaires)
+- Les données des résultats seront affichés sur une page de visualisation qui contient:
+=> Taux de réussite en moyenne calculé pour tout les participants à chaque catégorie
+=> Le nombre de participants répondus par catégorie
+=> Le nombre de participants répondus en fonction du mois (répartis sur tout les catégories)
+=> Le classement des 3 meilleurs participants (pour chaque mois)
+
+Cette application va permet aux participants d'apprendre et de découvrir des notions sur le domaine  juridique, humanitaire, culturel et social dans notre société en général.
+
 ## Description de l'application 
 - app.py # Application principale 
 - models.py # Modélisation des données 
