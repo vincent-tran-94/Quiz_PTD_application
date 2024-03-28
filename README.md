@@ -10,7 +10,7 @@ Voici la consigne de l'application:
 - 4 catégories à choisir (droit, humanitaire, culturel, sociologie)
 - On a le droit de participer une fois par catégorie une fois qu'on a soumis les réponses des questionnaires
 - Chaque point de réponse (pour l'instant compte 1 point par bonne réponse) (je vais voir plus tard si c'est possible d'ajuster les points de réponses pour les nouvelles questionnaires)
-- Les données des résultats seront affichés sur une page de visualisation qui contient:
+- Les données des résultats seront affichés sur une page de visualisation qui contient:  <br>
 &rarr; Taux de réussite en moyenne calculé pour tout les participants à chaque catégorie <br>
 &rarr; Le nombre de participants répondus par catégorie  <br>
 &rarr; Le nombre de participants répondus en fonction du mois (répartis sur tout les catégories)  <br>
