@@ -13,6 +13,17 @@ Cette application sera stockée dans les différents bases de données aux compt
 - static/styles # Fichiers CSS
 - questions/ # Fichiers JSON contenant une série de questions
 
+## Formulaire pour la participation du concours du quiz
+
+- nom 
+- prenom 
+- adresse 
+- code_postal
+- ville 
+- niveau_etude 
+- statut 
+- centre_interet 
+- choix_categorie 
 
 ## Base de données    
 - participants.db # On dispose 3 tables:
