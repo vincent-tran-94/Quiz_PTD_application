@@ -52,8 +52,8 @@ Cette application va permet aux participants d'apprendre et de découvrir des no
 Importer le lien du projet et puis créez votre environnement virtuel
 ```
 $ git clone https://github.com/vincent-tran-94/Quiz_students_PTD_application.git
-$ python3 -m venv venv
-$ . venv/bin/activate
+$ python3 -m venv env
+$ source env/Scripts/activate
 ```
 
 Installer les dépendances 
