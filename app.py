@@ -227,9 +227,9 @@ def contact():
                           message=message)             
         db.session.add(contact)
         db.session.commit()
-        
+
         try: 
-            msg = Message(f'Nouveau message du contact de la part de {nom}',sender=sender, recipients=['timeroyal@gmail.com'],body=f"Nom: {nom}\nEmail: {email}\n Tel: {tel}, Message: {message}")
+            msg = Message(f'Application PTDlegalQuiz - Nouveau message de la part de {nom}', recipients=['timeroyal@gmail.com'],body=f"Nom: {nom}\nEmail: {email}\n Tel: {tel}\n  Message: {message}")
             mail.send(msg)
         except Exception as e:
             print('Une erreur s\'est produite lors de l\'envoi du message.')

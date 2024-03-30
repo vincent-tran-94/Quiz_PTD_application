@@ -14,7 +14,6 @@ SECRET_KEY = app.secret_key # Changez ceci par une clé réelle et sécurisée
 
 # Serializer pour générer et vérifier les tokens
 serializer = URLSafeTimedSerializer(SECRET_KEY)
-sender = 'timeroyal@gmail.com'
 
 
 # Fonction pour envoyer l'e-mail de confirmation
@@ -24,8 +23,7 @@ def send_confirmation_email(user_id, email):
     confirm_url = url_for('confirm_email', token=token, _external=True)  # URL de confirmation avec le token
 
     # Créer le message
-    msg = Message('Confirmation d\'inscription',
-                sender=sender,  # Remplacez par votre adresse e-mail
+    msg = Message('Confirmation d\'inscription', # Remplacez par votre adresse e-mail
                 recipients=[email])
     
     # Corps du message au format HTML avec une image
@@ -70,7 +68,7 @@ def confirm_email(token):
 def reset_password_email(user):
     token = serializer.dumps(user.email)
     reset_link = url_for('reset_password', token=token, _external=True)
-    msg = Message("Réinitialisation de mot de passe",sender=sender, recipients=[user.email])
+    msg = Message("Réinitialisation de mot de passe", recipients=[user.email])
     msg.html =  f"<p>Pour réinitialiser votre mot de passe, veuillez cliquer sur le lien suivant: <a href=' {reset_link} </a></p>"\
                 f"<p>Vous avez moins d'une heure pour confirmer votre lien</p>"\
                 f"<p>Association Préserve ton droit.</p>"
