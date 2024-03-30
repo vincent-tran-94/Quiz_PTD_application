@@ -141,7 +141,6 @@ def categorie_questions(categorie):
         flash("Vous avez déjà soumis les réponses pour cette catégorie.", "info")
         return redirect(url_for('accueil'))
 
-
     elif categorie == 'resultats':
         return redirect(url_for('dashboard'))
     
@@ -211,7 +210,35 @@ def forgot_password():
         
     return render_template('forgot_password.html')
 
+@app.route('/contact', methods=['GET', 'POST'])
+@login_required
+def contact():
+    participant_id = session.get('user_id')
+    if request.method == 'POST':
+        nom = request.form['nom']
+        email = request.form['email']
+        tel = request.form['tel']
+        message = request.form['message']
+        
+        contact = Contact(participant_id=participant_id,
+                          nom=nom,
+                          email=email,
+                          tel=tel,
+                          message=message)             
+        db.session.add(contact)
+        db.session.commit()
+        
+        try: 
+            msg = Message(f'Nouveau message du contact de la part de {nom}',sender=sender, recipients=['timeroyal@gmail.com'],body=f"Nom: {nom}\nEmail: {email}\n Tel: {tel}, Message: {message}")
+            mail.send(msg)
+        except Exception as e:
+            print('Une erreur s\'est produite lors de l\'envoi du message.')
+            print(e)
+            
+    return redirect(url_for('accueil'))
+
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    app.run(debug=True,host='192.168.0.44',port=9400)

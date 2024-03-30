@@ -12,7 +12,8 @@
 
 body {
     overflow: auto; /* Défilement automatique si nécessaire */
-    height: 100vh; /* Utilise 100% de la hauteur de la fenêtre */
+    min-height: 100vh;
+
 }
 
 .top-margin {

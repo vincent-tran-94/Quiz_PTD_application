@@ -57,10 +57,11 @@ class User(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
     
-# class Contact(db.Model):
-#     id = db.Column(db.String(36), primary_key=True)
-#     participant_id = db.Column(db.String(36), db.ForeignKey('user.id'), nullable=False)
-#     nom =  db.Column(db.String(100))
-#     email = db.Column(db.String(100))
-#     message = db.Column(db.String())
-
+class Contact(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    participant_id = db.Column(db.String(36), db.ForeignKey('participant.id'), nullable=False)
+    nom =  db.Column(db.String(100))
+    email = db.Column(db.String(100))
+    tel = db.Column(db.String(100))
+    message = db.Column(db.String(1000))
+    date_creation = db.Column(db.DateTime, default=datetime.utcnow)

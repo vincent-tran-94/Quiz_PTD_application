@@ -99,3 +99,5 @@ def reset_password(token):
     except BadSignature:
         # Token invalide
         return render_template('confirmation.html', message='Lien de confirmation invalide.')
+    
+

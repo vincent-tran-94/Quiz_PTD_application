@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil Quiz PTD</title>
+    <meta name="viewport" content="width=1920,height=1080, initial-scale=1">
+    <title>Accueil LegalEduQuiz PTD</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css?v=1" rel="stylesheet">
     <link href="{{ url_for('static', filename='styles/home.css') }}" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_PTD.jpg') }}">
@@ -42,7 +42,7 @@
     </aside>
     
     <!-- Plus tard 
-    On va développer un aside bar vers la gauche pour créer des sous applications pour des applications comme 
+    On va développer un aside bar vers la gauche pour créer des sous applications
     -->
     <!-- <aside class="left">
     
@@ -50,15 +50,12 @@
     
     <section id="banner">
         <div class="title">
-            <h1>Bienvenue à la page des Quiz ! Association Préserve ton droit</h1>
+            <h1>Bienvenue à la page de PTDlegalQuiz ! </h1>
             <h2>Rejoignez-nous pour apprendre et agir.</h2>
             <h2>Découvrez maintenant l'association à travers les deux vidéos</h2>
         </div>
     </section>
 
-    <nav class="top-nav">
-    
-</nav>
     <div class="video"> 
         <video width="510" height="410" controls>
             <source src="{{ url_for('static', filename='videos/Qui_sommes_nous_PTD.mp4') }}" type="video/mp4">
@@ -85,21 +82,33 @@
             });
         }
     </script>
-
-    <div class="container mt-5" style="margin-bottom: 100px;">
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-        <div class="alert alert-info">
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
+    <section id="description">
+        <div class="container">
+            <p><strong> PTDlegalQuiz est une application pédagogique de concours de quiz qui propose une expérience 
+            enrichissante dans quatre catégories distinctes : droit, juridique, humanitaire et sociologie. </strong>
+            Chaque participant a l'opportunité de tester ses connaissances dans chacune de ces catégories, avec une 
+            participation unique autorisée par catégorie. Une fois que vous avez soumis aux questionnaires, 
+            les résultats sont affichés sur une page dédiée à la visualisation.
+            <strong> Au niveau des récompenses, on peut proposer <span style="background-color: rgba(102, 204, 153); color: black;"> soit des livres juridiques, 
+            des produits alimentaires, des vêtements, des produits high-tech à gagner ! </span> </strong>
+            </p>
         </div>
-        {% endif %}
-        {% endwith %}
+    </section>
+
         <img src="{{ url_for('static', filename=image_filename) }}" alt="Image PTD"  class="img-custom">
         <h2 class="centered-text top-margin">Choisissez une des catégories suivantes que vous souhaitez prendre :</h2>
+        <div class="container mt-5" style="margin-bottom: 100px;">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+            <div class="alert alert-info">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% endwith %}
         <div class="row mt-3">
             <div class="col-md-3">
                 <a href="{{ url_for('categorie_questions', categorie='droit') }}" class="btn btn-primary btn-lg btn-block">Droit</a>
@@ -124,22 +133,22 @@
         <div class="container">
             <h2 class="text-left">Contactez-nous</h2>
             <p class="text-left">Pour toute question ou demande d'information, veuillez remplir le formulaire ci-dessous :</p>
-            <form>
+            <form action="{{ url_for('contact') }}" method="post">
                 <div class="form-group">
-                    <label for="name" style="font-weight: bold;">Nom</label>
-                    <input type="text" class="form-control" id="name" placeholder="Votre nom" style="border-color: #eeeeee; width: 400px; height: 38px;">
+                    <label for="nom" style="font-weight: bold;">Nom</label>
+                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Votre nom" style="border-color: #eeeeee; width: 400px; height: 38px;" required>
                 </div>
                 <div class="form-group">
                     <label for="email" style="font-weight: bold;">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Votre email" style="border-color: #eeeeee; width: 400px; height: 38px;">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Votre email" style="border-color: #eeeeee; width: 400px; height: 38px;" required>
                 </div>
                 <div class="form-group">
-                    <label for="Tel" style="font-weight: bold;">Numéro Téléphone</label>
-                    <input type="Tel" class="form-control" id="Tel" placeholder="Votre numéro téléphone" style="border-color: #eeeeee; width: 400px; height: 38px;">
+                    <label for="tel" style="font-weight: bold;">Numéro Téléphone</label>
+                    <input type="tel" class="form-control" id="tel" name="tel" placeholder="Votre numéro téléphone" style="border-color: #eeeeee; width: 400px; height: 38px;" required>
                 </div>
                 <div class="form-group">
                     <label for="message" style="font-weight: bold; ">Message</label>
-                    <textarea class="form-control" id="message" rows="3" placeholder="Votre message" style="border-color: #eeeeee; width: 550px; height: 150px; "></textarea>
+                    <textarea class="form-control" id="message" name="message" rows="3" placeholder="Votre message" style="border-color: #eeeeee; width: 550px; height: 150px; " required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" style="background-color: #0056b3; border-color: #eeeeee;">Envoyer</button>
             </form>
@@ -149,6 +158,10 @@
     <footer class="bg-dark text-white text-center py-2">
         <p>&copy; 2024 Association Préserve ton Droit. Tous droits réservés. Developpé par Vincent TRAN. Contact: Preservetondroit@gmail.com Tel: 06 15 42 08 99</p>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
