@@ -1,5 +1,18 @@
 .centered-text {
     text-align: center;
+    font-family: "Times New Roman", Times, serif; /* Utilise une police de caractères plus traditionnelle */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ajoute une ombre texturée */
+}
+
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+
+body {
+    overflow: auto; /* Défilement automatique si nécessaire */
+    height: 100vh; /* Utilise 100% de la hauteur de la fenêtre */
 }
 
 .top-margin {
@@ -8,32 +21,92 @@
 
 .col-md-3 {
     margin-top: 30px;
+    font-family: "Times New Roman", Times, serif; /* Utilise une police de caractères plus traditionnelle */
+    text-shadow: 2px 2px 4px rgba(34, 32, 32, 0.5); /* Ajoute une ombre texturée */
 }
 
 .col-md-4 {
     margin-top: 30px;
+    font-family: "Times New Roman", Times, serif; /* Utilise une police de caractères plus traditionnelle */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ajoute une ombre texturée */
 }
+
+.aside-background {
+    background-color: rgba(52, 73, 94); /* Choisissez la couleur de fond que vous souhaitez */
+    padding: 25px; /* Ajoutez du padding pour un meilleur espacement du contenu */
+}
+
+.aside-left {
+    background-color: #f0f0f0; /* Couleur de fond de l'aside */
+    padding: 150px; /* Ajouter du padding pour l'espace autour du contenu */
+    position: absolute; /* Fixer l'aside à une position spécifique sur la page */
+    bottom: 0; /* Placer l'aside en bas de la page */
+    left: 0; /* Aligner l'aside sur le côté gauche de la page */
+    height: 100%; /* Définir la largeur de l'aside */
+}
+
 
 .img-custom {
     position: absolute;
     width: 250px;
     height: 220px;
-    top: 0%;
-    left: 43%;
+    top: 5.4%;
+    right: 2%;
 }
-
-body {
-    margin-top: 420px; /* ajustez la valeur selon votre besoin */
-}
-
-.logout-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
 
 .alert {
-    max-width: 500px; /* Définissez la largeur maximale de la boîte d'alerte */
-    margin: 0 auto; /* Centrez la boîte d'alerte horizontalement */
+    max-width: 500px; 
+    margin: 0 auto; 
 }
+
+.video {
+    margin-left: 450px; 
+    top: 100%;
+}
+
+
+.title {
+    text-align: center;
+    font-family: Georgia, serif; /* Utilise la police Georgia avec des alternatives serif */
+    margin-bottom: 20px;
+    margin-left: 380px; 
+    font-size: 30px;
+    background-color: rgba(250, 240, 230, 0.9); /* Fond de couleur grise plus claire et transparente à 80% */
+    padding: 10px 20px; /* Ajoute un peu de rembourrage */
+    border-radius: 10px; /* Ajoute un peu de bord arrondi */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ajoute une ombre lisse */
+    width: 60%; /* Réduit la largeur de la bannière à 70% de la largeur du conteneur parent */
+}
+
+
+.social-logo {
+    width: 30px; /* Redimensionner tous les logos en 30px de largeur */
+    height: auto; /* Hauteur automatique pour conserver les proportions */
+    margin-right: 3px; /* Espacement entre les logos */
+}
+
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0%;
+    right: 600px;
+}
+.social-icons a {
+    margin: 0 10px; /* Marge entre les éléments */
+}
+
+
+
+/* aside.left {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 200px; 
+    background-color: #f8f9fa; 
+    padding: 185px; /
+    overflow-y: auto; 
+} 
+*/

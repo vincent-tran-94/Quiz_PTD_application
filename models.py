@@ -3,7 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 
-
 app = Flask(__name__,template_folder='template')
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///participants.db'
@@ -57,5 +56,11 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
-
+    
+# class Contact(db.Model):
+#     id = db.Column(db.String(36), primary_key=True)
+#     participant_id = db.Column(db.String(36), db.ForeignKey('user.id'), nullable=False)
+#     nom =  db.Column(db.String(100))
+#     email = db.Column(db.String(100))
+#     message = db.Column(db.String())
 

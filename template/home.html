@@ -8,17 +8,85 @@
     <link href="{{ url_for('static', filename='styles/home.css') }}" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_PTD.jpg') }}">
     <style>
-    body {
-        background-image: url("{{ url_for('static',filename=image_background)}}");
-        background-size: cover;
-        background-repeat: no-repeat;
-        color: #000;
-    }
+        body {
+            background-image: url("{{ url_for('static',filename=image_background)}}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #000;
+        }
+
+        #contact {
+            background-image: url("{{ url_for('static',filename=image_background_contact)}}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: right center;
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="centered-text">Bienvenue à la page des Quiz ! Association Préserve ton droit</h1>
+    <aside class="aside-background">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/preservetondroit/?next=https%3A%2F%2Fwww.instagram.com%2Fmanav.manglani%2Fp%2FBv3PDqigZZZ%2F%3F__coig_login%3D1" target="_blank" class="btn btn-light">
+                <img src="{{ url_for('static', filename='images/instagram_logo.jpeg') }}" alt="Instagram" class="social-logo"> Instagram</a>
+            <a href="https://twitter.com/PrsvTonDroit" target="_blank" class="btn btn-light" >
+                <img src="{{ url_for('static', filename='images/twitter_logo.png') }}" alt="Twitter" class="social-logo" > Twitter</a>
+            <a href="https://www.tiktok.com/@preservetondroit?_t=8l4BIYlTWO9&_r=1"  target="_blank" class="btn btn-light" >
+                <img src="{{ url_for('static', filename='images/tiktok_logo.png') }}" target="_blank" alt="TikTok" class="social-logo"> Tiktok</a>
+            <a href="https://www.paypal.com/paypalme/PreserveTonDroit"  target="_blank" class="btn btn-light" >
+                <img src="{{ url_for('static', filename='images/paypal_logo.png') }}" target="_blank" alt="Paypal" class="social-logo">Paypal</a>
+            <a href="https://www.cotizup.com/actionougandaptd-rco"  target="_blank" class="btn btn-light" >
+                <img src="{{ url_for('static', filename='images/cotizup_logo.jpeg') }}" target="_blank" alt="Cotizup" class="social-logo">Cotizup</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-danger logout-btn">Déconnexion</a>
+        </div>
+    </aside>
+    
+    <!-- Plus tard 
+    On va développer un aside bar vers la gauche pour créer des sous applications pour des applications comme 
+    -->
+    <!-- <aside class="left">
+    
+    </aside> -->
+    
+    <section id="banner">
+        <div class="title">
+            <h1>Bienvenue à la page des Quiz ! Association Préserve ton droit</h1>
+            <h2>Rejoignez-nous pour apprendre et agir.</h2>
+            <h2>Découvrez maintenant l'association à travers les deux vidéos</h2>
+        </div>
+    </section>
+
+    <nav class="top-nav">
+    
+</nav>
+    <div class="video"> 
+        <video width="510" height="410" controls>
+            <source src="{{ url_for('static', filename='videos/Qui_sommes_nous_PTD.mp4') }}" type="video/mp4">
+        </video>
+        <video width="510" height="410" controls>
+            <source src="{{ url_for('static', filename='videos/don_association.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
+    <script>
+        var videos = document.querySelectorAll('.video video');
+    
+        videos.forEach(function(video) {
+            video.addEventListener('play', function() {
+                pauseOtherVideos(video);
+            });
+        });
+    
+        function pauseOtherVideos(currentVideo) {
+            videos.forEach(function(video) {
+                if (video !== currentVideo && !video.paused) {
+                    video.pause();
+                }
+            });
+        }
+    </script>
+
+    <div class="container mt-5" style="margin-bottom: 100px;">
         {% with messages = get_flashed_messages() %}
             {% if messages %}
         <div class="alert alert-info">
@@ -52,6 +120,35 @@
             </div>
         </div>
     </div>
-    <a href="{{ url_for('logout') }}" class="btn btn-danger logout-btn">Déconnexion</a>
+    <section id="contact" style="padding: 40px 100px; margin-top: 10px;">
+        <div class="container">
+            <h2 class="text-left">Contactez-nous</h2>
+            <p class="text-left">Pour toute question ou demande d'information, veuillez remplir le formulaire ci-dessous :</p>
+            <form>
+                <div class="form-group">
+                    <label for="name" style="font-weight: bold;">Nom</label>
+                    <input type="text" class="form-control" id="name" placeholder="Votre nom" style="border-color: #eeeeee; width: 400px; height: 38px;">
+                </div>
+                <div class="form-group">
+                    <label for="email" style="font-weight: bold;">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Votre email" style="border-color: #eeeeee; width: 400px; height: 38px;">
+                </div>
+                <div class="form-group">
+                    <label for="Tel" style="font-weight: bold;">Numéro Téléphone</label>
+                    <input type="Tel" class="form-control" id="Tel" placeholder="Votre numéro téléphone" style="border-color: #eeeeee; width: 400px; height: 38px;">
+                </div>
+                <div class="form-group">
+                    <label for="message" style="font-weight: bold; ">Message</label>
+                    <textarea class="form-control" id="message" rows="3" placeholder="Votre message" style="border-color: #eeeeee; width: 550px; height: 150px; "></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="background-color: #0056b3; border-color: #eeeeee;">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-2">
+        <p>&copy; 2024 Association Préserve ton Droit. Tous droits réservés. Developpé par Vincent TRAN. Contact: Preservetondroit@gmail.com Tel: 06 15 42 08 99</p>
+    </footer>
+
 </body>
 </html>

@@ -11,7 +11,6 @@ from mail import *
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-
 def open_file_json(name_json):
     with open(f'questions/{name_json}.json', 'r',encoding='utf-8') as file:
         data_json = json.load(file)
@@ -50,7 +49,7 @@ def login():
         else:
             flash("Nom d'utilisateur ou mot de passe invalide", "error")  # Message flash pour l'erreur
         
-    return render_template('login.html',image_filename=image_filename )
+    return render_template('login.html',image_filename=image_filename)
 
 
 @app.route('/register/', methods=['GET', 'POST'])
@@ -125,7 +124,8 @@ def formulaire():
 def accueil():
     image_filename = 'images/logo_PTD.jpg'
     image_background = 'images/background_image.jpg'
-    return render_template('home.html',image_filename=image_filename,image_background=image_background)
+    image_background_contact = 'images/contact_us_background.jpg'
+    return render_template('home.html',image_filename=image_filename,image_background=image_background,image_background_contact=image_background_contact)
     
 
 @app.route('/categorie/<categorie>', methods=['GET', 'POST'])
@@ -210,8 +210,6 @@ def forgot_password():
             return render_template('confirmation.html', message='Adresse e-mail non trouvée.')
         
     return render_template('forgot_password.html')
-
-
 
 if __name__ == '__main__':
     with app.app_context():
