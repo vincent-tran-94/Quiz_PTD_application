@@ -25,6 +25,7 @@ Cette application va permet aux participants d'apprendre et de découvrir des no
 - vizualisation.py #Visualisations des résultats sur les catégories
 - template/ # Liste des pages 
 - static/images # Liste des images
+- static/videos # Liste des vidéos
 - static/styles # Fichiers CSS
 - questions/ # Fichiers JSON contenant une série de questions
 
