@@ -1,0 +1,268 @@
+{
+    "thematique": "droit",
+    "questions": [
+        {
+            "question": "Quel est l'article du Code civil qui régit le contrat de vente ?",
+            "options": {
+                "a": "Article 1583",
+                "b": "Article 1134",
+                "c": "Article 1382"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Le droit pénal réprime uniquement les actes intentionnels. Vrai ou faux ?",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Dans quel tribunal doit-on initialement déposer une demande en divorce en France ?",
+            "options": {
+                "a": "Tribunal de grande instance",
+                "b": "Tribunal d'instance",
+                "c": "Tribunal administratif"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est la durée légale d'un congé de maternité en France ?",
+            "options": {
+                "a": "10 semaines",
+                "b": "16 semaines",
+                "c": "20 semaines"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Lequel de ces principes ne fait pas partie du droit du travail ?",
+            "options": {
+                "a": "Le principe de non-discrimination",
+                "b": "Le principe de l'ordre public social",
+                "c": "Le principe de la liberté contractuelle absolue"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Quel est le délai de prescription pour une action en responsabilité civile en France ?",
+            "options": {
+                "a": "1 an",
+                "b": "3 ans",
+                "c": "5 ans"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Qui est responsable en cas de dommage causé par un mineur ?",
+            "options": {
+                "a": "Le mineur lui-même",
+                "b": "Ses parents",
+                "c": "L'établissement scolaire"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "L'âge minimum pour conclure un contrat de travail est de 18 ans. Vrai ou faux ?",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quelle est la cour d'appel la plus haute instance en France ?",
+            "options": {
+                "a": "Cour de cassation",
+                "b": "Cour d'appel de Paris",
+                "c": "Cour administrative d'appel"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est la loi française qui régit la protection des données personnelles ?",
+            "options": {
+                "a": "Loi de 1978",
+                "b": "RGPD",
+                "c": "Loi de 1981"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quelle est la juridiction compétente pour les litiges entre commerçants ?",
+            "options": {
+                "a": "Tribunal d'instance",
+                "b": "Tribunal de commerce",
+                "c": "Tribunal administratif"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "La loi française autorise-t-elle le mariage entre personnes de même sexe ?",
+            "options": {
+                "a": "Oui",
+                "b": "Non"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est la durée légale du préavis en cas de licenciement pour motif économique en France ?",
+            "options": {
+                "a": "1 mois",
+                "b": "2 mois",
+                "c": "3 mois"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Quel est l'organe suprême de l'Union européenne chargé de l'interprétation et de l'application du droit de l'Union ?",
+            "options": {
+                "a": "La Cour européenne des droits de l'homme",
+                "b": "La Cour de justice de l'Union européenne",
+                "c": "Le Conseil européen"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "La responsabilité civile est toujours basée sur la faute de l'auteur du dommage. Vrai ou faux ?",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quelle est la durée maximale du travail quotidien en France ?",
+            "options": {
+                "a": "8 heures",
+                "b": "10 heures",
+                "c": "12 heures"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Les témoignages écrits sont-ils admis comme preuve devant un tribunal français ?",
+            "options": {
+                "a": "Oui",
+                "b": "Non"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qui est compétent pour trancher un litige relatif à un contrat de bail d'habitation ?",
+            "options": {
+                "a": "Le juge administratif",
+                "b": "Le juge civil",
+                "c": "Le juge des référés"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quel est le délai de prescription pour un recours en contestation de licenciement en France ?",
+            "options": {
+                "a": "1 mois",
+                "b": "2 mois",
+                "c": "3 mois"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le principe de laïcité est-il inscrit dans la Constitution française ?",
+            "options": {
+                "a": "Oui",
+                "b": "Non"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est la juridiction compétente en matière de litiges entre salariés et employeurs en France ?",
+            "options": {
+                "a": "Le conseil des prud'hommes",
+                "b": "Le tribunal correctionnel",
+                "c": "La cour d'appel"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qui détient le pouvoir législatif en France ?",
+            "options": {
+                "a": "Le Président de la République",
+                "b": "Le Parlement",
+                "c": "Le Conseil Constitutionnel"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quelle est la juridiction compétente pour un litige concernant un accident de la route en France ?",
+            "options": {
+                "a": "La cour d'assises",
+                "b": "Le tribunal administratif",
+                "c": "Le tribunal de police"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Combien de membres composent le Conseil Constitutionnel en France ?",
+            "options": {
+                "a": "9",
+                "b": "11",
+                "c": "13"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "La présomption d'innocence est-elle un principe fondamental du droit français ?",
+            "options": {
+                "a": "Oui",
+                "b": "Non"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est la durée légale du congé de paternité en France ?",
+            "options": {
+                "a": "1 semaine",
+                "b": "2 semaines",
+                "c": "3 semaines"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quelle est la procédure permettant de régler un litige sans intervention judiciaire en France ?",
+            "options": {
+                "a": "L'arbitrage",
+                "b": "La conciliation",
+                "c": "La médiation"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Quel est l'organe chargé de la représentation nationale en France ?",
+            "options": {
+                "a": "Le Parlement",
+                "b": "Le Sénat",
+                "c": "Le Gouvernement"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qui a le pouvoir de nommer les juges en France ?",
+            "options": {
+                "a": "Le Président de la République",
+                "b": "Le Premier Ministre",
+                "c": "Le Ministre de la Justice"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quel est l'âge minimum pour être élu président de la République française ?",
+            "options": {
+                "a": "30 ans",
+                "b": "35 ans",
+                "c": "40 ans"
+            },
+            "reponse_correcte": "b"
+        }
+    ]
+}

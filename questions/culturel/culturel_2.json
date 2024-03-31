@@ -1,0 +1,267 @@
+{
+  "thematique": "culturel",
+  "questions": [
+    {
+      "question": "Quel acteur a interprété le rôle principal dans le film Gladiator, réalisé par Ridley Scott ?",
+      "options": {
+        "a": "Brad Pitt",
+        "b": "Russell Crowe",
+        "c": "Leonardo DiCaprio"
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Vrai ou faux : Le film Titanic a été réalisé par James Cameron ?",
+      "options": {
+        "a": "Vrai",
+        "b": "Faux"
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Dans quelle ville se déroule l'intrigue de la comédie musicale Les Misérables ?",
+      "options": {
+        "a": "Paris",
+        "b": "Londres",
+        "c": "New York"
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Quel réalisateur a remporté le plus grand nombre d'Oscars ?",
+      "options": {
+        "a": "Steven Spielberg",
+        "b": "Martin Scorsese",
+        "c": "Francis Ford Coppola"
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Vrai ou faux : Le compositeur John Williams est connu pour sa musique dans la saga Harry Potter ?",
+      "options": {
+        "a": "Vrai",
+        "b": "Faux"
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Qui a réalisé le film musical La La Land, nominé pour plusieurs Oscars ?",
+      "options": {
+        "a": "Steven Spielberg",
+        "b": "Damien Chazelle",
+        "c": "Christopher Nolan"
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Combien de fois la comédie musicale Cats a-t-elle été adaptée au cinéma ?",
+      "options": {
+        "a": "Jamais",
+        "b": "Une fois",
+        "c": "Deux fois"
+      },
+      "reponse_correcte": "c"
+    },
+    {
+      "question": "Vrai ou faux : Le compositeur Wolfgang Amadeus Mozart est l'auteur de l'opéra Don Giovanni ?",
+      "options": {
+        "a": "Vrai",
+        "b": "Faux"
+      },
+      "reponse_correcte": "vrai"
+    },
+    {
+      "question": "Quel film a remporté l'Oscar du meilleur film en 2019 ?",
+      "options": {
+        "a": "Green Book : Sur les routes du sud",
+        "b": "Parasite",
+        "c": "Nomadland"
+      },
+      "reponse_correcte": "c"
+    },
+    {
+      "question": "Quel célèbre dramaturge a écrit la pièce de théâtre Roméo et Juliette ?",
+      "options": {
+        "a": "Anton Tchekhov",
+        "b": "William Shakespeare",
+        "c": "Henrik Ibsen"
+      },
+      "reponse_correcte": "b"
+    }, 
+    {
+      "question": "Quel célèbre réalisateur a réalisé le film Le Parrain ?",
+      "options": {
+        "a": "Martin Scorsese",
+        "b": "Francis Ford Coppola",
+        "c": "Quentin Tarantino"
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Vrai ou faux : Le film Avatar a été réalisé par Christopher Nolan ?",
+      "options": {
+        "a": "Vrai",
+        "b": "Faux"
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Dans quelle ville se déroule l'intrigue du film musical West Side Story ?",
+      "options": {
+        "a": "Los Angeles",
+        "b": "New York",
+        "c": "Chicago"
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Qui a interprété le rôle de Batman dans le film The Dark Knight réalisé par Christopher Nolan ?",
+      "options": {
+        "a": "Christian Bale",
+        "b": "Ben Affleck",
+        "c": "Robert Pattinson"
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Vrai ou faux : Le compositeur John Williams a composé la musique de la saga Star Wars ?",
+      "options": {
+        "a": "Vrai",
+        "b": "Faux"
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Qui a réalisé le film Le Roi Lion, un classique de l'animation Disney ?",
+      "options": {
+        "a": "John Lasseter",
+        "b": "Brad Bird",
+        "c": "Roger Allers et Rob Minkoff"
+      },
+      "reponse_correcte": "c"
+    },
+    {
+      "question": "Combien d'Oscars a remporté le film La La Land lors de la cérémonie des Oscars 2017 ?",
+      "options": {
+        "a": "6",
+        "b": "11",
+        "c": "14"
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Vrai ou faux : Le compositeur Hans Zimmer est connu pour sa musique dans le film Inception ?",
+      "options": {
+        "a": "Vrai",
+        "b": "Faux"
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Quel film a remporté l'Oscar du meilleur film en 2018 ?",
+      "options": {
+        "a": "La Forme de l'eau",
+        "b": "Birdman",
+        "c": "Moonlight"
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Quel célèbre écrivain a écrit le roman qui a inspiré le film Le Seigneur des Anneaux ?",
+      "options": {
+        "a": "J.K. Rowling",
+        "b": "George R.R. Martin",
+        "c": "J.R.R. Tolkien"
+      },
+      "reponse_correcte": "c"
+    },
+    {
+      "question": "Vrai ou faux : Le film The Godfather (Le Parrain) a été réalisé par Martin Scorsese ?",
+      "options": {
+        "a": "Vrai",
+        "b": "Faux"
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Quel réalisateur est connu pour son travail sur les films d'animation tels que Toy Story et Cars ?",
+      "options": {
+        "a": "Hayao Miyazaki",
+        "b": "John Lasseter",
+        "c": "Brad Bird"
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Dans quelle ville se déroule l'action du film musical Les Misérables ?",
+      "options": {
+        "a": "Paris",
+        "b": "Londres",
+        "c": "New York"
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Qui a interprété le rôle principal dans le film Forrest Gump réalisé par Robert Zemeckis ?",
+      "options": {
+        "a": "Tom Hanks",
+        "b": "Denzel Washington",
+        "c": "Leonardo DiCaprio"
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Vrai ou faux : Le compositeur Ennio Morricone a composé la musique du film Il était une fois dans l'Ouest ?",
+      "options": {
+        "a": "Vrai",
+        "b": "Faux"
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Qui a réalisé le film Titanic, un des plus grands succès commerciaux de tous les temps ?",
+      "options": {
+        "a": "James Cameron",
+        "b": "Peter Jackson",
+        "c": "George Lucas"
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Combien de fois le réalisateur Steven Spielberg a-t-il remporté l'Oscar du meilleur réalisateur ?",
+      "options": {
+        "a": "2",
+        "b": "4",
+        "c": "3"
+      },
+      "reponse_correcte": "c"
+    },
+    {
+      "question": "Vrai ou faux : Le film La La Land a remporté l'Oscar du meilleur film en 2017 ?",
+      "options": {
+        "a": "Vrai",
+        "b": "Faux"
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Quel célèbre dramaturge a écrit la pièce de théâtre Hamlet ?",
+      "options": {
+        "a": "Anton Tchekhov",
+        "b": "William Shakespeare",
+        "c": "Henrik Ibsen"
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Quel réalisateur est connu pour son travail sur les comédies musicales telles que Singin' in the Rain et Un Américain à Paris ?",
+      "options": {
+        "a": "Stanley Donen",
+        "b": "Gene Kelly",
+        "c": "Vincente Minnelli"
+      },
+      "reponse_correcte": "a"
+    }
+  ]
+}
+  

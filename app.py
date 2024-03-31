@@ -5,16 +5,34 @@ from flask_login import LoginManager,login_required, logout_user, login_user
 from sqlalchemy.orm.exc import NoResultFound
 from vizualisation import *
 from mail import *
-
+import os 
+import random
 
 # Créez une instance de LoginManager
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-def open_file_json(name_json):
-    with open(f'questions/{name_json}.json', 'r',encoding='utf-8') as file:
-        data_json = json.load(file)
-        return data_json
+
+def open_file_json_from_directory(directory):
+    json_files = [file for file in os.listdir(directory) if file.endswith('.json')]
+    if not json_files:
+        return None
+    
+    all_questions = []  # Liste pour stocker toutes les questions
+
+    for json_file in json_files:
+        with open(os.path.join(directory, json_file), 'r', encoding='utf-8') as file:
+            data_json = json.load(file)
+            all_questions.extend(data_json['questions'])
+
+    # Mélanger toutes les questions
+    random.shuffle(all_questions)
+    selected_questions = all_questions[:30]
+    
+    # Créer un nouveau dictionnaire contenant les questions mélangées
+    shuffled_data = {"questions": selected_questions}
+
+    return shuffled_data
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -135,9 +153,17 @@ def categorie_questions(categorie):
     participant_id = session.get('user_id')
     reponse_existe = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
 
-    if categorie in ['droit', 'humanitaire', 'culturel', 'sociologie']:
-        data_json = open_file_json(categorie)
+    categories_directories = {
+        'droit': 'questions/droit',
+        'humanitaire': 'questions/humanitaire',
+        'culturel': 'questions/culturel',
+        'sociologie': 'questions/sociologie'
+    }
 
+    if categorie in categories_directories:
+        directory = categories_directories[categorie]
+        data_json = open_file_json_from_directory(directory)
+    
     if reponse_existe:
         flash("Vous avez déjà soumis les réponses pour cette catégorie.", "info")
         return redirect(url_for('accueil'))

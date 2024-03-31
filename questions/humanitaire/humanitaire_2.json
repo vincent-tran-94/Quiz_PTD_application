@@ -1,0 +1,276 @@
+{
+    "thematique": "humanitaire",
+    "questions": [
+      {
+        "question": "Quelle organisation est souvent impliquée dans la fourniture de soins médicaux d'urgence lors de crises humanitaires ?",
+        "options": {
+          "a": "Médecins Sans Frontières",
+          "b": "Croix-Rouge Internationale",
+          "c": "Organisation Mondiale de la Santé"
+        },
+        "reponse_correcte": "a"
+      },
+      {
+        "question": "Quel est le principal objectif de l'assistance humanitaire ?",
+        "options": {
+          "a": "Promouvoir la domination des grandes organisations",
+          "b": "Maximiser les profits des organisations humanitaires",
+          "c": "Fournir une aide aux personnes touchées par des crises"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Quel terme désigne une personne forcée de quitter son pays en raison de la violence ou de la persécution ?",
+        "options": {
+          "a": "Migrant",
+          "b": "Réfugié",
+          "c": "Déplacé interne"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Qu'est-ce que la sécurité alimentaire dans le contexte humanitaire ?",
+        "options": {
+          "a": "Garantir l'accès à une alimentation adéquate pour survivre et se rétablir",
+          "b": "Promouvoir des régimes alimentaires riches en calories",
+          "c": "Protéger les cultures contre les ravageurs"
+        },
+        "reponse_correcte": "a"
+      },
+      {
+        "question": "Quelle organisation est responsable de la coordination de l'aide humanitaire au niveau mondial ?",
+        "options": {
+          "a": "UNESCO",
+          "b": "OCHA",
+          "c": "UNICEF"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Quelle est la différence entre un réfugié et un déplacé interne ?",
+        "options": {
+          "a": "Les deux termes désignent la même personne",
+          "b": "Un réfugié a traversé une frontière internationale, tandis qu'un déplacé interne reste dans son propre pays",
+          "c": "Un déplacé interne a reçu l'asile dans un autre pays, tandis qu'un réfugié reste dans son pays d'origine"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Quel est l'objectif principal de l'aide humanitaire d'urgence ?",
+        "options": {
+          "a": "Fournir une assistance à long terme pour la reconstruction",
+          "b": "Répondre aux besoins immédiats des personnes touchées par une crise",
+          "c": "Promouvoir le développement économique des pays en développement"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Quelle organisation est souvent impliquée dans la fourniture de soins médicaux d'urgence lors de crises humanitaires ?",
+        "options": {
+          "a": "Médecins Sans Frontières",
+          "b": "Croix-Rouge Internationale",
+          "c": "Organisation Mondiale de la Santé"
+        },
+        "reponse_correcte": "a"
+      },
+      {
+        "question": "Quelle organisation est chargée de la coordination de l'aide humanitaire au niveau mondial ?",
+        "options": {
+          "a": "UNESCO",
+          "b": "OCHA",
+          "c": "UNICEF"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Quel est le principal objectif de l'assistance humanitaire ?",
+        "options": {
+          "a": "Promouvoir la domination des grandes organisations",
+          "b": "Fournir une aide aux personnes touchées par des crises",
+          "c": "Maximiser les profits des organisations humanitaires"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Quel terme désigne une personne forcée de quitter son pays en raison de la violence ou de la persécution ?",
+        "options": {
+          "a": "Migrant",
+          "b": "Réfugié",
+          "c": "Déplacé interne"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Qu'est-ce que la sécurité alimentaire dans le contexte humanitaire ?",
+        "options": {
+          "a": "Garantir l'accès à une alimentation adéquate pour survivre et se rétablir",
+          "b": "Promouvoir des régimes alimentaires riches en calories",
+          "c": "Protéger les cultures contre les ravageurs"
+        },
+        "reponse_correcte": "a"
+      },
+      {
+        "question": "Quelle organisation est responsable de la coordination de l'aide humanitaire au niveau mondial ?",
+        "options": {
+          "a": "UNESCO",
+          "b": "OCHA",
+          "c": "UNICEF"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Quelle est la différence entre un réfugié et un déplacé interne ?",
+        "options": {
+          "a": "Les deux termes désignent la même personne",
+          "b": "Un réfugié a traversé une frontière internationale, tandis qu'un déplacé interne reste dans son propre pays",
+          "c": "Un déplacé interne a reçu l'asile dans un autre pays, tandis qu'un réfugié reste dans son pays d'origine"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Quel est l'objectif principal de l'aide humanitaire d'urgence ?",
+        "options": {
+          "a": "Fournir une assistance à long terme pour la reconstruction",
+          "b": "Répondre aux besoins immédiats des personnes touchées par une crise",
+          "c": "Promouvoir le développement économique des pays en développement"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Quelle organisation est souvent impliquée dans la fourniture de soins médicaux d'urgence lors de crises humanitaires ?",
+        "options": {
+          "a": "Médecins Sans Frontières",
+          "b": "Croix-Rouge Internationale",
+          "c": "Organisation Mondiale de la Santé"
+        },
+        "reponse_correcte": "a"
+      },
+      {
+        "question": "Quelle organisation est chargée de la coordination de l'aide humanitaire au niveau mondial ?",
+        "options": {
+          "a": "UNESCO",
+          "b": "OCHA",
+          "c": "UNICEF"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Quel est le principal objectif de l'assistance humanitaire ?",
+        "options": {
+          "a": "Promouvoir la domination des grandes organisations",
+          "b": "Fournir une aide aux personnes touchées par des crises",
+          "c": "Maximiser les profits des organisations humanitaires"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Quel terme désigne une personne forcée de quitter son pays en raison de la violence ou de la persécution ?",
+        "options": {
+          "a": "Migrant",
+          "b": "Réfugié",
+          "c": "Déplacé interne"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Qu'est-ce que la sécurité alimentaire dans le contexte humanitaire ?",
+        "options": {
+          "a": "Garantir l'accès à une alimentation adéquate pour survivre et se rétablir",
+          "b": "Promouvoir des régimes alimentaires riches en calories",
+          "c": "Protéger les cultures contre les ravageurs"
+        },
+        "reponse_correcte": "a"
+      },
+      {
+        "question": "Quelle organisation est souvent impliquée dans la fourniture de soins médicaux d'urgence lors de crises humanitaires ?",
+        "options": {
+          "a": "Médecins Sans Frontières",
+          "b": "Croix-Rouge Internationale",
+          "c": "Organisation Mondiale de la Santé"
+        },
+        "reponse_correcte": "a"
+      },
+      {
+        "question": "Quelle est la différence entre un réfugié et un déplacé interne ?",
+        "options": {
+          "a": "Les deux termes désignent la même personne",
+          "b": "Un réfugié a traversé une frontière internationale, tandis qu'un déplacé interne reste dans son propre pays",
+          "c": "Un déplacé interne a reçu l'asile dans un autre pays, tandis qu'un réfugié reste dans son pays d'origine"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Quelle organisation est chargée de la coordination de l'aide humanitaire au niveau mondial ?",
+        "options": {
+          "a": "UNESCO",
+          "b": "OCHA",
+          "c": "UNICEF"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Quel est l'objectif principal de l'assistance humanitaire ?",
+        "options": {
+          "a": "Promouvoir la domination des grandes organisations",
+          "b": "Fournir une aide aux personnes touchées par des crises",
+          "c": "Maximiser les profits des organisations humanitaires"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Quel terme désigne une personne forcée de quitter son pays en raison de la violence ou de la persécution ?",
+        "options": {
+          "a": "Migrant",
+          "b": "Réfugié",
+          "c": "Déplacé interne"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Qu'est-ce que la sécurité alimentaire dans le contexte humanitaire ?",
+        "options": {
+          "a": "Garantir l'accès à une alimentation adéquate pour survivre et se rétablir",
+          "b": "Promouvoir des régimes alimentaires riches en calories",
+          "c": "Protéger les cultures contre les ravageurs"
+        },
+        "reponse_correcte": "a"
+      },
+      {
+        "question": "Quelle organisation est souvent impliquée dans la fourniture de soins médicaux d'urgence lors de crises humanitaires ?",
+        "options": {
+          "a": "Médecins Sans Frontières",
+          "b": "Croix-Rouge Internationale",
+          "c": "Organisation Mondiale de la Santé"
+        },
+        "reponse_correcte": "a"
+      },
+      {
+        "question": "Quelle est la différence entre un réfugié et un déplacé interne ?",
+        "options": {
+          "a": "Les deux termes désignent la même personne",
+          "b": "Un réfugié a traversé une frontière internationale, tandis qu'un déplacé interne reste dans son propre pays",
+          "c": "Un déplacé interne a reçu l'asile dans un autre pays, tandis qu'un réfugié reste dans son pays d'origine"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Quelle organisation est chargée de la coordination de l'aide humanitaire au niveau mondial ?",
+        "options": {
+          "a": "UNESCO",
+          "b": "OCHA",
+          "c": "UNICEF"
+        },
+        "reponse_correcte": "b"
+      },
+      {
+        "question": "Quel est l'objectif principal de l'assistance humanitaire ?",
+        "options": {
+          "a": "Promouvoir la domination des grandes organisations",
+          "b": "Fournir une aide aux personnes touchées par des crises",
+          "c": "Maximiser les profits des organisations humanitaires"
+        },
+        "reponse_correcte": "b"
+      }
+    ]
+  }
+  

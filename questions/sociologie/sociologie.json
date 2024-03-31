@@ -2,7 +2,7 @@
     "thematique": "sociologie",
     "questions": [
         {
-            "question": "1- Qu'est-ce que le harcèlement moral en milieu de travail ?",
+            "question": "Qu'est-ce que le harcèlement moral en milieu de travail ?",
             "options": {
                 "a": "La promotion active de la camaraderie au travail.",
                 "b": "La répartition équitable des tâches entre collègues.",
@@ -12,7 +12,7 @@
             "reponse_correcte": "c"
         },
         {
-            "question": "2- Qu'est-ce que la culture du viol ?",
+            "question": "Qu'est-ce que la culture du viol ?",
             "options": {
                 "a": "Une culture qui promeut la sécurité des femmes dans les espaces publics.",
                 "b": "Une culture qui encourage le respect mutuel entre les genres.",
@@ -22,7 +22,7 @@
             "reponse_correcte": "c"
         },
         {
-            "question": "3- Qu'est-ce que la discrimination sexuelle au travail ?",
+            "question": "Qu'est-ce que la discrimination sexuelle au travail ?",
             "options": {
                 "a": "La reconnaissance des compétences sans tenir compte du genre.",
                 "b": "Le fait de privilégier un genre pour l'accès à certaines opportunités professionnelles.",
@@ -32,7 +32,7 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "4- Qu'est-ce que la stigmatisation sociale ?",
+            "question": "Qu'est-ce que la stigmatisation sociale ?",
             "options": {
                 "a": "Un processus visant à promouvoir l'inclusion sociale.",
                 "b": "Le rejet social ou la discrimination envers des individus ou des groupes en raison de caractéristiques perçues comme étant différentes ou déviantes.",
@@ -42,7 +42,7 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "5- Qu'est-ce que la mobilité sociale ?",
+            "question": "Qu'est-ce que la mobilité sociale ?",
             "options": {
                 "a": "La capacité à changer de lieu de résidence fréquemment.",
                 "b": "Le mouvement d'un individu ou d'un groupe d'une position sociale à une autre.",
@@ -52,7 +52,7 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "6- Qu'est-ce que le sexisme bienveillant ?",
+            "question": "Qu'est-ce que le sexisme bienveillant ?",
             "options": {
                 "a": "Une attitude de méfiance envers les individus de l'autre sexe.",
                 "b": "Une forme de discrimination sexuelle basée sur des stéréotypes positifs mais condescendants envers un genre.",
@@ -62,7 +62,7 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "7- Qu'est-ce que l'intersectionnalité dans le contexte des études de genre ?",
+            "question": "Qu'est-ce que l'intersectionnalité dans le contexte des études de genre ?",
             "options": {
                 "a": "La recherche de solutions intersectionnelles aux problèmes sociaux.",
                 "b": "L'analyse des intersections multiples de l'identité, telles que la race, le genre, la classe sociale, etc., et de la manière dont ces intersections influencent les expériences individuelles et collectives.",
@@ -72,7 +72,7 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "8- Qu'est-ce que la culture de l'agression ?",
+            "question": "Qu'est-ce que la culture de l'agression ?",
             "options": {
                 "a": "Une culture qui promeut la résolution pacifique des conflits.",
                 "b": "Une culture qui encourage la discussion ouverte sur les problèmes sociaux.",
@@ -82,7 +82,7 @@
             "reponse_correcte": "c"
         },
         {
-            "question": "9- Qu'est-ce que le patriarcat ?",
+            "question": "Qu'est-ce que le patriarcat ?",
             "options": {
                 "a": "Un système social dans lequel les hommes et les femmes sont considérés comme égaux sur tous les plans.",
                 "b": "Une forme de gouvernement dirigée par des hommes.",
@@ -92,7 +92,7 @@
             "reponse_correcte": "c"
         },
         {
-            "question": "10- Qu'est-ce que l'identité de genre ?",
+            "question": "Qu'est-ce que l'identité de genre ?",
             "options": {
                 "a": "Le genre assigné à la naissance.",
                 "b": "La manière dont une personne se perçoit et se définit en termes de genre, indépendamment du sexe assigné à la naissance.",
@@ -102,7 +102,7 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "11- Quelles sont les étapes recommandées pour gérer efficacement une situation de harcèlement au travail ?",
+            "question": "Quelles sont les étapes recommandées pour gérer efficacement une situation de harcèlement au travail ?",
             "options": {
                 "a": "Ignorer le problème jusqu'à ce qu'il disparaisse de lui-même.",
                 "b": "Encourager la victime à parler de son expérience et à documenter les incidents, puis prendre des mesures pour résoudre le problème, y compris le recours à des ressources internes ou externes telles que les RH ou les autorités compétentes.",
@@ -111,7 +111,7 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "12- Quels sont les impacts du harcèlement sur la santé mentale des victimes ?",
+            "question": "Quels sont les impacts du harcèlement sur la santé mentale des victimes ?",
             "options": {
                 "a": "Aucun impact sur la santé mentale.",
                 "b": "Stress, anxiété, dépression, et éventuellement des troubles post-traumatiques.",
@@ -120,7 +120,7 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "13- Comment pouvez-vous contribuer à créer un environnement de travail sûr et respectueux ?",
+            "question": "Comment pouvez-vous contribuer à créer un environnement de travail sûr et respectueux ?",
             "options": {
                 "a": "En participant activement au harcèlement des collègues.",
                 "b": "En restant silencieux lorsque vous êtes témoin de comportements inappropriés.",
@@ -129,7 +129,7 @@
             "reponse_correcte": "c"
         },
         {
-            "question": "14- Quelles sont les mesures légales disponibles pour les victimes de harcèlement ?",
+            "question": "Quelles sont les mesures légales disponibles pour les victimes de harcèlement ?",
             "options": {
                 "a": "Aucune mesure légale disponible.",
                 "b": "Déposer une plainte auprès des autorités compétentes, engager des poursuites civiles ou criminelles, et demander des mesures de protection.",
@@ -138,7 +138,7 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "15- Quels sont les facteurs qui peuvent contribuer à la persistance du harcèlement en milieu de travail ?",
+            "question": "Quels sont les facteurs qui peuvent contribuer à la persistance du harcèlement en milieu de travail ?",
             "options": {
                 "a": "La prise de conscience et la volonté de changement.",
                 "b": "La culture d'entreprise qui minimise ou tolère le harcèlement, le manque de politiques claires et d'actions disciplinaires, et la peur des représailles.",

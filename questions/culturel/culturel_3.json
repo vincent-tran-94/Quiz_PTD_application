@@ -1,0 +1,275 @@
+{
+  "thematique": "humanitaire",
+  "questions": [
+    {
+      "question": "Qu'est-ce que la Croix-Rouge et son rôle dans les crises humanitaires ?",
+      "options": {
+        "a": "Organisation humanitaire fournissant aide médicale et secours d'urgence.",
+        "b": "Agence gouvernementale pour la collecte de fonds.",
+        "c": "ONG promouvant la paix mondiale."
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Différence entre réfugié et migrant ?",
+      "options": {
+        "a": "Réfugié: fuit persécutions, Migrant: cherche opportunités économiques.",
+        "b": "Migrant: forcée, Réfugié: fuit catastrophes. ",
+        "c": "Migrant: fuit conflits, Réfugié: volonté de migration."
+      },
+      "reponse_correcte": "c"
+    },
+    {
+      "question": "Qu'est-ce que le PAM et son objectif ?",
+      "options": {
+        "a": "Agence de tourisme internationale.",
+        "b": "Promotion d'une alimentation saine.",
+        "c": "Fournit assistance alimentaire d'urgence." 
+      },
+      "reponse_correcte": "c"
+    },
+    {
+      "question": "Rôle de la FAO dans les crises humanitaires ?",
+      "options": {
+        "a": "Renforcer sécurité alimentaire et nutritionnelle.",
+        "b": "Recherche scientifique pour rendements agricoles. ",
+        "c": "Promotion de l'agriculture biologique."
+      },
+      "reponse_correcte": "c"
+    },
+    {
+      "question": "Qu'est-ce que l'UNHCR et son mandat ?",
+      "options": {
+        "a": "Protège et assiste les réfugiés dans le monde.",
+        "b": "Protection des forêts tropicales.",
+        "c": "Promotion du tourisme dans pays en développement."
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Principaux défis des organisations humanitaires ?",
+      "options": {
+        "a": "Accès, sécurité, financement insuffisant.",
+        "b": "Promotion des droits de l'homme.",
+        "c": "Gestion des ressources naturelles."
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Qu'est-ce que l'aide humanitaire et ses formes ?",
+      "options": {
+        "a": "Assistance aux besoins fondamentaux.",
+        "b": "Distribution d'aide alimentaire.",
+        "c": "Promotion des intérêts économiques."
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Objectif de l'OMS dans les crises humanitaires ?",
+      "options": {
+        "a": "Promotion santé publique mondiale.",
+        "b": "Fournir assistance médicale d'urgence.",
+        "c": "Recherche médicale contre maladies infectieuses."
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Importance de protéger droits enfants en crise humanitaire ?",
+      "options": {
+        "a": "Prévention abus, assurer avenir sûr.",
+        "b": "Promotion paix et stabilité.",
+        "c": "Pas important de protéger leurs droits."
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Rôle des ONG en crise humanitaire ?",
+      "options": {
+        "a": "Fournir assistance humanitaire et plaidoyer.",
+        "b": "Promotion intérêts économiques pays développés.",
+        "c": "Assistance aux gouvernements."
+      },
+      "reponse_correcte": "c"
+    },
+    {
+      "question": "HCR et son rôle en crises humanitaires ?",
+      "options": {
+        "a": "Protection et assistance des réfugiés.",
+        "b": "Fournir aide alimentaire.",
+        "c": "Protection des forêts tropicales."
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Défis logistiques des organisations humanitaires ?",
+      "options": {
+        "a": "Gestion des ressources naturelles.",
+        "b": "Transport, coordination, sécurité.",
+        "c": "Collecte de fonds, sensibilisation."
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Qu'est-ce que la malnutrition et ses effets ?",
+      "options": {
+        "a": "Apport alimentaire insuffisant, retards de croissance.",
+        "b": "Consequence changement climatique.",
+        "c": "Condition médicale uniquement dans pays en développement."
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Rôle des Nations unies en aide humanitaire ?",
+      "options": {
+        "a": "Coordonner aide internationale.",
+        "b": "Ne jouent aucun rôle.",
+        "c": "Fournir assistance financière."
+      },
+      "reponse_correcte": "c"
+    },
+    {
+      "question": "Qu'est-ce que la résilience communautaire et son importance ?",
+      "options": {
+        "a": "Capacité à résister et se rétablir, renforce communautés.",
+        "b": "Capacité à s'organiser politiquement.",
+        "c": "Capacité à s'adapter aux changements climatiques."
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Principes humanitaires et leurs objectifs ?",
+      "options": {
+        "a": "Humanité, neutralité, impartialité, indépendance.",
+        "b": "Domination, exploitation, discrimination.",
+        "c": "Compétition, maximisation des profits."
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Rôle des volontaires en opérations humanitaires ?",
+      "options": {
+        "a": "Collecte de fonds uniquement.",
+        "b": "Fournir assistance directe, soutien logistique.",
+        "c": "Ne jouent aucun rôle."
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Impacts du changement climatique sur populations vulnérables ?",
+      "options": {
+        "a": "Favorise croissance économique.",
+        "b": "Augmentation phénomènes météorologiques extrêmes.",
+        "c": "Aucun impact sur populations vulnérables."
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Qu'est-ce que la sécurité alimentaire et son importance ?",
+      "options": {
+        "a": "Accès alimentation adéquate pour survivre et se rétablir.",
+        "b": "Approvisionnement en aliments de luxe.",
+        "c": "Protection cultures contre ravageurs."
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Rôle des agences humanitaires dans prévention maladies ?",
+      "options": {
+        "a": "Fournir assistance médicale et vaccins.",
+        "b": "Distribution aide alimentaire.",
+        "c": "Ne jouent aucun rôle."
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Qu'est-ce que l'assistance psychosociale et son importance ?",
+      "options": {
+        "a": "Fournir soutien émotionnel, renforcer résilience.",
+        "b": "Encourager populations touchées à retourner pays.",
+        "c": "Promouvoir santé mentale des travailleurs humanitaires."
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Reconstruction post-crise et son objectif ?",
+      "options": {
+        "a": "Rétablir infrastructures, promouvoir développement durable.",
+        "b": "Promouvoir tourisme dans régions touchées.",
+        "c": "Déplacer populations touchées."
+      },
+      "reponse_correcte": "c"
+    },
+    {
+      "question": "Approche axée sur les droits dans aide humanitaire ?",
+      "options": {
+        "a": "Promotion domination et exploitation.",
+        "b": "Reconnaît droits bénéficiaires, garantit aide équitable.",
+        "c": "Maximisation profits des organisations humanitaires."
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Causes déplacements forcés de populations ?",
+      "options": {
+        "a": "Conflits armés, persécution, catastrophes naturelles.",
+        "b": "Uniquement catastrophes naturelles.",
+        "c": "Uniquement crises économiques."
+      },
+      "reponse_correcte": "c"
+    },
+    {
+      "question": "Protection des civils dans contexte humanitaire ?",
+      "options": {
+        "a": "Mesures pour protéger contre violences et abus.",
+        "b": "Protéger uniquement infrastructures.",
+        "c": "Promouvoir domination population." 
+      },
+      "reponse_correcte": "c"
+    },
+    {
+      "question": "Différence entre aide humanitaire d'urgence et à long terme ?",
+      "options": {
+        "a": "Urgence: maximiser profits, Long terme: domination.",
+        "b": "Urgence: réponse immédiate, Long terme: soutien rétablissement.",
+        "c": "Pas de différence entre les deux."
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Importance de coordination et collaboration acteurs humanitaires ?",
+      "options": {
+        "a": "Éviter duplications, maximiser impact de l'aide.",
+        "b": "Favoriser domination grandes organisations.",
+        "c": "Non important dans situations de crise."
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Responsabilité et redevabilité dans action humanitaire ?",
+      "options": {
+        "a": "Rendre compte actions et décisions, répondre besoins populations.",
+        "b": "Concernent uniquement grandes organisations.",
+        "c": "Pas importantes."
+      },
+      "reponse_correcte": "b"
+    },
+    {
+      "question": "Importance de protéger travailleurs humanitaires ?",
+      "options": {
+        "a": "Promouvoir domination grandes organisations.",
+        "b": "Assurer sécurité et continuité opérations. ",
+        "c": "Pas important dans situations de crise."
+      },
+      "reponse_correcte": "a"
+    },
+    {
+      "question": "Mesures de prévention des violences basées sur le genre ?",
+      "options": {
+        "a": "Favoriser domination hommes sur femmes.",
+        "b": "Sensibilisation, création lieux sûrs, renforcement lois.",
+        "c": "Aucune mesure de prévention."
+      },
+      "reponse_correcte": "a"
+    }
+  ]
+}
