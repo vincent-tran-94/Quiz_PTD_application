@@ -9,8 +9,9 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_PTD.jpg') }}">
 </head>
 <body>
+    <div id="countdown">Temps restant : 5m 0s </div>
     <div class="container mt-5">
-        <form method="post">
+        <form method="post" id="questionnaireForm">
             <h1>Questions sur le {{ categorie }} </h1>
             {% for question in questions %}
             <div class="card mt-3">
@@ -28,14 +29,8 @@
             <input type="hidden" name="participant_id" value="{{ participant_id }}">
             <button type="submit" class="btn btn-primary mt-3">Soumettre</button>
         </form>
-        <p><a href="{{ url_for('accueil') }}" class="btn btn-primary mt-3">Retour à l'accueil</a></p>
+        <p><a href="{{ url_for('accueil') }}" id="accueilBtn" class="btn btn-primary mt-3">Retour à l'accueil</a></p>
     </div>
-    <script>
-        document.addEventListener('copy', function(e) {
-            // Annuler l'action de copie par défaut
-            e.preventDefault();
-            // Afficher un message ou effectuer une autre action
-        });
-    </script>
+    <script src="{{ url_for('static', filename='js/timer.js') }}"></script>
 </body>
 </html>

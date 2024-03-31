@@ -131,6 +131,7 @@ def accueil():
 @app.route('/categorie/<categorie>', methods=['GET', 'POST'])
 @login_required
 def categorie_questions(categorie):
+
     participant_id = session.get('user_id')
     reponse_existe = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
 
