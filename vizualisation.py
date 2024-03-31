@@ -12,6 +12,11 @@ def text_all_white_figure(fig):
     )
 )
 
+colors = {'droit': 'rgb(31, 119, 180)', 
+              'humanitaire': 'rgb(44, 160, 44)', 
+              'culturel': 'rgb(23, 190, 207)',
+              'sociologie': 'rgb(255,127,80)'}
+
 def get_participants_by_month():
     # Récupérer les données de la base de données
     participants_data = db.session.query(ReponseParticipant.date_creation).all()
@@ -58,7 +63,7 @@ def get_participants_by_month():
     layout = go.Layout(
         title="Évolution mensuelle en 2024 du nombre de participants par catégorie aux questionnaires",
         xaxis=dict(title="Mois"),
-        yaxis=dict(title="Nombre de participants",dtick=1),
+        yaxis=dict(title="Nombre de participants",dtick=10),
         width=1070, 
         height=400,  
         paper_bgcolor='rgb(40, 55, 71)',
@@ -89,10 +94,6 @@ def get_participants_success_percentage():
         categories.append(category)
         success_percentages.append(success_percentage)
 
-    colors = {'droit': 'rgb(31, 119, 180)', 
-              'humanitaire': 'rgb(44, 160, 44)', 
-              'culturel': 'rgb(23, 190, 207)',
-              'sociologie': 'rgb(255,127,80)'}
 
     pie_chart_success = go.Pie(
         labels=categories,
@@ -131,11 +132,12 @@ def get_participants_count_by_category():
         categories.append(category)
         participants_counts.append(count)
 
+
     pie_chart_participants = go.Pie(
         labels=categories,
         values=participants_counts,
         hole=0.3,
-        marker=dict(line=dict(color='black', width=1))
+        marker=dict(colors=[colors[cat.lower()] for cat in categories],line=dict(color='black', width=1))
     )
 
     layout_participants = go.Layout(
@@ -156,20 +158,29 @@ def get_participants_count_by_category():
 def get_top_participants():
     # Récupérer les données des meilleurs participants pour chaque catégorie
     top_participants_data = db.session.query(User.prenom, User.nom,
-                                             ReponseParticipant.success_percentage)\
+                                             ReponseParticipant.success_percentage,
+                                             ReponseParticipant.categorie)\
                                        .join(ReponseParticipant, User.id == ReponseParticipant.participant_id)\
                                        .order_by(ReponseParticipant.success_percentage.desc())\
-                                       .limit(3).all()
+                                       .limit(4).all()
 
-    df = pd.DataFrame(top_participants_data, columns=['prenom', 'nom', 'success_percentage'])
+    df = pd.DataFrame(top_participants_data, columns=['prenom', 'nom', 'success_percentage', 'categorie'])
 
-    # Créer le graphique à colonnes empilées
-    stacked_bar_chart = go.Bar(
-        x=df['prenom'] + ' ' + df['nom'],  # Prénom + Nom du participant en X
-        y=df['success_percentage'],  # Pourcentage de réussite total en Y
-        marker=dict(color=['rgb(31, 119, 180)', 'rgb(44, 160, 44)', 'rgb(255,127,80)']),  # Couleurs pour chaque catégorie
-        name='Pourcentage de réussite total',
-    )
+    # Ajoutez une colonne de couleur basée sur la catégorie
+    df['couleur'] = df['categorie'].map(colors)
+
+    # Initialiser une liste de traces pour les différentes catégories
+    traces = []
+
+    for categorie, couleur in colors.items():
+        filtered_df = df[df['categorie'] == categorie]
+        trace = go.Bar(
+            x=filtered_df['prenom'] + ' ' + filtered_df['nom'],  # Prénom + Nom du participant en X
+            y=filtered_df['success_percentage'],  # Pourcentage de réussite total en Y
+            marker=dict(color=couleur),  # Utilisez la colonne des couleurs
+            name=categorie.capitalize(),  # Utilisez le nom de la catégorie pour la légende
+        )
+        traces.append(trace)
 
     layout_stacked = go.Layout(
         title="Classement des meilleurs participants",
@@ -183,7 +194,7 @@ def get_top_participants():
         font=dict(color="white"),  # Couleur du texte en blanc
     )
 
-    fig_stacked = go.Figure(data=[stacked_bar_chart], layout=layout_stacked)
+    fig_stacked = go.Figure(data=traces, layout=layout_stacked)
 
     graph_json_top_participants = json.dumps(fig_stacked, cls=plotly.utils.PlotlyJSONEncoder)
 

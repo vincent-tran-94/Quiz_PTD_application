@@ -173,7 +173,7 @@ def categorie_questions(categorie):
     
     if request.method == 'POST':
         traitement_reponses(data_json, categorie)
-        return redirect(url_for('accueil'))
+        return redirect(url_for('resultats'))
     
     return render_template('categorie.html', questions=data_json['questions'],categorie=categorie)
 
@@ -265,7 +265,23 @@ def contact():
     return redirect(url_for('accueil'))
 
 
+@app.route('/resultats')
+@login_required
+def resultats():
+    participant_id = session.get('user_id')
+    
+    # Récupérer les résultats du participant depuis la base de données
+    participant_results = ReponseParticipant.query.filter_by(participant_id=participant_id).all()
+    
+    # Vous pouvez également récupérer d'autres informations pertinentes ici, par exemple, le nom du participant, etc.
+    participant_info = Participant.query.filter_by(participant_id=participant_id).first()
+    
+    return render_template('resultats.html', participant_results=participant_results, participant_info=participant_info)
+
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True,host='192.168.0.44',port=9400)
+
+

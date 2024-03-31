@@ -4,7 +4,7 @@ document.addEventListener('copy', function(e) {
     // Afficher un message ou effectuer une autre action
 });
 
-var timer = 900; // 5 minutes en secondes
+var timer = 600; // 12 minutes
 var warnings = 0;
 let ButtonClicked = false;
 
