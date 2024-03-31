@@ -27,6 +27,7 @@ Cette application va permet aux participants d'apprendre et de découvrir des no
 - static/images # Liste des images
 - static/videos # Liste des vidéos
 - static/styles # Fichiers CSS
+- timer.js #Fichier de timer pour participer le concours
 - questions/ # Fichiers JSON contenant une série de questions
 
 ## Formulaire pour la participation du concours du quiz
