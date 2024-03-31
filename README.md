@@ -47,6 +47,7 @@ Cette application va permet aux participants d'apprendre et de découvrir des no
     - User : Nombre de participants ayant inscrit l'application du quiz
     - participant : Le nombre de participants ayant rempli le formulaire
     - reponse_participant : Le nombre de réponses effectués par un participant
+    - contact: contact client des participants soumis dans l'application 
 
 ## Installation
 - Version Python 3.11.7 
