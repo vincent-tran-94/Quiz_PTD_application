@@ -17,6 +17,7 @@ source env/Scripts/activate
 MAIL_SERVER='smtp.gmail.com'
 MAIL_USERNAME='votreadresse@gmail.com'
 MAIL_DEFAULT_SENDER = 'votreadresse@gmail.com'
+MAIL_PASSWORD='Votre mot de passe'
 3) Configurer l'addresse IP de l'hôte et de votre port dans le fichier app.py
 3) Lancer le fichier run.sh
 chmod +x run.sh
@@ -24,7 +25,7 @@ chmod +x run.sh
 """
 
 #Host configuration and port 
-host='192.168.0.44'
+host='0.0.0.0'
 port=9400
 
 # Créez une instance de LoginManager
