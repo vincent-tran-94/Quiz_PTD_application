@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1920,height=1080, initial-scale=1">
-    <title>Accueil PTDlegalQuiz  PTD</title>
+    <title>Accueil PTDlegalQuiz</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css?v=1" rel="stylesheet">
     <link href="{{ url_for('static', filename='styles/home.css') }}" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_PTD.jpg') }}">
@@ -88,12 +88,13 @@
             enrichissante dans quatre catégories distinctes : droit, juridique, humanitaire et sociologie. </strong>
             Chaque participant a l'opportunité de tester ses connaissances dans chacune de ces catégories, avec une 
             participation unique autorisée par catégorie. Une fois que vous avez soumis aux questionnaires, 
-            les résultats sont affichés sur une page dédiée à la visualisation. Les questionnaires sont mélangés aléatoirement.
-            <strong> <span style="background-color: rgba(240,128,128); color: black;"> Vous avez 12 minutes pour répondre à tout les questions. 
-                A savoir si vous sortez du quiz, vous perdrez 30 secondes chaque fois que cela se produira, au bout la deuxième fois. </span> </strong>
-            <strong> Au niveau des récompenses, on peut proposer <span style="background-color: rgba(102, 204, 153); color: black;"> soit des livres juridiques, 
-            des produits alimentaires, des vêtements, des produits high-tech à gagner ! </span> </strong>
-            <strong> <div style="text-align:center"> Bon courage à vous ! Amusez-vous bien ! </style>  </strong>
+            les résultats sont affichés sur une page dédiée à la visualisation.
+            <strong>Le classement prend en compte si vous avez choisi tout les catégories. </br> 
+            <span style="background-color: rgba(240,128,128); color: black;"> Chaque catégorie possède un total de 30 questions et les questionnaires sont mélangés aléatoirement.
+            Vous avez 10 minutes pour répondre à tout les questions. A savoir si vous sortez du quiz, vous perdrez 30 secondes chaque fois que cela se produira, au bout la deuxième fois. </span> 
+            Au niveau des récompenses, on peut proposer <span style="background-color: rgba(102, 204, 153); color: black;"> soit des livres juridiques, 
+            des produits alimentaires, des vêtements, des produits high-tech à gagner ! </span> 
+            <div style="text-align:center"> Bon courage à vous ! Amusez-vous bien ! </style> </strong>
             </p>
         </div>
     </section>
@@ -128,7 +129,7 @@
         </div>
         <div class="row mt-4">
             <div class="col-md-4 offset-md-4">
-            <a href="{{ url_for('dashboard', categorie='resultats') }}" class="btn btn-secondary btn-lg btn-block">Résultats de Visualisation</a>
+            <a href="{{ url_for('dashboard', categorie='resultats') }}" class="btn btn-secondary btn-lg btn-block">Résultats et classement</a>
             </div>
         </div>
     </div>

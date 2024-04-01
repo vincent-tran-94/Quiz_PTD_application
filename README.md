@@ -13,8 +13,8 @@ Voici la consigne de l'application:
 - Les données des résultats seront affichés sur une page de visualisation qui contient:  <br>
 &rarr; Taux de réussite en moyenne calculé pour tout les participants à chaque catégorie <br>
 &rarr; Le nombre de participants répondus par catégorie  <br>
-&rarr; Le nombre de participants répondus en fonction du mois (répartis sur tout les catégories)  <br>
-&rarr; Le classement des 3 meilleurs participants (pour chaque mois)  <br>
+&rarr; Le nombre de participants répondus en fonction du mois pour chaque catégorie   <br>
+&rarr; Le classement des 10 meilleurs participants (pour chaque mois et année) ayant répondu tout les catégories  <br>
 
 Cette application va permet aux participants d'apprendre et de découvrir des notions sur le domaine  juridique, humanitaire, culturel et social dans notre société en général.
 

@@ -36,11 +36,50 @@ body::before {
     position: absolute;
     width: 400px;
     height: 400px;
-    top: 0%;
+    top: 5%;
     left: 95.2%;
 }
 
 
 .graph-top-container {
     padding-left: 500px; /* Réglez la valeur de padding-left selon vos besoins */
+}
+
+h1 {
+    text-indent: 50px;
+    color: #343a40;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 20px;
+
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 0px solid #dee2e6;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+    color: #fff;
+}
+
+th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+
+.background-rectangle {
+    width: 96.4%;
+    height: 100%;
+    background-color: rgb(40, 55, 71);
+}
+
+.button-accueil{
+    margin-left: 42%;
 }

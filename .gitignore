@@ -164,3 +164,4 @@ llama-2-7b-chat.Q8_0.gguf
 new_questions.py
 delete_tab.py
 test_llama.py
+run.sh

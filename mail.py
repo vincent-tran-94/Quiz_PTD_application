@@ -4,6 +4,14 @@ from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadSignature
 from flask import request
 
+
+"""
+Fonctions de fonctionnalité de login et d'inscription via par mail (on peut changer de mot de passe):
+-Confirmation d'envoi par mail pour chaque utilisateur
+-Changement de mot de passe en cas d'oubli de mot de passe
+"""
+
+
 app.config.from_pyfile('config.cfg')
 
 # Initialiser Flask-Mail
@@ -69,7 +77,7 @@ def reset_password_email(user):
     token = serializer.dumps(user.email)
     reset_link = url_for('reset_password', token=token, _external=True)
     msg = Message("Réinitialisation de mot de passe", recipients=[user.email])
-    msg.html =  f"<p>Pour réinitialiser votre mot de passe, veuillez cliquer sur le lien suivant: <a href='{reset_link}'> {reset_link} </a></p>"\
+    msg.html =  f"<p>Pour réinitialiser votre mot de passe, veuillez cliquer sur le lien suivant: <a href='{reset_link}' target='_blank'> {reset_link} </a></p>"\
                 f"<p>Vous avez moins d'une heure pour confirmer votre lien</p>"\
                 f"<p>Association Préserve ton droit.</p>"
     mail.send(msg)

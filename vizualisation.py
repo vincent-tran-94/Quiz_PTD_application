@@ -1,8 +1,17 @@
 import plotly
 import plotly.graph_objs as go
-from models import ReponseParticipant, db, User
+from models import ReponseParticipant, db
 import json
 import pandas as pd
+
+"""
+Fonctions pour visualiser les graghes:
+Les données des résultats seront affichés sur une page de visualisation qui contient  
+Taux de réussite en moyenne calculé pour tout les participants à chaque catégorie 
+Le nombre de participants répondus par catégorie  
+Le nombre de participants répondus en fonction du mois pour chaque catégorie  
+Le classement des 10 meilleurs participants (pour chaque mois et année) ayant répondu tout les catégories  
+"""
 
 def text_all_white_figure(fig):
     # Mettre tous les textes en blanc
@@ -155,47 +164,47 @@ def get_participants_count_by_category():
     return graph_json_participants
 
 
-def get_top_participants():
-    # Récupérer les données des meilleurs participants pour chaque catégorie
-    top_participants_data = db.session.query(User.prenom, User.nom,
-                                             ReponseParticipant.success_percentage,
-                                             ReponseParticipant.categorie)\
-                                       .join(ReponseParticipant, User.id == ReponseParticipant.participant_id)\
-                                       .order_by(ReponseParticipant.success_percentage.desc())\
-                                       .limit(4).all()
+# def get_top_participants():
+#     # Récupérer les données des meilleurs participants pour chaque catégorie
+#     top_participants_data = db.session.query(User.prenom, User.nom,
+#                                              ReponseParticipant.success_percentage,
+#                                              ReponseParticipant.categorie)\
+#                                        .join(ReponseParticipant, User.id == ReponseParticipant.participant_id)\
+#                                        .order_by(ReponseParticipant.success_percentage.desc())\
+#                                        .limit(4).all()
 
-    df = pd.DataFrame(top_participants_data, columns=['prenom', 'nom', 'success_percentage', 'categorie'])
+#     df = pd.DataFrame(top_participants_data, columns=['prenom', 'nom', 'success_percentage', 'categorie'])
 
-    # Ajoutez une colonne de couleur basée sur la catégorie
-    df['couleur'] = df['categorie'].map(colors)
+#     # Ajoutez une colonne de couleur basée sur la catégorie
+#     df['couleur'] = df['categorie'].map(colors)
 
-    # Initialiser une liste de traces pour les différentes catégories
-    traces = []
+#     # Initialiser une liste de traces pour les différentes catégories
+#     traces = []
 
-    for categorie, couleur in colors.items():
-        filtered_df = df[df['categorie'] == categorie]
-        trace = go.Bar(
-            x=filtered_df['prenom'] + ' ' + filtered_df['nom'],  # Prénom + Nom du participant en X
-            y=filtered_df['success_percentage'],  # Pourcentage de réussite total en Y
-            marker=dict(color=couleur),  # Utilisez la colonne des couleurs
-            name=categorie.capitalize(),  # Utilisez le nom de la catégorie pour la légende
-        )
-        traces.append(trace)
+#     for categorie, couleur in colors.items():
+#         filtered_df = df[df['categorie'] == categorie]
+#         trace = go.Bar(
+#             x=filtered_df['prenom'] + ' ' + filtered_df['nom'],  # Prénom + Nom du participant en X
+#             y=filtered_df['success_percentage'],  # Pourcentage de réussite total en Y
+#             marker=dict(color=couleur),  # Utilisez la colonne des couleurs
+#             name=categorie.capitalize(),  # Utilisez le nom de la catégorie pour la légende
+#         )
+#         traces.append(trace)
 
-    layout_stacked = go.Layout(
-        title="Classement des meilleurs participants",
-        xaxis=dict(title="Participant"),
-        yaxis=dict(title="Pourcentage de réussite total"),
-        barmode='stack',  # Colonnes empilées
-        width=400,  # Largeur en pixels
-        height=400,  # Hauteur en pixels
-        paper_bgcolor='rgb(40, 55, 71)',
-        plot_bgcolor='rgb(40, 55, 71)',  # Couleur de fond de la figure
-        font=dict(color="white"),  # Couleur du texte en blanc
-    )
+#     layout_stacked = go.Layout(
+#         title="Classement des meilleurs participants",
+#         xaxis=dict(title="Participant"),
+#         yaxis=dict(title="Pourcentage de réussite total"),
+#         barmode='stack',  # Colonnes empilées
+#         width=400,  # Largeur en pixels
+#         height=400,  # Hauteur en pixels
+#         paper_bgcolor='rgb(40, 55, 71)',
+#         plot_bgcolor='rgb(40, 55, 71)',  # Couleur de fond de la figure
+#         font=dict(color="white"),  # Couleur du texte en blanc
+#     )
 
-    fig_stacked = go.Figure(data=traces, layout=layout_stacked)
+#     fig_stacked = go.Figure(data=traces, layout=layout_stacked)
 
-    graph_json_top_participants = json.dumps(fig_stacked, cls=plotly.utils.PlotlyJSONEncoder)
+#     graph_json_top_participants = json.dumps(fig_stacked, cls=plotly.utils.PlotlyJSONEncoder)
 
-    return graph_json_top_participants
+#     return graph_json_top_participants

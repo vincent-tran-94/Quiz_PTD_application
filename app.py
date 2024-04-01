@@ -5,47 +5,38 @@ from flask_login import LoginManager,login_required, logout_user, login_user
 from sqlalchemy.orm.exc import NoResultFound
 from vizualisation import *
 from mail import *
-import os 
-import random
+from data_process import *
+
+"""
+CONSIGNES POUR LANCER l'APPLICATION:
+1) Créer un environnement virtuel et lancer les dépendances
+python3 -m venv env
+source env/Scripts/activate
+(venv) pip install -r requirements.txt 
+2) Dans config.cfg: Configurer votre serveur SMTP en changeant votre MAIL_USERNAME et le MAIL_DEFAULT_SENDER
+MAIL_SERVER='smtp.gmail.com'
+MAIL_USERNAME='votreadresse@gmail.com'
+MAIL_DEFAULT_SENDER = 'votreadresse@gmail.com'
+3) Configurer l'addresse IP de l'hôte et de votre port dans le fichier app.py
+3) Lancer le fichier run.sh
+chmod +x run.sh
+./run.sh
+"""
+
+#Host configuration and port 
+host='192.168.0.44'
+port=9400
 
 # Créez une instance de LoginManager
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-
-def open_file_json_from_directory(directory):
-    json_files = [file for file in os.listdir(directory) if file.endswith('.json')]
-    if not json_files:
-        return None
-    
-    all_questions = []  # Liste pour stocker toutes les questions
-
-    for json_file in json_files:
-        with open(os.path.join(directory, json_file), 'r', encoding='utf-8') as file:
-            data_json = json.load(file)
-            all_questions.extend(data_json['questions'])
-
-    # Mélanger toutes les questions
-    random.shuffle(all_questions)
-    selected_questions = all_questions[:30]
-    
-    # Créer un nouveau dictionnaire contenant les questions mélangées
-    shuffled_data = {"questions": selected_questions}
-
-    return shuffled_data
-
 @login_manager.user_loader
 def load_user(user_id):
     return db.session.get(User,user_id)
 
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    session.pop('user_id', None)
-    flash("Vous avez été déconnecté avec succès", "success")
-    return redirect(url_for('login'))
 
+#Fonction de la première connexion
 @app.route('/', methods=['GET', 'POST'])
 def login():
     image_filename = 'images/logo_PTD.jpg'
@@ -69,7 +60,32 @@ def login():
         
     return render_template('login.html',image_filename=image_filename)
 
+#Fonction de déconnexion
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    session.pop('user_id', None)
+    flash("Vous avez été déconnecté avec succès", "success")
+    return redirect(url_for('login'))
 
+
+#Fonction de changement de mot de passe en cas de problème 
+@app.route('/forgot_password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        email = request.form['email']
+        try:
+            user = User.query.filter_by(email=email).one()
+            reset_password_email(user)
+            return render_template('confirmation.html', message='Un lien de réinitialisation de mot de passe a été envoyé à votre adresse e-mail.')
+        except NoResultFound:
+            return render_template('confirmation.html', message='Adresse e-mail non trouvée.')
+        
+    return render_template('forgot_password.html')
+
+
+#Fonction de désinscription
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -99,6 +115,8 @@ def register():
 
     return render_template('register.html')
 
+
+#Fonction de formulaire de renseignement du participant pour connaitre les informations du participant
 @app.route('/formulaire', methods=['GET', 'POST'])
 @login_required
 def formulaire():
@@ -137,6 +155,7 @@ def formulaire():
 
     return render_template('formulaire.html', message=None,image_filename=image_filename)
 
+#Fonction de l'affichage page d'accueil
 @app.route('/accueil')
 @login_required
 def accueil():
@@ -144,8 +163,38 @@ def accueil():
     image_background = 'images/background_image.jpg'
     image_background_contact = 'images/contact_us_background.jpg'
     return render_template('home.html',image_filename=image_filename,image_background=image_background,image_background_contact=image_background_contact)
-    
 
+#Fonction de contact client avec l'association
+@app.route('/contact', methods=['GET', 'POST'])
+@login_required
+def contact():
+    participant_id = session.get('user_id')
+    if request.method == 'POST':
+        nom = request.form['nom']
+        email = request.form['email']
+        tel = request.form['tel']
+        message = request.form['message']
+        
+        contact = Contact(participant_id=participant_id,
+                          nom=nom,
+                          email=email,
+                          tel=tel,
+                          message=message)             
+        db.session.add(contact)
+        db.session.commit()
+
+        try: 
+            msg = Message(f'Application PTDlegalQuiz - Nouveau message de la part de {nom}', recipients=['timeroyal@gmail.com'],body=f"Nom: {nom}\nEmail: {email}\n Tel: {tel}\n  Message: {message}")
+            mail.send(msg)
+        except Exception as e:
+            print('Une erreur s\'est produite lors de l\'envoi du message.')
+            print(e)
+            
+    return redirect(url_for('accueil'))
+
+
+
+#Fonction pour se diriger le choix du catégorie 
 @app.route('/categorie/<categorie>', methods=['GET', 'POST'])
 @login_required
 def categorie_questions(categorie):
@@ -177,94 +226,7 @@ def categorie_questions(categorie):
     
     return render_template('categorie.html', questions=data_json['questions'],categorie=categorie)
 
-
-def traitement_reponses(data_json, categorie):
-    participant_id = session.get('user_id')
-    answers = request.form
-    correct_answers = 0
-
-    # Vérifiez les réponses
-    for question in data_json['questions']:
-        question_id = question['question']
-        if answers.get(question_id) == question['reponse_correcte']:
-            correct_answers += 1  # 1 point par bonne réponse
-
-    # Calculez les statistiques
-    total_questions = len(data_json['questions'])
-    incorrect_answers = total_questions - correct_answers
-    success_percentage = round((correct_answers / total_questions) * 100,2)
-
-    # Créez une instance de ReponseParticipant et ajoutez-la à la base de données 
-    reponse_participant = ReponseParticipant(participant_id=participant_id,
-                                             correct_answers=correct_answers,
-                                             incorrect_answers=incorrect_answers,
-                                             success_percentage=success_percentage,
-                                             categorie=categorie)
-    db.session.add(reponse_participant)
-    db.session.commit()
-
-
-@app.route('/dashboard')
-@login_required
-def dashboard():
-    image_filename = 'images/logo_PTD.jpg'
-
-    ReponsesParticipant = ReponseParticipant.query.all()
-    if ReponsesParticipant:
-        graph_json_success = get_participants_success_percentage()
-        graph_json_participants = get_participants_count_by_category()
-        graph_json_participants_month = get_participants_by_month()
-        graph_json_top_participants = get_top_participants()
-
-        return render_template('dashboard.html', graph_json_success=graph_json_success, 
-                            graph_json_participants=graph_json_participants, 
-                            graph_json_participants_month= graph_json_participants_month,
-                            graph_json_top_participants=graph_json_top_participants,
-                            image_filename=image_filename)
-    else: 
-        return redirect(url_for('accueil'))
-
-@app.route('/forgot_password', methods=['GET', 'POST'])
-def forgot_password():
-    if request.method == 'POST':
-        email = request.form['email']
-        try:
-            user = User.query.filter_by(email=email).one()
-            reset_password_email(user)
-            return render_template('confirmation.html', message='Un lien de réinitialisation de mot de passe a été envoyé à votre adresse e-mail.')
-        except NoResultFound:
-            return render_template('confirmation.html', message='Adresse e-mail non trouvée.')
-        
-    return render_template('forgot_password.html')
-
-@app.route('/contact', methods=['GET', 'POST'])
-@login_required
-def contact():
-    participant_id = session.get('user_id')
-    if request.method == 'POST':
-        nom = request.form['nom']
-        email = request.form['email']
-        tel = request.form['tel']
-        message = request.form['message']
-        
-        contact = Contact(participant_id=participant_id,
-                          nom=nom,
-                          email=email,
-                          tel=tel,
-                          message=message)             
-        db.session.add(contact)
-        db.session.commit()
-
-        try: 
-            msg = Message(f'Application PTDlegalQuiz - Nouveau message de la part de {nom}', recipients=['timeroyal@gmail.com'],body=f"Nom: {nom}\nEmail: {email}\n Tel: {tel}\n  Message: {message}")
-            mail.send(msg)
-        except Exception as e:
-            print('Une erreur s\'est produite lors de l\'envoi du message.')
-            print(e)
-            
-    return redirect(url_for('accueil'))
-
-
+#Fonction des résultats obtenus après le remplissage des questionnaires
 @app.route('/resultats')
 @login_required
 def resultats():
@@ -279,9 +241,50 @@ def resultats():
     return render_template('resultats.html', participant_results=participant_results, participant_info=participant_info)
 
 
+#Fonction d'affichage des résultats et de visualisation avec un classement donné
+@app.route('/dashboard',methods=['GET', 'POST'])
+@login_required
+def dashboard():
+    image_filename = 'images/logo_PTD.jpg'
+
+    ReponsesParticipant = ReponseParticipant.query.all()
+    if ReponsesParticipant:
+        graph_json_success = get_participants_success_percentage()
+        graph_json_participants = get_participants_count_by_category()
+        graph_json_participants_month = get_participants_by_month()
+        top_participants = get_top_10_participants()
+        indexed_top_participants = list(enumerate(top_participants, start=1))
+    
+        if request.method == 'POST':
+            # Récupérer les données du formulaire de filtrage
+            year = int(request.form.get('year'))  # Convertir le mois en entier
+            month = int(request.form.get('month'))  # Convertir le mois en entier
+            
+            # Effectuer les opérations de filtrage en fonction du mois sélectionné
+            filtered_participants = filter_data_by_month_year(top_participants, month,year)
+            indexed_filtered_participants = list(enumerate(filtered_participants, start=1))
+
+            
+            return render_template('dashboard.html', graph_json_success=graph_json_success, 
+                            graph_json_participants=graph_json_participants, 
+                            graph_json_participants_month= graph_json_participants_month,
+                            top_participants=indexed_filtered_participants, 
+                            selected_month=month,
+                            selected_year=year,
+                            image_filename=image_filename)
+
+
+        return render_template('dashboard.html', graph_json_success=graph_json_success, 
+                            graph_json_participants=graph_json_participants, 
+                            graph_json_participants_month= graph_json_participants_month,
+                            top_participants=indexed_top_participants, 
+                            image_filename=image_filename)
+    else: 
+        return redirect(url_for('accueil'))
+    
+
+#Lancement de l'application
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True,host='192.168.0.44',port=9400)
-
-
+    app.run(debug=True,host=host,port=port)
