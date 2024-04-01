@@ -10,6 +10,11 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///participants.db'
 db = SQLAlchemy(app)
 
+"""
+Liste des tables constitués dans notre base de données 
+"""
+
+
 class Participant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     participant_id = db.Column(db.String(36), db.ForeignKey('user.id'), nullable=False)
@@ -68,9 +73,6 @@ class Contact(db.Model):
     message = db.Column(db.String(1000))
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
 
-"""
-Fonctions de GET dans la base de données 
-"""
 
 def get_participant_name(participant_id):
     participant = Participant.query.filter_by(participant_id=participant_id).first()
