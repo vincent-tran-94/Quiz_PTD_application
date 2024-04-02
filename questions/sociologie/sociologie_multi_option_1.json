@@ -1,0 +1,245 @@
+{
+    "thematique": "sociologie",
+    "questions": [
+        {
+            "question": "Quels sont les facteurs pouvant influencer les migrations internationales ?",
+            "multi_options": {
+                "a": "Les opportunités d'emploi",
+                "b": "Les conflits armés",
+                "c": "Les changements climatiques",
+                "d": "Les liens familiaux"
+            },
+            "reponse_correcte": ["a", "b", "c", "d"]
+        },
+        {
+            "question": "Quels sont les défis liés à l'urbanisation rapide dans les pays en développement ?",
+            "multi_options": {
+                "a": "La surpopulation",
+                "b": "L'insuffisance des infrastructures",
+                "c": "La pollution",
+                "d": "La désertification"
+            },
+            "reponse_correcte": ["a", "b", "c"]
+        },
+        {
+            "question": "Quels sont les aspects de la religion susceptibles d'influencer la société ?",
+            "multi_options": {
+                "a": "Les croyances morales",
+                "b": "Les pratiques rituelles",
+                "c": "Les interdictions alimentaires",
+                "d": "Les modes vestimentaires"
+            },
+            "reponse_correcte": ["a", "b", "c"]
+        },
+        {
+            "question": "Quels sont les facteurs socio-économiques pouvant affecter la santé d'une population ?",
+            "multi_options": {
+                "a": "Le niveau de revenu",
+                "b": "L'accès aux soins de santé",
+                "c": "Le niveau d'éducation",
+                "d": "Le statut social"
+            },
+            "reponse_correcte": ["a", "b", "c", "d"]
+        },
+        {
+            "question": "Quels sont les impacts de la migration sur les communautés d'origine et d'accueil ?",
+            "multi_options": {
+                "a": "La perte de main-d'œuvre qualifiée",
+                "b": "La diversification culturelle",
+                "c": "La pression sur les infrastructures",
+                "d": "L'enrichissement de la diversité linguistique"
+            },
+            "reponse_correcte": ["a", "b", "c"]
+        },
+        {
+            "question": "Quels sont les effets de l'urbanisation sur l'environnement ?",
+            "multi_options": {
+                "a": "La déforestation",
+                "b": "L'étalement urbain",
+                "c": "La pollution de l'air",
+                "d": "La préservation des écosystèmes"
+            },
+            "reponse_correcte": ["a", "b", "c"]
+        },
+        {
+            "question": "Quels sont les rôles des institutions religieuses dans la société ?",
+            "multi_options": {
+                "a": "La transmission des valeurs morales",
+                "b": "L'organisation de la vie communautaire",
+                "c": "La redistribution des richesses",
+                "d": "La gouvernance politique"
+            },
+            "reponse_correcte": ["a", "b"]
+        },
+        {
+            "question": "Quels sont les déterminants sociaux de la santé ?",
+            "multi_options": {
+                "a": "Le statut socio-économique",
+                "b": "Le genre",
+                "c": "L'appartenance ethnique",
+                "d": "Le niveau d'urbanisation"
+            },
+            "reponse_correcte": ["a", "b", "c"]
+        },
+        {
+            "question": "Quels sont les défis spécifiques rencontrés par les migrants en matière de santé ?",
+            "multi_options": {
+                "a": "Les barrières linguistiques",
+                "b": "L'accès limité aux soins de santé",
+                "c": "La discrimination",
+                "d": "L'isolement social"
+            },
+            "reponse_correcte": ["a", "b", "c", "d"]
+        },
+        {
+            "question": "Quels sont les impacts de la religion sur la structure sociale d'une société ?",
+            "multi_options": {
+                "a": "La hiérarchisation des classes sociales",
+                "b": "La légitimation des normes sociales",
+                "c": "La régulation des relations familiales",
+                "d": "L'organisation de la vie politique"
+            },
+            "reponse_correcte": ["b", "c"]
+        },
+        {
+            "question": "Quels sont les facteurs qui influencent la croissance urbaine ?",
+            "multi_options": {
+                "a": "La recherche d'emploi",
+                "b": "La disponibilité des services publics",
+                "c": "Les opportunités économiques",
+                "d": "Les politiques gouvernementales"
+            },
+            "reponse_correcte": ["a", "b", "c", "d"]
+        },
+        {
+            "question": "Quels sont les liens entre la religion et la migration ?",
+            "multi_options": {
+                "a": "La pratique religieuse peut faciliter l'intégration des migrants",
+                "b": "Les migrations peuvent entraîner la diffusion de nouvelles croyances",
+                "c": "La religion peut être un facteur de discrimination à l'égard des migrants",
+                "d": "Les institutions religieuses offrent souvent un soutien aux migrants"
+            },
+            "reponse_correcte": ["a", "b", "c", "d"]
+        },
+        {
+            "question": "Quels sont les principaux facteurs contribuant à la résilience des communautés urbaines face aux défis environnementaux ?",
+            "multi_options": {
+                "a": "La coopération entre les habitants",
+                "b": "La disponibilité des ressources naturelles",
+                "c": "L'implication des autorités locales",
+                "d": "L'éducation environnementale"
+            },
+            "reponse_correcte": ["a", "c", "d"]
+        },
+        {
+            "question": "Quels sont les déterminants sociaux de l'accès aux soins de santé ?",
+            "multi_options": {
+                "a": "Le niveau d'éducation",
+                "b": "Le statut socio-économique",
+                "c": "Le lieu de résidence",
+                "d": "Le genre"
+            },
+            "reponse_correcte": ["a", "b", "c", "d"]
+        },
+        {
+            "question": "Quels sont les effets des croyances religieuses sur les comportements de santé ?",
+            "multi_options": {
+                "a": "Elles peuvent influencer les choix alimentaires",
+                "b": "Elles peuvent encourager la pratique d'activités physiques",
+                "c": "Elles peuvent affecter la décision de recourir aux soins médicaux",
+                "d": "Elles peuvent favoriser la consommation d'alcool et de tabac"
+            },
+            "reponse_correcte": ["a", "c"]
+        },
+        {
+            "question": "Quels sont les impacts des migrations sur la dynamique démographique des zones rurales ?",
+            "multi_options": {
+                "a": "Le vieillissement de la population",
+                "b": "La diminution de la population active",
+                "c": "La revitalisation des communautés locales",
+                "d": "L'augmentation de la diversité ethnique"
+            },
+            "reponse_correcte": ["c", "d"]
+        },
+        {
+            "question": "Quels sont les facteurs qui contribuent à la formation des quartiers religieux dans les villes ?",
+            "multi_options": {
+                "a": "La présence d'institutions religieuses",
+                "b": "La concentration de fidèles appartenant à la même communauté",
+                "c": "Les politiques de zonage urbain",
+                "d": "L'histoire migratoire de la ville"
+            },
+            "reponse_correcte": ["a", "b", "d"]
+        },
+        {
+            "question": "Quels sont les défis posés par l'urbanisation rapide en termes de santé publique ?",
+            "multi_options": {
+                "a": "L'augmentation des maladies infectieuses",
+                "b": "La précarité des conditions de vie",
+                "c": "La pollution de l'air et de l'eau",
+                "d": "La surcharge des services de santé"
+            },
+            "reponse_correcte": ["a", "b", "c", "d"]
+        },
+        {
+            "question": "Quels sont les effets des migrations sur la composition ethnique des populations urbaines ?",
+            "multi_options": {
+                "a": "L'homogénéisation ethnique",
+                "b": "La diversification ethnique",
+                "c": "La ségrégation ethnique",
+                "d": "L'assimilation ethnique"
+            },
+            "reponse_correcte": ["b", "c"]
+        },
+        {
+            "question": "Quels sont les défis liés à la santé mentale des migrants ?",
+            "multi_options": {
+                "a": "La discrimination",
+                "b": "La perte de repères culturels",
+                "c": "Les traumatismes liés à l'exil",
+                "d": "L'acculturation"
+            },
+            "reponse_correcte": ["a", "b", "c", "d"]
+        },
+        {
+            "question": "Quels sont les facteurs socio-économiques qui influencent les pratiques religieuses ?",
+            "multi_options": {
+                "a": "Le niveau de revenu",
+                "b": "Le niveau d'éducation",
+                "c": "Le statut social",
+                "d": "Le lieu de résidence"
+            },
+            "reponse_correcte": ["a", "b", "c", "d"]
+        },
+        {
+            "question": "Quels sont les effets de l'urbanisation sur la santé des populations urbaines ?",
+            "multi_options": {
+                "a": "L'augmentation des maladies non transmissibles",
+                "b": "La réduction de l'accès aux soins de santé",
+                "c": "La détérioration de la qualité de l'air",
+                "d": "La propagation des maladies infectieuses"
+            },
+            "reponse_correcte": ["a", "b", "c", "d"]
+        },
+        {
+            "question": "Quels sont les rôles des organisations religieuses dans les opérations humanitaires ?",
+            "multi_options": {
+                "a": "La fourniture d'aide alimentaire",
+                "b": "L'assistance médicale",
+                "c": "Le soutien psychologique",
+                "d": "La reconstruction des infrastructures"
+            },
+            "reponse_correcte": ["a", "b", "c"]
+        },
+        {
+            "question": "Quels sont les enjeux de l'accès à l'eau potable dans les zones urbaines en développement ?",
+            "multi_options": {
+                "a": "La prévention des maladies hydriques",
+                "b": "L'amélioration de l'hygiène",
+                "c": "La réduction des inégalités socio-économiques",
+                "d": "La préservation des ressources en eau"
+            },
+            "reponse_correcte": ["a", "b"]
+        }
+    ]
+}

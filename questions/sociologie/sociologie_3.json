@@ -1,0 +1,55 @@
+{
+    "thematique": "sociologie",
+    "questions": [
+        {
+            "question": "Quelle est l'une des principales fonctions de la politique éducative ?",
+            "options": {
+                "a": "Promouvoir l'égalité des chances",
+                "b": "Augmenter les frais de scolarité",
+                "c": "Favoriser l'exclusion sociale",
+                "d": "Diminuer l'accès à l'éducation"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est l'une des conséquences de la précarisation de l'emploi ?",
+            "options": {
+                "a": "La stabilité financière",
+                "b": "La sécurité sociale",
+                "c": "L'insécurité économique",
+                "d": "Le plein emploi"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Quel est l'objectif principal de la politique de l'emploi ?",
+            "options": {
+                "a": "Augmenter les inégalités salariales",
+                "b": "Promouvoir la flexibilité du marché du travail",
+                "c": "Réduire le taux de chômage",
+                "d": "Encourager la précarité de l'emploi"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Quel est l'impact de la mondialisation sur le marché du travail ?",
+            "options": {
+                "a": "La réduction de la concurrence",
+                "b": "L'augmentation de la sécurité de l'emploi",
+                "c": "La délocalisation d'entreprises",
+                "d": "La diminution des inégalités salariales"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Quel est l'un des défis majeurs de la politique éducative contemporaine ?",
+            "options": {
+                "a": "La réduction de l'accès à l'éducation",
+                "b": "L'adaptation aux besoins du marché du travail",
+                "c": "La promotion de l'exclusion sociale",
+                "d": "La limitation de la diversité culturelle"
+            },
+            "reponse_correcte": "b"
+        }
+    ]
+}
