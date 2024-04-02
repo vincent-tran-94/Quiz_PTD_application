@@ -5,5 +5,5 @@ COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 COPY . .
-EXPOSE 9400
-CMD ["python3","app.py","9400"]
+EXPOSE 5000
+CMD ["python3","app.py","5000"]

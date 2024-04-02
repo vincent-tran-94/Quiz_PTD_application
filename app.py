@@ -26,7 +26,7 @@ chmod +x run.sh
 
 #Host configuration and port 
 host='0.0.0.0'
-port=9400
+port=5000
 
 # Créez une instance de LoginManager
 login_manager = LoginManager()

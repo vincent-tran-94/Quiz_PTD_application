@@ -8,13 +8,13 @@ from datetime import datetime, timedelta
 
 app = Flask(__name__,template_folder='template')
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///participants.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///participants.db'  #Changement de base de données bientôt en postgresql
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://vincenttran:associationptd@localhost/participants'
 db = SQLAlchemy(app)
 
 """
 Liste des tables constitués dans notre base de données 
 """
-
 
 class Participant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
