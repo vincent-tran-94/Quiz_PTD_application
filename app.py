@@ -215,8 +215,14 @@ def categorie_questions(categorie):
         data_json = open_file_json_from_directory(directory)
     
     if reponse_existe:
-        flash("Vous avez déjà soumis les réponses pour cette catégorie.", "info")
-        return redirect(url_for('accueil'))
+        last_response_date = reponse_existe.date_creation
+        # Si une semaine s'est écoulée, permettre de retenter
+        if is_two_week_passed(last_response_date):
+            reponse_existe.date_creation = get_current_date()
+        else:
+            # Sinon, rediriger vers la page d'accueil
+            flash("Vous avez déjà soumis les réponses pour cette catégorie.", "info")
+            return redirect(url_for('accueil'))
 
     elif categorie == 'resultats':
         return redirect(url_for('dashboard'))

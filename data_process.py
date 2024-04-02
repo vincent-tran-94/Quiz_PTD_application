@@ -113,11 +113,21 @@ def traitement_reponses(data_json, categorie):
     incorrect_answers = total_questions - correct_answers
     success_percentage = round((correct_answers / total_questions) * 100,2)
 
-    # Créez une instance de ReponseParticipant et ajoutez-la à la base de données 
-    reponse_participant = ReponseParticipant(participant_id=participant_id,
-                                             correct_answers=correct_answers,
-                                             incorrect_answers=incorrect_answers,
-                                             success_percentage=success_percentage,
-                                             categorie=categorie)
-    db.session.add(reponse_participant)
+    # Vérifiez si une réponse existe déjà pour ce participant dans cette catégorie
+    existing_response = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
+
+    if existing_response:
+        # Mettre à jour les données existantes
+        existing_response.correct_answers = correct_answers
+        existing_response.incorrect_answers = incorrect_answers
+        existing_response.success_percentage = success_percentage
+    else:
+        # Ajouter un nouvel enregistrement pour ce participant et cette catégorie
+        new_response = ReponseParticipant(participant_id=participant_id,
+                                          correct_answers=correct_answers,
+                                          incorrect_answers=incorrect_answers,
+                                          success_percentage=success_percentage,
+                                          categorie=categorie)
+        db.session.add(new_response)
+
     db.session.commit()

@@ -88,13 +88,16 @@
             enrichissante dans quatre catégories distinctes : droit, juridique, humanitaire et sociologie. </strong>
             Chaque participant a l'opportunité de tester ses connaissances dans chacune de ces catégories, avec une 
             participation unique autorisée par catégorie. Une fois que vous avez soumis aux questionnaires, 
-            les résultats sont affichés sur une page dédiée à la visualisation.
-            <strong>Le classement prend en compte si vous avez choisi tout les catégories. </br> 
-            <span style="background-color: rgba(240,128,128); color: black;"> Chaque catégorie possède un total de 30 questions et les questionnaires sont mélangés aléatoirement.
-            Vous avez 10 minutes pour répondre à tout les questions. A savoir si vous sortez du quiz, vous perdrez 30 secondes chaque fois que cela se produira, au bout la deuxième fois. </span> 
+            les résultats sont affichés sur une page dédiée à la visualisation.  </br> 
+            <strong> <span style="background-color: rgba(240,128,128); color: black;"> Après avoir soumis, vous pouvez retenter le quiz après 2 semaines si vous avez besoin refaire. </br> 
+            Le classement prend en compte si vous avez choisi tout les catégories. </br> 
+            Chaque catégorie possède un total de 30 questions et les questionnaires sont mélangés aléatoirement.
+            Vous avez 10 minutes pour répondre à tout les questions. A savoir si vous sortez du quiz, vous perdrez 30 secondes chaque fois que cela se produira, au bout la deuxième fois. </br>  </span> 
             Au niveau des récompenses, on peut proposer <span style="background-color: rgba(102, 204, 153); color: black;"> soit des livres juridiques, 
             des produits alimentaires, des vêtements, des produits high-tech à gagner ! </span> 
-            <div style="text-align:center"> Bon courage à vous ! Amusez-vous bien ! </style> </strong>
+            <div style="text-align:center"> Bon courage à vous ! Amusez-vous bien ! </style> 
+            <div style="text-align:center"> En cas de problème, n'hésitez pas de nous contacter ci-dessous 👇</style> </strong>
+
             </p>
         </div>
     </section>
@@ -127,8 +130,11 @@
                 <a href="{{ url_for('categorie_questions', categorie='sociologie') }}" class="btn btn-warning btn-lg btn-block">Sociologie</a>
             </div>
         </div>
-        <div class="row mt-4">
-            <div class="col-md-4 offset-md-4">
+        <div class="row mt-4 justify-content-center">
+            <div class="col-md-3">
+            <a href="{{ url_for('resultats') }}" class="btn btn-secondary btn-lg btn-block"> Vos résultats</a>
+            </div>
+            <div class="col-md-3">
             <a href="{{ url_for('dashboard', categorie='resultats') }}" class="btn btn-secondary btn-lg btn-block">Résultats et classement</a>
             </div>
         </div>

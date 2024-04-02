@@ -1,0 +1,97 @@
+{
+    "thematique": "humanitaire",
+    "questions": [
+        {
+            "question": "Quels sont les principaux types de catastrophes naturelles ?",
+            "multi_options": {
+                "a": "Les séismes",
+                "b": "Les tsunamis",
+                "c": "Les épidémies"
+            },
+            "reponse_correcte": ["a", "b"]
+        },
+        {
+            "question": "Quelles sont les phases du cycle de gestion des catastrophes ?",
+            "multi_options": {
+                "a": "La prévention",
+                "b": "L'atténuation",
+                "c": "La réponse",
+                "d": "La reconstruction"
+            },
+            "reponse_correcte": ["a", "b", "c", "d"]
+        },
+        {
+            "question": "Quels sont les objectifs principaux de la santé publique ?",
+            "multi_options": {
+                "a": "La promotion de la santé",
+                "b": "La prévention des maladies",
+                "c": "La gestion des catastrophes"
+            },
+            "reponse_correcte": ["a", "b"]
+        },
+        {
+            "question": "Quels sont les déterminants sociaux de la santé ?",
+            "multi_options": {
+                "a": "Le revenu",
+                "b": "L'éducation",
+                "c": "Le sexe",
+                "d": "L'origine ethnique"
+            },
+            "reponse_correcte": ["a", "b", "c", "d"]
+        },
+        {
+            "question": "Quels sont les principaux enjeux de la santé mondiale ?",
+            "multi_options": {
+                "a": "Les maladies transmissibles",
+                "b": "Les maladies non transmissibles",
+                "c": "La santé maternelle et infantile"
+            },
+            "reponse_correcte": ["a", "b", "c"]
+        },
+        {
+            "question": "Quels sont les principaux vecteurs de transmission des maladies hydriques ?",
+            "multi_options": {
+                "a": "L'eau contaminée",
+                "b": "Les aliments contaminés",
+                "c": "Les moustiques"
+            },
+            "reponse_correcte": ["a", "b"]
+        },
+        {
+            "question": "Quels sont les principaux facteurs de risque liés à la qualité de l'eau potable ?",
+            "multi_options": {
+                "a": "La contamination bactérienne",
+                "b": "La pollution chimique",
+                "c": "La radioactivité"
+            },
+            "reponse_correcte": ["a", "b"]
+        },
+        {
+            "question": "Quels sont les éléments clés de l'hygiène en situation d'urgence ?",
+            "multi_options": {
+                "a": "Le lavage des mains",
+                "b": "L'accès à des installations sanitaires",
+                "c": "La distribution de nourriture"
+            },
+            "reponse_correcte": ["a", "b"]
+        },
+        {
+            "question": "Quels sont les principaux objectifs de l'éducation en situation d'urgence ?",
+            "multi_options": {
+                "a": "Assurer un environnement sûr pour les enfants",
+                "b": "Fournir un accès à une éducation de qualité",
+                "c": "Réduire les risques de traumatisme"
+            },
+            "reponse_correcte": ["a", "b", "c"]
+        },
+        {
+            "question": "Quels sont les défis principaux de l'éducation en situation d'urgence ?",
+            "multi_options": {
+                "a": "La perte de documents scolaires",
+                "b": "Le manque d'infrastructures éducatives",
+                "c": "Le recrutement d'enseignants qualifiés"
+            },
+            "reponse_correcte": ["b", "c"]
+        }
+    ]
+}

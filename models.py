@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import func, extract, distinct
+from datetime import datetime, timedelta
 
 
 app = Flask(__name__,template_folder='template')
@@ -111,7 +112,7 @@ def get_top_10_participants():
                                            extract('month', ReponseParticipant.date_creation)) \
                                  .having(func.count(distinct(ReponseParticipant.categorie)) == 4) \
                                  .order_by(func.avg(ReponseParticipant.success_percentage).desc()) \
-                                 .limit(10) \
+                                 .limit(50) \
                                  .all()
     
     top_participants_info = []
@@ -121,3 +122,11 @@ def get_top_10_participants():
     
     return top_participants_info
 
+
+# Fonction pour obtenir la date actuelle
+def get_current_date():
+    return datetime.utcnow()
+
+# Fonction pour vérifier si une mois s'est écoulée depuis la dernière réponse
+def is_two_week_passed(last_response_date):
+    return get_current_date() - last_response_date >= timedelta(weeks=2)

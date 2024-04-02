@@ -11,17 +11,25 @@
 <body>
     <div id="countdown">Temps restant : 10m 0s </div>
     <div class="container mt-5">
-        <form method="post" id="questionnaireForm">
+        <form method="post">
             <h1>Test sur {{ categorie }} </h1>
             {% for question in questions %}
             <div class="card mt-3">
                 <div class="card-body">
                     <h5 class="card-title">{{ question.question }}</h5>
                     <div class="form-check">
+                        {% if question.options %}
                         {% for option, text in question.options.items() %}
-                        <input class="form-check-input" type="radio" name="{{ question.question }}" id="{{ option }}" value="{{ option }}">
-                        <label class="form-check-label" for="{{ option }}">{{ text }}</label><br>
+                            <input class="form-check-input" type="radio" name="{{ question.question }}" id="{{ option }}" value="{{ option }}">
+                            <label class="form-check-label" for="{{ option }}">{{ text }}</label><br>
                         {% endfor %}
+                    {% endif %}
+                    {% if question.multi_options %}
+                        {% for option, text in question.multi_options.items() %}
+                            <input class="form-check-input" type="checkbox" name="{{ question.question }}" id="{{ option }}" value="{{ option }}">
+                            <label class="form-check-label" for="{{ option }}">{{ text }}</label><br>
+                        {% endfor %}
+                    {% endif %}
                     </div>
                 </div>
             </div>

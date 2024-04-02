@@ -35,7 +35,7 @@ def send_confirmation_email(user_id, email):
                 recipients=[email])
     
     # Corps du message au format HTML avec une image
-    msg.html = f"<p>Cliquez sur le lien suivant pour participer au quiz: <a href='{confirm_url}'>{confirm_url}</a></p>" \
+    msg.html = f"<p>Cliquez sur le lien suivant pour participer au quiz: <a href='{confirm_url}' target='_blank'>{confirm_url}</a></p>" \
             f"<p>Vous avez moins d'une heure pour confirmer votre lien</p>"\
             f"<p>Association Préserve ton droit.</p>"
     
