@@ -9,12 +9,13 @@ from datetime import datetime, timedelta
 
 id_database = "your_id_database"
 password_database = "your_password_database"
-adresse_ip = "your_adress_ip_database"
+adresse_ip = "your_address_ip_database"
+name_database = "your_name_database"
 
 app = Flask(__name__,template_folder='template')
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///participants.db'  #Changement de base de données bientôt en postgresql
-app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{id_database}:{password_database}@{adresse_ip}/participants'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{id_database}:{password_database}@{adresse_ip}/{name_database}'
 db = SQLAlchemy(app)
 
 """
