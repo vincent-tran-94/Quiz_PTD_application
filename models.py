@@ -7,9 +7,9 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy import func, extract, distinct
 from datetime import datetime, timedelta
 
-id_database = "vincenttran"
-password_database = "associationptd"
-adresse_ip = "localhost"
+id_database = "your_id_database"
+password_database = "your_password_database"
+adresse_ip = "your_adress_ip_database"
 
 app = Flask(__name__,template_folder='template')
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
