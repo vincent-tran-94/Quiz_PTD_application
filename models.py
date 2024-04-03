@@ -2,51 +2,31 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+import uuid
+from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy import func, extract, distinct
 from datetime import datetime, timedelta
 
+id_database = "vincenttran"
+password_database = "associationptd"
+adresse_ip = "localhost"
 
 app = Flask(__name__,template_folder='template')
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///participants.db'  #Changement de base de données bientôt en postgresql
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://vincenttran:associationptd@localhost/participants'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///participants.db'  #Changement de base de données bientôt en postgresql
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{id_database}:{password_database}@{adresse_ip}/participants'
 db = SQLAlchemy(app)
 
 """
 Liste des tables constitués dans notre base de données 
 """
 
-class Participant(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    participant_id = db.Column(db.String(36), db.ForeignKey('user.id'), nullable=False)
-    nom = db.Column(db.String(100))
-    prenom = db.Column(db.String(100))
-    adresse = db.Column(db.String(100))
-    code_postal = db.Column(db.Integer)
-    ville = db.Column(db.String(100))
-    niveau_etude = db.Column(db.String(100))
-    statut = db.Column(db.String(100))
-    centre_interet = db.Column(db.String(100))
-    choix_categorie = db.Column(db.String(100))
-    date_creation = db.Column(db.DateTime, default=datetime.utcnow)
-
-
-class ReponseParticipant(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    participant_id = db.Column(db.String(36), db.ForeignKey('participant.id'), nullable=False)
-    correct_answers = db.Column(db.Integer)
-    incorrect_answers = db.Column(db.Integer)
-    success_percentage = db.Column(db.Float)
-    categorie = db.Column(db.String(100))
-    date_creation = db.Column(db.DateTime, default=datetime.utcnow)
-
-
 class User(db.Model):
-    id = db.Column(db.String(36), primary_key=True)
-    nom =  db.Column(db.String(100))
-    prenom = db.Column(db.String(100))
-    email = db.Column(db.String(100))
-    password_hash = db.Column(db.String(100)) 
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    nom =  db.Column(db.String(255))
+    prenom = db.Column(db.String(255))
+    email = db.Column(db.String(255))
+    password_hash = db.Column(db.String(255)) 
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
 
     def is_authenticated(self):
@@ -64,10 +44,35 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+
+class Participant(db.Model):
+    participant_id = db.Column(UUID(as_uuid=True), db.ForeignKey('user.id'),primary_key=True)
+    nom = db.Column(db.String(255))
+    prenom = db.Column(db.String(255))
+    adresse = db.Column(db.String(255))
+    code_postal = db.Column(db.Integer)
+    ville = db.Column(db.String(255))
+    niveau_etude = db.Column(db.String(255))
+    statut = db.Column(db.String(255))
+    centre_interet = db.Column(db.String(255))
+    choix_categorie = db.Column(db.String(255))
+    date_creation = db.Column(db.DateTime, default=datetime.utcnow)
+
+
+class ReponseParticipant(db.Model):
+    id = db.Column(db.Integer(),primary_key=True)
+    participant_id = db.Column(UUID(as_uuid=True), db.ForeignKey('participant.participant_id'),unique=False)
+    correct_answers = db.Column(db.Integer)
+    incorrect_answers = db.Column(db.Integer)
+    success_percentage = db.Column(db.Float)
+    categorie = db.Column(db.String(255))
+    date_creation = db.Column(db.DateTime, default=datetime.utcnow)
+
     
 class Contact(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    participant_id = db.Column(db.String(36), db.ForeignKey('participant.id'), nullable=False)
+    id = db.Column(db.Integer(),primary_key=True)
+    participant_id = db.Column(UUID(as_uuid=True), db.ForeignKey('participant.participant_id'),unique=False)
     nom =  db.Column(db.String(100))
     email = db.Column(db.String(100))
     tel = db.Column(db.String(100))
