@@ -135,4 +135,4 @@ def get_current_date():
 
 # Fonction pour vérifier si une mois s'est écoulée depuis la dernière réponse
 def is_two_week_passed(last_response_date):
-    return get_current_date() - last_response_date >= timedelta(seconds=2)
+    return get_current_date() - last_response_date >= timedelta(weeks=2)
