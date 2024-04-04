@@ -5,7 +5,7 @@ Cette application sera stockée dans les différents bases de données aux compt
 
 Voici la consigne de l'application:
 
-- Fonctionnalité de login et d'inscription via par mail (on peut changer de mot de passe) 
+- Fonctionnalité de login et d'inscription via par mail (on peut changer de mot de passe et supprimer de compte) 
 - Formulaire de renseignements pour renseigner la personne du participant s'il gagnera le lot
 - 4 catégories à choisir (droit, humanitaire, culturel, sociologie)
 - On a le droit de participer une fois par catégorie une fois qu'on a soumis les réponses des questionnaires
@@ -14,7 +14,7 @@ Voici la consigne de l'application:
 &rarr; Taux de réussite en moyenne calculé pour tout les participants à chaque catégorie <br>
 &rarr; Le nombre de participants répondus par catégorie  <br>
 &rarr; Le nombre de participants répondus en fonction du mois pour chaque catégorie   <br>
-&rarr; Le classement des 10 meilleurs participants (pour chaque mois et année) ayant répondu tout les catégories  <br>
+&rarr; Le classement des 50 meilleurs participants (pour chaque mois et année) ayant répondu tout les catégories  <br>
 
 Cette application va permet aux participants d'apprendre et de découvrir des notions sur le domaine  juridique, humanitaire, culturel et social dans notre société en général.
 
@@ -27,7 +27,7 @@ Cette application va permet aux participants d'apprendre et de découvrir des no
 - static/images # Liste des images
 - static/videos # Liste des vidéos
 - static/styles # Fichiers CSS
-- timer.js #Fichier de timer pour participer le concours
+- static/JS #Fichiers de JavaScript 
 - questions/ # Fichiers JSON contenant une série de questions
 
 ## Formulaire pour la participation du concours du quiz

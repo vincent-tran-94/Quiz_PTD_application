@@ -104,7 +104,7 @@ def confirm_delete(token):
             Participant.query.filter_by(participant_id=user.id).delete()
             db.session.delete(user)
             db.session.commit()
-        return render_template('confirmation.html', message='Votre compte a été bien supprimé') 
+        return render_template('confirmation.html', message='Votre compte a été bien supprimé.') 
     except SignatureExpired:
         # Le token a expiré
         return render_template('confirmation.html', message='Le lien de confirmation a expiré.')
