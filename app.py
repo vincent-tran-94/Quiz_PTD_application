@@ -86,6 +86,20 @@ def forgot_password():
     return render_template('forgot_password.html')
 
 
+@app.route('/delete_account', methods=['GET', 'POST'])
+def delete_account():
+    if request.method == 'POST':
+        email = request.form['email']
+        try: 
+            user = User.query.filter_by(email=email).one()
+            delete_account_email(user)
+            return render_template('confirmation.html', message='Un lien de suppresion de compte a été envoyé à votre adresse e-mail.')
+        except NoResultFound:
+            return render_template('confirmation.html', message='Adresse e-mail non trouvée.')
+        
+    return render_template("delete_account.html")
+
+
 #Fonction de désinscription
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
@@ -115,6 +129,8 @@ def register():
 
 
     return render_template('register.html')
+
+
 
 
 #Fonction de formulaire de renseignement du participant pour connaitre les informations du participant

@@ -83,6 +83,36 @@ def reset_password_email(user):
     mail.send(msg)
 
 
+def delete_account_email(user):
+    token = serializer.dumps(user.email)
+    reset_link = url_for('confirm_delete', token=token, _external=True)
+    msg = Message("Suppression de votre compte", recipients=[user.email])
+    msg.html =  f"<p>Pour supprimer votre compte, veuillez cliquer sur le lien suivant: <a href='{reset_link}' target='_blank'> {reset_link} </a></p>"\
+                f"<p>Vous avez moins d'une heure pour confirmer votre lien</p>"\
+                f"<p>Association Préserve ton droit.</p>"
+    mail.send(msg)
+
+@app.route('/confirm_delete/<token>', methods=['GET', 'POST'])
+def confirm_delete(token):
+    try:
+        email= serializer.loads(token, max_age=3600)
+        user = User.query.filter_by(email=email).first()
+        if user:
+            # Supprimer le compte
+            ReponseParticipant.query.filter_by(participant_id=user.id).delete()
+            Contact.query.filter_by(participant_id=user.id).delete()
+            Participant.query.filter_by(participant_id=user.id).delete()
+            db.session.delete(user)
+            db.session.commit()
+        return render_template('confirmation.html', message='Votre compte a été bien supprimé') 
+    except SignatureExpired:
+        # Le token a expiré
+        return render_template('confirmation.html', message='Le lien de confirmation a expiré.')
+    except BadSignature:
+        # Token invalide
+        return render_template('confirmation.html', message='Lien de confirmation invalide.')
+
+
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
     try:

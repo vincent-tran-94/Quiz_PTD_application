@@ -66,7 +66,7 @@ def get_month_year(participant_id):
     else:
         return None, None
     
-#Fonction pour récupérer les 10 premiers participants ayant répondu tout les questionnaires pour tout les catégories et seront affichés
+#Fonction pour récupérer les 10 premiers participants ayant répondu les questionnaires pour TOUT les catégories et seront affichés
 #pour chaque mois et l'année
 def get_top_10_participants():
     top_participants = db.session.query(ReponseParticipant.participant_id,
