@@ -11,15 +11,6 @@
         "reponse_correcte": "b"
       },
       {
-        "question": "Qu'est-ce qu'une procuration ?",
-        "options": {
-          "a": "Un document légal permettant à une personne d'agir au nom d'une autre personne.",
-          "b": "Un document permettant de contester une décision judiciaire.",
-          "c": "Une action en justice intentée par un représentant légal."
-        },
-        "reponse_correcte": "a"
-      },
-      {
         "question": "Quelle est la durée maximale du mandat présidentiel en France ?",
         "options": {
           "a": "5 ans",

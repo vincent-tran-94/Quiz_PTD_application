@@ -16,7 +16,7 @@
             {% for question in questions %}
             <div class="card mt-3">
                 <div class="card-body">
-                    <h5 class="card-title">{{ question.question }}</h5>
+                    <h5 class="card-title"> {{ question.number }}- {{ question.question }}</h5>
                     <div class="form-check">
                         {% if question.options %}
                         {% for option, text in question.options.items() %}
