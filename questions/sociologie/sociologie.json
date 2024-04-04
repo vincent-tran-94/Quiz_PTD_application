@@ -145,6 +145,595 @@
                 "c": "La diversité et l'inclusion dans le milieu de travail."
             },
             "reponse_correcte": "b"
+        },
+        {
+            "question": "Qu'est-ce que l'interactionnisme symbolique en sociologie ?",
+            "options": {
+                "a": "Une approche qui met l'accent sur les structures sociales",
+                "b": "Une approche qui met l'accent sur les valeurs culturelles",
+                "c": "Une approche qui met l'accent sur les interactions entre individus"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "La théorie du conflit en sociologie soutient que les sociétés sont caractérisées par des conflits de pouvoir entre différents groupes sociaux. Vrai ou faux ?",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce que l'effet de halo en sociologie ?",
+            "options": {
+                "a": "Le jugement d'une personne basé sur sa beauté physique",
+                "b": "Le jugement d'une personne basé sur sa personnalité",
+                "c": "Le jugement d'une personne basé sur sa réussite professionnelle"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "La socialisation primaire se produit à l'âge adulte. Vrai ou faux ?",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Qu'est-ce que l'individualisme méthodologique en sociologie ?",
+            "options": {
+                "a": "Une approche qui privilégie l'analyse des structures sociales",
+                "b": "Une approche qui privilégie l'analyse des interactions sociales",
+                "c": "Une approche qui privilégie l'analyse des actions individuelles"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "La sociologie étudie uniquement les interactions entre individus au sein de grandes sociétés. Vrai ou faux ?",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Qu'est-ce que l'effet de groupe en sociologie ?",
+            "options": {
+                "a": "La tendance des individus à agir de manière égoïste pour maximiser leur propre intérêt",
+                "b": "La tendance des individus à agir de manière indépendante",
+                "c": "La tendance des individus à se conformer à la majorité même si cela contredit leur jugement personnel"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "La théorie de l'action rationnelle en sociologie suppose que les individus agissent de manière à maximiser leurs intérêts. Vrai ou faux ?",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce que l'ethnocentrisme en sociologie ?",
+            "options": {
+                "a": "L'acceptation et la valorisation des autres cultures",
+                "b": "La tendance à juger les autres cultures selon les normes de sa propre culture",
+                "c": "L'adaptation à différentes cultures sans jugement de valeur"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "La sociologie étudie uniquement les sociétés occidentales. Vrai ou faux ?",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Qu'est-ce que la théorie du structuralisme en sociologie ?",
+            "options": {
+                "a": "Une approche qui se concentre sur les relations de pouvoir entre individus",
+                "b": "Une approche qui se concentre sur les interactions symboliques entre individus",
+                "c": "Une approche qui se concentre sur les structures sociales et les institutions"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le matérialisme historique est associé à quel théoricien de la sociologie ?",
+            "options": {
+                "a": "Karl Marx",
+                "b": "Émile Durkheim",
+                "c": "Max Weber"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce que la sociologie urbaine ?",
+            "options": {
+                "a": "L'étude des interactions sociales dans les zones rurales",
+                "b": "L'étude des interactions sociales dans les grandes villes",
+                "c": "L'étude des interactions sociales dans les banlieues"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Le concept de 'classe sociale' en sociologie est associé à quel théoricien ?",
+            "options": {
+                "a": "Émile Durkheim",
+                "b": "Karl Marx",
+                "c": "Max Weber"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Qu'est-ce que la mondialisation en sociologie ?",
+            "options": {
+                "a": "Le processus de renforcement des frontières nationales",
+                "b": "Le processus d'interconnexion croissante à l'échelle mondiale",
+                "c": "Le processus de fragmentation des cultures locales"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "La théorie du conflit en sociologie met l'accent sur les interactions symboliques entre individus. Vrai ou faux ?",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Qu'est-ce que la sociologie de la connaissance ?",
+            "options": {
+                "a": "L'étude des interactions sociales dans les communautés de savoir",
+                "b": "L'étude des phénomènes religieux dans la société",
+                "c": "L'étude des liens entre le contexte social et les idées"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "La théorie du structuralisme en sociologie met l'accent sur les interactions entre individus. Vrai ou faux ?",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Qu'est-ce que l'effet de groupe en sociologie ?",
+            "options": {
+                "a": "La tendance des individus à se conformer à la majorité même si cela contredit leur jugement personnel",
+                "b": "La tendance des individus à agir de manière indépendante",
+                "c": "La tendance des individus à agir de manière égoïste pour maximiser leur propre intérêt"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "La théorie de l'action rationnelle en sociologie suppose que les individus agissent de manière irrationnelle. Vrai ou faux ?",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Qu'est-ce que la théorie du structuralisme en sociologie ?",
+            "options": {
+                "a": "Une approche qui se concentre sur les interactions symboliques entre individus",
+                "b": "Une approche qui se concentre sur les relations de pouvoir entre individus",
+                "c": "Une approche qui se concentre sur les structures sociales et les institutions"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Le matérialisme historique est associé à quel théoricien de la sociologie ?",
+            "options": {
+                "a": "Émile Durkheim",
+                "b": "Karl Marx",
+                "c": "Max Weber"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Qu'est-ce que la sociologie urbaine ?",
+            "options": {
+                "a": "L'étude des interactions sociales dans les zones rurales",
+                "b": "L'étude des interactions sociales dans les banlieues",
+                "c": "L'étude des interactions sociales dans les grandes villes"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Quelle est l'une des principales fonctions de la politique éducative ?",
+            "options": {
+                "a": "Promouvoir l'égalité des chances",
+                "b": "Augmenter les frais de scolarité",
+                "c": "Favoriser l'exclusion sociale",
+                "d": "Diminuer l'accès à l'éducation"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est l'une des conséquences de la précarisation de l'emploi ?",
+            "options": {
+                "a": "La stabilité financière",
+                "b": "La sécurité sociale",
+                "c": "L'insécurité économique",
+                "d": "Le plein emploi"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Quel est l'objectif principal de la politique de l'emploi ?",
+            "options": {
+                "a": "Augmenter les inégalités salariales",
+                "b": "Promouvoir la flexibilité du marché du travail",
+                "c": "Réduire le taux de chômage",
+                "d": "Encourager la précarité de l'emploi"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Quel est l'impact de la mondialisation sur le marché du travail ?",
+            "options": {
+                "a": "La réduction de la concurrence",
+                "b": "L'augmentation de la sécurité de l'emploi",
+                "c": "La délocalisation d'entreprises",
+                "d": "La diminution des inégalités salariales"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Quel est l'un des défis majeurs de la politique éducative contemporaine ?",
+            "options": {
+                "a": "La réduction de l'accès à l'éducation",
+                "b": "L'adaptation aux besoins du marché du travail",
+                "c": "La promotion de l'exclusion sociale",
+                "d": "La limitation de la diversité culturelle"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quels sont les facteurs pouvant influencer les migrations internationales ?",
+            "multi_options": {
+                "a": "Les opportunités d'emploi",
+                "b": "Les conflits armés",
+                "c": "Les changements climatiques",
+                "d": "Les liens familiaux"
+            },
+            "reponse_correcte": [
+                "a",
+                "b",
+                "c",
+                "d"
+            ]
+        },
+        {
+            "question": "Quels sont les défis liés à l'urbanisation rapide dans les pays en développement ?",
+            "multi_options": {
+                "a": "La surpopulation",
+                "b": "L'insuffisance des infrastructures",
+                "c": "La pollution",
+                "d": "La désertification"
+            },
+            "reponse_correcte": [
+                "a",
+                "b",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les aspects de la religion susceptibles d'influencer la société ?",
+            "multi_options": {
+                "a": "Les croyances morales",
+                "b": "Les pratiques rituelles",
+                "c": "Les interdictions alimentaires",
+                "d": "Les modes vestimentaires"
+            },
+            "reponse_correcte": [
+                "a",
+                "b",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les facteurs socio-économiques pouvant affecter la santé d'une population ?",
+            "multi_options": {
+                "a": "Le niveau de revenu",
+                "b": "L'accès aux soins de santé",
+                "c": "Le niveau d'éducation",
+                "d": "Le statut social"
+            },
+            "reponse_correcte": [
+                "a",
+                "b",
+                "c",
+                "d"
+            ]
+        },
+        {
+            "question": "Quels sont les impacts de la migration sur les communautés d'origine et d'accueil ?",
+            "multi_options": {
+                "a": "La perte de main-d'œuvre qualifiée",
+                "b": "La diversification culturelle",
+                "c": "La pression sur les infrastructures",
+                "d": "L'enrichissement de la diversité linguistique"
+            },
+            "reponse_correcte": [
+                "a",
+                "b",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les effets de l'urbanisation sur l'environnement ?",
+            "multi_options": {
+                "a": "La déforestation",
+                "b": "L'étalement urbain",
+                "c": "La pollution de l'air",
+                "d": "La préservation des écosystèmes"
+            },
+            "reponse_correcte": [
+                "a",
+                "b",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les rôles des institutions religieuses dans la société ?",
+            "multi_options": {
+                "a": "La transmission des valeurs morales",
+                "b": "L'organisation de la vie communautaire",
+                "c": "La redistribution des richesses",
+                "d": "La gouvernance politique"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les déterminants sociaux de la santé ?",
+            "multi_options": {
+                "a": "Le statut socio-économique",
+                "b": "Le genre",
+                "c": "L'appartenance ethnique",
+                "d": "Le niveau d'urbanisation"
+            },
+            "reponse_correcte": [
+                "a",
+                "b",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les défis spécifiques rencontrés par les migrants en matière de santé ?",
+            "multi_options": {
+                "a": "Les barrières linguistiques",
+                "b": "L'accès limité aux soins de santé",
+                "c": "La discrimination",
+                "d": "L'isolement social"
+            },
+            "reponse_correcte": [
+                "a",
+                "b",
+                "c",
+                "d"
+            ]
+        },
+        {
+            "question": "Quels sont les impacts de la religion sur la structure sociale d'une société ?",
+            "multi_options": {
+                "a": "La hiérarchisation des classes sociales",
+                "b": "La légitimation des normes sociales",
+                "c": "La régulation des relations familiales",
+                "d": "L'organisation de la vie politique"
+            },
+            "reponse_correcte": [
+                "b",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les facteurs qui influencent la croissance urbaine ?",
+            "multi_options": {
+                "a": "La recherche d'emploi",
+                "b": "La disponibilité des services publics",
+                "c": "Les opportunités économiques",
+                "d": "Les politiques gouvernementales"
+            },
+            "reponse_correcte": [
+                "a",
+                "b",
+                "c",
+                "d"
+            ]
+        },
+        {
+            "question": "Quels sont les liens entre la religion et la migration ?",
+            "multi_options": {
+                "a": "La pratique religieuse peut faciliter l'intégration des migrants",
+                "b": "Les migrations peuvent entraîner la diffusion de nouvelles croyances",
+                "c": "La religion peut être un facteur de discrimination à l'égard des migrants",
+                "d": "Les institutions religieuses offrent souvent un soutien aux migrants"
+            },
+            "reponse_correcte": [
+                "a",
+                "b",
+                "c",
+                "d"
+            ]
+        },
+        {
+            "question": "Quels sont les principaux facteurs contribuant à la résilience des communautés urbaines face aux défis environnementaux ?",
+            "multi_options": {
+                "a": "La coopération entre les habitants",
+                "b": "La disponibilité des ressources naturelles",
+                "c": "L'implication des autorités locales",
+                "d": "L'éducation environnementale"
+            },
+            "reponse_correcte": [
+                "a",
+                "c",
+                "d"
+            ]
+        },
+        {
+            "question": "Quels sont les déterminants sociaux de l'accès aux soins de santé ?",
+            "multi_options": {
+                "a": "Le niveau d'éducation",
+                "b": "Le statut socio-économique",
+                "c": "Le lieu de résidence",
+                "d": "Le genre"
+            },
+            "reponse_correcte": [
+                "a",
+                "b",
+                "c",
+                "d"
+            ]
+        },
+        {
+            "question": "Quels sont les effets des croyances religieuses sur les comportements de santé ?",
+            "multi_options": {
+                "a": "Elles peuvent influencer les choix alimentaires",
+                "b": "Elles peuvent encourager la pratique d'activités physiques",
+                "c": "Elles peuvent affecter la décision de recourir aux soins médicaux",
+                "d": "Elles peuvent favoriser la consommation d'alcool et de tabac"
+            },
+            "reponse_correcte": [
+                "a",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les impacts des migrations sur la dynamique démographique des zones rurales ?",
+            "multi_options": {
+                "a": "Le vieillissement de la population",
+                "b": "La diminution de la population active",
+                "c": "La revitalisation des communautés locales",
+                "d": "L'augmentation de la diversité ethnique"
+            },
+            "reponse_correcte": [
+                "c",
+                "d"
+            ]
+        },
+        {
+            "question": "Quels sont les facteurs qui contribuent à la formation des quartiers religieux dans les villes ?",
+            "multi_options": {
+                "a": "La présence d'institutions religieuses",
+                "b": "La concentration de fidèles appartenant à la même communauté",
+                "c": "Les politiques de zonage urbain",
+                "d": "L'histoire migratoire de la ville"
+            },
+            "reponse_correcte": [
+                "a",
+                "b",
+                "d"
+            ]
+        },
+        {
+            "question": "Quels sont les défis posés par l'urbanisation rapide en termes de santé publique ?",
+            "multi_options": {
+                "a": "L'augmentation des maladies infectieuses",
+                "b": "La précarité des conditions de vie",
+                "c": "La pollution de l'air et de l'eau",
+                "d": "La surcharge des services de santé"
+            },
+            "reponse_correcte": [
+                "a",
+                "b",
+                "c",
+                "d"
+            ]
+        },
+        {
+            "question": "Quels sont les effets des migrations sur la composition ethnique des populations urbaines ?",
+            "multi_options": {
+                "a": "L'homogénéisation ethnique",
+                "b": "La diversification ethnique",
+                "c": "La ségrégation ethnique",
+                "d": "L'assimilation ethnique"
+            },
+            "reponse_correcte": [
+                "b",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les défis liés à la santé mentale des migrants ?",
+            "multi_options": {
+                "a": "La discrimination",
+                "b": "La perte de repères culturels",
+                "c": "Les traumatismes liés à l'exil",
+                "d": "L'acculturation"
+            },
+            "reponse_correcte": [
+                "a",
+                "b",
+                "c",
+                "d"
+            ]
+        },
+        {
+            "question": "Quels sont les facteurs socio-économiques qui influencent les pratiques religieuses ?",
+            "multi_options": {
+                "a": "Le niveau de revenu",
+                "b": "Le niveau d'éducation",
+                "c": "Le statut social",
+                "d": "Le lieu de résidence"
+            },
+            "reponse_correcte": [
+                "a",
+                "b",
+                "c",
+                "d"
+            ]
+        },
+        {
+            "question": "Quels sont les effets de l'urbanisation sur la santé des populations urbaines ?",
+            "multi_options": {
+                "a": "L'augmentation des maladies non transmissibles",
+                "b": "La réduction de l'accès aux soins de santé",
+                "c": "La détérioration de la qualité de l'air",
+                "d": "La propagation des maladies infectieuses"
+            },
+            "reponse_correcte": [
+                "a",
+                "b",
+                "c",
+                "d"
+            ]
+        },
+        {
+            "question": "Quels sont les rôles des organisations religieuses dans les opérations humanitaires ?",
+            "multi_options": {
+                "a": "La fourniture d'aide alimentaire",
+                "b": "L'assistance médicale",
+                "c": "Le soutien psychologique",
+                "d": "La reconstruction des infrastructures"
+            },
+            "reponse_correcte": [
+                "a",
+                "b",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les enjeux de l'accès à l'eau potable dans les zones urbaines en développement ?",
+            "multi_options": {
+                "a": "La prévention des maladies hydriques",
+                "b": "L'amélioration de l'hygiène",
+                "c": "La réduction des inégalités socio-économiques",
+                "d": "La préservation des ressources en eau"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
         }
     ]
 }

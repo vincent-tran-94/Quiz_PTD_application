@@ -27,6 +27,7 @@ chmod +x run.sh
 #Host configuration and port 
 host='0.0.0.0'
 port=5000
+mail_association = 'timeroyal@gmail.com'
 
 # Créez une instance de LoginManager
 login_manager = LoginManager()
@@ -34,7 +35,7 @@ login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(user_id)
+    return db.session.get(User, user_id)
 
 
 #Fonction de la première connexion
@@ -201,7 +202,7 @@ def contact():
         db.session.commit()
 
         try: 
-            msg = Message(f'Application PTDlegalQuiz - Nouveau message de la part de {nom}', recipients=['timeroyal@gmail.com'],body=f"Nom: {nom}\nEmail: {email}\n Tel: {tel}\n  Message: {message}")
+            msg = Message(f'Application PTDlegalQuiz - Nouveau message de la part de {nom}', recipients=[mail_association],body=f"Nom: {nom}\nEmail: {email}\nTel: {tel}\nMessage: {message}")
             mail.send(msg)
         except Exception as e:
             print('Une erreur s\'est produite lors de l\'envoi du message.')

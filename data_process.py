@@ -27,7 +27,6 @@ def open_file_json_from_directory(directory):
             data_json = json.load(file)
             all_questions.extend(data_json['questions'])
 
-
     # Mélanger toutes les questions
     random.shuffle(all_questions)
     selected_questions = all_questions[:30]
