@@ -10,12 +10,6 @@
 }
 
 
-body {
-    overflow: auto; /* Défilement automatique si nécessaire */
-    min-height: 100vh;
-
-}
-
 .top-margin {
     margin-top: 40px; 
 }
@@ -25,6 +19,8 @@ body {
     font-family: "Times New Roman", Times, serif; /* Utilise une police de caractères plus traditionnelle */
     text-shadow: 2px 2px 4px rgba(34, 32, 32, 0.5); /* Ajoute une ombre texturée */
 }
+
+
 
 .col-md-4 {
     margin-top: 30px;

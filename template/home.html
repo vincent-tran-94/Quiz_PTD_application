@@ -13,8 +13,9 @@
             background-size: cover;
             background-repeat: no-repeat;
             color: #000;
+            overflow: auto; 
+            min-height: 100vh;
         }
-
         #contact {
             background-image: url("{{ url_for('static',filename=image_background_contact)}}");
             background-size: cover;
@@ -64,24 +65,7 @@
             <source src="{{ url_for('static', filename='videos/don_association.mp4') }}" type="video/mp4">
         </video>
     </div>
-
-    <script>
-        var videos = document.querySelectorAll('.video video');
-    
-        videos.forEach(function(video) {
-            video.addEventListener('play', function() {
-                pauseOtherVideos(video);
-            });
-        });
-    
-        function pauseOtherVideos(currentVideo) {
-            videos.forEach(function(video) {
-                if (video !== currentVideo && !video.paused) {
-                    video.pause();
-                }
-            });
-        }
-    </script>
+    <script src="{{ url_for('static', filename='js/videos.js') }}"></script>
     <section id="description">
         <div class="container">
             <p><strong> PTDlegalQuiz est une application pédagogique de concours de quiz qui propose une expérience 
@@ -95,9 +79,8 @@
             Vous avez 10 minutes pour répondre à tout les questions. A savoir si vous sortez du quiz, vous perdrez 30 secondes chaque fois que cela se produira, au bout la deuxième fois. </br>  </span> 
             Au niveau des récompenses, on peut proposer <span style="background-color: rgba(102, 204, 153); color: black;"> soit des livres juridiques, 
             des produits alimentaires, des vêtements, des produits high-tech à gagner ! </span> 
-            <div style="text-align:center"> Bon courage à vous ! Amusez-vous bien ! </style> 
-            <div style="text-align:center"> En cas de problème, n'hésitez pas de nous contacter ci-dessous 👇</style> </strong>
-
+            <div style="text-align:center"> Bon courage à vous ! Amusez-vous bien ! </br> 
+            En cas de problème, n'hésitez pas de nous contacter ci-dessous 👇</style> </strong>
             </p>
         </div>
     </section>
@@ -172,6 +155,5 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 </body>
 </html>

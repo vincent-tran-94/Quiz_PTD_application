@@ -289,6 +289,9 @@ def dashboard():
     else: 
         return redirect(url_for('accueil'))
     
+@app.route('/avis')
+def avis():
+    return render_template('note.html')
 
 #Lancement de l'application
 if __name__ == '__main__':
