@@ -19,3 +19,10 @@ function searchTable() {
         }
     }
 }
+
+// Obtenir la date actuelle
+var currentDate = new Date();
+// Sélectionner le mois actuel
+document.getElementById('month').value = currentDate.getMonth() + 1;
+// Sélectionner l'année actuelle
+document.getElementById('year').value = currentDate.getFullYear();

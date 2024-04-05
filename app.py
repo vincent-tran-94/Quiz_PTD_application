@@ -276,7 +276,7 @@ def dashboard():
         graph_json_success = get_participants_success_percentage()
         graph_json_participants = get_participants_count_by_category()
         graph_json_participants_month = get_participants_by_month()
-        top_participants = get_top_10_participants()
+        top_participants = get_top_50_participants()
         indexed_top_participants = list(enumerate(top_participants, start=1))
     
         if request.method == 'POST':
@@ -306,14 +306,7 @@ def dashboard():
     else: 
         return redirect(url_for('accueil'))
     
-
-if __name__ == '__main__':
-    app.run(debug=True)
     
-
-
 #Lancement de l'application
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
     app.run(debug=True,host=host,port=port)
