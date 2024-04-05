@@ -80,7 +80,6 @@ class Contact(db.Model):
     message = db.Column(db.String(1000))
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
 
-
 def get_participant_name(participant_id):
     participant = Participant.query.filter_by(participant_id=participant_id).first()
     if participant:

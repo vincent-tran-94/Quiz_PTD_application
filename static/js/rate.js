@@ -10,7 +10,7 @@ $(document).ready(function() {
         });
     });
 
-    $('.star').on('click', function() {
+    $('.star').one('click', function() {
         var rating = parseInt($(this).attr('data-rating'));
         $('#thank-you-message').show();
         $('.star').each(function() {

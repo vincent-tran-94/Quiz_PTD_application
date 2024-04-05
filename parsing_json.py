@@ -21,13 +21,21 @@ def merge_json_files(directory):
 def write_json_file(data, output_file):
     with open(output_file, "w", encoding="utf-8") as file:
         json.dump(data, file, indent=4, ensure_ascii=False)
+
+
     
 if __name__ == "__main__":
-    directory = "questions/sociologie"
-    output_file = "sociologie.json"
+    directory = "questions/humanitaire"
+    output_file = "humanitaire.json"
+    all_questions = []    
+    with open(os.path.join(directory, output_file), 'r', encoding='utf-8') as file:
+            data_json = json.load(file)
+            all_questions.extend(data_json['questions'])
+            
+    print(len(all_questions))
 
-    merged_data = merge_json_files(directory)
-    write_json_file(merged_data, output_file)
-    print("Les doublons ont été supprimés avec succès.")
+    # merged_data = merge_json_files(directory)
+    # write_json_file(merged_data, output_file)
+    # print("Les doublons ont été supprimés avec succès.")
 
     

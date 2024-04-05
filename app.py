@@ -7,6 +7,7 @@ from vizualisation import *
 from mail import *
 from data_process import *
 
+
 """
 CONSIGNES POUR LANCER l'APPLICATION:
 1) Créer un environnement virtuel et lancer les dépendances
@@ -36,7 +37,6 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(user_id):
     return db.session.get(User, user_id)
-
 
 #Fonction de la première connexion
 @app.route('/', methods=['GET', 'POST'])
@@ -306,9 +306,11 @@ def dashboard():
     else: 
         return redirect(url_for('accueil'))
     
-@app.route('/avis')
-def avis():
-    return render_template('note.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+    
+
 
 #Lancement de l'application
 if __name__ == '__main__':
