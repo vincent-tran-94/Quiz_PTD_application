@@ -1,6 +1,6 @@
 from models import *
 import uuid 
-from flask import render_template, request, redirect, url_for, session, flash
+from flask import render_template, request, redirect, url_for, session, flash, jsonify
 from flask_login import LoginManager,login_required, logout_user, login_user
 from sqlalchemy.orm.exc import NoResultFound
 from vizualisation import *
@@ -30,6 +30,7 @@ host='0.0.0.0'
 port=5000
 mail_association = 'timeroyal@gmail.com'
 
+
 # Créez une instance de LoginManager
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -37,6 +38,7 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(user_id):
     return db.session.get(User, user_id)
+
 
 #Fonction de la première connexion
 @app.route('/', methods=['GET', 'POST'])
@@ -306,7 +308,8 @@ def dashboard():
     else: 
         return redirect(url_for('accueil'))
     
-    
+
+
 #Lancement de l'application
 if __name__ == '__main__':
     app.run(debug=True,host=host,port=port)

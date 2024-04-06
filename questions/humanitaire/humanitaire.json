@@ -335,15 +335,6 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "Quel est le principal objectif de l'assistance humanitaire ?",
-            "options": {
-                "a": "Promouvoir la domination des grandes organisations",
-                "b": "Fournir une aide aux personnes touchées par des crises",
-                "c": "Maximiser les profits des organisations humanitaires"
-            },
-            "reponse_correcte": "b"
-        },
-        {
             "question": "Quel est l'objectif principal de l'assistance humanitaire ?",
             "options": {
                 "a": "Promouvoir la domination des grandes organisations",
@@ -793,15 +784,6 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "Qu'est-ce que l'assistance psychosociale et son importance ?",
-            "options": {
-                "a": "Fournir soutien émotionnel, renforcer résilience.",
-                "b": "Encourager populations touchées à retourner pays.",
-                "c": "Promouvoir santé mentale des travailleurs humanitaires."
-            },
-            "reponse_correcte": "b"
-        },
-        {
             "question": "Reconstruction post-crise et son objectif ?",
             "options": {
                 "a": "Rétablir infrastructures, promouvoir développement durable.",
@@ -829,15 +811,6 @@
             "reponse_correcte": "c"
         },
         {
-            "question": "Protection des civils dans contexte humanitaire ?",
-            "options": {
-                "a": "Mesures pour protéger contre violences et abus.",
-                "b": "Protéger uniquement infrastructures.",
-                "c": "Promouvoir domination population."
-            },
-            "reponse_correcte": "c"
-        },
-        {
             "question": "Différence entre aide humanitaire d'urgence et à long terme ?",
             "options": {
                 "a": "Urgence: maximiser profits, Long terme: domination.",
@@ -845,24 +818,6 @@
                 "c": "Pas de différence entre les deux."
             },
             "reponse_correcte": "a"
-        },
-        {
-            "question": "Importance de coordination et collaboration acteurs humanitaires ?",
-            "options": {
-                "a": "Éviter duplications, maximiser impact de l'aide.",
-                "b": "Favoriser domination grandes organisations.",
-                "c": "Non important dans situations de crise."
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Responsabilité et redevabilité dans action humanitaire ?",
-            "options": {
-                "a": "Rendre compte actions et décisions, répondre besoins populations.",
-                "b": "Concernent uniquement grandes organisations.",
-                "c": "Pas importantes."
-            },
-            "reponse_correcte": "b"
         },
         {
             "question": "Importance de protéger travailleurs humanitaires ?",

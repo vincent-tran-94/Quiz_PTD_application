@@ -199,15 +199,6 @@
             "reponse_correcte": "a"
         },
         {
-            "question": "Qui peut bénéficier de l'aide juridictionnelle en France ?",
-            "options": {
-                "a": "Toute personne, sans condition de ressources.",
-                "b": "Uniquement les personnes démunies, sous certaines conditions de ressources.",
-                "c": "Uniquement les personnes victimes d'infractions pénales."
-            },
-            "reponse_correcte": "b"
-        },
-        {
             "question": "Quelle est la signification de l'acronyme CNIL en France ?",
             "options": {
                 "a": "Conseil National de l'Industrie Laitière",
@@ -215,15 +206,6 @@
                 "c": "Commission Nationale de l'Informatique et des Libertés"
             },
             "reponse_correcte": "b"
-        },
-        {
-            "question": "Qu'est-ce que la présomption d'innocence ?",
-            "options": {
-                "a": "Un principe ne s'appliquant qu'aux mineurs dans le cadre de procédures judiciaires.",
-                "b": "Une présomption permettant à une personne de se considérer comme étant sans faute.",
-                "c": "Le principe selon lequel toute personne est considérée comme innocente tant que sa culpabilité n'a pas été prouvée."
-            },
-            "reponse_correcte": "c"
         },
         {
             "question": "Qu'est-ce qu'un vice caché dans un contrat de vente ?",
@@ -453,15 +435,6 @@
             "reponse_correcte": "a"
         },
         {
-            "question": "Quelle est la durée légale du congé de paternité en France ?",
-            "options": {
-                "a": "1 semaine",
-                "b": "2 semaines",
-                "c": "3 semaines"
-            },
-            "reponse_correcte": "b"
-        },
-        {
             "question": "Quelle est la procédure permettant de régler un litige sans intervention judiciaire en France ?",
             "options": {
                 "a": "L'arbitrage",
@@ -551,15 +524,6 @@
             "reponse_correcte": "c"
         },
         {
-            "question": "Qu'est-ce qu'un contrat de bail ?",
-            "options": {
-                "a": "Un contrat liant un bailleur et un locataire pour la location d'un bien immobilier.",
-                "b": "Un contrat liant un employeur et un salarié pour la réalisation d'un travail spécifique.",
-                "c": "Un contrat entre deux entreprises pour la fourniture de biens ou de services."
-            },
-            "reponse_correcte": "a"
-        },
-        {
             "question": "Quelle est la durée légale du préavis en cas de démission d'un salarié en France ?",
             "options": {
                 "a": "1 semaine",
@@ -578,23 +542,6 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "Quelle est la durée légale du congé de maternité en France ?",
-            "options": {
-                "a": "10 semaines",
-                "b": "16 semaines",
-                "c": "20 semaines"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Qu'est-ce que la présomption d'innocence ?",
-            "options": {
-                "a": "Le principe selon lequel toute personne est considérée comme innocente tant que sa culpabilité n'a pas été prouvée.",
-                "b": "Une présomption permettant à une personne de se considérer comme étant sans faute.",
-                "c": "Un principe ne s'appliquant qu'aux mineurs dans le cadre de procédures judiciaires."
-            }
-        },
-        {
             "question": "Quelle est la signification de l'acronyme CNIL en France ?",
             "options": {
                 "a": "Conseil National de l'Industrie Laitière",
@@ -602,15 +549,6 @@
                 "c": "Centre National d'Information sur le Logement"
             },
             "reponse_correcte": "b"
-        },
-        {
-            "question": "Qu'est-ce qu'une jurisprudence ?",
-            "options": {
-                "a": "L'ensemble des lois en vigueur dans un pays.",
-                "b": "Une doctrine juridique établie par un tribunal supérieur.",
-                "c": "L'ensemble des décisions de justice rendues par les tribunaux."
-            },
-            "reponse_correcte": "c"
         },
         {
             "question": "Qui peut bénéficier de l'aide juridictionnelle en France ?",
@@ -627,15 +565,6 @@
                 "a": "Un principe ne s'appliquant qu'aux mineurs dans le cadre de procédures judiciaires. ",
                 "b": "Une présomption permettant à une personne de se considérer comme étant sans faute.",
                 "c": "Le principe selon lequel toute personne est considérée comme innocente tant que sa culpabilité n'a pas été prouvée."
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Quel est l'organe chargé de la protection des données personnelles en France ?",
-            "options": {
-                "a": "La Cour de cassation",
-                "b": "La Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes (DGCCRF)",
-                "c": "La Commission Nationale de l'Informatique et des Libertés (CNIL) "
             },
             "reponse_correcte": "c"
         },

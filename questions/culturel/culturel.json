@@ -2,15 +2,6 @@
     "thematique": "culturel",
     "questions": [
         {
-            "question": "Dans quel film classique de Stanley Kubrick apparaît le personnage de Jack Torrance, interprété par Jack Nicholson ?",
-            "options": {
-                "a": "2001 : L'Odyssée de l'espace",
-                "b": "Shining",
-                "c": "Orange mécanique"
-            },
-            "reponse_correcte": "b"
-        },
-        {
             "question": "Vrai ou faux : Le Fantôme de l'Opéra est basé sur un roman français du XIXe siècle.",
             "options": {
                 "a": "Vrai",
@@ -28,39 +19,12 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "Quel acteur a remporté un Oscar pour son rôle dans le film The Godfather (Le Parrain) ?",
-            "options": {
-                "a": "Al Pacino",
-                "b": "Robert De Niro",
-                "c": "Marlon Brando"
-            },
-            "reponse_correcte": "c"
-        },
-        {
             "question": "Vrai ou faux : La pièce de théâtre Roméo et Juliette a été écrite par William Shakespeare.",
             "options": {
                 "a": "Vrai",
                 "b": "Faux"
             },
             "reponse_correcte": "a"
-        },
-        {
-            "question": "Qui a réalisé le film musical La La Land, nominé pour plusieurs Oscars ?",
-            "options": {
-                "a": "Steven Spielberg",
-                "b": "Damien Chazelle",
-                "c": "Christopher Nolan"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Combien de fois la comédie musicale Cats a-t-elle été adaptée au cinéma ?",
-            "options": {
-                "a": "Jamais",
-                "b": "Une fois",
-                "c": "Deux fois"
-            },
-            "reponse_correcte": "c"
         },
         {
             "question": "Vrai ou faux : Le compositeur Wolfgang Amadeus Mozart est l'auteur de l'opéra Don Giovanni.",
@@ -78,15 +42,6 @@
                 "c": "Nomadland"
             },
             "reponse_correcte": "c"
-        },
-        {
-            "question": "Quel célèbre dramaturge a écrit la pièce de théâtre Hamlet ?",
-            "options": {
-                "a": "Anton Tchekhov",
-                "b": "William Shakespeare",
-                "c": "Henrik Ibsen"
-            },
-            "reponse_correcte": "b"
         },
         {
             "question": "Vrai ou faux : La chanteuse Madonna a remporté un Oscar pour sa performance dans le film Evita.",
@@ -210,15 +165,6 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "Quel réalisateur est connu pour son travail sur les films d'animation tels que Le Voyage de Chihiro et Mon voisin Totoro ?",
-            "options": {
-                "a": "Hayao Miyazaki",
-                "b": "Isao Takahata",
-                "c": "Mamoru Hosoda"
-            },
-            "reponse_correcte": "a"
-        },
-        {
             "question": "Vrai ou faux : Le compositeur allemand Richard Wagner est l'auteur de l'opéra Carmen.",
             "options": {
                 "a": "Vrai",
@@ -234,15 +180,6 @@
                 "c": "Jackie Brown"
             },
             "reponse_correcte": "b"
-        },
-        {
-            "question": "Quel réalisateur est connu pour son travail sur les comédies musicales telles que Singin' in the Rain et Un Américain à Paris ?",
-            "options": {
-                "a": "Stanley Donen",
-                "b": "Gene Kelly",
-                "c": "Vincente Minnelli"
-            },
-            "reponse_correcte": "a"
         },
         {
             "question": "Vrai ou faux : Le film musical Les Misérables est basé sur un roman de Victor Hugo.",
@@ -279,15 +216,6 @@
             "reponse_correcte": "a"
         },
         {
-            "question": "Dans quelle ville se déroule l'intrigue de la comédie musicale Les Misérables ?",
-            "options": {
-                "a": "Paris",
-                "b": "Londres",
-                "c": "New York"
-            },
-            "reponse_correcte": "b"
-        },
-        {
             "question": "Quel réalisateur a remporté le plus grand nombre d'Oscars ?",
             "options": {
                 "a": "Steven Spielberg",
@@ -303,41 +231,6 @@
                 "b": "Faux"
             },
             "reponse_correcte": "b"
-        },
-        {
-            "question": "Qui a réalisé le film musical La La Land, nominé pour plusieurs Oscars ?",
-            "options": {
-                "a": "Steven Spielberg",
-                "b": "Damien Chazelle",
-                "c": "Christopher Nolan"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Combien de fois la comédie musicale Cats a-t-elle été adaptée au cinéma ?",
-            "options": {
-                "a": "Jamais",
-                "b": "Une fois",
-                "c": "Deux fois"
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Vrai ou faux : Le compositeur Wolfgang Amadeus Mozart est l'auteur de l'opéra Don Giovanni ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "vrai"
-        },
-        {
-            "question": "Quel film a remporté l'Oscar du meilleur film en 2019 ?",
-            "options": {
-                "a": "Green Book : Sur les routes du sud",
-                "b": "Parasite",
-                "c": "Nomadland"
-            },
-            "reponse_correcte": "c"
         },
         {
             "question": "Quel célèbre dramaturge a écrit la pièce de théâtre Roméo et Juliette ?",
@@ -497,14 +390,6 @@
             "reponse_correcte": "c"
         },
         {
-            "question": "Vrai ou faux : Le film La La Land a remporté l'Oscar du meilleur film en 2017 ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "b"
-        },
-        {
             "question": "Quel célèbre dramaturge a écrit la pièce de théâtre Hamlet ?",
             "options": {
                 "a": "Anton Tchekhov",
@@ -512,15 +397,6 @@
                 "c": "Henrik Ibsen"
             },
             "reponse_correcte": "b"
-        },
-        {
-            "question": "Quel réalisateur est connu pour son travail sur les comédies musicales telles que Singin' in the Rain et Un Américain à Paris ?",
-            "options": {
-                "a": "Stanley Donen",
-                "b": "Gene Kelly",
-                "c": "Vincente Minnelli"
-            },
-            "reponse_correcte": "a"
         },
         {
             "question": "Qu'est-ce que la Croix-Rouge et son rôle dans les crises humanitaires ?",
@@ -802,23 +678,6 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "Vrai ou faux : Le Fantôme de l'Opéra est basé sur un roman français du XIXe siècle ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Dans quelle ville se déroule l'intrigue de la comédie musicale Les Misérables ?",
-            "options": {
-                "a": "Paris",
-                "b": "Londres",
-                "c": "New York"
-            },
-            "reponse_correcte": "b"
-        },
-        {
             "question": "Quel acteur a remporté un Oscar pour son rôle dans le film The Godfather (Le Parrain) ?",
             "options": {
                 "a": "Al Pacino",
@@ -854,49 +713,6 @@
             "reponse_correcte": "c"
         },
         {
-            "question": "Vrai ou faux : Le compositeur Wolfgang Amadeus Mozart est l'auteur de l'opéra Don Giovanni ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Quel film a remporté l'Oscar du meilleur film en 2019 ?",
-            "options": {
-                "a": "Green Book : Sur les routes du sud",
-                "b": "Parasite",
-                "c": "Nomadland"
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Quel célèbre dramaturge a écrit la pièce de théâtre Hamlet ?",
-            "options": {
-                "a": "Anton Tchekhov",
-                "b": "William Shakespeare",
-                "c": "Henrik Ibsen"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Vrai ou faux : La chanteuse Madonna a remporté un Oscar pour sa performance dans le film Evita ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Qui a réalisé le film musical Les Misérables sorti en 2012 ?",
-            "options": {
-                "a": "Tom Hooper",
-                "b": "Baz Luhrmann",
-                "c": "Rob Marshall"
-            },
-            "reponse_correcte": "a"
-        },
-        {
             "question": "Combien de films composent la trilogie du Seigneur des Anneaux réalisée par Peter Jackson ?",
             "options": {
                 "a": "Deux",
@@ -906,54 +722,10 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "Vrai ou faux : Le film musical Chicago est basé sur une pièce de théâtre ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Quel célèbre compositeur a écrit la musique de la comédie musicale Les Misérables ?",
-            "options": {
-                "a": "Andrew Lloyd Webber",
-                "b": "Stephen Sondheim",
-                "c": "Claude-Michel Schönberg"
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Dans quel film Alfred Hitchcock fait-il une apparition furtive en arrière-plan ?",
-            "options": {
-                "a": "Fenêtre sur cour",
-                "b": "Psychose",
-                "c": "Les Oiseaux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
             "question": "Vrai ou faux : Le compositeur russe Piotr Ilitch Tchaïkovski est l'auteur du ballet Le Lac des cygnes ?",
             "options": {
                 "a": "Vrai",
                 "b": "Faux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Dans quel film Leonardo DiCaprio incarne-t-il le personnage de Jack Dawson ?",
-            "options": {
-                "a": "Titanic",
-                "b": "Inception",
-                "c": "The Revenant"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Combien de comédies musicales composent le film Les Parapluies de Cherbourg ?",
-            "options": {
-                "a": "Une",
-                "b": "Deux",
-                "c": "Trois"
             },
             "reponse_correcte": "a"
         },
@@ -975,23 +747,6 @@
             "reponse_correcte": "a"
         },
         {
-            "question": "Quel est le titre de la chanson emblématique du film Casablanca, interprétée par Dooley Wilson ?",
-            "options": {
-                "a": "'As Time Goes By'",
-                "b": "'Moon River'",
-                "c": "'Somewhere Over the Rainbow'"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Vrai ou faux : Le film La La Land a remporté l'Oscar du meilleur film en 2017 ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "b"
-        },
-        {
             "question": "Dans quelle pièce de théâtre célèbre trouve-t-on le personnage de Cyrano de Bergerac ?",
             "options": {
                 "a": "Les Fourberies de Scapin",
@@ -1010,14 +765,6 @@
             "reponse_correcte": "a"
         },
         {
-            "question": "Vrai ou faux : Le compositeur allemand Richard Wagner est l'auteur de l'opéra Carmen ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "faux"
-        },
-        {
             "question": "Dans quel film Quentin Tarantino a-t-il introduit le personnage de Jules Winnfield, joué par Samuel L. Jackson ?",
             "options": {
                 "a": "Reservoir Dogs",
@@ -1034,23 +781,6 @@
                 "c": "Vincente Minnelli"
             },
             "reponse_correcte": "a"
-        },
-        {
-            "question": "Vrai ou faux : Le film musical Les Misérables est basé sur un roman de Victor Hugo ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "vrai"
-        },
-        {
-            "question": "Dans quelle ville se déroule l'action du film musical West Side Story ?",
-            "options": {
-                "a": "Los Angeles",
-                "b": "New York",
-                "c": "Chicago"
-            },
-            "reponse_correcte": "b"
         },
         {
             "question": "Quels sont les droits protégés par le droit d'auteur dans le domaine du cinéma ?",

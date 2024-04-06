@@ -241,24 +241,6 @@
             "reponse_correcte": "c"
         },
         {
-            "question": "Le matérialisme historique est associé à quel théoricien de la sociologie ?",
-            "options": {
-                "a": "Karl Marx",
-                "b": "Émile Durkheim",
-                "c": "Max Weber"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Qu'est-ce que la sociologie urbaine ?",
-            "options": {
-                "a": "L'étude des interactions sociales dans les zones rurales",
-                "b": "L'étude des interactions sociales dans les grandes villes",
-                "c": "L'étude des interactions sociales dans les banlieues"
-            },
-            "reponse_correcte": "b"
-        },
-        {
             "question": "Le concept de 'classe sociale' en sociologie est associé à quel théoricien ?",
             "options": {
                 "a": "Émile Durkheim",
@@ -302,30 +284,12 @@
             "reponse_correcte": "b"
         },
         {
-            "question": "Qu'est-ce que l'effet de groupe en sociologie ?",
-            "options": {
-                "a": "La tendance des individus à se conformer à la majorité même si cela contredit leur jugement personnel",
-                "b": "La tendance des individus à agir de manière indépendante",
-                "c": "La tendance des individus à agir de manière égoïste pour maximiser leur propre intérêt"
-            },
-            "reponse_correcte": "a"
-        },
-        {
             "question": "La théorie de l'action rationnelle en sociologie suppose que les individus agissent de manière irrationnelle. Vrai ou faux ?",
             "options": {
                 "a": "Vrai",
                 "b": "Faux"
             },
             "reponse_correcte": "b"
-        },
-        {
-            "question": "Qu'est-ce que la théorie du structuralisme en sociologie ?",
-            "options": {
-                "a": "Une approche qui se concentre sur les interactions symboliques entre individus",
-                "b": "Une approche qui se concentre sur les relations de pouvoir entre individus",
-                "c": "Une approche qui se concentre sur les structures sociales et les institutions"
-            },
-            "reponse_correcte": "a"
         },
         {
             "question": "Le matérialisme historique est associé à quel théoricien de la sociologie ?",
