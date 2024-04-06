@@ -698,6 +698,187 @@
                 "a",
                 "b"
             ]
+        },
+        {
+            "question": "La _______ est l'étude scientifique des groupes sociaux, des interactions sociales et des structures sociales.",
+            "options": {
+                "a": "psychologie",
+                "b": "anthropologie",
+                "c": "sociologie"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Un _______ est un ensemble de personnes qui partagent des caractéristiques communes et qui interagissent les unes avec les autres.",
+            "options": {
+                "a": "individu",
+                "b": "groupe",
+                "c": "système"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "La _______ désigne les normes, les valeurs, les croyances et les habitudes partagées par les membres d'une société.",
+            "options": {
+                "a": "culture",
+                "b": "religion",
+                "c": "politique"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Le _______ est le processus par lequel les individus acquièrent les normes, les valeurs et les comportements de leur culture.",
+            "options": {
+                "a": "socialisation",
+                "b": "acculturation",
+                "c": "adaptation"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "La _______ désigne l'inégalité sociale basée sur des caractéristiques comme le sexe, la race ou la classe sociale.",
+            "options": {
+                "a": "marginalisation",
+                "b": "discrimination",
+                "c": "ségrégation"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Le _______ est le système de stratification sociale basé sur la possession de richesses, de revenus et de biens.",
+            "options": {
+                "a": "classe sociale",
+                "b": "caste",
+                "c": "ethnie"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Le concept de '_______' se réfère à la préférence ou au traitement favorable accordé à certaines personnes en raison de leur statut social.",
+            "options": {
+                "a": "privilège",
+                "b": "oppression",
+                "c": "stigmatisation"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "La _______ est une forme de gouvernance dans laquelle le pouvoir est détenu par un petit groupe de personnes.",
+            "options": {
+                "a": "démocratie",
+                "b": "autocratie",
+                "c": "oligarchie"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Un _______ est un ensemble de personnes qui partagent une culture et des liens sociaux, souvent en raison de leur lieu de résidence.",
+            "options": {
+                "a": "réseau social",
+                "b": "communauté",
+                "c": "association"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "La _______ est l'étude des interactions sociales dans des situations face-à-face.",
+            "options": {
+                "a": "macro-sociologie",
+                "b": "micro-sociologie",
+                "c": "méso-sociologie"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "La _______ est une approche théorique qui met l'accent sur la manière dont les individus construisent leur réalité sociale à travers l'interaction.",
+            "options": {
+                "a": "fonctionnalisme",
+                "b": "interactionnisme symbolique",
+                "c": "structuralisme"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Le _______ est un système de croyances et de pratiques qui attribue des qualités spécifiques aux individus en fonction de leur sexe.",
+            "options": {
+                "a": "féminisme",
+                "b": "patriarcat",
+                "c": "sexisme"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "La _______ désigne l'étude des mouvements, des migrations et des changements de population.",
+            "options": {
+                "a": "démographie",
+                "b": "géographie",
+                "c": "anthropologie"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Le _______ est le processus par lequel les normes, les valeurs et les pratiques culturelles sont diffusées d'une société à une autre.",
+            "options": {
+                "a": "assimilation",
+                "b": "acculturation",
+                "c": "colonisation"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "La _______ est l'étude des inégalités et des conflits de pouvoir dans la société.",
+            "options": {
+                "a": "sociologie économique",
+                "b": "sociologie politique",
+                "c": "sociologie du conflit"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "_______ est une théorie sociologique qui soutient que la société est formée de groupes en conflit pour des ressources limitées.",
+            "options": {
+                "a": "fonctionnalisme",
+                "b": "marxisme",
+                "c": "interactionnisme symbolique"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "La _______ est l'étude des normes, des valeurs et des pratiques culturelles d'une société.",
+            "options": {
+                "a": "culture",
+                "b": "ethnographie",
+                "c": "sociologie culturelle"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "La _______ est l'étude de la façon dont les individus interprètent et attribuent un sens à leurs expériences sociales.",
+            "options": {
+                "a": "psychologie sociale",
+                "b": "sociologie de la connaissance",
+                "c": "sociologie de la perception"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Le _______ est une approche théorique qui examine comment les structures sociales influencent les comportements individuels.",
+            "options": {
+                "a": "fonctionnalisme",
+                "b": "structuralisme",
+                "c": "interactionnisme symbolique"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "La _______ est une pratique sociale qui consiste à exclure ou à marginaliser un groupe en raison de ses différences perçues.",
+            "options": {
+                "a": "stigmatisation",
+                "b": "ségrégation",
+                "c": "discrimination"
+            },
+            "reponse_correcte": "c"
         }
     ]
 }
+    

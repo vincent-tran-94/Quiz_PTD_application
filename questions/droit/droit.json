@@ -1131,6 +1131,186 @@
                 "a",
                 "c"
             ]
+        },
+        {
+            "question": "Le ________ est l'ensemble des règles qui régissent la vie en société.",
+            "options": {
+                "a": "droit civil",
+                "b": "droit pénal",
+                "c": "droit"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "En cas de ________, le contrat peut être annulé pour erreur sur la substance de l'objet.",
+            "options": {
+                "a": "abus de droit",
+                "b": "nullité relative",
+                "c": "vice du consentement"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le ________ est le document qui constate officiellement la naissance d'une personne.",
+            "options": {
+                "a": "certificat de naissance",
+                "b": "acte de mariage",
+                "c": "acte de décès"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "L'________ est le principe selon lequel nul ne peut se prévaloir de sa propre turpitude.",
+            "options": {
+                "a": "autonomie de la volonté",
+                "b": "estoppel",
+                "c": "nemo auditur propriam turpitudinem allegans"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "En droit pénal, l'________ est une peine qui prive temporairement de certains droits civiques.",
+            "options": {
+                "a": "injonction",
+                "b": "amende",
+                "c": "interdiction"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "La ________ est une obligation de ne pas faire quelque chose.",
+            "options": {
+                "a": "obligation de moyen",
+                "b": "obligation de résultat",
+                "c": "obligation de ne pas faire"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "En droit des contrats, le ________ est celui qui reçoit la promesse de l'autre partie.",
+            "options": {
+                "a": "créancier",
+                "b": "débiteur",
+                "c": "bénéficiaire"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le ________ est le droit pour un individu de demeurer inconnu dans certaines situations.",
+            "options": {
+                "a": "droit à l'oubli",
+                "b": "droit de rétractation",
+                "c": "droit de rectification"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "En matière pénale, une ________ est une infraction moins grave qu'un crime.",
+            "options": {
+                "a": "contravention",
+                "b": "infraction",
+                "c": "délit"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le ________ est le fait pour une personne de renoncer à un droit.",
+            "options": {
+                "a": "renonciation",
+                "b": "rétractation",
+                "c": "révocation"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "La ________ est une situation juridique qui permet de priver une personne de sa liberté.",
+            "options": {
+                "a": "privation de liberté",
+                "b": "détention provisoire",
+                "c": "garde à vue"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "En droit de la famille, l'________ est la personne qui reçoit une donation.",
+            "options": {
+                "a": "héritier",
+                "b": "donataire",
+                "c": "légataire"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Le ________ est le droit de bénéficier des biens d'une personne décédée.",
+            "options": {
+                "a": "droit de succession",
+                "b": "droit de partage",
+                "c": "droit d'héritage"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Une ________ est une décision rendue par un juge à la suite d'un procès civil.",
+            "options": {
+                "a": "ordonnance",
+                "b": "jugement",
+                "c": "arrêt"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Le ________ est le document par lequel un créancier met en demeure son débiteur de payer.",
+            "options": {
+                "a": "assignation",
+                "b": "mise en demeure",
+                "c": "sommation interpellative"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le ________ est l'ensemble des biens et des dettes d'une personne à un moment donné.",
+            "options": {
+                "a": "actif",
+                "b": "passif",
+                "c": "patrimoine"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "En droit administratif, un ________ est un acte par lequel l'administration contraint un administré à faire quelque chose.",
+            "options": {
+                "a": "arrêté",
+                "b": "décret",
+                "c": "contrainte"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le ________ est le droit pour une personne de posséder et d'utiliser un bien.",
+            "options": {
+                "a": "usufruit",
+                "b": "propriété",
+                "c": "usufruitier"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "En droit international, un ________ est un traité signé entre deux États.",
+            "options": {
+                "a": "accord",
+                "b": "protocole",
+                "c": "convention"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le ________ est l'autorité suprême dans l'ordre juridique français.",
+            "options": {
+                "a": "Constitution",
+                "b": "Cour de cassation",
+                "c": "Conseil constitutionnel"
+            },
+            "reponse_correcte": "c"
         }
     ]
 }

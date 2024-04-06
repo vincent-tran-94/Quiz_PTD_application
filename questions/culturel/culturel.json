@@ -667,6 +667,186 @@
                 "b",
                 "c"
             ]
+        },
+        {
+            "question": "_______ est une forme d'art dramatique qui combine musique, chant, danse et dialogue pour raconter une histoire.",
+            "options": {
+                "a": "La tragédie",
+                "b": "Le théâtre musical",
+                "c": "La comédie"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Le _______ est une comédie musicale populaire basée sur le roman de Victor Hugo, 'Les Misérables'.",
+            "options": {
+                "a": "Le Fantôme de l'Opéra",
+                "b": "Cats",
+                "c": "Les Misérables"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Un _______ est une pièce de théâtre musical qui est principalement chantée plutôt que parlée.",
+            "options": {
+                "a": "opéra",
+                "b": "opérette",
+                "c": "opéra-bouffe"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "_______ est un compositeur célèbre connu pour ses opéras, dont 'La Traviata' et 'Rigoletto'.",
+            "options": {
+                "a": "Wolfgang Amadeus Mozart",
+                "b": "Giuseppe Verdi",
+                "c": "Richard Wagner"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Dans le théâtre, le _______ est l'endroit où se trouvent les spectateurs.",
+            "options": {
+                "a": "proscenium",
+                "b": "orchestre",
+                "c": "parterre"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le _______ est une pièce musicale théâtrale souvent caractérisée par des dialogues parlés, des chansons et des danses.",
+            "options": {
+                "a": "ballet",
+                "b": "opéra",
+                "c": "spectacle de variétés"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Un _______ est un droit exclusif accordé à un créateur pour protéger ses œuvres artistiques.",
+            "options": {
+                "a": "copyright",
+                "b": "brevet",
+                "c": "marque déposée"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Dans le théâtre, le _______ est le texte écrit de la pièce, y compris les dialogues et les indications de mise en scène.",
+            "options": {
+                "a": "script",
+                "b": "scénario",
+                "c": "livret"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "_______ est une pièce de théâtre musical basée sur le roman de Gaston Leroux, mettant en vedette un mystérieux personnage masqué.",
+            "options": {
+                "a": "Le Roi Lion",
+                "b": "Cats",
+                "c": "Le Fantôme de l'Opéra"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Dans le théâtre, le _______ est un personnage qui s'adresse directement au public pour commenter l'action de la pièce.",
+            "options": {
+                "a": "figurant",
+                "b": "monologue",
+                "c": "narrateur"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le _______ est un compositeur célèbre connu pour ses opéras romantiques, dont 'Tannhäuser' et 'Tristan et Isolde'.",
+            "options": {
+                "a": "Wolfgang Amadeus Mozart",
+                "b": "Giuseppe Verdi",
+                "c": "Richard Wagner"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Un _______ est un spectacle de théâtre musical caractérisé par des numéros de danse et de musique.",
+            "options": {
+                "a": "revue",
+                "b": "cabaret",
+                "c": "opéra comique"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Le _______ est le terme utilisé pour désigner l'ensemble des acteurs, chanteurs et danseurs d'une production théâtrale.",
+            "options": {
+                "a": "ensemble",
+                "b": "troupe",
+                "c": "distribution"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Un _______ est un type de spectacle de variétés qui met en vedette des performances musicales, des sketches comiques et d'autres numéros divertissants.",
+            "options": {
+                "a": "comédie musicale",
+                "b": "cabaret",
+                "c": "opérette"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Le _______ est le droit moral d'un créateur sur son œuvre, qui comprend le droit d'être reconnu comme l'auteur et de s'opposer à toute modification de l'œuvre.",
+            "options": {
+                "a": "droit d'auteur",
+                "b": "droit de suite",
+                "c": "droit moral"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Dans le théâtre, le _______ est un type de comédie musicale qui parodie ou satirise un sujet sérieux ou une œuvre existante.",
+            "options": {
+                "a": "revue",
+                "b": "opérette",
+                "c": "parodie"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Un _______ est un ensemble de musiciens qui accompagnent les chanteurs et les danseurs dans une production théâtrale.",
+            "options": {
+                "a": "orchestre",
+                "b": "ensemble vocal",
+                "c": "bande sonore"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Dans le théâtre musical, le _______ est un passage chanté qui révèle les pensées ou les émotions d'un personnage.",
+            "options": {
+                "a": "aria",
+                "b": "duo",
+                "c": "refrain"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "_______ est un compositeur de musique de théâtre connu pour ses œuvres telles que 'Sweeney Todd' et 'Into the Woods'.",
+            "options": {
+                "a": "Andrew Lloyd Webber",
+                "b": "Stephen Sondheim",
+                "c": "Cole Porter"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Le _______ est un terme utilisé pour désigner une chanson qui est répétée à plusieurs reprises dans une comédie musicale, généralement avec des paroles qui reflètent le thème central de la pièce.",
+            "options": {
+                "a": "motif musical",
+                "b": "refrain",
+                "c": "leitmotiv"
+            },
+            "reponse_correcte": "b"
         }
     ]
 }

@@ -850,48 +850,6 @@
             ]
         },
         {
-            "question": "Quelles sont les phases du cycle de gestion des catastrophes ?",
-            "multi_options": {
-                "a": "La prévention",
-                "b": "L'atténuation",
-                "c": "La réponse",
-                "d": "La reconstruction"
-            },
-            "reponse_correcte": [
-                "a",
-                "b",
-                "c",
-                "d"
-            ]
-        },
-        {
-            "question": "Quels sont les objectifs principaux de la santé publique ?",
-            "multi_options": {
-                "a": "La promotion de la santé",
-                "b": "La prévention des maladies",
-                "c": "La gestion des catastrophes"
-            },
-            "reponse_correcte": [
-                "a",
-                "b"
-            ]
-        },
-        {
-            "question": "Quels sont les déterminants sociaux de la santé ?",
-            "multi_options": {
-                "a": "Le revenu",
-                "b": "L'éducation",
-                "c": "Le sexe",
-                "d": "L'origine ethnique"
-            },
-            "reponse_correcte": [
-                "a",
-                "b",
-                "c",
-                "d"
-            ]
-        },
-        {
             "question": "Quels sont les principaux enjeux de la santé mondiale ?",
             "multi_options": {
                 "a": "Les maladies transmissibles",
@@ -1083,6 +1041,187 @@
                 "a",
                 "b"
             ]
+        },
+        {
+            "question": "L'________ vise à soulager la souffrance des personnes affectées par les conflits armés et les catastrophes naturelles.",
+            "options": {
+                "a": "aide humanitaire",
+                "b": "intervention humanitaire",
+                "c": "solidarité humanitaire"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Une ________ est une personne qui fuit son pays en raison de la guerre, de la persécution ou des violations des droits de l'homme.",
+            "options": {
+                "a": "migrant",
+                "b": "réfugié",
+                "c": "apatrié"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Les organisations ________ fournissent une assistance médicale et humanitaire aux personnes dans le besoin à travers le monde.",
+            "options": {
+                "a": "non-gouvernementales",
+                "b": "intergouvernementales",
+                "c": "internationales"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "La ________ est une situation où une grande partie de la population d'une région souffre de la faim et de la malnutrition.",
+            "options": {
+                "a": "crise alimentaire",
+                "b": "famine",
+                "c": "pénurie alimentaire"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "L'________ est un organisme des Nations unies chargé de coordonner l'aide humanitaire en cas de crises majeures.",
+            "options": {
+                "a": "UNICEF",
+                "b": "UNHCR",
+                "c": "OCHA"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Une ________ est une zone géographique où les civils sont particulièrement vulnérables aux violations des droits de l'homme et aux abus.",
+            "options": {
+                "a": "zone d'exclusion",
+                "b": "zone de conflit",
+                "c": "zone de sécurité"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "L'________ est le principe fondamental de l'aide humanitaire qui exige l'impartialité dans la distribution de l'aide, sans discrimination ni favoritisme.",
+            "options": {
+                "a": "neutralité",
+                "b": "impartialité",
+                "c": "indépendance"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "La ________ est une pratique consistant à empêcher les travailleurs humanitaires de fournir une aide dans les zones de conflit ou de crise.",
+            "options": {
+                "a": "censure",
+                "b": "intimidation",
+                "c": "obstruction"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le ________ est le droit fondamental à un niveau de vie décent, incluant la nourriture, le logement et les soins de santé.",
+            "options": {
+                "a": "droit à l'éducation",
+                "b": "droit à la santé",
+                "c": "droit à un niveau de vie adéquat"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Une ________ est une organisation formée par des citoyens qui se réunissent pour fournir une aide humanitaire dans leur communauté ou au niveau international.",
+            "options": {
+                "a": "ONG",
+                "b": "association humanitaire",
+                "c": "coopérative"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Le ________ est un traité international qui établit les règles pour protéger les civils et les biens lors des conflits armés.",
+            "options": {
+                "a": "Convention de Genève",
+                "b": "Convention de Vienne",
+                "c": "Convention de La Haye"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Une ________ est une personne qui se porte volontaire pour fournir une aide humanitaire dans les zones touchées par les conflits ou les catastrophes.",
+            "options": {
+                "a": "bénévole",
+                "b": "activiste",
+                "c": "humanitaire"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "La ________ est une aide fournie par un gouvernement ou une organisation à un autre gouvernement ou une autre organisation en cas de crise humanitaire.",
+            "options": {
+                "a": "aide bilatérale",
+                "b": "aide multilatérale",
+                "c": "aide humanitaire"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Un ________ est un camp temporaire établi pour accueillir les personnes déplacées par les conflits armés ou les catastrophes naturelles.",
+            "options": {
+                "a": "centre de transit",
+                "b": "camp de réfugiés",
+                "c": "abri d'urgence"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Le ________ est le droit fondamental à la protection contre la violence, la discrimination et les abus.",
+            "options": {
+                "a": "droit à la paix",
+                "b": "droit à la sécurité",
+                "c": "droit à la protection"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "La ________ est une forme de violence qui touche principalement les femmes et les filles lors de conflits armés ou de crises humanitaires.",
+            "options": {
+                "a": "traite des personnes",
+                "b": "exploitation sexuelle",
+                "c": "violence basée sur le genre"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le ________ est une organisation internationale qui fournit une assistance alimentaire et humanitaire dans le monde entier.",
+            "options": {
+                "a": "UNICEF",
+                "b": "FAO",
+                "c": "PAM"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Une ________ est une personne qui a été contrainte de fuir son domicile en raison de la guerre ou de la persécution, mais qui n'a pas quitté son pays.",
+            "options": {
+                "a": "apatride",
+                "b": "migrant économique",
+                "c": "personne déplacée"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "La ________ est une aide humanitaire d'urgence fournie immédiatement après une catastrophe pour sauver des vies et soulager la souffrance.",
+            "options": {
+                "a": "aide de relèvement",
+                "b": "aide d'urgence",
+                "c": "aide de développement"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Le ________ est le principe selon lequel les acteurs humanitaires doivent respecter les lois et normes internationales lors de leurs interventions.",
+            "options": {
+                "a": "responsabilité",
+                "b": "obligation de rendre compte",
+                "c": "principe de légalité"
+            },
+            "reponse_correcte": "c"
         }
     ]
 }
+    
