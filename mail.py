@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for, flash
-from models import *
+from forms import *
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadSignature
 from flask import request

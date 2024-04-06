@@ -7,12 +7,14 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy import func, extract, distinct
 from datetime import datetime, timedelta
 
+
 id_database = "vincenttran"
 password_database = "associationptd"
 adresse_ip = "localhost"
 name_database = "participants"
 
 app = Flask(__name__,template_folder='template',static_url_path='/static')
+
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///participants.db' 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{id_database}:{password_database}@{adresse_ip}/{name_database}'

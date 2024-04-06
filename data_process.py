@@ -1,6 +1,6 @@
 import os
 import random
-from models import *
+from forms import *
 from flask import request, session
 import json
 

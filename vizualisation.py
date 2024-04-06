@@ -1,6 +1,6 @@
 import plotly
 import plotly.graph_objs as go
-from models import ReponseParticipant, db
+from forms import ReponseParticipant, db
 import json
 import pandas as pd
 
