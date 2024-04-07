@@ -1,6 +1,7 @@
 from flask import render_template, redirect, url_for, flash
 from forms import *
 from flask_mail import Mail, Message
+from flask_login import login_user
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadSignature
 from flask import request
 
@@ -25,10 +26,12 @@ serializer = URLSafeTimedSerializer(SECRET_KEY)
 
 
 # Fonction pour envoyer l'e-mail de confirmation
-def send_confirmation_email(user_id, email):
+def send_confirmation_email(nom,prenom,email,password):
 
-    token = serializer.dumps(user_id)  # Générer le token avec l'ID de l'utilisateur
-    confirm_url = url_for('confirm_email', token=token, _external=True)  # URL de confirmation avec le token
+    user_data = {'nom': nom, 'prenom': prenom, 'email': email, 'password': password}
+    
+    token = serializer.dumps(user_data)  # Générer le token avec l'ID de l'utilisateur
+    confirm_url = url_for('confirm_email', token=token,_external=True)  # URL de confirmation avec le token
 
     # Créer le message
     msg = Message('Confirmation d\'inscription', # Remplacez par votre adresse e-mail
@@ -47,23 +50,32 @@ def send_confirmation_email(user_id, email):
 def confirm_email(token):
     try:
         # Récupérer l'user_id associé au token 
-        user_id_token = serializer.loads(token,max_age=3600)
+        user_data = serializer.loads(token, max_age=3600)
 
-        # Récupérer l'email à partir de l'user_id
-        user = User.query.get(user_id_token)
-        email = user.email
+        # Récupérer les données utilisateur depuis le token
+        nom = user_data['nom']
+        prenom = user_data['prenom']
+        email = user_data['email']
+        password = user_data['password']
 
-        if email:
-            # Récupérer l'EmailID associé au token
-            user__confirmation_id = User.query.filter_by(id=user_id_token).first()
+        # Générer un nouvel ID utilisateur
+        user_id = str(uuid.uuid4())
 
-            if user__confirmation_id:
-                #login_user(user)  # Connecter l'utilisateur
-                return redirect(url_for('login'))
-            else:
-                return render_template('confirmation.html', message='User ID no detected')
+        # Créer un nouvel utilisateur confirmé dans la base de données
+        new_user = User(id=user_id,
+                        nom=nom, 
+                        prenom=prenom, 
+                        email=email)
+        new_user.set_password(password, method='pbkdf2:sha256')
+        db.session.add(new_user)
+        db.session.commit()
+
+        user__confirmation_id = User.query.filter_by(id=user_id,email=email).first()
+
+        if user__confirmation_id:
+            return redirect(url_for('login'))
         else:
-            return render_template('confirmation.html', message='Mail no detected')
+            return render_template('confirmation.html', message='Mail or User ID no detected')
         
     except SignatureExpired:
         # Le token a expiré

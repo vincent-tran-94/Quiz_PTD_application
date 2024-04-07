@@ -114,18 +114,8 @@ def register():
     
         existing_email = User.query.filter_by(email=email).first()
         if not existing_email:
-            # Générer un ID utilisateur unique
-            user_id = str(uuid.uuid4())
-
-            inscription_user = User(id=user_id,
-                                    nom=nom, 
-                                    prenom=prenom, 
-                                    email=email)
-
-            inscription_user.set_password(password,method='pbkdf2:sha256')
-            db.session.add(inscription_user)
-            db.session.commit()
-            send_confirmation_email(user_id, email)
+            send_confirmation_email(nom=nom,prenom=prenom,email=email,password=password)
+                   
             return render_template('confirmation.html', message='Un e-mail de confirmation a été envoyé à votre adresse.')
         else:
             return render_template('confirmation.html', message='Vous êtes déjà inscrit.')
