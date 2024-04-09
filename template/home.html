@@ -6,6 +6,8 @@
     <title>Accueil PTDlegalQuiz</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css?v=1" rel="stylesheet">
     <link href="{{ url_for('static', filename='styles/home.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles/sidebar.css') }}" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_PTD.jpg') }}">
     <style>
         body {
@@ -14,7 +16,7 @@
             background-repeat: no-repeat;
             color: #000;
             overflow: auto; 
-            min-height: 100vh;
+            min-height: 100%;
         }
         #contact {
             background-image: url("{{ url_for('static',filename=image_background_contact)}}");
@@ -26,6 +28,74 @@
     </style>
 </head>
 <body>
+    <nav>
+        <div class="logo">
+            <i class="bx bx-menu menu-icon" style="padding-bottom: 18px;"></i>
+            <span class="logo-name" style="padding-bottom: 20px;">Menu application</span>
+        </div>
+        <div class="sidebar">
+            <div class="logo">
+                <i class="bx bx-menu menu-icon"> </i>
+                <span class="logo-name"> Préserve ton droit</span>
+            </div>
+                <div class="sidebar-content">
+                    <ul class="lists">
+                    <li class="list">
+                        <a href="{{ url_for('accueil')}}" class="nav-link">
+                        <i class="bx bx-home-alt icon"></i>
+                        <span class="link">Accueil</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="{{ url_for('dashboard', categorie='resultats') }}" class="nav-link">
+                        <i class="bx bxs-dashboard icon"></i>
+                        <span class="link">Dashboard et classement</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="{{ url_for('resultats') }}" class="nav-link">
+                        <i class="bx bx-list-check icon"></i>
+                        <span class="link">Vos résultats</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#" class="nav-link">
+                        <i class="bx bx-group icon"></i>
+                        <span class="link">Qui sommes-nous ?</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#" class="nav-link">
+                        <i class="bx bx-calendar-event icon"></i>
+                        <span class="link">Événements</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#" class="nav-link">
+                        <i class="bx bx-bookmark icon"></i>
+                        <span class="link">Projets</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#" class="nav-link">
+                        <i class="bx bx-envelope icon"></i>
+                        <span class="link">Abonnements</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="{{ url_for('logout') }}" class="nav-link">
+                          <i class="bx bx-log-out icon"></i>
+                          <span class="link" >Déconnexion </span>
+                        </a>
+                      </li>
+                    </ul>
+                    </div>
+                </div>
+            </div>   
+        </nav>
+        <section class="overlay"></section>
+        <script src="{{ url_for('static', filename='js/menu_bar.js') }}"></script>
+        
     <aside class="aside-background">
         <div class="social-icons">
             <a href="https://www.instagram.com/preservetondroit/?next=https%3A%2F%2Fwww.instagram.com%2Fmanav.manglani%2Fp%2FBv3PDqigZZZ%2F%3F__coig_login%3D1" target="_blank" class="btn btn-light">
@@ -38,16 +108,8 @@
                 <img src="{{ url_for('static', filename='images/paypal_logo.png') }}" target="_blank" alt="Paypal" class="social-logo">Paypal</a>
             <a href="https://www.cotizup.com/actionougandaptd-rco"  target="_blank" class="btn btn-light" >
                 <img src="{{ url_for('static', filename='images/cotizup_logo.jpeg') }}" target="_blank" alt="Cotizup" class="social-logo">Cotizup</a>
-            <a href="{{ url_for('logout') }}" class="btn btn-danger logout-btn">Déconnexion</a>
         </div>
-    </aside>
-    
-    <!-- Plus tard 
-    On va développer un aside bar vers la gauche pour créer des sous applications
-    -->
-    <!-- <aside class="left">
-    
-    </aside> -->
+    </aside>    
     
     <section id="banner">
         <div class="title">
@@ -73,7 +135,7 @@
             Chaque participant a l'opportunité de tester ses connaissances dans chacune de ces catégories, avec une 
             participation unique autorisée par catégorie. Une fois que vous avez soumis aux questionnaires, 
             les résultats sont affichés sur une page dédiée à la visualisation.  </br> 
-            <strong> <span style="background-color: rgba(240,128,128); color: black;"> Après avoir soumis, vous pouvez retenter le quiz après 2 semaines si vous avez besoin refaire. </br> 
+            <strong> <span style="background-color: rgba(240,128,128); color: black;"> Après avoir soumis, vous pouvez encore retenter une fois si vous avez besoin refaire ! </br> 
             Le classement prend en compte si vous avez choisi tout les catégories. </br> 
             Chaque catégorie possède un total de 30 questions et les questionnaires sont mélangés aléatoirement.
             Vous avez 10 minutes pour répondre à tout les questions. A savoir si vous sortez du quiz, vous perdrez 30 secondes chaque fois que cela se produira, au bout la deuxième fois. </br>  </span> 
@@ -111,14 +173,6 @@
             </div>
             <div class="col-md-3">
                 <a href="{{ url_for('categorie_questions', categorie='sociologie') }}" class="btn btn-warning btn-lg btn-block">Sociologie</a>
-            </div>
-        </div>
-        <div class="row mt-4 justify-content-center">
-            <div class="col-md-3">
-            <a href="{{ url_for('resultats') }}" class="btn btn-secondary btn-lg btn-block"> Vos résultats</a>
-            </div>
-            <div class="col-md-3">
-            <a href="{{ url_for('dashboard', categorie='resultats') }}" class="btn btn-secondary btn-lg btn-block">Résultats et classement</a>
             </div>
         </div>
     </div>

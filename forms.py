@@ -70,6 +70,7 @@ class ReponseParticipant(db.Model):
     incorrect_answers = db.Column(db.Integer)
     success_percentage = db.Column(db.Float)
     categorie = db.Column(db.String(255))
+    nb_essais = db.Column(db.Integer())
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
 
     
@@ -81,6 +82,7 @@ class Contact(db.Model):
     tel = db.Column(db.String(100))
     message = db.Column(db.String(1000))
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
+
 
 def get_participant_name(participant_id):
     participant = Participant.query.filter_by(participant_id=participant_id).first()
@@ -129,14 +131,6 @@ def get_top_10_participants():
     
     return top_participants_info
 
-
-# Fonction pour obtenir la date actuelle
-def get_current_date():
-    return datetime.utcnow()
-
-# Fonction pour vérifier si une mois s'est écoulée depuis la dernière réponse
-def is_two_week_passed(last_response_date):
-    return get_current_date() - last_response_date >= timedelta(weeks=2)
 
 with app.app_context():
     db.create_all()

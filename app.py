@@ -1,5 +1,4 @@
 from forms import *
-import uuid 
 from flask import render_template, request, redirect, url_for, session, flash
 from flask_login import LoginManager,login_required, logout_user, login_user
 from sqlalchemy.orm.exc import NoResultFound
@@ -38,6 +37,11 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(user_id):
     return db.session.get(User, user_id)
+
+@app.route('/index')
+def index():
+    return render_template('index.html')
+
 
 
 #Fonction de la première connexion
@@ -158,7 +162,6 @@ def formulaire():
                                   statut=statut,
                                   centre_interet=centre_interet, 
                                   choix_categorie=choix_categorie)
-
         db.session.add(participant)
         db.session.commit()
         return redirect(url_for('accueil'))
@@ -211,7 +214,6 @@ def categorie_questions(categorie):
 
     participant_id = session.get('user_id')
     reponse_existe = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
-
     categories_directories = {
         'droit': 'questions/droit',
         'humanitaire': 'questions/humanitaire',
@@ -223,23 +225,22 @@ def categorie_questions(categorie):
         directory = categories_directories[categorie]
         data_json = open_file_json_from_directory(directory)
     
-    if reponse_existe:
-        last_response_date = reponse_existe.date_creation
-        # Si une semaine s'est écoulée, permettre de retenter
-        if is_two_week_passed(last_response_date):
-            reponse_existe.date_creation = get_current_date()
-        else:
-            # Sinon, rediriger vers la page d'accueil
-            flash("Vous avez déjà soumis les réponses pour cette catégorie.", "info")
-            return redirect(url_for('accueil'))
 
-    elif categorie == 'resultats':
+    if categorie == 'resultats':
         return redirect(url_for('dashboard'))
     
+    if reponse_existe:
+        nb_essais_restant = reponse_existe.nb_essais
+        if nb_essais_restant == 0:
+            flash("Vous avez déjà soumis les réponses pour cette catégorie.", "info")
+            return redirect(url_for('accueil'))
+        else: 
+            reponse_existe.nb_essais -= 1
+
     if request.method == 'POST':
-        traitement_reponses(data_json, categorie)
+        traitement_reponses(data_json,categorie)
         return redirect(url_for('resultats'))
-    
+        
     return render_template('categorie.html', questions=data_json['questions'],categorie=categorie)
 
 #Fonction des résultats obtenus après le remplissage des questionnaires

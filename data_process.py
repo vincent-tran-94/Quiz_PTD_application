@@ -116,6 +116,7 @@ def traitement_reponses(data_json, categorie):
     total_questions = len(data_json['questions'])
     incorrect_answers = total_questions - correct_answers
     success_percentage = round((correct_answers / total_questions) * 100,2)
+    default_essai = 2
 
     # Vérifiez si une réponse existe déjà pour ce participant dans cette catégorie
     existing_response = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
@@ -131,7 +132,8 @@ def traitement_reponses(data_json, categorie):
                                           correct_answers=correct_answers,
                                           incorrect_answers=incorrect_answers,
                                           success_percentage=success_percentage,
-                                          categorie=categorie)
+                                          categorie=categorie,
+                                          nb_essais=default_essai)
         db.session.add(new_response)
 
     db.session.commit()
