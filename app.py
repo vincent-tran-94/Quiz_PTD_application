@@ -1,12 +1,11 @@
 from forms import *
 from flask import render_template, request, redirect, url_for, session, flash
-from flask_login import LoginManager,login_required, logout_user, login_user
+from flask_login import LoginManager,login_required, logout_user, login_user, current_user
 from sqlalchemy.orm.exc import NoResultFound
 from vizualisation import *
 from pay_strip import * 
 from mail import *
 from data_process import *
-
 
 """
 CONSIGNES POUR LANCER l'APPLICATION:
@@ -295,7 +294,14 @@ def dashboard():
     else: 
         return redirect(url_for('accueil'))
     
+@app.route("/my_subscriptions")
+@login_required  # force the user to log in/sign up
+def my_subscriptions():
+    # check if a record exists for them in the StripeCustomer table
+    subscriptions = StripeCustomer.query.filter_by(participant_id=current_user.id).all()
+    return render_template("my_subscriptions.html",subscriptions=subscriptions)
 
+    
 #Lancement de l'application
 if __name__ == '__main__':
     app.run(debug=True,host=host,port=port)

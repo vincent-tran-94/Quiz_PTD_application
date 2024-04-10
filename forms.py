@@ -73,7 +73,6 @@ class ReponseParticipant(db.Model):
     nb_essais = db.Column(db.Integer())
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
 
-    
 class Contact(db.Model):
     id = db.Column(db.Integer(),primary_key=True)
     participant_id = db.Column(UUID(as_uuid=True), db.ForeignKey('participant.participant_id'),unique=False)
@@ -81,6 +80,13 @@ class Contact(db.Model):
     email = db.Column(db.String(100))
     tel = db.Column(db.String(100))
     message = db.Column(db.String(1000))
+    date_creation = db.Column(db.DateTime, default=datetime.utcnow)
+
+class StripeCustomer(db.Model):
+    participant_id = db.Column(UUID(as_uuid=True), db.ForeignKey('user.id'),primary_key=True)
+    name_product = db.Column(db.String(100))
+    email = db.Column(db.String(100))
+    price_euros = db.Column(db.Integer())
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
 
 

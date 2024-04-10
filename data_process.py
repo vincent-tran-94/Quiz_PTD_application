@@ -137,3 +137,4 @@ def traitement_reponses(data_json, categorie):
         db.session.add(new_response)
 
     db.session.commit()
+

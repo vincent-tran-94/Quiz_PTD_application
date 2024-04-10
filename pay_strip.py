@@ -79,19 +79,42 @@ def stripe_webhook():
         print('Error Signature')
         # Invalid signature
         return {}, 400
-
+    
      # Handle the checkout.session.completed event
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
-        print(session)
-        line_items = stripe.checkout.Session.list_line_items(session['id'], limit=1)
-        print(line_items['data'][0]['description'])
-    elif event['type'] == 'invoice.paid':
-        invoice = event['data']['object']
-        print('Invoice paid:', invoice)
-        # Handle the invoice being paid
-    elif event['type'] == 'invoice.payment_failed':
-        invoice = event['data']['object']
-        print('Invoice payment failed:', invoice)
-        # Handle the invoice payment failure
+        #print(session)
+        product_description = stripe.checkout.Session.list_line_items(session['id'], limit=1)['data'][0]['description']
+        #print(product_description)
+        email_customer = stripe.checkout.Session.list(limit=3)["data"][0]["customer_details"]["email"]
+        #print(email_customer)
+        create_stripe_customer(product_description,email_customer)
     return {}
+
+#Fonction pour la création des abonnements stockés sur une base de données
+def create_stripe_customer(new_product_customer,email_customer):
+    product_mapping = {
+        "Bronze": 3,
+        "Argent": 6,
+        "Gold": 10
+    }
+
+    user = User.query.filter_by(email=email_customer).first()
+    if user:
+        existing_response = StripeCustomer.query.filter_by(email=email_customer).first()
+        if not existing_response: 
+            new_entry = StripeCustomer(
+                participant_id=user.id,  
+                name_product=new_product_customer,
+                email=email_customer,
+                price_euros = product_mapping[new_product_customer]
+            )
+            db.session.add(new_entry)
+        else:
+            existing_response.participant_id = user.id  
+            existing_response.name_product = new_product_customer
+            existing_response.email = email_customer
+            existing_response.price_euros = product_mapping[new_product_customer]
+        db.session.commit()
+    else:
+        return None 

@@ -1,0 +1,33 @@
+/* styles.css */
+body {
+  background-color: rgba(128, 128, 128, 0.5); /* Couleur gris foncé */
+}
+
+/* Style pour le titre principal */
+h1 {
+    color: #333; /* Couleur du texte */
+    text-align: center; /* Centrer le texte */
+  }
+  
+  /* Style pour les éléments de la liste d'abonnements */
+  .list-group-item {
+    background-color: #f8f9fa; /* Couleur de fond */
+    border: 1px solid #dee2e6; /* Bordure */
+    margin-bottom: 10px; /* Marge en bas entre les éléments */
+  }
+  
+  /* Style pour le texte des éléments de la liste */
+  .list-group-item h5 {
+    color: #007bff; /* Couleur du titre */
+  }
+  
+  .list-group-item p {
+    color: #666; /* Couleur du texte normal */
+  }
+  
+  /* Style pour le message "Vous n'avez pas encore souscrit à des abonnements." */
+  .no-subscriptions {
+    color: #999; /* Couleur du texte */
+    text-align: center; /* Centrer le texte */
+  }
+  
