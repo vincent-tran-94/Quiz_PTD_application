@@ -3,6 +3,7 @@ from flask import render_template, request, redirect, url_for, session, flash
 from flask_login import LoginManager,login_required, logout_user, login_user
 from sqlalchemy.orm.exc import NoResultFound
 from vizualisation import *
+from pay_strip import * 
 from mail import *
 from data_process import *
 
@@ -37,11 +38,6 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(user_id):
     return db.session.get(User, user_id)
-
-@app.route('/index')
-def index():
-    return render_template('index.html')
-
 
 
 #Fonction de la première connexion
@@ -299,7 +295,6 @@ def dashboard():
     else: 
         return redirect(url_for('accueil'))
     
-
 
 #Lancement de l'application
 if __name__ == '__main__':

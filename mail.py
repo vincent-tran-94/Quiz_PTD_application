@@ -1,7 +1,6 @@
 from flask import render_template, redirect, url_for, flash
 from forms import *
 from flask_mail import Mail, Message
-from flask_login import login_user
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadSignature
 from flask import request
 
@@ -132,14 +131,17 @@ def reset_password(token):
         user = User.query.filter_by(email=email).first()
 
         if request.method == 'POST':
-            old_password = request.form['old_password']
             new_password = request.form['new_password']
-            if user.check_password(old_password):
-                user.set_password(new_password,method='pbkdf2:sha256')
-                db.session.commit()
-                return render_template('confirmation.html', message='Mot de passe mis à jour avec succès.') 
+            confirm_password = request.form['confirm_password']
+            if new_password != confirm_password:
+                flash('Les mots de passe ne correspondent pas.', 'error')
+            elif user.check_password(new_password) or user.check_password(confirm_password):
+                flash('Le nouveau mot de passe ne peut pas être identique à l\'ancien.', 'error')
             else:
-                flash('Mot de passe actuel incorrect.','error')
+                user.set_password(new_password, method='pbkdf2:sha256')
+                db.session.commit()
+                return render_template('confirmation.html', message='Mot de passe mis à jour avec succès.')
+
         return render_template('reset_password.html',token=token)
     except SignatureExpired:
         # Le token a expiré

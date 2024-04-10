@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import uuid
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy import func, extract, distinct
-from datetime import datetime, timedelta
+from datetime import datetime
 
 
 id_database = "vincenttran"

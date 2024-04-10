@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1920,height=1080, initial-scale=1">
+  <title>Boutique PTDlegalQuiz</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_PTD.jpg') }}">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='styles/sidebar.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='styles/souscription.css') }}" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <i class="bx bx-menu menu-icon" style="padding-bottom: 18px;"></i>
+            <span class="logo-name" style="padding-bottom: 20px;">Menu application</span>
+        </div>
+        <div class="sidebar">
+            <div class="logo">
+                <i class="bx bx-menu menu-icon"> </i>
+                <span class="logo-name"> Préserve ton droit</span>
+            </div>
+                <div class="sidebar-content">
+                    <ul class="lists">
+                    <li class="list">
+                        <a href="{{ url_for('accueil')}}" class="nav-link">
+                        <i class="bx bx-home-alt icon"></i>
+                        <span class="link">Accueil</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="{{ url_for('dashboard', categorie='resultats') }}" class="nav-link">
+                        <i class="bx bxs-dashboard icon"></i>
+                        <span class="link">Dashboard et classement</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="{{ url_for('resultats') }}" class="nav-link">
+                        <i class="bx bx-list-check icon"></i>
+                        <span class="link">Vos résultats</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#" class="nav-link">
+                        <i class="bx bx-group icon"></i>
+                        <span class="link">Qui sommes-nous ?</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#" class="nav-link">
+                        <i class="bx bx-calendar-event icon"></i>
+                        <span class="link">Événements</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#" class="nav-link">
+                        <i class="bx bx-bookmark icon"></i>
+                        <span class="link">Projets</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#" class="nav-link">
+                        <i class="bx bx-envelope icon"></i>
+                        <span class="link">Abonnements</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="{{ url_for('logout') }}" class="nav-link">
+                          <i class="bx bx-log-out icon"></i>
+                          <span class="link" >Déconnexion </span>
+                        </a>
+                      </li>
+                    </ul>
+                    </div>
+                </div>
+            </div>   
+        </nav>
+        <section class="overlay"></section>
+        <script src="{{ url_for('static', filename='js/menu_bar.js') }}"></script>
+    <section class="video-tutorial bg-gray" id="demo">
+<div class="container">
+            <div class="row justify-content-center">
+            </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="demo-wrapper">      
+                    <div class="price-plan-wrapper">
+                        <h3 class="title ">Choisir votre mode de paiement</h3>
+                        <div class="row">
+                            <div class="col-lg-4  col-md-6 ">
+                                <div class="pricing-table-14">
+                                    <div class="price-header">
+                                        <h3 class="title">Forfait Bronze</h3>
+                                        <div class="price"> <span class="dollar">€</span>4</div>
+                                        <span class="permonth">Par mois</span>
+                                    </div>
+                                    <div class="price-body">
+                                        <ul>
+                                            <li><b>3</b> Essais supplémentaires par mois</li>
+                                            <li><b>Illimité</b> Suivre sa progression (analyse bonne réponses) </li>
+                                            <li><b>Illimité</b> Dashboard + classement</li>
+                                        </ul>
+                                    </div>
+                                    <div class="price-footer">
+                                        <a class="order-btn" href="#" id="buy_now_btn">Buy Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4  col-md-6 ">
+                                <div class="pricing-table-14 active">
+                                    <div class="price-header">
+                                        <h3 class="title" >Forfait Argent</h3>
+                                        <div class="price"><span class="dollar">€</span>8</div>
+                                        <span class="permonth">Par mois</span>
+                                    </div>
+                                    <div class="price-body">
+                                        <ul>
+                                            <li><b>6</b> Essais supplémentaires par mois</li>
+                                            <li><b>Illimité</b> Suivre sa progression (analyse bonne réponses) </li>
+                                            <li><b>Illimité</b> Dashboard + classement</li>
+                                            <li><b>1</b> Sondage réseau sociaux catégorie bonus pour partager les réseaux sociaux (en cours)</li>
+                                            <li><b>1</b> question personnel en proposant à l'ajout du quiz (en cours)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="price-footer">
+                                        <a class="order-btn" href="#">Buy Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4  col-md-6 ">
+                                <div class="pricing-table-14">
+                                    <div class="price-header">
+                                        <h3 class="title">Forfait Gold</h3>
+                                        <div class="price"><span class="dollar">€</span>15</div>
+                                        <span class="permonth">Per mois</span>
+                                        </div>
+                                    
+                                    <div class="price-body">
+                                        <ul>
+                                            <li><b>10</b> Essais supplémentaires par mois</li>
+                                            <li><b>Illimité</b> Suivre sa progression (analyse bonne réponses) </li>
+                                            <li><b>Illimité</b> Dashboard + classement</li>
+                                            <li><b>1</b> Sondage réseau sociaux catégorie bonus pour partager les réseaux sociaux (en cours)</li>
+                                            <li><b>3</b> questions personnel en proposant à l'ajout du quiz (en cours)</li>
+                                            <li><b>Illimité</b> Proposition de fiches de révisions (en cours) </li>
+                                            <li><b>Illimité</b> Suppression de publicités (en cours)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="price-footer">
+                                        <a class="order-btn" href="#">Buy Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <script src="https://js.stripe.com/v3/"></script>
+  {#
+  <script>
+    const checkout_public_key = '{{checkout_public_key}}';
+    const checkout_session_id = '{{checkout_session_id}}';
+  </script>
+  #}
+  <script src="{{ url_for('static', filename='js/script-ajax.js') }}"></script>
+</body>
+</html>

@@ -38,7 +38,7 @@
     position: absolute;
     width: 250px;
     height: 220px;
-    top: 5.4%;
+    top: 4.8%;
     right: 2%;
 }
 
@@ -79,7 +79,7 @@
     align-items: center;
     position: absolute;
     top: 0%;
-    right: 600px;
+    right: 753px;
 }
 .social-icons a {
     margin: 0 10px; /* Marge entre les éléments */
