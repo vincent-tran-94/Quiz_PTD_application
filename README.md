@@ -64,6 +64,47 @@ Installer les dépendances
 $ (venv) pip install -r requirements.txt 
 ```
 
+Configurer le fichier config.cfg
+```
+$MAIL_SERVER='your_smtp.gmail.com'
+$MAIL_USERNAME='your_mail@gmail.com'
+$MAIL_DEFAULT_SENDER = 'your_mail@gmailcom'  
+$MAIL_PASSWORD='your_password_given_gmail_smtp'
+$MAIL_PORT=465
+$MAIL_USE_SSL=True
+$MAIL_USE_TLS=False
+```
+
+Configurer le fichier config.cfg
+```
+$MAIL_SERVER='your_smtp.gmail.com'
+$MAIL_USERNAME='your_mail@gmail.com'
+$MAIL_DEFAULT_SENDER = 'your_mail@gmailcom'  
+$MAIL_PASSWORD='your_password_given_gmail_smtp'
+$MAIL_PORT=465
+$MAIL_USE_SSL=True
+$MAIL_USE_TLS=False
+```
+
+Configurer le fichier .env
+```
+[App]
+HOST='you_host_public_or_local'
+PORT='youport'
+MAIL_ASSOCIATION_CONTACT='you_mail_association@gmail.com'
+SECRET_KEY='you_secret_key' 
+
+[Database]
+ID_DATABASE="you_id_database"
+PASSWORD_DATABASE="you_password"
+ADDRESS_IP="you_address_ip_database"
+NAME_DATABASE="you_name_database"
+
+[STRIPE]
+STRIPE_PUBLIC_KEY='you_key_public'
+STRIPE_SECRET_KEY= 'you_secret_key'
+STRIPE_SECRET_ENDPOINT='you_secret_endpoint_key'
+```
 Lancer votre application Flask 
 ```
 $ (venv) python main.py
