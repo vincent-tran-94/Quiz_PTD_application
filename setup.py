@@ -4,7 +4,6 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 import uuid
 from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy import func, extract, distinct
 from datetime import datetime
 import os
 
@@ -92,53 +91,6 @@ class StripeCustomer(db.Model):
     price_euros = db.Column(db.Integer())
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
 
-
-def get_participant_name(participant_id):
-    participant = Participant.query.filter_by(participant_id=participant_id).first()
-    if participant:
-        return f"{participant.nom} {participant.prenom}"
-    else:
-        return "Participant introuvable"
-
-def get_success_percentage_by_category(participant_id):
-    categories = ['droit', 'humanitaire', 'culturel', 'sociologie']
-    success_percentages = {}
-    for category in categories:
-        participant_results = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=category).first()
-        if participant_results:
-            success_percentages[category] = participant_results.success_percentage
-        else:
-            success_percentages[category] = 0.0
-    return success_percentages
-
-def get_month_year(participant_id):
-    participant = Participant.query.filter_by(participant_id=participant_id).first()
-    if participant:
-        month = participant.date_creation.strftime('%B')
-        year = participant.date_creation.year
-        return month, year
-    else:
-        return None, None
-
-def get_top_10_participants():
-    top_participants = db.session.query(ReponseParticipant.participant_id,
-                                        extract('year', ReponseParticipant.date_creation).label('response_year'),
-                                        extract('month', ReponseParticipant.date_creation).label('response_month'),
-                                        func.avg(ReponseParticipant.success_percentage).label('total_success_percentage')) \
-                                 .group_by(ReponseParticipant.participant_id, 
-                                           extract('year', ReponseParticipant.date_creation),
-                                           extract('month', ReponseParticipant.date_creation)) \
-                                 .having(func.count(distinct(ReponseParticipant.categorie)) == 4) \
-                                 .order_by(func.avg(ReponseParticipant.success_percentage).desc()) \
-                                 .limit(50) \
-                                 .all()
-    
-    top_participants_info = []
-    for participant_id, response_year, response_month, total_success_percentage in top_participants:
-        participant_name = get_participant_name(participant_id)
-        top_participants_info.append((participant_name, response_year, response_month, total_success_percentage))
-    
-    return top_participants_info
 
 #Création de la base de données si n'existe pas
 with app.app_context():

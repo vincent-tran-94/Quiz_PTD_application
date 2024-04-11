@@ -3,6 +3,7 @@ import random
 from setup import *
 from flask import request, session
 import json
+from sqlalchemy import func, extract, distinct
 
 """
 Fonction de récupération de données et de procédure de données
@@ -116,7 +117,7 @@ def traitement_reponses(data_json, categorie):
     total_questions = len(data_json['questions'])
     incorrect_answers = total_questions - correct_answers
     success_percentage = round((correct_answers / total_questions) * 100,2)
-    default_essai = 2
+    default_essai = 1
 
     # Vérifiez si une réponse existe déjà pour ce participant dans cette catégorie
     existing_response = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()

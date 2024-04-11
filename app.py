@@ -194,7 +194,6 @@ def contact():
 @app.route('/categorie/<categorie>', methods=['GET', 'POST'])
 @login_required
 def categorie_questions(categorie):
-
     participant_id = session.get('user_id')
     reponse_existe = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
     categories_directories = {
@@ -283,7 +282,14 @@ def dashboard():
 def my_subscriptions():
     # check if a record exists for them in the StripeCustomer table
     subscriptions = StripeCustomer.query.filter_by(participant_id=current_user.id).all()
-    return render_template("sidebar/my_subscriptions.html",subscriptions=subscriptions)
+    # Récupérez les essais restants pour chaque catégorie
+    essais_restants = ReponseParticipant.query.filter_by(participant_id=current_user.id).all()
+    
+    # Créez un dictionnaire pour stocker les essais restants par catégorie
+    essais_restants_par_categorie = {}
+    for essai_restant in essais_restants:
+        essais_restants_par_categorie[essai_restant.categorie] = essai_restant.nb_essais 
+    return render_template("sidebar/my_subscriptions.html", subscriptions=subscriptions, essais_restants_par_categorie=essais_restants_par_categorie)
 
     
 #Lancement de l'application

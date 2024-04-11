@@ -1,4 +1,4 @@
-from flask import abort, redirect
+from flask import abort, redirect, render_template
 from setup import *
 from flask_login import login_required, current_user
 
@@ -16,7 +16,7 @@ def bronze_route_dashboard():
     if check_role(current_user.get_id(), 'Bronze'):
         return redirect('dashboard')
     else:
-        abort(403) 
+        return render_template("no_authorization.html",message="Il faut opter pour un abonnement minimum.")
 
 @app.route('/bronze_route_resultats')
 @login_required
@@ -24,6 +24,7 @@ def bronze_route_resultats():
     if check_role(current_user.get_id(), 'Bronze'):
         return redirect('resultats')
     else:
-        abort(403) 
+        return render_template("no_authorization.html",message="Il faut opter pour un abonnement minimum.")
+
 
 

@@ -17,16 +17,26 @@
       <div class="list-group">
         {% if subscriptions %}
           {% for subscription in subscriptions %}
-            <div class="list-group-item">
-              <h5 class="mb-1">{{ subscription.name_product }}</h5>
-              <p class="mb-1">Prix: {{ subscription.price_euros }} euros par mois</p>
-              <p class="mb-1">Date de souscription: {{ subscription.date_creation.strftime('%d %B, %Y') }}</p>
-              <!-- Ajoutez d'autres informations sur l'abonnement si nécessaire -->
-            </div>
+          <div class="list-group-item">
+            <h5 class="mb-1">{{ subscription.name_product }}</h5>
+            <p class="mb-1">Prix: {{ subscription.price_euros }} euros par mois</p>
+            <p class="mb-1">Date de souscription: {{ subscription.date_creation.strftime('%d %B, %Y') }}</p>
+          </div>
           {% endfor %}
         {% else %}
-          <p>Vous n'avez pas encore souscrit à des abonnements.</p>
+          <h5>Vous avez pas souscrit à un abonnement.</h5>
         {% endif %}
+        <h1 class="mb-4">Nombre d'essais restants pour chaque catégorie</h1>
+        {% if categorie in essais_restants_par_categorie %}
+        {% for categorie, nb_essais in essais_restants_par_categorie.items() %}
+        <div class="list-group-item">
+            <h5 class="mb-1">{{ categorie }}</h5>
+            <p class="mb-1">Essais restants: {{ nb_essais }}</p>
+        </div>
+        {% endfor %}
+       {% else %}
+          <h5> Vous avez pas répondu tout les catégories.</h5>
+      {% endif %}
       </div>
     </div>
   </body>
