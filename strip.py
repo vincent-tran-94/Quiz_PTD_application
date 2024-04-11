@@ -96,7 +96,7 @@ def stripe_webhook():
 #Fonction pour la création des abonnements stockés sur une base de données
 def create_stripe_customer(new_product_customer,email_customer):
     product_mapping = {
-        "Bronze": 3,
+        "Bronze": 4,
         "Argent": 6,
         "Gold": 10
     }
