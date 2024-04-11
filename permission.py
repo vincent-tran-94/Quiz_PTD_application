@@ -26,8 +26,4 @@ def bronze_route_resultats():
     else:
         abort(403) 
 
-# Exemple de route publique
-@login_required
-@app.route('/public_route')
-def public_route():
-    return jsonify({'message': 'This route is public and accessible to everyone'})
+
