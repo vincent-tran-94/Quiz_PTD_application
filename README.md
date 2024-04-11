@@ -107,5 +107,5 @@ STRIPE_SECRET_ENDPOINT='you_secret_endpoint_key'
 ```
 Lancer votre application Flask 
 ```
-$ (venv) python main.py
+$ (venv) python app.py
 ```
