@@ -54,7 +54,7 @@ Cette application va permet aux participants d'apprendre et de découvrir des no
 ## Installation et setup
 - Version Python 3.11.7 
 
-Rendez-vous dans ce lien pour vous inscrire un compte sur strip
+Rendez-vous dans ce lien pour vous inscrire un compte sur strip et suivez les étapes pour la création du compte
 ```
 https://stripe.com/fr/connect
 ```
@@ -71,7 +71,7 @@ Installer les dépendances
 pip install -r requirements.txt 
 ```
 
-Configurer le fichier config.cfg
+Copier les informations ci-dessous fichier et Ajouter le fichier config.cfg 
 ```
 MAIL_SERVER='your_smtp.gmail.com'
 MAIL_USERNAME='your_mail@gmail.com'
@@ -82,7 +82,7 @@ MAIL_USE_SSL=True
 MAIL_USE_TLS=False
 ```
 
-Configurer le fichier .env
+Copier les informations ci-dessous fichier et Ajouter le fichier .env
 ```
 [App]
 HOST='you_host_public_or_local'
