@@ -101,7 +101,15 @@ STRIPE_PUBLIC_KEY='you_key_public'
 STRIPE_SECRET_KEY= 'you_secret_key'
 STRIPE_SECRET_ENDPOINT='you_secret_endpoint_key'
 ```
-Lancer votre application Flask 
+
+Si vous êtes en local, lancez cette commande du stripe CLI.
+Elle permet de démarrer un écouteur qui surveille les événements Stripe sur votre compte et les redirige vers un endpoint HTTP spécifié
+Les webhooks vous permettent de recevoir des notifications en temps réel des événements sur votre compte Stripe, comme les paiements réussis, les abonnements créés, etc. Vous pouvez alors extraire les informations nécessaires, telles que le nom du produit et l'adresse du client, à partir des données fournies dans ces webhooks.
+```
+stripe listen --forward-to http://localhost:5000/stripe_webhook
+```
+
+Lancer votre application Flask pour démarrer votre serveur
 ```
 flask run
 ```
