@@ -7,6 +7,7 @@ from strip import *
 from mail import *
 from data_process import *
 from permission import * 
+from dotenv import load_dotenv
 
 """
 CONSIGNES POUR LANCER l'APPLICATION:
@@ -290,4 +291,5 @@ def my_subscriptions():
     
 #Lancement de l'application
 if __name__ == '__main__':
+    load_dotenv()
     app.run(debug=True,host=host,port=port)

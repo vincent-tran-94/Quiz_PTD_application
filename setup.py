@@ -4,12 +4,9 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 import uuid
 from sqlalchemy.dialects.postgresql import UUID
-from dotenv import load_dotenv
 from sqlalchemy import func, extract, distinct
 from datetime import datetime
 import os
-
-load_dotenv()
 
 app = Flask(__name__,template_folder='template',static_url_path='/static')
 
