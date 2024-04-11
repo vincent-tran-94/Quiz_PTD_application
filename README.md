@@ -48,9 +48,16 @@ Cette application va permet aux participants d'apprendre et de découvrir des no
     - participant : Le nombre de participants ayant rempli le formulaire
     - reponse_participant : Le nombre de réponses effectués par un participant
     - contact: contact client des participants soumis dans l'application 
+    - strip_customer: Client ayant payé un abonnement sur-mesure en l'utilisant l'API Stripe
 
-## Installation
+
+## Installation et setup
 - Version Python 3.11.7 
+
+Rendez-vous dans ce lien pour vous inscrire un compte sur strip
+```
+https://stripe.com/fr/connect
+```
 
 Importer le lien du projet et puis créez votre environnement virtuel
 ```
