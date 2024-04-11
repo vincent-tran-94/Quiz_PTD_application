@@ -16,10 +16,7 @@ python3 -m venv env
 source env/Scripts/activate
 (venv) pip install -r requirements.txt 
 2) Dans config.cfg et .env changer les paramètres désignés
-3) Configurer l'addresse IP de l'hôte et de votre port dans le fichier app.py
-3) Lancer le fichier run.sh
-chmod +x run.sh
-./run.sh
+3) Lancer la commande test.sh pour tester l'application et run.sh pour lancer le conteneur
 """
 
 # Créez une instance de LoginManager
