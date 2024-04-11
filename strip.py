@@ -1,4 +1,4 @@
-from forms import *
+from setup import *
 import stripe
 from flask import render_template, url_for, request, abort
 from flask_login import login_required
@@ -6,12 +6,8 @@ from datetime import datetime, timedelta
 import schedule
 import time
 
-
-public_key_strip = 'pk_test_51P3EsLG1dB5sn7JtabG0HewwbGUIktc5ViqOip7CUtHb14aZMWLvEQzfrp1Flkt9aXsH89LznAJjQC9yc7iLPawg00jQUmVWQW'
-secret_key_strip = 'sk_test_51P3EsLG1dB5sn7JtBsuQQqpq0GKlCGqsdDjqyfgBfw0RoJtszhcToMDUTAClc6Ec0kytShyM6rjWSJzP6hg3Cu7h00ikI1xuSw'
-
-app.config['STRIPE_PUBLIC_KEY'] = public_key_strip
-app.config['STRIPE_SECRET_KEY'] = secret_key_strip
+app.config['STRIPE_PUBLIC_KEY'] = os.getenv('STRIPE_PUBLIC_KEY')
+app.config['STRIPE_SECRET_KEY'] = os.getenv('STRIPE_SECRET_KEY')
 stripe.api_key = app.config['STRIPE_SECRET_KEY']
 
 """
@@ -19,7 +15,7 @@ COMMAND pour récupérer le nom du produit acheté par le client marche seulemen
 stripe listen --forward-to http://127.0.0.1:5000/stripe_webhook
 and enter your secret_endpoint_webhook
 """
-secret_endpoint_webhook = 'whsec_3d75fb000c8f8f97b0b15706ab7792f17cf22882ab2de498c165bc2a86cba976'
+secret_endpoint_webhook = os.getenv('STRIPE_SECRET_ENDPOINT')
 
 @app.route('/souscription')
 @login_required
@@ -36,7 +32,7 @@ def souscription():
     )
     
     return render_template(
-        'souscription.html', 
+        'sidebar/souscription.html', 
         checkout_session_id=session['id'], 
         checkout_public_key=app.config['STRIPE_PUBLIC_KEY']
     )

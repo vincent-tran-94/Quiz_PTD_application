@@ -4,21 +4,27 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 import uuid
 from sqlalchemy.dialects.postgresql import UUID
+from dotenv import load_dotenv
 from sqlalchemy import func, extract, distinct
 from datetime import datetime
+import os
 
-
-id_database = "vincenttran"
-password_database = "associationptd"
-adresse_ip = "localhost"
-name_database = "participants"
+load_dotenv()
 
 app = Flask(__name__,template_folder='template',static_url_path='/static')
 
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///participants.db' 
-app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{id_database}:{password_database}@{adresse_ip}/{name_database}'
+# #Host configuration and port 
+host = os.getenv("HOST")
+port = os.getenv("PORT")
+mail_association = os.getenv("MAIL_ASSOCIATION_CONTACT")
+
+app.secret_key = os.getenv('SECRET_KEY')
+db_uri = f"postgresql://{os.getenv('ID_DATABASE')}:{os.getenv('PASSWORD_DATABASE')}@{os.getenv('ADDRESS_IP')}/{os.getenv('NAME_DATABASE')}"
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+
+app.config.from_pyfile('config.cfg')
 
 """
 Liste des tables constitués dans notre base de données 
@@ -137,6 +143,7 @@ def get_top_10_participants():
     
     return top_participants_info
 
-
+#Création de la base de données si n'existe pas
 with app.app_context():
     db.create_all()
+

@@ -1,9 +1,9 @@
-from forms import *
+from setup import *
 from flask import render_template, request, redirect, url_for, session, flash
 from flask_login import LoginManager,login_required, logout_user, login_user, current_user
 from sqlalchemy.orm.exc import NoResultFound
 from vizualisation import *
-from pay_strip import * 
+from strip import * 
 from mail import *
 from data_process import *
 from permission import * 
@@ -14,22 +14,12 @@ CONSIGNES POUR LANCER l'APPLICATION:
 python3 -m venv env
 source env/Scripts/activate
 (venv) pip install -r requirements.txt 
-2) Dans config.cfg: Configurer votre serveur SMTP en changeant votre MAIL_USERNAME et le MAIL_DEFAULT_SENDER
-MAIL_SERVER='smtp.gmail.com'
-MAIL_USERNAME='votreadresse@gmail.com'
-MAIL_DEFAULT_SENDER = 'votreadresse@gmail.com'
-MAIL_PASSWORD='Votre mot de passe'
+2) Dans config.cfg et .env changer les paramètres désignés
 3) Configurer l'addresse IP de l'hôte et de votre port dans le fichier app.py
 3) Lancer le fichier run.sh
 chmod +x run.sh
 ./run.sh
 """
-
-#Host configuration and port 
-host='0.0.0.0'
-port=5000
-mail_association = 'timeroyal@gmail.com'
-
 
 # Créez une instance de LoginManager
 login_manager = LoginManager()
@@ -38,7 +28,6 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(user_id):
     return db.session.get(User, user_id)
-
 
 #Fonction de la première connexion
 @app.route('/', methods=['GET', 'POST'])
@@ -62,7 +51,7 @@ def login():
         else:
             flash("Nom d'utilisateur ou mot de passe invalide", "error")  # Message flash pour l'erreur
         
-    return render_template('login.html',image_filename=image_filename)
+    return render_template('setup_user/login.html',image_filename=image_filename)
 
 #Fonction de déconnexion
 @app.route('/logout')
@@ -82,11 +71,11 @@ def forgot_password():
         try:
             user = User.query.filter_by(email=email).one()
             reset_password_email(user)
-            return render_template('confirmation.html', message='Un lien de réinitialisation de mot de passe a été envoyé à votre adresse e-mail.')
+            return render_template('setup_user/confirmation.html', message='Un lien de réinitialisation de mot de passe a été envoyé à votre adresse e-mail.')
         except NoResultFound:
-            return render_template('confirmation.html', message='Adresse e-mail non trouvée.')
+            return render_template('setup_user/confirmation.html', message='Adresse e-mail non trouvée.')
         
-    return render_template('forgot_password.html')
+    return render_template('setup_user/forgot_password.html')
 
 
 @app.route('/delete_account', methods=['GET', 'POST'])
@@ -96,11 +85,11 @@ def delete_account():
         try: 
             user = User.query.filter_by(email=email).one()
             delete_account_email(user)
-            return render_template('confirmation.html', message='Un lien de suppresion de compte a été envoyé à votre adresse e-mail.')
+            return render_template('setup_user/confirmation.html', message='Un lien de suppresion de compte a été envoyé à votre adresse e-mail.')
         except NoResultFound:
-            return render_template('confirmation.html', message='Adresse e-mail non trouvée.')
+            return render_template('setup_user/confirmation.html', message='Adresse e-mail non trouvée.')
         
-    return render_template("delete_account.html")
+    return render_template("setup_user/delete_account.html")
 
 
 #Fonction de désinscription
@@ -116,12 +105,12 @@ def register():
         if not existing_email:
             send_confirmation_email(nom=nom,prenom=prenom,email=email,password=password)
                    
-            return render_template('confirmation.html', message='Un e-mail de confirmation a été envoyé à votre adresse.')
+            return render_template('setup_user/confirmation.html', message='Un e-mail de confirmation a été envoyé à votre adresse.')
         else:
-            return render_template('confirmation.html', message='Vous êtes déjà inscrit.')
+            return render_template('setup_user/confirmation.html', message='Vous êtes déjà inscrit.')
 
 
-    return render_template('register.html')
+    return render_template('setup_user/register.html')
 
 
 
@@ -171,7 +160,7 @@ def accueil():
     image_filename = 'images/logo_PTD.jpg'
     image_background = 'images/background_image.jpg'
     image_background_contact = 'images/contact_us_background.jpg'
-    return render_template('home.html',image_filename=image_filename,image_background=image_background,image_background_contact=image_background_contact)
+    return render_template('sidebar/home.html',image_filename=image_filename,image_background=image_background,image_background_contact=image_background_contact)
 
 #Fonction de contact client avec l'association
 @app.route('/contact', methods=['GET', 'POST'])
@@ -274,7 +263,7 @@ def dashboard():
             indexed_filtered_participants = list(enumerate(filtered_participants, start=1))
 
             
-            return render_template('dashboard.html', graph_json_success=graph_json_success, 
+            return render_template('sidebar/dashboard.html', graph_json_success=graph_json_success, 
                             graph_json_participants=graph_json_participants, 
                             graph_json_participants_month= graph_json_participants_month,
                             top_participants=indexed_filtered_participants, 
@@ -283,7 +272,7 @@ def dashboard():
                             image_filename=image_filename)
 
 
-        return render_template('dashboard.html', graph_json_success=graph_json_success, 
+        return render_template('sidebar/dashboard.html', graph_json_success=graph_json_success, 
                             graph_json_participants=graph_json_participants, 
                             graph_json_participants_month= graph_json_participants_month,
                             top_participants=indexed_top_participants, 
@@ -296,9 +285,9 @@ def dashboard():
 def my_subscriptions():
     # check if a record exists for them in the StripeCustomer table
     subscriptions = StripeCustomer.query.filter_by(participant_id=current_user.id).all()
-    return render_template("my_subscriptions.html",subscriptions=subscriptions)
+    return render_template("sidebar/my_subscriptions.html",subscriptions=subscriptions)
 
-        
+    
 #Lancement de l'application
 if __name__ == '__main__':
     app.run(debug=True,host=host,port=port)

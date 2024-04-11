@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mes abonnements</title>  
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css?v=1" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles/my_souscription.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles/sidebar.css') }}" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
+  </head>
+  <body>
+    {% block content %}
+    {% endblock %}
+    <div class="container mt-5">
+      <h1 class="mb-4">Mes Abonnements</h1>
+      <div class="list-group">
+        {% if subscriptions %}
+          {% for subscription in subscriptions %}
+            <div class="list-group-item">
+              <h5 class="mb-1">{{ subscription.name_product }}</h5>
+              <p class="mb-1">Prix: {{ subscription.price_euros }} euros par mois</p>
+              <p class="mb-1">Date de souscription: {{ subscription.date_creation.strftime('%d %B, %Y') }}</p>
+              <!-- Ajoutez d'autres informations sur l'abonnement si nécessaire -->
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>Vous n'avez pas encore souscrit à des abonnements.</p>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>

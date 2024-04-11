@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for, flash
-from forms import *
+from setup import *
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadSignature
 from flask import request
@@ -10,9 +10,6 @@ Fonctions de fonctionnalité de login et d'inscription via par mail (on peut cha
 -Confirmation d'envoi par mail pour chaque utilisateur
 -Changement de mot de passe en cas d'oubli de mot de passe
 """
-
-
-app.config.from_pyfile('config.cfg')
 
 # Initialiser Flask-Mail
 mail = Mail(app)
@@ -74,14 +71,14 @@ def confirm_email(token):
         if user__confirmation_id:
             return redirect(url_for('login'))
         else:
-            return render_template('confirmation.html', message='Mail or User ID no detected')
+            return render_template('setup_user/confirmation.html', message='Mail or User ID no detected')
         
     except SignatureExpired:
         # Le token a expiré
-        return render_template('confirmation.html', message='Le lien de confirmation a expiré.')
+        return render_template('setup_user/confirmation.html', message='Le lien de confirmation a expiré.')
     except BadSignature:
         # Token invalide
-        return render_template('confirmation.html', message='Lien de confirmation invalide.')
+        return render_template('setup_user/confirmation.html', message='Lien de confirmation invalide.')
 
 
 def reset_password_email(user):
@@ -113,15 +110,16 @@ def confirm_delete(token):
             ReponseParticipant.query.filter_by(participant_id=user.id).delete()
             Contact.query.filter_by(participant_id=user.id).delete()
             Participant.query.filter_by(participant_id=user.id).delete()
+            StripeCustomer.query.filter_by(participant_id=user.id).delete()
             db.session.delete(user)
             db.session.commit()
-        return render_template('confirmation.html', message='Votre compte a été bien supprimé.') 
+        return render_template('setup_user/confirmation.html', message='Votre compte a été bien supprimé.') 
     except SignatureExpired:
         # Le token a expiré
-        return render_template('confirmation.html', message='Le lien de confirmation a expiré.')
+        return render_template('setup_user/confirmation.html', message='Le lien de confirmation a expiré.')
     except BadSignature:
         # Token invalide
-        return render_template('confirmation.html', message='Lien de confirmation invalide.')
+        return render_template('setup_user/confirmation.html', message='Lien de confirmation invalide.')
 
 
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
@@ -140,14 +138,14 @@ def reset_password(token):
             else:
                 user.set_password(new_password, method='pbkdf2:sha256')
                 db.session.commit()
-                return render_template('confirmation.html', message='Mot de passe mis à jour avec succès.')
+                return render_template('setup_user/confirmation.html', message='Mot de passe mis à jour avec succès.')
 
-        return render_template('reset_password.html',token=token)
+        return render_template('setup_user/reset_password.html',token=token)
     except SignatureExpired:
         # Le token a expiré
-        return render_template('confirmation.html', message='Le lien de confirmation a expiré.')
+        return render_template('setup_user/confirmation.html', message='Le lien de confirmation a expiré.')
     except BadSignature:
         # Token invalide
-        return render_template('confirmation.html', message='Lien de confirmation invalide.')
+        return render_template('setup_user/confirmation.html', message='Lien de confirmation invalide.')
     
 
