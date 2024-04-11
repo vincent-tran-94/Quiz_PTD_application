@@ -2,6 +2,10 @@ from forms import *
 import stripe
 from flask import render_template, url_for, request, abort
 from flask_login import login_required
+from datetime import datetime, timedelta
+import schedule
+import time
+
 
 public_key_strip = 'pk_test_51P3EsLG1dB5sn7JtabG0HewwbGUIktc5ViqOip7CUtHb14aZMWLvEQzfrp1Flkt9aXsH89LznAJjQC9yc7iLPawg00jQUmVWQW'
 secret_key_strip = 'sk_test_51P3EsLG1dB5sn7JtBsuQQqpq0GKlCGqsdDjqyfgBfw0RoJtszhcToMDUTAClc6Ec0kytShyM6rjWSJzP6hg3Cu7h00ikI1xuSw'
@@ -12,7 +16,7 @@ stripe.api_key = app.config['STRIPE_SECRET_KEY']
 
 """
 COMMAND pour récupérer le nom du produit acheté par le client marche seulement en local
-stripe listen --forward-connect-to http://127.0.0.1:5000/stripe_webhook
+stripe listen --forward-to http://127.0.0.1:5000/stripe_webhook
 and enter your secret_endpoint_webhook
 """
 secret_endpoint_webhook = 'whsec_3d75fb000c8f8f97b0b15706ab7792f17cf22882ab2de498c165bc2a86cba976'
@@ -89,6 +93,8 @@ def stripe_webhook():
         email_customer = stripe.checkout.Session.list(limit=3)["data"][0]["customer_details"]["email"]
         #print(email_customer)
         create_stripe_customer(product_description,email_customer)
+        process_task(product_description,email_customer)
+
     return {}
 
 #Fonction pour la création des abonnements stockés sur une base de données
@@ -118,3 +124,34 @@ def create_stripe_customer(new_product_customer,email_customer):
         db.session.commit()
     else:
         return None 
+
+
+def update_participant_responses(new_product_customer,email):
+     # Rechercher le client Stripe avec l'email donné
+    with app.app_context():
+        customer = StripeCustomer.query.filter_by(email=email).first()
+        if customer:
+            # Vérifier si le client a un abonnement Bronze
+            if customer.name_product == new_product_customer:
+                # Rechercher toutes les réponses du participant correspondant dans ReponseParticipant
+                participant_responses = ReponseParticipant.query.filter_by(participant_id=customer.participant_id).all()
+                for participant_response in participant_responses:
+                    # Vérifier si la réponse du participant existe
+                    if participant_response is not None:
+                        last_update = participant_response.date_creation
+                        # Vérifier si la dernière mise à jour a eu lieu il y a plus d'un mois
+                        if datetime.utcnow() - last_update > timedelta(days=30):  
+                            # Mettre à jour le nombre d'essais
+                            participant_response.nb_essais += 3
+                            # Mettre à jour la date de création pour refléter la mise à jour
+                            participant_response.date_creation = datetime.utcnow()
+                # Commit des changements à la base de données une fois pour toutes les réponses traitées
+                db.session.commit()
+
+def process_task(product_description,email):
+    # Planifier la tâche pour s'exécuter chaque mois
+    schedule.every(4).weeks.do(lambda: update_participant_responses(product_description, email))
+    # Boucle pour exécuter la planification de la tâche en continu
+    while True:
+        schedule.run_pending()
+        time.sleep(1)

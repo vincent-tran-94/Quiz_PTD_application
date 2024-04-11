@@ -47,15 +47,15 @@
                         </a>
                     </li>
                     <li class="list">
-                        <a href="{{ url_for('dashboard', categorie='resultats') }}" class="nav-link">
+                        <a href="{{ url_for('bronze_route_dashboard') }}" class="nav-link">
                         <i class="bx bxs-dashboard icon"></i>
                         <span class="link">Dashboard et classement</span>
                         </a>
                     </li>
                     <li class="list">
-                        <a href="{{ url_for('resultats') }}" class="nav-link">
+                        <a href="{{ url_for('bronze_route_resultats') }}" class="nav-link">
                         <i class="bx bx-list-check icon"></i>
-                        <span class="link">Vos résultats</span>
+                        <span class="link">Votre progression</span>
                         </a>
                     </li>
                     <li class="list">
@@ -177,8 +177,8 @@
             <div style="text-align:center"> <p><strong>Si vous souhaitez participer à nouveau au quiz ou connaitre plus votre progression, 
                 veuillez souscrire à un abonnement pour découvrir les offres disponibles. </br> 
                 Si vous rencontrez des difficultés, n'hésitez pas à nous contacter ci-dessous. 👇 </style> </strong> </p> 
-                <div class="col-md-3 offset-md-4" style="padding-left: 100px;">
-                    <a href="{{ url_for('souscription') }}" class="btn btn-secondary btn-lg btn-block">S'abonner</a>
+                <div class="col-md-4 offset-md-4" style="padding-left: 20px;">
+                    <a href="{{ url_for('souscription') }}" class="btn btn-warning btn-lg btn-block">S'abonner</a>
                 </div>
             </div>
         </div>

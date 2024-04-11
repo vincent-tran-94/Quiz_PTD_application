@@ -6,6 +6,7 @@ from vizualisation import *
 from pay_strip import * 
 from mail import *
 from data_process import *
+from permission import * 
 
 """
 CONSIGNES POUR LANCER l'APPLICATION:
@@ -220,10 +221,6 @@ def categorie_questions(categorie):
         directory = categories_directories[categorie]
         data_json = open_file_json_from_directory(directory)
     
-
-    if categorie == 'resultats':
-        return redirect(url_for('dashboard'))
-    
     if reponse_existe:
         nb_essais_restant = reponse_existe.nb_essais
         if nb_essais_restant == 0:
@@ -295,13 +292,13 @@ def dashboard():
         return redirect(url_for('accueil'))
     
 @app.route("/my_subscriptions")
-@login_required  # force the user to log in/sign up
+@login_required  
 def my_subscriptions():
     # check if a record exists for them in the StripeCustomer table
     subscriptions = StripeCustomer.query.filter_by(participant_id=current_user.id).all()
     return render_template("my_subscriptions.html",subscriptions=subscriptions)
 
-    
+        
 #Lancement de l'application
 if __name__ == '__main__':
     app.run(debug=True,host=host,port=port)
