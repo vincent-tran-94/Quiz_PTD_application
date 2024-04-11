@@ -54,25 +54,25 @@ Cette application va permet aux participants d'apprendre et de découvrir des no
 
 Importer le lien du projet et puis créez votre environnement virtuel
 ```
-$ git clone https://github.com/vincent-tran-94/Quiz_students_PTD_application.git
-$ python3 -m venv env
-$ source env/Scripts/activate
+git clone https://github.com/vincent-tran-94/Quiz_students_PTD_application.git
+python3 -m venv env
+source env/Scripts/activate
 ```
 
 Installer les dépendances 
 ```
-$ (venv) pip install -r requirements.txt 
+pip install -r requirements.txt 
 ```
 
 Configurer le fichier config.cfg
 ```
-$MAIL_SERVER='your_smtp.gmail.com'
-$MAIL_USERNAME='your_mail@gmail.com'
-$MAIL_DEFAULT_SENDER = 'your_mail@gmailcom'  
-$MAIL_PASSWORD='your_password_given_gmail_smtp'
-$MAIL_PORT=465
-$MAIL_USE_SSL=True
-$MAIL_USE_TLS=False
+MAIL_SERVER='your_smtp.gmail.com'
+MAIL_USERNAME='your_mail@gmail.com'
+MAIL_DEFAULT_SENDER = 'your_mail@gmailcom'  
+MAIL_PASSWORD='your_password_given_gmail_smtp'
+MAIL_PORT=465
+MAIL_USE_SSL=True
+MAIL_USE_TLS=False
 ```
 
 Configurer le fichier .env
@@ -96,5 +96,5 @@ STRIPE_SECRET_ENDPOINT='you_secret_endpoint_key'
 ```
 Lancer votre application Flask 
 ```
-$ (venv) python app.py
+flask run
 ```
