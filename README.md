@@ -75,17 +75,6 @@ $MAIL_USE_SSL=True
 $MAIL_USE_TLS=False
 ```
 
-Configurer le fichier config.cfg
-```
-$MAIL_SERVER='your_smtp.gmail.com'
-$MAIL_USERNAME='your_mail@gmail.com'
-$MAIL_DEFAULT_SENDER = 'your_mail@gmailcom'  
-$MAIL_PASSWORD='your_password_given_gmail_smtp'
-$MAIL_PORT=465
-$MAIL_USE_SSL=True
-$MAIL_USE_TLS=False
-```
-
 Configurer le fichier .env
 ```
 [App]
