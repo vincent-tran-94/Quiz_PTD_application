@@ -1,5 +1,5 @@
 from setup import *
-from flask import render_template, request, redirect, url_for, session, flash
+from flask import render_template, request, redirect, url_for, session, flash, make_response
 from flask_login import LoginManager,login_required, logout_user, login_user, current_user
 from sqlalchemy.orm.exc import NoResultFound
 from vizualisation import *
@@ -8,6 +8,8 @@ from mail import *
 from data_process import *
 from permission import * 
 from dotenv import load_dotenv
+import csv
+import io
 
 """
 CONSIGNES POUR LANCER l'APPLICATION:
@@ -217,14 +219,14 @@ def categorie_questions(categorie):
 
     if request.method == 'POST':
         traitement_reponses(data_json,categorie)
-        return redirect(url_for('resultats'))
+        return redirect(url_for('progression'))
         
     return render_template('categorie.html', questions=data_json['questions'],categorie=categorie)
 
 #Fonction des résultats obtenus après le remplissage des questionnaires
-@app.route('/resultats')
+@app.route('/progression')
 @login_required
-def resultats():
+def progression():
     participant_id = session.get('user_id')
     
     # Récupérer les résultats du participant depuis la base de données
@@ -233,7 +235,39 @@ def resultats():
     # Vous pouvez également récupérer d'autres informations pertinentes ici, par exemple, le nom du participant, etc.
     participant_info = Participant.query.filter_by(participant_id=participant_id).first()
     
-    return render_template('resultats.html', participant_results=participant_results, participant_info=participant_info)
+    return render_template('progression.html', participant_results=participant_results, participant_info=participant_info)
+
+@app.route('/download_csv')
+@login_required
+def download_csv():
+    participant_id = session.get('user_id')
+    
+    # Récupérer les résultats du participant depuis la base de données
+    participant_results = ReponseParticipant.query.filter_by(participant_id=participant_id).all()
+
+    # Créer un fichier CSV en mémoire
+    output = io.StringIO()
+    writer = csv.writer(output, delimiter=';')
+    
+    # Écrire l'en-tête du fichier CSV
+    writer.writerow(['Catégorie', 'Réponses correctes', 'Réponses incorrectes', 'Succès pourcentage'])
+
+    # Écrire les données de chaque résultat dans le fichier CSV
+    for result in participant_results:
+        writer.writerow([
+            result.categorie,
+            result.correct_answers,
+            result.incorrect_answers,
+            result.success_percentage
+        ])
+
+    # Préparer le contenu du fichier CSV pour le téléchargement
+    output.seek(0)
+    response = make_response(output.getvalue().encode('utf-8-sig'))
+    response.headers['Content-Disposition'] = 'attachment; filename=donnees_participant.csv'
+    response.headers['Content-Type'] = 'text/csv; charset=utf-8-sig'
+    
+    return response
 
 
 #Fonction d'affichage des résultats et de visualisation avec un classement donné

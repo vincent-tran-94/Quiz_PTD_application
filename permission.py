@@ -10,21 +10,28 @@ def check_role(user_id, role):
     return False
 
 # Route protégée par le rôle "bronze"
-@app.route('/bronze_route_dashboard')
+@app.route('/permission_route_dashboard')
 @login_required
-def bronze_route_dashboard():
+def permission_route_dashboard():
     if check_role(current_user.get_id(), 'Bronze'):
         return redirect('dashboard')
     else:
         return render_template("no_authorization.html",message="Il faut opter pour un abonnement minimum.")
 
-@app.route('/bronze_route_resultats')
+@app.route('/permission_route_resultats')
 @login_required
-def bronze_route_resultats():
+def permission_route_resultats():
     if check_role(current_user.get_id(), 'Bronze'):
-        return redirect('resultats')
+        return redirect('progression')
     else:
         return render_template("no_authorization.html",message="Il faut opter pour un abonnement minimum.")
 
 
+@app.route('/permission_route_data_csv')
+@login_required
+def permission_route_data_csv():
+    if check_role(current_user.get_id(), 'Bronze'):
+        return redirect('download_csv')
+    else:
+        return render_template("no_authorization.html",message="Il faut opter pour un abonnement minimum.")
 
