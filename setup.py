@@ -58,6 +58,7 @@ class Participant(db.Model):
     adresse = db.Column(db.String(255))
     code_postal = db.Column(db.Integer)
     ville = db.Column(db.String(255))
+    pays = db.Column(db.String(255))
     niveau_etude = db.Column(db.String(255))
     statut = db.Column(db.String(255))
     centre_interet = db.Column(db.String(255))
@@ -90,9 +91,3 @@ class StripeCustomer(db.Model):
     email = db.Column(db.String(100))
     price_euros = db.Column(db.Integer())
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
-
-
-#Création de la base de données si n'existe pas
-with app.app_context():
-    db.create_all()
-

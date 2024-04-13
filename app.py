@@ -10,6 +10,9 @@ from permission import *
 from dotenv import load_dotenv
 import csv
 import io
+from process_stripe import *
+from threading import Thread
+from process_stripe import start_scheduler
 
 """
 CONSIGNES POUR LANCER l'APPLICATION:
@@ -127,6 +130,7 @@ def formulaire():
         adresse = request.form['adresse']
         code_postal = request.form['code_postal']
         ville = request.form['ville']
+        pays = request.form['pays']
         niveau_etude = request.form['niveau_etude']
         statut = request.form['statut']
         centre_interet = request.form['centre_interet']
@@ -328,5 +332,9 @@ def my_subscriptions():
     
 #Lancement de l'application
 if __name__ == '__main__':
-    load_dotenv()
+    load_dotenv() #Importer les paramètres de l'identification
+    # scheduler_thread = Thread(target=start_scheduler)
+    # scheduler_thread.start()
+    with app.app_context():
+        db.create_all()  #Création de la table dans la base de données si il n'existe pas
     app.run(debug=True,host=host,port=port)

@@ -3,7 +3,8 @@ from setup import *
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadSignature
 from flask import request
-
+from strip import *
+import requests
 
 """
 Fonctions de fonctionnalité de login et d'inscription via par mail (on peut changer de mot de passe):
@@ -149,3 +150,23 @@ def reset_password(token):
         return render_template('setup_user/confirmation.html', message='Lien de confirmation invalide.')
     
 
+# Fonction d'envoi d'e-mail
+def send_invoice_email(invoice_id):
+    invoice = stripe.Invoice.retrieve(invoice_id)
+    customer_email = invoice.customer_email
+    invoice_pdf_link = invoice.invoice_pdf
+    name_product = invoice["lines"]["data"][0]["description"]
+    # print("invoice",invoice)
+    # print("customer_email",customer_email)
+
+    msg = Message('Votre facture mensuelle', recipients=[customer_email])
+    msg.body = f"Bonjour,\n\nVeuillez trouver ci-joint votre facture mensuelle pour le forfait d'abonnement: {name_product}.\n\nBien cordialement,\nAssociation Préserve ton droit"
+
+    # Téléchargement du PDF de la facture
+    pdf_content = requests.get(invoice_pdf_link).content
+    #print("pdf_content",pdf_content)
+
+    msg.attach("invoice.pdf", "application/pdf", pdf_content)
+
+    # Envoi de l'e-mail
+    mail.send(msg)
