@@ -31,3 +31,6 @@ h1 {
     text-align: center; /* Centrer le texte */
   }
   
+  .small-font {
+    font-size: 24px; /* Choisissez une taille de police appropriée */
+}

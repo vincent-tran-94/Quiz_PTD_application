@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Résultats du participant: {{ participant_info.nom }} {{ participant_info.prenom }}</h1>
+        <h1 class="small-font">Résultats du participant: {{ participant_info.nom }} {{ participant_info.prenom }}</h1>
         <ul>
             {% for result in participant_results %}
                 <li>Catégorie: {{ result.categorie }}</li>
@@ -33,8 +33,10 @@
             <span class="star" data-rating="5"><i class="fas fa-star"></i></span>
         </div>
         <p id="thank-you-message" style="display: none;">Merci pour votre avis !</p>
-        <a href="{{ url_for('permission_route_data_csv') }}" class="btn btn-success">Télécharger vos données CSV</a>
-        <a href="/accueil" class="text-black font-weight-bold regStr" style="float: right;">Revenir vers la page d'accueil</a>
+        <div class="link-container">
+            <a href="{{ url_for('permission_route_data_csv') }}" class="btn btn-success">Télécharger vos données CSV</a>
+            <a href="/accueil" class="text-black font-weight-bold regStr home-link">Revenir vers la page d'accueil</a>
+        </div>
     </div>
     <!-- Inclure le script JavaScript de Bootstrap (optionnel si vous n'utilisez pas les fonctionnalités JavaScript de Bootstrap) -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

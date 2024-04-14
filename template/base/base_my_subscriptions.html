@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=1920,height=1080, initial-scale=1">
     <title>Mes abonnements</title>  
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css?v=1" rel="stylesheet">
     <link href="{{ url_for('static', filename='styles/my_souscription.css') }}" rel="stylesheet">
@@ -14,7 +14,7 @@
     {% block content %}
     {% endblock %}
     <div class="container mt-5">
-      <h1 class="mb-4">Mes Abonnements</h1>
+      <h1 class="mb-4 small-font">Mes Abonnements</h1>
       <div class="list-group">
         {% if subscriptions %}
           {% for subscription in subscriptions %}
@@ -27,7 +27,7 @@
         {% else %}
           <h5>Vous avez pas souscrit à un abonnement.</h5>
         {% endif %}
-        <h1 class="mb-4">Nombre d'essais restants pour chaque catégorie</h1>
+        <h1 class="mb-4 small-font">Nombre d'essais restants pour chaque catégorie</h1>
         {% for categorie, nb_essais in essais_restants_par_categorie.items() %}
         <div class="list-group-item">
             <h5 class="mb-1">{{ categorie }}</h5>

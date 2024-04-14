@@ -160,7 +160,7 @@ def send_invoice_email(invoice_id):
     # print("customer_email",customer_email)
 
     msg = Message('Votre facture mensuelle', recipients=[customer_email])
-    msg.body = f"Bonjour,\n\nVeuillez trouver ci-joint votre facture mensuelle pour le forfait d'abonnement: {name_product}.\n\nBien cordialement,\nAssociation Préserve ton droit"
+    msg.body = f"Bonjour,\n\nVeuillez trouver ci-joint votre facture mensuelle pour le forfait d'abonnement: {name_product}.\n\nVeuillez vérifier vos spams ou dossier de courriers indésirables si vous ne trouvez pas ce message dans votre boîte de réception.\n\n Bien cordialement,\nAssociation Préserve ton droit"
 
     # Téléchargement du PDF de la facture
     pdf_content = requests.get(invoice_pdf_link).content

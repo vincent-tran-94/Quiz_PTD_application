@@ -9,7 +9,10 @@ from process_stripe import create_stripe_customer
 app.config['STRIPE_PUBLIC_KEY'] = os.getenv('STRIPE_PUBLIC_KEY')
 app.config['STRIPE_SECRET_KEY'] = os.getenv('STRIPE_SECRET_KEY')
 stripe.api_key = app.config['STRIPE_SECRET_KEY']
-
+id_product_bronze =  os.getenv('ID_PRODUCT_BRONZE')
+id_product_silver = os.getenv('ID_PRODUCT_SILVER')
+id_product_gold = os.getenv('ID_PRODUCT_GOLD')
+taxe_rate = os.getenv('ID_TAXE_RATE')
 """
 COMMAND pour récupérer le nom du produit acheté par le client marche seulement en local
 stripe listen --forward-to http://127.0.0.1:5000/stripe_webhook
@@ -23,10 +26,14 @@ def souscription():
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=[{
-            'price': 'price_1P3FAhG1dB5sn7JthBzdmAA6',
+            'price': id_product_bronze ,
             'quantity': 1,
         }],
+        subscription_data={
+            'default_tax_rates': [taxe_rate],
+        },
         mode='subscription',
+        allow_promotion_codes=True,
         success_url=url_for('thanks', _external=True) + '?session_id={CHECKOUT_SESSION_ID}',
         cancel_url=url_for('souscription', _external=True),
     )
@@ -42,10 +49,14 @@ def stripe_pay():
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=[{
-            'price': 'price_1P3FAhG1dB5sn7JthBzdmAA6',
+            'price': id_product_bronze ,
             'quantity': 1,
         }],
+        subscription_data={
+            'default_tax_rates': [taxe_rate],
+        },
         mode='subscription',
+        allow_promotion_codes=True,
         success_url=url_for('thanks', _external=True) + '?session_id={CHECKOUT_SESSION_ID}',
         cancel_url=url_for('souscription', _external=True),
     )
