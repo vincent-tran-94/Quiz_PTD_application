@@ -3,16 +3,14 @@ from flask import render_template, request, redirect, url_for, session, flash, m
 from flask_login import LoginManager,login_required, logout_user, login_user, current_user
 from sqlalchemy.orm.exc import NoResultFound
 from vizualisation import *
-from strip import * 
+from stripe_process import * 
 from mail import *
 from data_process import *
 from permission import * 
-from dotenv import load_dotenv
 import csv
 import io
 from process_stripe import *
-from threading import Thread
-from process_stripe import start_scheduler
+
 
 """
 CONSIGNES POUR LANCER l'APPLICATION:
@@ -116,8 +114,6 @@ def register():
     return render_template('setup_user/register.html')
 
 
-
-
 #Fonction de formulaire de renseignement du participant pour connaitre les informations du participant
 @app.route('/formulaire', methods=['GET', 'POST'])
 @login_required
@@ -135,7 +131,7 @@ def formulaire():
         statut = request.form['statut']
         centre_interet = request.form['centre_interet']
         choix_categorie = request.form['choix_categorie']
-        champs_requis = [nom, prenom, adresse,code_postal,ville, niveau_etude, statut, centre_interet, choix_categorie]
+        champs_requis = [nom, prenom, adresse,code_postal,ville,pays, niveau_etude, statut, centre_interet, choix_categorie]
 
         if not champs_requis:
             return render_template('formulaire.html', message="Veuillez remplir tous les champs.")
@@ -329,12 +325,52 @@ def my_subscriptions():
         essais_restants_par_categorie[essai_restant.categorie] = essai_restant.nb_essais 
     return render_template("sidebar/my_subscriptions.html", subscriptions=subscriptions, essais_restants_par_categorie=essais_restants_par_categorie)
 
-    
+@app.route("/parrainage",methods=['GET', 'POST'])
+@login_required
+def parrainage():
+    message = None
+    coupon_parrain = None
+
+    if request.method == 'POST':
+        participant_email = request.form['participant_email']
+        parrain_email = request.form['parrain_email']
+
+        # Vérifier si le parrain existe
+        participant_own_parrain = Parrainage.query.filter_by(email=participant_email).first()
+        participant_mail = User.query.filter_by(email=participant_email).first()
+        parrain_inscrit =  User.query.filter_by(email=parrain_email).first()
+        existant_inverse = Parrainage.query.filter_by(email=parrain_email,parrain_email=participant_email)
+        parrainage_existe = Parrainage.query.filter_by(participant_id=participant_mail.id, parrain_email=parrain_email).first()
+
+
+        if participant_own_parrain:
+            message = "Vous avez déjà eu un parrainage"
+        elif participant_email  == parrain_email:
+            message = "Il est impossible d'utiliser le même de votre adresse mail et le mail du parrainage."
+        elif existant_inverse: 
+            message = "Votre participant est déjà associé à votre parrainage."
+        elif not participant_mail: 
+            message = "Le mail du participant n'est pas inscrit"
+        elif not parrain_inscrit:
+            message = "Votre mail du parrain n'a pas été inscrit"
+        elif parrainage_existe:
+            message = "Un parrainage existe déjà pour cette combinaison participant/parrain"
+        else:
+            # Créer un code de parrainage
+            coupon_parrain = create_promotion_code(coupon_id)
+
+            # Enregistrer le parrainage dans la base de données
+            parrainage = Parrainage(participant_id=current_user.id, email=participant_email, 
+                                    parrain_email=parrain_email, coupon_parrain=coupon_parrain)
+            db.session.add(parrainage)
+            db.session.commit()
+            message = "Le parrainage a été créé avec succès"
+        
+
+    return render_template('parrain.html', message=message, coupon_parrain=coupon_parrain)
+
 #Lancement de l'application
 if __name__ == '__main__':
-    load_dotenv() #Importer les paramètres de l'identification
-    # scheduler_thread = Thread(target=start_scheduler)
-    # scheduler_thread.start()
     with app.app_context():
         db.create_all()  #Création de la table dans la base de données si il n'existe pas
     app.run(debug=True,host=host,port=port)

@@ -1,8 +1,6 @@
-from strip import *
 from datetime import datetime, timedelta
 import schedule
 from setup import *
-import schedule
 import time
 
 
@@ -89,3 +87,4 @@ def start_scheduler():
 #             if user:
 #                 # Appeler process_task pour chaque utilisateur avec les informations nécessaires
 #                 threading.Thread(target=process_task, args=(user.name_product, user.email)).start()
+

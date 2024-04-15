@@ -9,16 +9,36 @@ from process_stripe import create_stripe_customer
 app.config['STRIPE_PUBLIC_KEY'] = os.getenv('STRIPE_PUBLIC_KEY')
 app.config['STRIPE_SECRET_KEY'] = os.getenv('STRIPE_SECRET_KEY')
 stripe.api_key = app.config['STRIPE_SECRET_KEY']
+
 id_product_bronze =  os.getenv('ID_PRODUCT_BRONZE')
 id_product_silver = os.getenv('ID_PRODUCT_SILVER')
 id_product_gold = os.getenv('ID_PRODUCT_GOLD')
 taxe_rate = os.getenv('ID_TAXE_RATE')
+secret_endpoint_webhook = os.getenv('STRIPE_SECRET_ENDPOINT')
+coupon_id = os.getenv('ID_COUPON')
+
 """
 COMMAND pour récupérer le nom du produit acheté par le client marche seulement en local
 stripe listen --forward-to http://127.0.0.1:5000/stripe_webhook
 and enter your secret_endpoint_webhook
 """
-secret_endpoint_webhook = os.getenv('STRIPE_SECRET_ENDPOINT')
+
+# Créer un code de réduction
+def create_promotion_code(coupon_id):    
+    try:
+        #promo_code = generate_promo_code()
+        # Créer le code de réduction
+        promotion_code = stripe.PromotionCode.create(
+            coupon=coupon_id,  # Utiliser l'ID du coupon créé
+            max_redemptions=1  # Limiter à une seule utilisation
+        )
+        print("Code de réduction créé avec succès:")
+        return promotion_code["code"]
+    
+    except stripe.error.StripeError as e:
+        print(str(e))
+        return None
+
 
 @app.route('/souscription')
 @login_required
@@ -26,9 +46,10 @@ def souscription():
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=[{
-            'price': id_product_bronze ,
+            'price': id_product_bronze,
             'quantity': 1,
-        }],
+        }]
+        ,
         subscription_data={
             'default_tax_rates': [taxe_rate],
         },
@@ -49,7 +70,7 @@ def stripe_pay():
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=[{
-            'price': id_product_bronze ,
+            'price': id_product_bronze,
             'quantity': 1,
         }],
         subscription_data={
@@ -106,4 +127,5 @@ def stripe_webhook():
         send_invoice_email(invoice_id)
        
     return '', 200
+
 

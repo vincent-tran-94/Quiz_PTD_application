@@ -6,8 +6,12 @@ import uuid
 from sqlalchemy.dialects.postgresql import UUID
 from datetime import datetime
 import os
+from dotenv import load_dotenv
 
+
+load_dotenv() #Importer les paramètres de l'identification
 app = Flask(__name__,template_folder='template',static_url_path='/static')
+
 
 # #Host configuration and port 
 host = os.getenv("HOST")
@@ -90,4 +94,11 @@ class StripeCustomer(db.Model):
     name_product = db.Column(db.String(100))
     email = db.Column(db.String(100))
     price_euros = db.Column(db.Integer())
+    date_creation = db.Column(db.DateTime, default=datetime.utcnow)
+
+class Parrainage(db.Model): 
+    participant_id = db.Column(UUID(as_uuid=True), db.ForeignKey('user.id'),primary_key=True)
+    email = db.Column(db.String(100))
+    parrain_email = db.Column(db.String(255))  # Champ facultatif
+    coupon_parrain = db.Column(db.String(255))  
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
