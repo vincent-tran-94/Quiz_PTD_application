@@ -3,7 +3,7 @@ from setup import *
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadSignature
 from flask import request
-from stripe_process import *
+from launch_stripe import *
 import requests
 
 """

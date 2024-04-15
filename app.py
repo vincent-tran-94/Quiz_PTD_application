@@ -3,7 +3,7 @@ from flask import render_template, request, redirect, url_for, session, flash, m
 from flask_login import LoginManager,login_required, logout_user, login_user, current_user
 from sqlalchemy.orm.exc import NoResultFound
 from vizualisation import *
-from stripe_process import * 
+from launch_stripe import * 
 from mail import *
 from data_process import *
 from permission import * 
