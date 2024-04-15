@@ -330,31 +330,25 @@ def my_subscriptions():
 def parrainage():
     message = None
     coupon_parrain = None
+    participant_email = current_user.email
 
     if request.method == 'POST':
-        participant_email = request.form['participant_email']
         parrain_email = request.form['parrain_email']
 
         # Vérifier si le parrain existe
         participant_own_parrain = Parrainage.query.filter_by(email=participant_email).first()
-        participant_mail = User.query.filter_by(email=participant_email).first()
+        participant_existe = Parrainage.query.filter_by(email=parrain_email).first()
+        parrainage_existe = Parrainage.query.filter_by(parrain_email=parrain_email).first()
         parrain_inscrit =  User.query.filter_by(email=parrain_email).first()
-        existant_inverse = Parrainage.query.filter_by(email=parrain_email,parrain_email=participant_email)
-        parrainage_existe = Parrainage.query.filter_by(participant_id=participant_mail.id, parrain_email=parrain_email).first()
-
 
         if participant_own_parrain:
-            message = "Vous avez déjà eu un parrainage"
+            message = "Vous avez déjà été parrainé."
         elif participant_email  == parrain_email:
-            message = "Il est impossible d'utiliser le même de votre adresse mail et le mail du parrainage."
-        elif existant_inverse: 
-            message = "Votre participant est déjà associé à votre parrainage."
-        elif not participant_mail: 
-            message = "Le mail du participant n'est pas inscrit"
+            message = "Vous ne pouvez pas utiliser la même adresse e-mail que votre parrain."
         elif not parrain_inscrit:
             message = "Votre mail du parrain n'a pas été inscrit"
-        elif parrainage_existe:
-            message = "Un parrainage existe déjà pour cette combinaison participant/parrain"
+        elif parrainage_existe or participant_existe:
+            message = "Ce participant a déjà un parrain."
         else:
             # Créer un code de parrainage
             coupon_parrain = create_promotion_code(coupon_id)

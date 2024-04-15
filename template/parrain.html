@@ -15,17 +15,13 @@
         <h4 class="text-center"> Profitez cette offre de l'abonnement Bronze avec une réduction de 2 euros. </h4>
         <form action="/parrainage" method="post" class="card p-4">
             <div class="form-group">
-                <label for="participant_email">Entrer votre mail:</label><br>
-                <input type="email" id="participant_email" name="participant_email"><br>
-            </div>
-            <div class="form-group">
                 <label for="parrain_email">Entrer le mail de votre parrain:</label><br>
                 <input type="email" id="parrain_email" name="parrain_email"><br><br>
             </div>
             <div class="form-group text-center">
                 <button type="submit" class="btn btn-primary">Confirmer</button>
             {% if message %}
-            <div class="alert alert-primary" role="alert">
+            <div class="alert alert-primary" role="alert" style="margin-top: 25px;">
                 {{ message }}
             </div>
             {% endif %}
