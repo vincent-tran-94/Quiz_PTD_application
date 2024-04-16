@@ -20,12 +20,15 @@
           {% for subscription in subscriptions %}
           <div class="list-group-item">
             <h5 class="mb-1">{{ subscription.name_product }}</h5>
-            <p class="mb-1">Prix: {{ subscription.price_euros }} euros par mois</p>
             <p class="mb-1">Date de souscription: {{ subscription.date_creation.strftime('%d %B, %Y') }}</p>
+            <form action="/cancel_subscription" method="post">
+              <input type="hidden" name="subscription_id" value="{{ subscription.id }}">
+              <button type="submit" class="btn btn-danger">Annuler l'abonnement</button>
+            </form>
           </div>
           {% endfor %}
         {% else %}
-          <h5>Vous avez pas souscrit à un abonnement.</h5>
+          <h5>Vous n'avez pas souscrit à un abonnement.</h5>
         {% endif %}
         <h1 class="mb-4 small-font">Nombre d'essais restants pour chaque catégorie</h1>
         {% for categorie, nb_essais in essais_restants_par_categorie.items() %}

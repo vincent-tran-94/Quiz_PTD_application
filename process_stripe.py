@@ -2,17 +2,12 @@ from datetime import datetime, timedelta
 import schedule
 from setup import *
 import time
-
+import locale
 
 #Fonction pour la création des abonnements stockés sur une base de données
-def create_stripe_customer(new_product_customer,email_customer):
-    product_mapping = {
-        "Bronze": 4,
-        "Argent": 6,
-        "Gold": 10
-    }
-
-    user = User.query.filter_by(email=email_customer).first()
+def create_stripe_customer(new_product_customer,email_customer,id_customer,id_subscription):
+    
+    user = User.query.filter_by(email=email_customer).first() #Si il est inscrit dans l'application 
     if user:
         existing_response = StripeCustomer.query.filter_by(email=email_customer).first()
         if not existing_response: 
@@ -20,17 +15,20 @@ def create_stripe_customer(new_product_customer,email_customer):
                 participant_id=user.id,  
                 name_product=new_product_customer,
                 email=email_customer,
-                price_euros = product_mapping[new_product_customer]
+                id_customer = id_customer,
+                id_subscription=id_subscription
             )
-            db.session.add(new_entry)
-        else:
-            existing_response.participant_id = user.id  
-            existing_response.name_product = new_product_customer
-            existing_response.email = email_customer
-            existing_response.price_euros = product_mapping[new_product_customer]
+        db.session.add(new_entry)
         db.session.commit()
     else:
         return None 
+    
+def date_after_one_month():
+    locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
+    current_date = datetime.now()
+    cancel_date = current_date + timedelta(days=30)
+    date_formatted = cancel_date.strftime("%d %B")
+    return date_formatted
 
 
 def update_participant_essais(new_product_customer,email):

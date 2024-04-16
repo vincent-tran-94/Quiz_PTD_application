@@ -1,5 +1,5 @@
 from setup import *
-from flask import render_template, request, redirect, url_for, session, flash, make_response
+from flask import render_template, request, redirect, url_for, session, flash, make_response, jsonify
 from flask_login import LoginManager,login_required, logout_user, login_user, current_user
 from sqlalchemy.orm.exc import NoResultFound
 from vizualisation import *
@@ -362,6 +362,40 @@ def parrainage():
         
 
     return render_template('parrain.html', message=message, coupon_parrain=coupon_parrain)
+
+
+@app.route('/cancel_subscription',methods=['POST'])
+@login_required
+def cancel_subscription():
+    if request.method == 'POST':
+        return redirect('confirm_cancel_subscription')
+    
+@app.route('/confirm_cancel_subscription',methods=['GET', 'POST'])
+@login_required
+def confirm_cancel_subscription():
+    message = None
+    # Get subscription ID from request
+    customer_email = StripeCustomer.query.filter_by(email=current_user.email).first()
+    if customer_email:
+        get_subscription_id = customer_email.id_subscription
+        get_customer_email = customer_email.email
+
+        if request.method == 'POST':
+            # Cancel the subscription
+            subscription = stripe.Subscription.modify(
+                get_subscription_id,
+                cancel_at_period_end=True
+            )
+            cancel_date_formatted = date_after_one_month()
+            message = f"Votre abonnement a été annulé avec succès jusqu'à la fin de la période du {cancel_date_formatted}."
+            send_cancel_sub_email(message,get_customer_email)
+
+            # Delete StripeCustomer record
+            db.session.delete(customer_email)
+            db.session.commit()
+
+    return render_template("cancel_sub.html", message=message)
+
 
 #Lancement de l'application
 if __name__ == '__main__':

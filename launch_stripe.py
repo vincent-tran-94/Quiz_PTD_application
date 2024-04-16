@@ -26,7 +26,6 @@ and enter your secret_endpoint_webhook
 # Créer un code de réduction
 def create_promotion_code(coupon_id):    
     try:
-        #promo_code = generate_promo_code()
         # Créer le code de réduction
         promotion_code = stripe.PromotionCode.create(
             coupon=coupon_id,  # Utiliser l'ID du coupon créé
@@ -48,8 +47,7 @@ def souscription():
         line_items=[{
             'price': id_product_bronze,
             'quantity': 1,
-        }]
-        ,
+        }],
         subscription_data={
             'default_tax_rates': [taxe_rate],
         },
@@ -116,14 +114,16 @@ def stripe_webhook():
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
         product_description = stripe.checkout.Session.list_line_items(session, limit=1)['data'][0]['description']
-        #print(product_description)
+        #print("product_description",product_description)
         email_customer = stripe.checkout.Session.list(limit=3)["data"][0]["customer_details"]["email"]
-        #print(email_customer)
-        create_stripe_customer(product_description,email_customer)
+        id_customer = stripe.checkout.Session.list(limit=3)["data"][0]["customer"]
+        id_subscription= stripe.checkout.Session.list(limit=3)["data"][0]["subscription"]
+        print("Successful payment and creation database StripeCustomer")
+        create_stripe_customer(product_description,email_customer,id_customer,id_subscription)
 
     if event['type'] == 'invoice.created':
         invoice_id = event['data']['object']['id']
-        #print(invoice_id)
+        print(f"Creation invoice {invoice_id}.")
         send_invoice_email(invoice_id)
        
     return '', 200
