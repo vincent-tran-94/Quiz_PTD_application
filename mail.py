@@ -5,7 +5,7 @@ from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadSignature
 from flask import request
 from launch_stripe import *
 import requests
-from process_stripe import date_after_one_month
+
 """
 Fonctions de fonctionnalité de login et d'inscription via par mail (on peut changer de mot de passe):
 -Confirmation d'envoi par mail pour chaque utilisateur
