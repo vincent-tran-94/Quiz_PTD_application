@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire PTD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/formulaire.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_v2_PTD.jpg') }}">
+</head>
+<body class="body-top-right">
+    <img src="{{ url_for('static', filename=image_filename) }}" alt="Image PTD"  class="img-custom">
+    <div class="container">
+        <h1 class="text-center">Formulaire pour l'association Préserve ton droit</h1>
+        <form action="/formulaire" method="post" class="card p-4">
+            <div class="form-group">
+                <label for="nom">Votre nom:</label>
+                <input type="text" id="nom" name="nom" required>
+            </div>
+
+            <div class="form-group">
+                <label for="prenom">Votre prénom:</label>
+                <input type="text" id="prenom" name="prenom" required>
+            </div>
+
+            <div class="form-group">
+                <label for="adresse">Votre adresse domicile actuelle:</label>
+                <input type="text" id="adresse" name="adresse" required>
+            </div>
+
+            <div class="form-group">
+                <label for="code_postal">Votre code postal actuel:</label>
+                <input type="text" id="code_postal" name="code_postal" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ville">Votre ville actuelle:</label>
+                <input type="text" id="ville" name="ville" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pays">Votre pays actuel:</label>
+                <input type="text" id="pays" name="pays" required>
+            </div>
+
+            <div class="form-group">
+                <label for="statut">Quel est votre statut actuel ? </label>
+                <select id="statut" name="statut" required>
+                    <option value="Etudiant">Etudiant</option>
+                    <option value="Employé">Employé</option>
+                    <option value="Sportif de haut niveau">Sportif de haut niveau</option>
+                    <option value="Chef d'entreprise">Chef d'entreprise</option>
+                    <option value="Artiste">Artiste</option>
+                    <option value="Producteur">Producteur</option>
+                    <option value="Indépendant">Indépendant</option>
+                    <option value="En recherche d'emploi">En recherche d'emploi</option>
+                    <option value="Autre">Autre</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="niveau_etude">Niveau d'études le plus récent :</label>
+                <select id="niveau_etude" name="niveau_etude" required>
+                    <option value="CAP/BAP">CAP/BAP</option>
+                    <option value="Baccalauréat">Baccalauréat</option>
+                    <option value="BTS/DEUST/DEUG">BTS/DEUST/DEUG</option>
+                    <option value="Licence">Licence</option>
+                    <option value="Diplôme Ingénieur">Diplôme Ingénieur</option>
+                    <option value="Master 1">Master 1</option>
+                    <option value="Master 2">Master 2</option>
+                    <option value="Doctorat">Doctorat</option>
+                    <option value="Non défini">Non défini</option>
+                    <option value="Autre">Autre</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="centre_interet">Quels sont vos centres d'intérêts ? </label>
+                <input type="text" id="centre_interet" name="centre_interet" required>
+            </div>
+
+            <div class="form-group">
+                <label for="choix_categorie">Choisissez votre catégorie préférée :</label>
+                <select id="choix_categorie" name="choix_categorie" required>
+                    <option value="Droit">Droit</option>
+                    <option value="Humanitaire">Humanitaire</option>
+                    <option value="Culturel">Culturel</option>
+                    <option value="Sociologie">Sociologie</option>
+                </select>
+            </div>
+            <div class="form-group text-center">
+                <input type="submit" class="btn btn-primary" value="Confirmer">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+{% extends "base/base_dashboard.html" %}
+
+{% block content %}
+<nav>
+    <div class="logo">
+        <i class="bx bx-menu menu-icon" style="padding-bottom: 18px;"></i>
+        <span class="logo-name" style="padding-bottom: 20px;">Menu application</span>
+    </div>
+    <div class="sidebar">
+        <div class="logo">
+            <i class="bx bx-menu menu-icon"> </i>
+            <span class="logo-name"> Préserve ton droit</span>
+        </div>
+            <div class="sidebar-content">
+                <ul class="lists">
+                <li class="list">
+                    <a href="{{ url_for('accueil')}}" class="nav-link">
+                    <i class="bx bx-home-alt icon"></i>
+                    <span class="link">Accueil</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#" class="nav-link">
+                     <i class='bx bx-user-pin icon' ></i>
+                    <span class="link">Profil</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{{ url_for('permission_route_dashboard') }}" class="nav-link">
+                    <i class="bx bxs-dashboard icon"></i>
+                    <span class="link">Dashboard et classement</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{{ url_for('permission_route_resultats') }}" class="nav-link">
+                    <i class="bx bx-list-check icon"></i>
+                    <span class="link">Votre progression</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#" class="nav-link">
+                    <i class="bx bx-group icon"></i>
+                    <span class="link">Qui sommes-nous ?</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#" class="nav-link">
+                    <i class="bx bx-calendar-event icon"></i>
+                    <span class="link">Événements</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#" class="nav-link">
+                    <i class="bx bx-bookmark icon"></i>
+                    <span class="link">Projets</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="https://www.paypal.com/paypalme/PreserveTonDroit"  target="_blank" class="nav-link">
+                        <i class='bx bx-donate-heart icon'></i>
+                        <span class="link">Dons Paypal</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{{ url_for('my_subscriptions') }}" class="nav-link">
+                    <i class="bx bx-envelope icon"></i>
+                    <span class="link">Abonnements</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{{ url_for('parrainage') }}" class="nav-link">
+                     <i class='bx bxs-user-account icon' ></i>
+                    <span class="link">Parrainage</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{{ url_for('logout') }}" class="nav-link">
+                      <i class="bx bx-log-out icon"></i>
+                      <span class="link" >Déconnexion </span>
+                    </a>
+                  </li>
+                </ul>
+                </div>
+            </div>
+        </div>   
+    </nav>
+    <section class="overlay"></section>
+    <script src="{{ url_for('static', filename='js/menu_bar.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,1316 @@
+{
+    "thematique": "droit",
+    "questions": [
+        {
+            "question": "Quelle est la durée légale d'un congé de maternité en France ?",
+            "options": {
+                "a": "10 semaines",
+                "b": "16 semaines",
+                "c": "20 semaines"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quel est l'article du Code civil qui régit le contrat de vente ?",
+            "options": {
+                "a": "Article 1583",
+                "b": "Article 1134",
+                "c": "Article 1382"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est la durée maximale d'une garde à vue en France sans l'intervention d'un juge ?",
+            "options": {
+                "a": "12 heures",
+                "b": "24 heures",
+                "c": "48 heures"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Qu'est-ce qu'une injonction de payer ?",
+            "options": {
+                "a": "Une mesure de sécurité pour protéger les biens d'une personne en cas de litige.",
+                "b": "Une demande adressée à un tribunal pour obtenir des conseils juridiques gratuits.",
+                "c": "Une décision de justice obligeant une personne à payer une somme d'argent à une autre partie."
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Quel est le rôle d'un médiateur dans un conflit juridique ?",
+            "options": {
+                "a": "Représenter uniquement la partie défenderesse devant le tribunal.",
+                "b": "Faciliter la communication et la négociation entre les parties pour trouver une solution amiable.",
+                "c": "Prendre des décisions légales pour résoudre le conflit."
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Dans quelle situation une personne peut-elle invoquer le droit de légitime défense ?",
+            "options": {
+                "a": "Pour se protéger contre une attaque physique imminente.",
+                "b": "Pour se défendre lors d'un procès civil.",
+                "c": "Pour justifier un crime commis contre un tiers."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est la durée légale du préavis en cas de licenciement pour motif économique en France ?",
+            "options": {
+                "a": "1 mois",
+                "b": "2 mois",
+                "c": "3 mois"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Qu'est-ce qu'un tribunal administratif ?",
+            "options": {
+                "a": "Un tribunal chargé de juger les infractions au code de la route.",
+                "b": "Un tribunal spécialisé dans les affaires commerciales.",
+                "c": "Un tribunal chargé de juger les litiges entre les citoyens et l'administration."
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Qu'est-ce qu'une lettre de mise en demeure ?",
+            "options": {
+                "a": "Une lettre envoyée par un créancier demandant le remboursement d'une dette dans un délai fixé.",
+                "b": "Une lettre adressée par un locataire à un propriétaire pour signaler des problèmes dans le logement loué.",
+                "c": "Une lettre envoyée par un tribunal ordonnant à une personne de comparaître devant lui."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce que le droit civil ?",
+            "options": {
+                "a": "Le droit régissant les relations entre les individus.",
+                "b": "Le droit relatif aux crimes et délits.",
+                "c": "Le droit concernant les relations entre l'État et les citoyens."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quel est le délai de prescription pour une action en responsabilité civile en France ?",
+            "options": {
+                "a": "1 an",
+                "b": "3 ans",
+                "c": "5 ans"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Qu'est-ce qu'un contrat de travail à durée déterminée (CDD) ?",
+            "options": {
+                "a": "Un contrat qui lie un employeur et un salarié sans limite de durée.",
+                "b": "Un contrat qui lie un employeur et un salarié pour une durée fixe.",
+                "c": "Un contrat n'existant pas dans le droit du travail."
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quelle est la différence entre un avocat et un juriste ?",
+            "options": {
+                "a": "Un avocat est un professionnel qualifié pour représenter les clients devant un tribunal, tandis qu'un juriste est un expert en droit qui peut conseiller sur des questions juridiques sans plaider en justice.",
+                "b": "Un avocat travaille uniquement pour des entreprises, tandis qu'un juriste travaille uniquement pour des particuliers.",
+                "c": "Il n'y a pas de différence significative entre un avocat et un juriste."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce qu'une action en référé ?",
+            "options": {
+                "a": "Une action en justice intentée contre une décision judiciaire jugée injuste. ",
+                "b": "Une action en justice visant à obtenir des dommages-intérêts pour préjudice moral.",
+                "c": "Une action en justice visant à obtenir un jugement rapide dans les cas urgents."
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le harcèlement moral est-il interdit dans le cadre du travail ?",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est la durée légale du travail en France pour un salarié à temps plein ?",
+            "options": {
+                "a": "35 heures par semaine",
+                "b": "40 heures par semaine",
+                "c": "45 heures par semaine"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quel est le délai de préavis en cas de démission d'un salarié en France ?",
+            "options": {
+                "a": "1 semaine",
+                "b": "1 mois",
+                "c": "3 mois"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Qu'est-ce qu'un contrat de bail ?",
+            "options": {
+                "a": "Un contrat entre deux entreprises pour la fourniture de biens ou de services.",
+                "b": "Un contrat liant un employeur et un salarié pour la réalisation d'un travail spécifique.",
+                "c": "Un contrat liant un bailleur et un locataire pour la location d'un bien immobilier."
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Qu'est-ce qu'une procuration ?",
+            "options": {
+                "a": "Un document légal permettant à une personne d'agir au nom d'une autre personne.",
+                "b": "Un document permettant de contester une décision judiciaire.",
+                "c": "Une action en justice intentée par un représentant légal."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est la principale fonction d'un notaire ?",
+            "options": {
+                "a": "Représenter les clients devant un tribunal.",
+                "b": "Authentifier des actes et assurer leur sécurité juridique.",
+                "c": "Conseiller les clients sur des questions juridiques."
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quelle est la durée légale d'un congé de paternité en France ?",
+            "options": {
+                "a": "1 semaine",
+                "b": "2 semaines",
+                "c": "4 semaines"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Qu'est-ce qu'une faute contractuelle ?",
+            "options": {
+                "a": "Une violation des termes d'un contrat engendrant une responsabilité.",
+                "b": "Une erreur commise par un professionnel dans l'exercice de ses fonctions.",
+                "c": "Un préjudice subi par une partie lors de la conclusion d'un contrat."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est la signification de l'acronyme CNIL en France ?",
+            "options": {
+                "a": "Conseil National de l'Industrie Laitière",
+                "b": "Centre National d'Information sur le Logement",
+                "c": "Commission Nationale de l'Informatique et des Libertés"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Qu'est-ce qu'un vice caché dans un contrat de vente ?",
+            "options": {
+                "a": "Un défaut présent dans le bien vendu qui n'était pas visible lors de l'achat.",
+                "b": "Une erreur commise par l'acheteur lors de la conclusion du contrat.",
+                "c": "Un élément du contrat qui n'a pas été révélé à l'autre partie."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quel est l'organe chargé de la protection des données personnelles en France ?",
+            "options": {
+                "a": "La Cour de cassation",
+                "b": "La Commission Nationale de l'Informatique et des Libertés (CNIL)",
+                "c": "La Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes (DGCCRF)"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quelle est la principale différence entre un contrat de travail à durée indéterminée (CDI) et un contrat de travail à durée déterminée (CDD) ?",
+            "options": {
+                "a": "La durée du contrat",
+                "b": "Le salaire",
+                "c": "Les avantages sociaux"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce qu'un jugement contradictoire ?",
+            "options": {
+                "a": "Un jugement rendu à l'issue d'un débat entre les parties.",
+                "b": "Un jugement rendu sans que les parties aient été convoquées.",
+                "c": "Un jugement rendu par un seul juge, sans débat contradictoire."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce qu'une jurisprudence ?",
+            "options": {
+                "a": "L'ensemble des lois en vigueur dans un pays.",
+                "b": "L'ensemble des décisions de justice rendues par les tribunaux.",
+                "c": "Une doctrine juridique établie par un tribunal supérieur."
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Le droit pénal réprime uniquement les actes intentionnels. Vrai ou faux ?",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Dans quel tribunal doit-on initialement déposer une demande en divorce en France ?",
+            "options": {
+                "a": "Tribunal de grande instance",
+                "b": "Tribunal d'instance",
+                "c": "Tribunal administratif"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Lequel de ces principes ne fait pas partie du droit du travail ?",
+            "options": {
+                "a": "Le principe de non-discrimination",
+                "b": "Le principe de l'ordre public social",
+                "c": "Le principe de la liberté contractuelle absolue"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Qui est responsable en cas de dommage causé par un mineur ?",
+            "options": {
+                "a": "Le mineur lui-même",
+                "b": "Ses parents",
+                "c": "L'établissement scolaire"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "L'âge minimum pour conclure un contrat de travail est de 18 ans. Vrai ou faux ?",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quelle est la cour d'appel la plus haute instance en France ?",
+            "options": {
+                "a": "Cour de cassation",
+                "b": "Cour d'appel de Paris",
+                "c": "Cour administrative d'appel"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est la loi française qui régit la protection des données personnelles ?",
+            "options": {
+                "a": "Loi de 1978",
+                "b": "RGPD",
+                "c": "Loi de 1981"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quelle est la juridiction compétente pour les litiges entre commerçants ?",
+            "options": {
+                "a": "Tribunal d'instance",
+                "b": "Tribunal de commerce",
+                "c": "Tribunal administratif"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "La loi française autorise-t-elle le mariage entre personnes de même sexe ?",
+            "options": {
+                "a": "Oui",
+                "b": "Non"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quel est l'organe suprême de l'Union européenne chargé de l'interprétation et de l'application du droit de l'Union ?",
+            "options": {
+                "a": "La Cour européenne des droits de l'homme",
+                "b": "La Cour de justice de l'Union européenne",
+                "c": "Le Conseil européen"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "La responsabilité civile est toujours basée sur la faute de l'auteur du dommage. Vrai ou faux ?",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quelle est la durée maximale du travail quotidien en France ?",
+            "options": {
+                "a": "8 heures",
+                "b": "10 heures",
+                "c": "12 heures"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Les témoignages écrits sont-ils admis comme preuve devant un tribunal français ?",
+            "options": {
+                "a": "Oui",
+                "b": "Non"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qui est compétent pour trancher un litige relatif à un contrat de bail d'habitation ?",
+            "options": {
+                "a": "Le juge administratif",
+                "b": "Le juge civil",
+                "c": "Le juge des référés"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quel est le délai de prescription pour un recours en contestation de licenciement en France ?",
+            "options": {
+                "a": "1 mois",
+                "b": "2 mois",
+                "c": "3 mois"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le principe de laïcité est-il inscrit dans la Constitution française ?",
+            "options": {
+                "a": "Oui",
+                "b": "Non"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est la juridiction compétente en matière de litiges entre salariés et employeurs en France ?",
+            "options": {
+                "a": "Le conseil des prud'hommes",
+                "b": "Le tribunal correctionnel",
+                "c": "La cour d'appel"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qui détient le pouvoir législatif en France ?",
+            "options": {
+                "a": "Le Président de la République",
+                "b": "Le Parlement",
+                "c": "Le Conseil Constitutionnel"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quelle est la juridiction compétente pour un litige concernant un accident de la route en France ?",
+            "options": {
+                "a": "La cour d'assises",
+                "b": "Le tribunal administratif",
+                "c": "Le tribunal de police"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Combien de membres composent le Conseil Constitutionnel en France ?",
+            "options": {
+                "a": "9",
+                "b": "11",
+                "c": "13"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "La présomption d'innocence est-elle un principe fondamental du droit français ?",
+            "options": {
+                "a": "Oui",
+                "b": "Non"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est la procédure permettant de régler un litige sans intervention judiciaire en France ?",
+            "options": {
+                "a": "L'arbitrage",
+                "b": "La conciliation",
+                "c": "La médiation"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Quel est l'organe chargé de la représentation nationale en France ?",
+            "options": {
+                "a": "Le Parlement",
+                "b": "Le Sénat",
+                "c": "Le Gouvernement"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qui a le pouvoir de nommer les juges en France ?",
+            "options": {
+                "a": "Le Président de la République",
+                "b": "Le Premier Ministre",
+                "c": "Le Ministre de la Justice"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quel est l'âge minimum pour être élu président de la République française ?",
+            "options": {
+                "a": "30 ans",
+                "b": "35 ans",
+                "c": "40 ans"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quelle est la durée maximale d'une garde à vue en France ?",
+            "options": {
+                "a": "12 heures",
+                "b": "24 heures",
+                "c": "48 heures"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quelle est la durée maximale du mandat présidentiel en France ?",
+            "options": {
+                "a": "5 ans",
+                "b": "7 ans",
+                "c": "10 ans"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Le principe de la légalité des délits et des peines est-il un principe du droit français ?",
+            "options": {
+                "a": "Oui",
+                "b": "Non"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Quelle est la durée maximale d'une période de soldes en France ?",
+            "options": {
+                "a": "2 semaines",
+                "b": "4 semaines",
+                "c": "6 semaines"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quelle est la durée maximale d'un contrat de travail à durée déterminée (CDD) en France ?",
+            "options": {
+                "a": "6 mois",
+                "b": "12 mois",
+                "c": "18 mois"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Quel est le tribunal compétent pour juger les litiges entre particuliers en France ?",
+            "options": {
+                "a": "Le tribunal de police",
+                "b": "Le tribunal d'instance",
+                "c": "Le tribunal de grande instance"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Quelle est la durée légale du préavis en cas de démission d'un salarié en France ?",
+            "options": {
+                "a": "1 semaine",
+                "b": "1 mois",
+                "c": "3 mois"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quelle est la durée légale du congé de paternité en France ?",
+            "options": {
+                "a": "1 semaine",
+                "b": "2 semaines",
+                "c": "4 semaines"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Quelle est la signification de l'acronyme CNIL en France ?",
+            "options": {
+                "a": "Conseil National de l'Industrie Laitière",
+                "b": "Commission Nationale de l'Informatique et des Libertés",
+                "c": "Centre National d'Information sur le Logement"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Qui peut bénéficier de l'aide juridictionnelle en France ?",
+            "options": {
+                "a": "Uniquement les personnes démunies, sous certaines conditions de ressources.",
+                "b": "Toute personne, sans condition de ressources.",
+                "c": "Uniquement les personnes victimes d'infractions pénales."
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Qu'est-ce que la présomption d'innocence ?",
+            "options": {
+                "a": "Un principe ne s'appliquant qu'aux mineurs dans le cadre de procédures judiciaires. ",
+                "b": "Une présomption permettant à une personne de se considérer comme étant sans faute.",
+                "c": "Le principe selon lequel toute personne est considérée comme innocente tant que sa culpabilité n'a pas été prouvée."
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Quels sont les droits fondamentaux protégés par la Constitution française ?",
+            "multi_options": {
+                "a": "La liberté d'expression",
+                "b": "Le droit à la vie",
+                "c": "Le droit de propriété"
+            },
+            "reponse_correcte": [
+                "a",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les organes principaux du système judiciaire en France ?",
+            "multi_options": {
+                "a": "La Cour de Cassation",
+                "b": "Le Conseil d'État",
+                "c": "La Cour d'Appel"
+            },
+            "reponse_correcte": [
+                "a",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les critères pour qu'un contrat soit valide ?",
+            "multi_options": {
+                "a": "Le consentement",
+                "b": "La capacité des parties",
+                "c": "L'objet licite"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les types de responsabilité civile en droit français ?",
+            "multi_options": {
+                "a": "La responsabilité contractuelle",
+                "b": "La responsabilité délictuelle",
+                "c": "La responsabilité pénale"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les principes généraux du droit administratif ?",
+            "multi_options": {
+                "a": "Le principe d'égalité",
+                "b": "Le principe de légalité",
+                "c": "Le principe de proportionnalité"
+            },
+            "reponse_correcte": [
+                "b",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les droits des consommateurs en cas de vice caché ?",
+            "multi_options": {
+                "a": "Le droit à la résolution du contrat",
+                "b": "Le droit à une réduction du prix",
+                "c": "Le droit à des dommages et intérêts"
+            },
+            "reponse_correcte": [
+                "a",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les organes chargés de contrôler la régularité des élections en France ?",
+            "multi_options": {
+                "a": "Le Conseil Constitutionnel",
+                "b": "Le Tribunal Administratif",
+                "c": "La Commission Nationale de Contrôle de la Campagne Électorale"
+            },
+            "reponse_correcte": [
+                "a",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les droits des victimes d'infractions pénales ?",
+            "multi_options": {
+                "a": "Le droit à la réparation du préjudice",
+                "b": "Le droit à l'indemnisation par l'État",
+                "c": "Le droit à l'assistance d'un avocat"
+            },
+            "reponse_correcte": [
+                "a",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les modes alternatifs de règlement des litiges en droit français ?",
+            "multi_options": {
+                "a": "La médiation",
+                "b": "L'arbitrage",
+                "c": "La conciliation"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les principes fondamentaux du droit international public ?",
+            "multi_options": {
+                "a": "Le principe de la souveraineté des États",
+                "b": "Le principe de la non-intervention",
+                "c": "Le principe de la responsabilité des États"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les différents types de peines en droit pénal ?",
+            "multi_options": {
+                "a": "La peine d'emprisonnement",
+                "b": "La peine de mort",
+                "c": "La peine d'amende"
+            },
+            "reponse_correcte": [
+                "a",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les droits des personnes en situation de handicap en France ?",
+            "multi_options": {
+                "a": "Le droit à l'égalité des chances",
+                "b": "Le droit à la compensation du handicap",
+                "c": "Le droit à l'accès aux transports publics"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les principes fondamentaux du droit de la famille ?",
+            "multi_options": {
+                "a": "Le principe de la protection de l'enfant",
+                "b": "Le principe de la solidarité familiale",
+                "c": "Le principe de l'autonomie de la volonté"
+            },
+            "reponse_correcte": [
+                "a",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les droits des locataires en matière de logement ?",
+            "multi_options": {
+                "a": "Le droit à un logement décent",
+                "b": "Le droit à un loyer modéré",
+                "c": "Le droit au maintien dans les lieux"
+            },
+            "reponse_correcte": [
+                "a",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les principes fondamentaux du droit de l'urbanisme ?",
+            "multi_options": {
+                "a": "Le principe de l'égalité devant les charges publiques",
+                "b": "Le principe de la participation du public",
+                "c": "Le principe de la continuité du service public"
+            },
+            "reponse_correcte": [
+                "b",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les organes chargés de la protection des données personnelles en France ?",
+            "multi_options": {
+                "a": "La Cour de cassation",
+                "b": "La Commission Nationale de l'Informatique et des Libertés (CNIL)",
+                "c": "La Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes (DGCCRF)"
+            },
+            "reponse_correcte": [
+                "b",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les droits des citoyens européens en matière de libre circulation ?",
+            "multi_options": {
+                "a": "Le droit à la libre circulation des personnes",
+                "b": "Le droit à la libre circulation des biens",
+                "c": "Le droit à la libre circulation des capitaux"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les types de contrats de travail existants en France ?",
+            "multi_options": {
+                "a": "Le contrat à durée indéterminée (CDI)",
+                "b": "Le contrat à durée déterminée (CDD)",
+                "c": "Le contrat de travail temporaire"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les droits des personnes intersexuées en France ?",
+            "multi_options": {
+                "a": "Le droit à la protection contre la discrimination",
+                "b": "Le droit à l'intégrité physique",
+                "c": "Le droit à la reconnaissance de l'identité de genre"
+            },
+            "reponse_correcte": [
+                "a",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les droits des personnes détenues en France ?",
+            "multi_options": {
+                "a": "Le droit à un procès équitable",
+                "b": "Le droit à la protection de la santé",
+                "c": "Le droit à la liberté de communication"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les principaux organes de l'Union européenne ?",
+            "multi_options": {
+                "a": "La Commission européenne",
+                "b": "Le Parlement européen",
+                "c": "La Cour de justice de l'Union européenne"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les droits des personnes étrangères en situation régulière en France ?",
+            "multi_options": {
+                "a": "Le droit au travail",
+                "b": "Le droit à la protection sociale",
+                "c": "Le droit à la vie privée et familiale"
+            },
+            "reponse_correcte": [
+                "a",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les recours possibles en cas de litige avec l'administration ?",
+            "multi_options": {
+                "a": "Le recours administratif",
+                "b": "Le recours contentieux",
+                "c": "Le recours gracieux"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les droits des consommateurs en matière de vente en ligne ?",
+            "multi_options": {
+                "a": "Le droit à l'information précontractuelle",
+                "b": "Le droit de rétractation",
+                "c": "Le droit à une garantie légale de conformité"
+            },
+            "reponse_correcte": [
+                "b",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les droits des enfants en France ?",
+            "multi_options": {
+                "a": "Le droit à l'éducation",
+                "b": "Le droit à la santé",
+                "c": "Le droit à la protection contre les abus"
+            },
+            "reponse_correcte": [
+                "a",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les recours possibles en cas de discrimination au travail ?",
+            "multi_options": {
+                "a": "Le recours devant le Défenseur des droits",
+                "b": "Le recours devant le tribunal judiciaire",
+                "c": "Le recours devant le médiateur de l'entreprise"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les principes fondamentaux du droit international humanitaire ?",
+            "multi_options": {
+                "a": "Le principe de distinction",
+                "b": "Le principe de proportionnalité",
+                "c": "Le principe de non-discrimination"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les types de droits de propriété intellectuelle reconnus au niveau international ?",
+            "multi_options": {
+                "a": "Le droit d'auteur",
+                "b": "Les brevets",
+                "c": "Les marques commerciales"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les critères pour qu'une invention soit brevetable ?",
+            "multi_options": {
+                "a": "L'innovation",
+                "b": "La nouveauté",
+                "c": "L'application industrielle"
+            },
+            "reponse_correcte": [
+                "b",
+                "c"
+            ]
+        },
+        {
+            "question": "Quelles sont les principales obligations des entreprises en matière de protection de l'environnement ?",
+            "multi_options": {
+                "a": "Réduire les émissions de gaz à effet de serre",
+                "b": "Préserver la biodiversité",
+                "c": "Gérer et éliminer les déchets de manière responsable"
+            },
+            "reponse_correcte": [
+                "a",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les principes fondamentaux du droit de la santé en France ?",
+            "multi_options": {
+                "a": "Le principe de précaution",
+                "b": "Le principe de solidarité",
+                "c": "Le principe de non-discrimination"
+            },
+            "reponse_correcte": [
+                "b",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les droits des patients en matière de santé ?",
+            "multi_options": {
+                "a": "Le droit à l'information médicale",
+                "b": "Le droit au consentement éclairé",
+                "c": "Le droit à la gratuité des soins"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quelles sont les conditions pour qu'un médicament soit autorisé sur le marché ?",
+            "multi_options": {
+                "a": "Son efficacité",
+                "b": "Sa sécurité",
+                "c": "Sa qualité"
+            },
+            "reponse_correcte": [
+                "b",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les principaux acteurs impliqués dans la protection de l'environnement ?",
+            "multi_options": {
+                "a": "Les États",
+                "b": "Les ONG",
+                "c": "Les entreprises"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quelles sont les principales sources de pollution de l'air ?",
+            "multi_options": {
+                "a": "Les véhicules automobiles",
+                "b": "Les usines industrielles",
+                "c": "Les pesticides agricoles"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les principaux défis liés à la gestion des déchets ?",
+            "multi_options": {
+                "a": "La réduction des déchets à la source",
+                "b": "Le recyclage des déchets",
+                "c": "L'élimination des déchets toxiques"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les principaux enjeux de la protection de la biodiversité ?",
+            "multi_options": {
+                "a": "La préservation des écosystèmes",
+                "b": "La lutte contre le changement climatique",
+                "c": "La conservation des espèces menacées"
+            },
+            "reponse_correcte": [
+                "a",
+                "c"
+            ]
+        },
+        {
+            "question": "Quelles sont les sanctions possibles en cas de contrefaçon de droit d'auteur ?",
+            "multi_options": {
+                "a": "Des dommages et intérêts",
+                "b": "La saisie des produits contrefaits",
+                "c": "Des peines d'emprisonnement"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les principaux types de brevets ?",
+            "multi_options": {
+                "a": "Les brevets d'invention",
+                "b": "Les brevets de design",
+                "c": "Les brevets de modèle d'utilité"
+            },
+            "reponse_correcte": [
+                "a",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les droits des inventeurs sur leurs inventions brevetées ?",
+            "multi_options": {
+                "a": "Le droit d'exploitation",
+                "b": "Le droit de divulgation",
+                "c": "Le droit de propriété"
+            },
+            "reponse_correcte": [
+                "a",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les principes fondamentaux du droit de l'environnement au niveau international ?",
+            "multi_options": {
+                "a": "Le principe de précaution",
+                "b": "Le principe de responsabilité",
+                "c": "Le principe de non-régression"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les objectifs principaux de la législation environnementale ?",
+            "multi_options": {
+                "a": "La prévention de la pollution",
+                "b": "La conservation des ressources naturelles",
+                "c": "La promotion de l'industrie lourde"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quelles sont les sources principales du droit de la santé en France ?",
+            "multi_options": {
+                "a": "La Constitution",
+                "b": "Les lois et les règlements",
+                "c": "Les directives européennes"
+            },
+            "reponse_correcte": [
+                "b",
+                "c"
+            ]
+        },
+        {
+            "question": "Quels sont les droits des patients en matière d'accès aux soins de santé ?",
+            "multi_options": {
+                "a": "Le droit à l'égalité de traitement",
+                "b": "Le droit à la confidentialité médicale",
+                "c": "Le droit au remboursement des frais médicaux"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les principaux critères d'attribution d'une autorisation de mise sur le marché pour un dispositif médical ?",
+            "multi_options": {
+                "a": "Son efficacité thérapeutique",
+                "b": "Sa sécurité d'utilisation",
+                "c": "Sa rentabilité commerciale"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les droits des travailleurs en matière de santé au travail ?",
+            "multi_options": {
+                "a": "Le droit à un environnement de travail sûr",
+                "b": "Le droit à une protection contre les risques professionnels",
+                "c": "Le droit à des congés payés illimités en cas de maladie"
+            },
+            "reponse_correcte": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "question": "Quels sont les principes de base de la protection des données de santé ?",
+            "multi_options": {
+                "a": "La confidentialité",
+                "b": "Le consentement éclairé",
+                "c": "La sécurité des données"
+            },
+            "reponse_correcte": [
+                "a",
+                "c"
+            ]
+        },
+        {
+            "question": "Le ________ est l'ensemble des règles qui régissent la vie en société.",
+            "options": {
+                "a": "droit civil",
+                "b": "droit pénal",
+                "c": "droit"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "En cas de ________, le contrat peut être annulé pour erreur sur la substance de l'objet.",
+            "options": {
+                "a": "abus de droit",
+                "b": "nullité relative",
+                "c": "vice du consentement"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le ________ est le document qui constate officiellement la naissance d'une personne.",
+            "options": {
+                "a": "certificat de naissance",
+                "b": "acte de mariage",
+                "c": "acte de décès"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "L'________ est le principe selon lequel nul ne peut se prévaloir de sa propre turpitude.",
+            "options": {
+                "a": "autonomie de la volonté",
+                "b": "estoppel",
+                "c": "nemo auditur propriam turpitudinem allegans"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "En droit pénal, l'________ est une peine qui prive temporairement de certains droits civiques.",
+            "options": {
+                "a": "injonction",
+                "b": "amende",
+                "c": "interdiction"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "La ________ est une obligation de ne pas faire quelque chose.",
+            "options": {
+                "a": "obligation de moyen",
+                "b": "obligation de résultat",
+                "c": "obligation de ne pas faire"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "En droit des contrats, le ________ est celui qui reçoit la promesse de l'autre partie.",
+            "options": {
+                "a": "créancier",
+                "b": "débiteur",
+                "c": "bénéficiaire"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le ________ est le droit pour un individu de demeurer inconnu dans certaines situations.",
+            "options": {
+                "a": "droit à l'oubli",
+                "b": "droit de rétractation",
+                "c": "droit de rectification"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "En matière pénale, une ________ est une infraction moins grave qu'un crime.",
+            "options": {
+                "a": "contravention",
+                "b": "infraction",
+                "c": "délit"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le ________ est le fait pour une personne de renoncer à un droit.",
+            "options": {
+                "a": "renonciation",
+                "b": "rétractation",
+                "c": "révocation"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "La ________ est une situation juridique qui permet de priver une personne de sa liberté.",
+            "options": {
+                "a": "privation de liberté",
+                "b": "détention provisoire",
+                "c": "garde à vue"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "En droit de la famille, l'________ est la personne qui reçoit une donation.",
+            "options": {
+                "a": "héritier",
+                "b": "donataire",
+                "c": "légataire"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Le ________ est le droit de bénéficier des biens d'une personne décédée.",
+            "options": {
+                "a": "droit de succession",
+                "b": "droit de partage",
+                "c": "droit d'héritage"
+            },
+            "reponse_correcte": "a"
+        },
+        {
+            "question": "Une ________ est une décision rendue par un juge à la suite d'un procès civil.",
+            "options": {
+                "a": "ordonnance",
+                "b": "jugement",
+                "c": "arrêt"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "Le ________ est le document par lequel un créancier met en demeure son débiteur de payer.",
+            "options": {
+                "a": "assignation",
+                "b": "mise en demeure",
+                "c": "sommation interpellative"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le ________ est l'ensemble des biens et des dettes d'une personne à un moment donné.",
+            "options": {
+                "a": "actif",
+                "b": "passif",
+                "c": "patrimoine"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "En droit administratif, un ________ est un acte par lequel l'administration contraint un administré à faire quelque chose.",
+            "options": {
+                "a": "arrêté",
+                "b": "décret",
+                "c": "contrainte"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le ________ est le droit pour une personne de posséder et d'utiliser un bien.",
+            "options": {
+                "a": "usufruit",
+                "b": "propriété",
+                "c": "usufruitier"
+            },
+            "reponse_correcte": "b"
+        },
+        {
+            "question": "En droit international, un ________ est un traité signé entre deux États.",
+            "options": {
+                "a": "accord",
+                "b": "protocole",
+                "c": "convention"
+            },
+            "reponse_correcte": "c"
+        },
+        {
+            "question": "Le ________ est l'autorité suprême dans l'ordre juridique français.",
+            "options": {
+                "a": "Constitution",
+                "b": "Cour de cassation",
+                "c": "Conseil constitutionnel"
+            },
+            "reponse_correcte": "c"
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats obtenus</title>
+    <!-- Inclure les fichiers CSS de Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_v2_PTD.jpg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/confirmation.css') }}"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Vous pouvez inclure vos styles CSS personnalisés ici -->
+</head>
+<body>
+    <div class="container">
+        <h1 class="small-font">Résultats du participant: {{ participant_info.nom }} {{ participant_info.prenom }}</h1>
+        <ul>
+            {% for result in participant_results %}
+                <li>Catégorie: {{ result.categorie }}</li>
+                <li>Réponses correctes: {{ result.correct_answers }}</li>
+                <li>Réponses incorrectes: {{ result.incorrect_answers }}</li>
+                <li>Succès pourcentage: {{ result.success_percentage }}%</li>
+                <hr>
+            {% endfor %}
+        </ul>
+        <header>Qu'avez-vous pensé de ce quiz ?</header>
+        <div class="rating">
+            <span class="star" data-rating="1"><i class="fas fa-star"></i></span>
+            <span class="star" data-rating="2"><i class="fas fa-star"></i></span>
+            <span class="star" data-rating="3"><i class="fas fa-star"></i></span>
+            <span class="star" data-rating="4"><i class="fas fa-star"></i></span>
+            <span class="star" data-rating="5"><i class="fas fa-star"></i></span>
+        </div>
+        <p id="thank-you-message" style="display: none;">Merci pour votre avis !</p>
+        <div class="link-container">
+            <a href="{{ url_for('permission_route_data_csv') }}" class="btn btn-success">Télécharger vos données CSV</a>
+            <a href="/accueil" class="text-black font-weight-bold regStr home-link">Revenir vers la page d'accueil</a>
+        </div>
+    </div>
+    <!-- Inclure le script JavaScript de Bootstrap (optionnel si vous n'utilisez pas les fonctionnalités JavaScript de Bootstrap) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/rate.js') }}"></script>
+</body>
+</html>

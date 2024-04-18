@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - stripe-cli 
+  db:
+    image: postgres:latest
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_USER: vincenttran
+      POSTGRES_PASSWORD: associationptd
+      POSTGRES_DB: participants
+    ports:
+      - 5432:5432
+
+  stripe-cli:
+    image: stripe/stripe-cli
+    command: listen --forward-to http://web:5000/stripe_webhook --api-key sk_test_51P3EsLG1dB5sn7JtBsuQQqpq0GKlCGqsdDjqyfgBfw0RoJtszhcToMDUTAClc6Ec0kytShyM6rjWSJzP6hg3Cu7h00ikI1xuSw
+
+volumes:
+  db-data:
