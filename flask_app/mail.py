@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash, session
 from models import *
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadSignature
@@ -21,12 +21,11 @@ SECRET_KEY = app.secret_key # Changez ceci par une clé réelle et sécurisée
 # Serializer pour générer et vérifier les tokens
 serializer = URLSafeTimedSerializer(SECRET_KEY)
 
-
 # Fonction pour envoyer l'e-mail de confirmation
 def send_confirmation_email(nom,prenom,email,password):
 
     user_data = {'nom': nom, 'prenom': prenom, 'email': email, 'password': password}
-    
+
     token = serializer.dumps(user_data)  # Générer le token avec l'ID de l'utilisateur
     confirm_url = url_for('confirm_email', token=token,_external=True)  # URL de confirmation avec le token
 
@@ -48,6 +47,8 @@ def confirm_email(token):
     try:
         # Récupérer l'user_id associé au token 
         user_data = serializer.loads(token, max_age=3600)
+        
+        token = serializer.dumps(user_data)
 
         # Récupérer les données utilisateur depuis le token
         nom = user_data['nom']
@@ -55,24 +56,29 @@ def confirm_email(token):
         email = user_data['email']
         password = user_data['password']
 
-        # Générer un nouvel ID utilisateur
-        user_id = str(uuid.uuid4())
-
-        # Créer un nouvel utilisateur confirmé dans la base de données
-        new_user = User(id=user_id,
-                        nom=nom, 
-                        prenom=prenom, 
-                        email=email)
-        new_user.set_password(password, method='pbkdf2:sha256')
-        db.session.add(new_user)
-        db.session.commit()
-
-        user__confirmation_id = User.query.filter_by(id=user_id,email=email).first()
-
-        if user__confirmation_id:
-            return redirect(url_for('login'))
+        # Vérifier si l'utilisateur existe déjà dans la base de données
+        existing_user = User.query.filter_by(email=email).first()
+        if existing_user:
+            return render_template('setup_user/confirmation.html', message='Vous avez déjà confirmé votre mail.')
         else:
-            return render_template('setup_user/confirmation.html', message='Mail or User ID no detected')
+            # Générer un nouvel ID utilisateur
+            user_id = str(uuid.uuid4())
+
+            # Créer un nouvel utilisateur confirmé dans la base de données
+            new_user = User(id=user_id,
+                            nom=nom, 
+                            prenom=prenom, 
+                            email=email)
+            new_user.set_password(password, method='pbkdf2:sha256')
+            db.session.add(new_user)
+            db.session.commit()
+
+            user__confirmation_id = User.query.filter_by(id=user_id,email=email).first()
+
+            if user__confirmation_id:
+                return redirect(url_for('login'))
+            else:
+                return render_template('setup_user/confirmation.html', message='Mail or User ID no detected')
         
     except SignatureExpired:
         # Le token a expiré
@@ -107,11 +113,12 @@ def confirm_delete(token):
         email= serializer.loads(token, max_age=3600)
         user = User.query.filter_by(email=email).first()
         if user:
-            # Supprimer le compte
-            ReponseParticipant.query.filter_by(participant_id=user.id).delete()
-            Contact.query.filter_by(participant_id=user.id).delete()
-            Participant.query.filter_by(participant_id=user.id).delete()
-            StripeCustomer.query.filter_by(participant_id=user.id).delete()
+            # Créez une liste des classes de modèles que vous souhaitez supprimer
+            tables_to_delete = [ReponseParticipant, Contact, Participant, StripeCustomer, Parrainage]
+            # Utilisez une boucle pour parcourir chaque classe de modèle et supprimer les entrées associées à l'utilisateur
+            for table in tables_to_delete:
+                table.query.filter_by(participant_id=user.id).delete()
+            
             db.session.delete(user)
             db.session.commit()
         return render_template('setup_user/confirmation.html', message='Votre compte a été bien supprimé.') 

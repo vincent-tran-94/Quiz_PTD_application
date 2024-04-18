@@ -101,17 +101,4 @@ class Parrainage(db.Model):
     parrain_email = db.Column(db.String(255))  
     coupon_parrain = db.Column(db.String(255))  
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
-
-# Configuration de la base de données
-class TaskResult(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    task_id = db.Column(db.String(255), unique=True, nullable=False)
-    result = db.Column(db.String(255), nullable=False)
-
-# Définition d'un modèle SQLAlchemy
-class NewUser(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-
-    def __repr__(self):
-        return '<User %r>' % self.username
+    

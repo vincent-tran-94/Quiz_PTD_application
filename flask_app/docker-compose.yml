@@ -22,6 +22,15 @@ services:
     ports:
       - 5432:5432
 
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: vincenttran94@hotmail.fr
+      PGADMIN_DEFAULT_PASSWORD: '#%%Azcaop94a'
+    ports:
+      - "5050:80"
+    restart: always
+
   stripe-cli:
     image: stripe/stripe-cli
     command: listen --forward-to http://web:5000/stripe_webhook --api-key sk_test_51P3EsLG1dB5sn7JtBsuQQqpq0GKlCGqsdDjqyfgBfw0RoJtszhcToMDUTAClc6Ec0kytShyM6rjWSJzP6hg3Cu7h00ikI1xuSw
