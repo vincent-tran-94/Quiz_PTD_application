@@ -425,11 +425,7 @@
                 "c": "La pression sur les infrastructures",
                 "d": "L'enrichissement de la diversité linguistique"
             },
-            "reponse_correcte": [
-                "a",
-                "b",
-                "c"
-            ]
+            "reponse_correcte": ["a","b","c"]
         },
         {
             "question": "Quels sont les effets de l'urbanisation sur l'environnement ?",

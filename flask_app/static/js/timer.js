@@ -7,6 +7,7 @@ document.addEventListener('copy', function(e) {
 var timer = 600; // 12 minutes
 var warnings = 0;
 let ButtonClicked = false;
+var isRedirected = false; // Ajout de la variable pour suivre si la redirection a eu lieu
 
 function reduceTime() {
     timer -= 30;
@@ -15,14 +16,16 @@ function reduceTime() {
     document.getElementById('countdown').innerHTML = 'Temps restant : ' + minutes + 'm ' + seconds + 's';
     if (timer <= 0) {
         clearInterval(countdown);
-        alert('Le temps est écoulé. Vous allez être redirigé vers la page d\'accueil.');
-        window.location.href = "{{ url_for('accueil') }}"; // Redirection vers la page d'accueil
+        if (!isRedirected) {
+        window.location.href = "{{ url_for('progression') }}"; // Redirection vers la page d'accueil
         document.forms["questionnaireForm"].submit(); // Soumettre le formulaire lorsque le temps est écoulé
+        isRedirected = true; // Marquer que la redirection a eu lieu
+        }
     }
 }
 
 function handleWarnings() {
-    if (!ButtonClicked) {
+    if (!ButtonClicked && !isRedirected) {
         if (warnings == 1) {
             alert("Attention : Quitter cette page réduira le temps restant.");
         } else if (warnings >= 2) {
@@ -55,9 +58,12 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('countdown').innerHTML = 'Temps restant : ' + minutes + 'm ' + seconds + 's';
         if (timer <= 0) {
             clearInterval(countdown);
-            alert('Le temps est écoulé. Vous allez être redirigé vers la page d\'accueil.');
-            window.location.href = "{{ url_for('accueil') }}"; // Redirection vers la page d'accueil
+            if (!isRedirected) {
+            alert('Le temps est écoulé. Vous allez être redirigé vers la page des résultats.');
+            window.location.href = "{{ url_for('progression') }}"; // Redirection vers la page d'accueil
             document.forms["questionnaireForm"].submit(); // Soumettre le formulaire lorsque le temps est écoulé
+            isRedirected = true; // Marquer que la redirection a eu lieu
+            }
         }
     }, 1000); // Mettre à jour toutes les secondes
 });

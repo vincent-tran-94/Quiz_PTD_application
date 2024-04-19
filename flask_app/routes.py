@@ -197,17 +197,7 @@ def contact():
 def categorie_questions(categorie):
     participant_id = session.get('user_id')
     reponse_existe = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
-    categories_directories = {
-        'droit': 'questions/droit',
-        'humanitaire': 'questions/humanitaire',
-        'culturel': 'questions/culturel',
-        'sociologie': 'questions/sociologie'
-    }
 
-    if categorie in categories_directories:
-        directory = categories_directories[categorie]
-        data_json = open_file_json_from_directory(directory)
-    
     if reponse_existe:
         nb_essais_restant = reponse_existe.nb_essais
         if nb_essais_restant == 0:
@@ -216,8 +206,23 @@ def categorie_questions(categorie):
         else: 
             reponse_existe.nb_essais -= 1
 
+    categories_directories = {
+        'droit': 'questions/droit',
+        'humanitaire': 'questions/humanitaire',
+        'culturel': 'questions/culturel',
+        'sociologie': 'questions/sociologie'
+    }
+
+    directory = categories_directories[categorie]
+    if 'data_json' not in session:
+        # Si les données ne sont pas déjà stockées dans la session, chargez-les à partir des fichiers JSON
+        session['data_json'] = save_questions(directory)
+
+    data_json = session['data_json']
+
     if request.method == 'POST':
         traitement_reponses(data_json,categorie)
+        session.pop('data_json', None)
         return redirect(url_for('progression'))
         
     return render_template('categorie.html', questions=data_json['questions'],categorie=categorie)

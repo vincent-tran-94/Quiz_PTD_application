@@ -15,29 +15,37 @@ Fonction de récupération de données et de procédure de données
 -Traitement de réponse qui permet de calculer le nombre de réponses correctes et incorrectes pour chaque questionnaire dans une catégorie 
 """
 
+selected_questions = []  
+
 #Fonction pour récupérer tout les fichiers JSON sur l'ensemble des questionnaires
 def open_file_json_from_directory(directory):
     json_files = [file for file in os.listdir(directory) if file.endswith('.json')]
     if not json_files:
         return None
-    
-    all_questions = []  # Liste pour stocker toutes les questions
+    all_questions = []
 
     for json_file in json_files:
         with open(os.path.join(directory, json_file), 'r', encoding='utf-8') as file:
             data_json = json.load(file)
             all_questions.extend(data_json['questions'])
-
+    
     # Mélanger toutes les questions
     random.shuffle(all_questions)
     selected_questions = all_questions[:30]
+
+    return selected_questions
+
+def save_questions(directory):
+
+    save_questions = open_file_json_from_directory(directory)
     
      # Ajouter des numérotations à chaque question
-    for i, question in enumerate(selected_questions, 1):
+    for i, question in enumerate(save_questions, 1):
         question['number'] = i  # Ajouter un numéro à la questio
     
     # Créer un nouveau dictionnaire contenant les questions mélangées
-    shuffled_data = {"questions": selected_questions}
+    shuffled_data = {"questions": save_questions}
+    #print("APRES",shuffled_data)
 
     return shuffled_data
 
@@ -106,12 +114,18 @@ def traitement_reponses(data_json, categorie):
     participant_id = session.get('user_id')
     answers = request.form
     correct_answers = 0
+    print(answers)
+
+    # Créer un dictionnaire pour stocker les réponses correctes attendues pour chaque question
+    correct_responses_dict = {question['question']: question['reponse_correcte'] if isinstance(question['reponse_correcte'], list) else [question['reponse_correcte']] for question in data_json['questions']}
 
     # Vérifiez les réponses
-    for question in data_json['questions']:
-        question_id = question['question']
-        if answers.get(question_id) == question['reponse_correcte']:
-            correct_answers += 1  # 1 point par bonne réponse
+    for question_id, user_response in answers.items():
+        if question_id in correct_responses_dict:
+            # Vérifie si la réponse de l'utilisateur est parmi les réponses correctes pour cette question
+            if user_response in correct_responses_dict[question_id]:
+                correct_answers += 1
+
 
     # Calculez les statistiques
     total_questions = len(data_json['questions'])
@@ -136,6 +150,5 @@ def traitement_reponses(data_json, categorie):
                                           categorie=categorie,
                                           nb_essais=default_essai)
         db.session.add(new_response)
-
     db.session.commit()
 

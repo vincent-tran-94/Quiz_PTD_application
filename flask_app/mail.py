@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, flash, session
+from flask import render_template, redirect, url_for, flash
 from models import *
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadSignature
@@ -48,8 +48,6 @@ def confirm_email(token):
         # Récupérer l'user_id associé au token 
         user_data = serializer.loads(token, max_age=3600)
         
-        token = serializer.dumps(user_data)
-
         # Récupérer les données utilisateur depuis le token
         nom = user_data['nom']
         prenom = user_data['prenom']
@@ -69,17 +67,11 @@ def confirm_email(token):
                             nom=nom, 
                             prenom=prenom, 
                             email=email)
-            new_user.set_password(password, method='pbkdf2:sha256')
+            new_user.set_password(password, method='pbkdf2:sha256')        
             db.session.add(new_user)
             db.session.commit()
-
-            user__confirmation_id = User.query.filter_by(id=user_id,email=email).first()
-
-            if user__confirmation_id:
-                return redirect(url_for('login'))
-            else:
-                return render_template('setup_user/confirmation.html', message='Mail or User ID no detected')
-        
+            return redirect(url_for('login'))
+           
     except SignatureExpired:
         # Le token a expiré
         return render_template('setup_user/confirmation.html', message='Le lien de confirmation a expiré.')
