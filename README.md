@@ -92,24 +92,36 @@ SECRET_KEY='you_secret_key'
 
 [Database]
 ID_DATABASE="you_id_database"
-PASSWORD_DATABASE="you_password"
-ADDRESS_IP="you_address_ip_database"
+PASSWORD_DATABASE="you_password" 
+ADDRESS_IP="you_address_ip_database" Si vous êtes en local mettez localhost sinon mettre le nom de l'image de docker
 NAME_DATABASE="you_name_database"
 
 [STRIPE]
 STRIPE_PUBLIC_KEY='you_key_public'
 STRIPE_SECRET_KEY= 'you_secret_key'
 STRIPE_SECRET_ENDPOINT='you_secret_endpoint_key'
+
+ID_PRODUCT_BRONZE='YOU_ID_PRODUCT'
+ID_PRODUCT_SILVER=''
+ID_PRODUCT_GOLD=''
+ID_TAXE_RATE='you_ID_TAX'
+ID_COUPON='you_ID_COUPON'
 ```
 
 Si vous êtes en local, lancez cette commande du stripe CLI.
 Elle permet de démarrer un écouteur qui surveille les événements Stripe sur votre compte et les redirige vers un endpoint HTTP spécifié
 Les webhooks vous permettent de recevoir des notifications en temps réel des événements sur votre compte Stripe, comme les paiements réussis, les abonnements créés, etc. Vous pouvez alors extraire les informations nécessaires, telles que le nom du produit et l'adresse du client, à partir des données fournies dans ces webhooks.
+Si vous voulez se connecter mettez votre API KEY pour activer le CLI du webhook
 ```
-stripe listen --forward-to http://localhost:5000/stripe_webhook
+stripe listen --forward-to http://localhost:5000/stripe_webhook --api-key YOU_API_KEY
 ```
 
 Lancer votre application Flask pour démarrer votre serveur
 ```
-flask run
+docker-compose build
+docker-compose up -d
+```
+Si vous voulez arrêter les conteneurs 
+```
+docker-compose down 
 ```
