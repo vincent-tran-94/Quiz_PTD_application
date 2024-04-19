@@ -67,3 +67,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }, 1000); // Mettre à jour toutes les secondes
 });
+
+
