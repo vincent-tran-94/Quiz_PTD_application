@@ -29,7 +29,8 @@ Cette application va permet aux participants d'apprendre et de découvrir des no
 - static/styles # Fichiers CSS
 - static/JS #Fichiers de JavaScript 
 - questions/ # Fichiers JSON contenant une série de questions
-
+- .env Fichier de configuration pour les variables d'environnements
+- config.cfg Fichier de configuration pour activer le serveur STMP du GMAIL
 ## Formulaire pour la participation du concours du quiz
 
 - nom 
@@ -37,6 +38,7 @@ Cette application va permet aux participants d'apprendre et de découvrir des no
 - adresse 
 - code_postal
 - ville 
+- pays
 - niveau_etude 
 - statut 
 - centre_interet 
@@ -49,10 +51,13 @@ Cette application va permet aux participants d'apprendre et de découvrir des no
     - reponse_participant : Le nombre de réponses effectués par un participant
     - contact: contact client des participants soumis dans l'application 
     - strip_customer: Client ayant payé un abonnement sur-mesure en l'utilisant l'API Stripe
-
+    - parrainage : Parrain pour avoir le code de réduction pour plus tard on souhaitera de collaborer aux autres participants 
 
 ## Installation et setup
-- Version Python 3.11.7 
+- Version Python 3.11.7
+- Docker
+- PostgreSQL
+- Stripe CLI
 
 Rendez-vous dans ce lien pour vous inscrire un compte sur strip et suivez les étapes pour la création du compte
 ```
@@ -116,7 +121,7 @@ Si vous voulez se connecter mettez votre API KEY pour activer le CLI du webhook
 stripe listen --forward-to http://localhost:5000/stripe_webhook --api-key YOU_API_KEY
 ```
 
-Lancer votre application Flask pour démarrer votre serveur
+Lancer votre application Flask pour démarrer votre serveur à l'aide de docker
 ```
 docker-compose build
 docker-compose up -d
