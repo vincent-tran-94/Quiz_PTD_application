@@ -39,9 +39,6 @@ document.querySelector('.btn.btn-primary.mt-3').addEventListener('click', functi
     ButtonClicked = true;
 });
 
-document.querySelector('#accueilBtn').addEventListener('click', function() {
-    ButtonClicked = true;
-});
 
 document.addEventListener('visibilitychange', function () {
     if (!ButtonClicked) {
@@ -67,5 +64,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }, 1000); // Mettre à jour toutes les secondes
 });
-
 

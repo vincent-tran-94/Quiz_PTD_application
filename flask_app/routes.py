@@ -225,6 +225,7 @@ def contact():
 @app.route('/categorie/<categorie>', methods=['GET', 'POST'])
 @login_required
 def categorie_questions(categorie):
+
     participant_id = session.get('user_id')
     reponse_existe = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
 
@@ -254,7 +255,7 @@ def categorie_questions(categorie):
         traitement_reponses(data_json,categorie)
         session.pop('data_json', None)
         return redirect(url_for('progression'))
-        
+    
     return render_template('categorie.html', questions=data_json['questions'],categorie=categorie)
 
 #Fonction des résultats obtenus après le remplissage des questionnaires

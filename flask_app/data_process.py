@@ -31,7 +31,7 @@ def open_file_json_from_directory(directory):
     
     # Mélanger toutes les questions
     random.shuffle(all_questions)
-    selected_questions = all_questions[:30]
+    selected_questions = all_questions[:10]
 
     return selected_questions
 
@@ -114,18 +114,35 @@ def traitement_reponses(data_json, categorie):
     participant_id = session.get('user_id')
     answers = request.form
     correct_answers = 0
-    print(answers)
+
+    # Initialiser un dictionnaire vide pour stocker les réponses
+    result_dict_answers = {}
+
+    # Parcourir les éléments de l'ImmutableMultiDict
+    for key in answers.keys():
+        # Vérifier si la clé est différente de 'participant_id'
+        if key != 'participant_id':
+            # Vérifier si la clé est déjà dans le dictionnaire résultant
+            if key in result_dict_answers:
+                # Si la clé existe déjà, ajouter la valeur à la liste existante
+                result_dict_answers[key].append(answers.getlist(key))
+            else:
+                # Si la clé n'existe pas encore, créer une nouvelle liste avec la valeur
+                result_dict_answers[key] = answers.getlist(key)
 
     # Créer un dictionnaire pour stocker les réponses correctes attendues pour chaque question
     correct_responses_dict = {question['question']: question['reponse_correcte'] if isinstance(question['reponse_correcte'], list) else [question['reponse_correcte']] for question in data_json['questions']}
 
     # Vérifiez les réponses
-    for question_id, user_response in answers.items():
+    for question_id, user_response in result_dict_answers.items():
         if question_id in correct_responses_dict:
-            # Vérifie si la réponse de l'utilisateur est parmi les réponses correctes pour cette question
-            if user_response in correct_responses_dict[question_id]:
-                correct_answers += 1
-
+            reponses_donnes =  correct_responses_dict[question_id]
+            if isinstance(reponses_donnes, list):
+                if set(reponses_donnes) == set(user_response):
+                    correct_answers += 1
+            elif isinstance(reponses_donnes, str):
+                if reponses_donnes == user_response:
+                    correct_answers  += 1
 
     # Calculez les statistiques
     total_questions = len(data_json['questions'])
@@ -151,4 +168,6 @@ def traitement_reponses(data_json, categorie):
                                           nb_essais=default_essai)
         db.session.add(new_response)
     db.session.commit()
+
+
 
