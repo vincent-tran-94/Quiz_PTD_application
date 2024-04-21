@@ -29,29 +29,56 @@ login_manager.init_app(app)
 def load_user(user_id):
     return db.session.get(User, user_id)
 
+
+# Définir la durée maximale d'inactivité (en minutes)
+MAX_INACTIVITY_DURATION = 30  # Par exemple, 30 minutes
+
+# Middleware pour vérifier l'inactivité de l'utilisateur
+@app.before_request
+def check_inactive_session():
+    if current_user.is_authenticated:
+        last_activity = session.get('last_activity')
+        if last_activity is not None:
+            # Calculer la durée depuis la dernière activité
+            inactive_duration = datetime.now() - last_activity
+            if inactive_duration > timedelta(minutes=MAX_INACTIVITY_DURATION):
+                # Déconnecter l'utilisateur
+                logout_user()
+                return redirect(url_for('login'))
+    # Mettre à jour le temps de la dernière activité à chaque requête
+    session['last_activity'] = datetime.now()
+
 #Fonction de la première connexion
 @app.route('/', methods=['GET', 'POST'])
 def login():
     image_filename = 'images/logo_PTD.jpg'
+
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
 
         # Recherche de l'utilisateur dans la base de données
         user = User.query.filter_by(email=email).first()
-
-        if user and user.check_password(password):
-            login_user(user)
-            session['user_id'] = user.id
-            participant = Participant.query.filter_by(participant_id=user.id).first()
-            if participant:
-                return redirect(url_for('accueil'))  # Rediriger vers la page de catégorie
-            else:
-                return redirect(url_for('formulaire'))  # Rediriger vers le formulaire si l'utilisateur n'a pas rempli
+        if current_user.is_authenticated:
+            flash("Vous êtes déjà connecté", "info")
+        elif user and user.check_password(password):
+                login_user(user)
+                session['user_id'] = user.id
+                participant = Participant.query.filter_by(participant_id=user.id).first()
+                if participant:
+                    return redirect(url_for('accueil'))  # Rediriger vers la page de catégorie
+                else:
+                    return redirect(url_for('formulaire'))  # Rediriger vers le formulaire si l'utilisateur n'a pas rempli
         else:
             flash("Nom d'utilisateur ou mot de passe invalide", "error")  # Message flash pour l'erreur
         
     return render_template('setup_user/login.html',image_filename=image_filename)
+
+#Fonction qui permet de faire un retour vers le login 
+@login_manager.unauthorized_handler
+def unauthorized_callback():
+    logout_user()
+    return redirect(url_for('login'))
 
 #Fonction de déconnexion
 @app.route('/logout')

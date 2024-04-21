@@ -3,7 +3,7 @@ import stripe
 from flask import render_template, url_for, request, abort
 from flask_login import login_required
 from mail import send_invoice_email
-from process_stripe import create_stripe_customer
+from process_stripe import create_stripe_customer, update_participant_essais
 
 app.config['STRIPE_PUBLIC_KEY'] = os.getenv('STRIPE_PUBLIC_KEY')
 app.config['STRIPE_SECRET_KEY'] = os.getenv('STRIPE_SECRET_KEY')
@@ -119,7 +119,7 @@ def stripe_webhook():
         id_subscription= stripe.checkout.Session.list(limit=3)["data"][0]["subscription"]
         print("Successful payment and creation database StripeCustomer")
         create_stripe_customer(product_description,email_customer,id_customer,id_subscription)
-        #update_participant_essais(product_description,email_customer).delay()
+        #scheduler.add_job(update_participant_essais, 'interval', seconds=1, args=[product_description, email_customer])
 
     if event['type'] == 'invoice.created':
         invoice_id = event['data']['object']['id']

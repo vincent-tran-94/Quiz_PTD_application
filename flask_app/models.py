@@ -5,8 +5,15 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import uuid
 from sqlalchemy.dialects.postgresql import UUID
 from datetime import datetime
+from flask_session import Session
 import os
 from dotenv import load_dotenv
+
+
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
+from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
+
 
 load_dotenv() #Importer les paramètres de l'identification
 app = Flask(__name__,template_folder='template',static_url_path='/static')
@@ -20,9 +27,23 @@ app.secret_key = os.getenv('SECRET_KEY')
 db_uri = f"postgresql://{os.getenv('ID_DATABASE')}:{os.getenv('PASSWORD_DATABASE')}@{os.getenv('ADDRESS_IP')}:5432/{os.getenv('NAME_DATABASE')}"
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+
 db = SQLAlchemy(app)
 
 app.config.from_pyfile('config.cfg')
+Session(app)
+
+jobstores = {
+        'default': SQLAlchemyJobStore(url=db_uri)
+    }
+
+executors = {
+    'default': ThreadPoolExecutor(20),
+    'processpool': ProcessPoolExecutor(5)
+}
+scheduler = BackgroundScheduler(jobstores=jobstores, executors=executors)
 
 """
 Liste des tables constitués dans notre base de données 

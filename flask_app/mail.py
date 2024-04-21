@@ -42,13 +42,11 @@ def send_confirmation_email(nom,prenom,email,password):
     mail.send(msg)
 
 
-@app.route('/confirm/<token>')
+@app.route('/confirm/<token>',methods=['GET'])
 def confirm_email(token):
     try:
         # Récupérer l'user_id associé au token 
         user_data = serializer.loads(token, max_age=3600)
-        
-        # Récupérer les données utilisateur depuis le token
         nom = user_data['nom']
         prenom = user_data['prenom']
         email = user_data['email']
@@ -71,7 +69,7 @@ def confirm_email(token):
             db.session.add(new_user)
             db.session.commit()
             return redirect(url_for('login'))
-           
+        
     except SignatureExpired:
         # Le token a expiré
         return render_template('setup_user/confirmation.html', message='Le lien de confirmation a expiré.')
