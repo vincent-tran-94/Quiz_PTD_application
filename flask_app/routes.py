@@ -21,6 +21,8 @@ source env/Scripts/activate
 3) Lancer la commande test.sh pour tester l'application et run.sh pour lancer le conteneur
 """
 
+MAX_INACTIVITY_DURATION=30
+
 # Créez une instance de LoginManager
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -30,23 +32,23 @@ def load_user(user_id):
     return db.session.get(User, user_id)
 
 
-# Définir la durée maximale d'inactivité (en minutes)
-MAX_INACTIVITY_DURATION = 30  # Par exemple, 30 minutes
-
 # Middleware pour vérifier l'inactivité de l'utilisateur
 @app.before_request
 def check_inactive_session():
     if current_user.is_authenticated:
         last_activity = session.get('last_activity')
         if last_activity is not None:
+            last_activity_naive = last_activity.replace(tzinfo=None)
             # Calculer la durée depuis la dernière activité
-            inactive_duration = datetime.now() - last_activity
-            if inactive_duration > timedelta(minutes=MAX_INACTIVITY_DURATION):
+            inactive_duration = datetime.now() - last_activity_naive
+            if inactive_duration > timedelta(minutes==MAX_INACTIVITY_DURATION):
                 # Déconnecter l'utilisateur
                 logout_user()
+                flash("Votre session a expiré en raison d'une inactivité prolongée", "warning")
                 return redirect(url_for('login'))
     # Mettre à jour le temps de la dernière activité à chaque requête
     session['last_activity'] = datetime.now()
+    
 
 #Fonction de la première connexion
 @app.route('/', methods=['GET', 'POST'])
@@ -64,6 +66,7 @@ def login():
         elif user and user.check_password(password):
                 login_user(user)
                 session['user_id'] = user.id
+                session['last_activity'] = datetime.now()
                 participant = Participant.query.filter_by(participant_id=user.id).first()
                 if participant:
                     return redirect(url_for('accueil'))  # Rediriger vers la page de catégorie

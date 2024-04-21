@@ -5,11 +5,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import uuid
 from sqlalchemy.dialects.postgresql import UUID
 from datetime import datetime
-from flask_session import Session
 import os
 from dotenv import load_dotenv
-
-
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
@@ -33,7 +30,6 @@ app.config["SESSION_TYPE"] = "filesystem"
 db = SQLAlchemy(app)
 
 app.config.from_pyfile('config.cfg')
-Session(app)
 
 jobstores = {
         'default': SQLAlchemyJobStore(url=db_uri)
