@@ -70,6 +70,10 @@ git clone https://github.com/vincent-tran-94/Quiz_students_PTD_application.git
 python3 -m venv env
 source env/Scripts/activate
 ```
+Diriger-vous vers flask_app
+```
+cd flask_app/ 
+```
 
 Installer les dépendances 
 ```
