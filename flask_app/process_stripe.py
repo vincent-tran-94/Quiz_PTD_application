@@ -1,8 +1,6 @@
 from datetime import datetime, timedelta
 from models import *
-import locale
 
-locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
 #Fonction pour la création des abonnements stockés sur une base de données
 def create_stripe_customer(new_product_customer,email_customer,id_customer,id_subscription):
     

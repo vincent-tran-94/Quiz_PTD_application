@@ -1,0 +1,27 @@
+
+body {
+    background-color: rgba(128, 128, 128, 0.5); /* Couleur gris foncé */
+  }
+
+/* Style pour le titre principal */
+.profile-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Style pour les listes d'informations */
+.profile-info {
+    margin-bottom: 20px;
+}
+
+/* Style pour chaque élément de la liste */
+.profile-info-item {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+/* Style pour le paragraphe de description */
+.profile-description {
+    margin-top: 30px;
+}

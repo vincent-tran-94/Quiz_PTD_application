@@ -1,4 +1,4 @@
-{% extends "base/base_souscription.html" %}
+{% extends "base/base_profil.html" %}
 
 {% block content %}
 <nav>
@@ -21,7 +21,7 @@
                 </li>
                 <li class="list">
                     <a href="{{ url_for('profil') }}" class="nav-link">
-                    <i class='bx bx-user-pin icon' ></i>
+                     <i class='bx bx-user-pin icon' ></i>
                     <span class="link">Profil</span>
                     </a>
                 </li>
@@ -56,9 +56,9 @@
                     </a>
                 </li>
                 <li class="list">
-                    <a href="#" class="nav-link">
-                    <i class='bx bx-donate-heart icon'></i>
-                    <span class="link">Dons</span>
+                    <a href="https://www.paypal.com/paypalme/PreserveTonDroit"  target="_blank" class="nav-link">
+                        <i class='bx bx-donate-heart icon'></i>
+                        <span class="link">Dons Paypal</span>
                     </a>
                 </li>
                 <li class="list">
@@ -86,4 +86,4 @@
     </nav>
     <section class="overlay"></section>
     <script src="{{ url_for('static', filename='js/menu_bar.js') }}"></script>
-    {% endblock %}
+{% endblock %}

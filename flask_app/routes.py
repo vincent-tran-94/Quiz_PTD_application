@@ -143,6 +143,7 @@ def register():
     return render_template('setup_user/register.html')
 
 
+
 #Fonction de formulaire de renseignement du participant pour connaitre les informations du participant
 @app.route('/formulaire', methods=['GET', 'POST'])
 @login_required
@@ -182,6 +183,7 @@ def formulaire():
 
     return render_template('formulaire.html', message=None,image_filename=image_filename)
 
+
 #Fonction de l'affichage page d'accueil
 @app.route('/accueil')
 @login_required
@@ -190,6 +192,14 @@ def accueil():
     image_background = 'images/background_image.jpg'
     image_background_contact = 'images/contact_us_background.jpg'
     return render_template('sidebar/home.html',image_filename=image_filename,image_background=image_background,image_background_contact=image_background_contact)
+
+
+@app.route('/profil')
+def profil():
+    participant_id = session.get('user_id')
+    user = Participant.query.get(participant_id)
+    return render_template('sidebar/profil.html', user=user)
+
 
 #Fonction de contact client avec l'association
 @app.route('/contact', methods=['GET', 'POST'])
