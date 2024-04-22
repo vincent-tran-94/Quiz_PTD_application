@@ -51,7 +51,7 @@ class User(db.Model):
     prenom = db.Column(db.String(255))
     email = db.Column(db.String(255),unique=True)
     password_hash = db.Column(db.String(255)) 
-    date_creation = db.Column(db.DateTime, default=datetime.utcnow)
+    date_creation = db.Column(db.DateTime, default=datetime.now().strftime('%d %B %Y %H:%M:%S'))
 
     def is_authenticated(self):
         # Par défaut, tous les utilisateurs sont considérés comme actifs
@@ -82,7 +82,7 @@ class Participant(db.Model):
     statut = db.Column(db.String(255))
     centre_interet = db.Column(db.String(255))
     choix_categorie = db.Column(db.String(255))
-    date_creation = db.Column(db.DateTime, default=datetime.utcnow)
+    date_creation = db.Column(db.DateTime, default=datetime.now().strftime('%d %B %Y %H:%M:%S'))
 
 
 class ReponseParticipant(db.Model):
@@ -93,7 +93,7 @@ class ReponseParticipant(db.Model):
     success_percentage = db.Column(db.Float)
     categorie = db.Column(db.String(255))
     nb_essais = db.Column(db.Integer())
-    date_creation = db.Column(db.DateTime, default=datetime.utcnow)
+    date_creation = db.Column(db.DateTime, default=datetime.now().strftime('%d %B %Y %H:%M:%S'))
 
 class Contact(db.Model):
     id = db.Column(db.Integer(),primary_key=True)
@@ -102,7 +102,7 @@ class Contact(db.Model):
     email = db.Column(db.String(100))
     tel = db.Column(db.String(100))
     message = db.Column(db.String(1000))
-    date_creation = db.Column(db.DateTime, default=datetime.utcnow)
+    date_creation = db.Column(db.DateTime, default=datetime.now().strftime('%d %B %Y %H:%M:%S'))
 
 class StripeCustomer(db.Model):
     participant_id = db.Column(UUID(as_uuid=True), db.ForeignKey('user.id'),primary_key=True)
@@ -110,12 +110,12 @@ class StripeCustomer(db.Model):
     email = db.Column(db.String(100))
     id_customer = db.Column(db.String(255))
     id_subscription = db.Column(db.String(255))
-    date_creation = db.Column(db.DateTime, default=datetime.utcnow)
+    date_creation = db.Column(db.DateTime, default=datetime.now().strftime('%d %B %Y %H:%M:%S'))
 
 class Parrainage(db.Model): 
     participant_id = db.Column(UUID(as_uuid=True), db.ForeignKey('user.id'),primary_key=True)
     email = db.Column(db.String(100))
     parrain_email = db.Column(db.String(255))  
     coupon_parrain = db.Column(db.String(255))  
-    date_creation = db.Column(db.DateTime, default=datetime.utcnow)
+    date_creation = db.Column(db.DateTime, default=datetime.now().strftime('%d %B %Y %H:%M:%S'))
     

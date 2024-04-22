@@ -31,7 +31,6 @@ def date_after_one_month():
 
 def update_participant_essais(new_product_customer=None, email=None):
     with app.app_context():
-        print(f"Mise à jour du client {email}",datetime.utcnow())
         # Rechercher le client Stripe avec l'email donné
         customer = StripeCustomer.query.filter_by(email=email).first()
         if customer:
@@ -44,11 +43,11 @@ def update_participant_essais(new_product_customer=None, email=None):
                     if participant_response is not None:
                         last_update = participant_response.date_creation
                         # Vérifier si la dernière mise à jour a eu lieu il y a plus d'un mois
-                        if datetime.utcnow() - last_update > timedelta(days=30):  
+                        if datetime.now() - last_update > timedelta(days=30):  
                             # Mettre à jour le nombre d'essais
                             participant_response.nb_essais += 3
                             # Mettre à jour la date de création pour refléter la mise à jour
-                            participant_response.date_creation = datetime.utcnow()
+                            participant_response.date_creation = datetime.now().strftime('%d %B %Y %H:%M:%S')
                 # Commit des changements à la base de données une fois pour toutes les réponses traitées
                 db.session.commit()
 

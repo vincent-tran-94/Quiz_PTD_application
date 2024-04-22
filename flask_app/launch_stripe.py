@@ -144,7 +144,7 @@ def stripe_webhook():
         id_subscription= stripe.checkout.Session.list(limit=3)["data"][0]["subscription"]
         print("Successful payment and creation database StripeCustomer")
         create_stripe_customer(product_description,email_customer,id_customer,id_subscription)
-        #scheduler.add_job(update_participant_essais, 'interval', month=1,args=[product_description, email_customer])
+        #scheduler.add_job(update_participant_essais, 'interval', days=30,args=[product_description, email_customer])
 
     if event['type'] == 'invoice.created':
         invoice_id = event['data']['object']['id']
