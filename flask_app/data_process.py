@@ -31,7 +31,7 @@ def open_file_json_from_directory(directory):
     
     # Mélanger toutes les questions
     random.shuffle(all_questions)
-    selected_questions = all_questions[:10]
+    selected_questions = all_questions[:30]
 
     return selected_questions
 
