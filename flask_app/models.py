@@ -49,7 +49,7 @@ class User(db.Model):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     nom =  db.Column(db.String(255))
     prenom = db.Column(db.String(255))
-    email = db.Column(db.String(255))
+    email = db.Column(db.String(255),unique=True)
     password_hash = db.Column(db.String(255)) 
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
 

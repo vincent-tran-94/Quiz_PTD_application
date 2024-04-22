@@ -37,6 +37,35 @@ def create_promotion_code(coupon_id):
         print(str(e))
         return None
 
+# Fonction pour vérifier si le client existe sur Stripe
+def verifier_client(email):
+    try:
+        client = stripe.Customer.list(email=email, limit=1)
+        if client:
+            return True, client.data[0].id
+        else:
+            return False, None
+    except stripe.error.StripeError as e:
+        print("Une erreur s'est produite:", e)
+        return False, None
+
+def create_checkout_session():
+    session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=[{
+            'price': id_product_bronze,
+            'quantity': 1,
+        }],
+        subscription_data={
+            'default_tax_rates': [taxe_rate],
+        },
+        mode='subscription',
+        allow_promotion_codes=True,
+        success_url=url_for('thanks', _external=True) + '?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url=url_for('souscription', _external=True),
+    )
+    return session
+
 
 @app.route('/souscription')
 @login_required
@@ -55,13 +84,9 @@ def souscription():
         success_url=url_for('thanks', _external=True) + '?session_id={CHECKOUT_SESSION_ID}',
         cancel_url=url_for('souscription', _external=True),
     )
+    return render_template('sidebar/souscription.html', checkout_session_id=session['id'], checkout_public_key=app.config['STRIPE_PUBLIC_KEY'])
+        
     
-    return render_template(
-        'sidebar/souscription.html', 
-        checkout_session_id=session['id'], 
-        checkout_public_key=app.config['STRIPE_PUBLIC_KEY']
-    )
-
 @app.route('/stripe_pay')
 def stripe_pay():
     session = stripe.checkout.Session.create(
@@ -119,7 +144,7 @@ def stripe_webhook():
         id_subscription= stripe.checkout.Session.list(limit=3)["data"][0]["subscription"]
         print("Successful payment and creation database StripeCustomer")
         create_stripe_customer(product_description,email_customer,id_customer,id_subscription)
-        #scheduler.add_job(update_participant_essais, 'interval', seconds=1, args=[product_description, email_customer])
+        #scheduler.add_job(update_participant_essais, 'interval', month=1,args=[product_description, email_customer])
 
     if event['type'] == 'invoice.created':
         invoice_id = event['data']['object']['id']

@@ -42,6 +42,7 @@ def send_confirmation_email(nom,prenom,email,password):
     mail.send(msg)
 
 
+
 @app.route('/confirm/<token>',methods=['GET'])
 def confirm_email(token):
     try:
@@ -65,7 +66,7 @@ def confirm_email(token):
                             nom=nom, 
                             prenom=prenom, 
                             email=email)
-            new_user.set_password(password, method='pbkdf2:sha256')        
+            new_user.set_password(password, method='pbkdf2:sha256')      
             db.session.add(new_user)
             db.session.commit()
             return redirect(url_for('login'))
