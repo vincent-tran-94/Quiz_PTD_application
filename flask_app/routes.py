@@ -55,15 +55,17 @@ def check_inactive_session():
 def login():
     image_filename = 'images/logo_PTD.jpg'
 
+    if current_user.is_authenticated:
+        return redirect('accueil')
+    
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
 
         # Recherche de l'utilisateur dans la base de données
         user = User.query.filter_by(email=email).first()
-        if current_user.is_authenticated:
-            flash("Vous êtes déjà connecté", "info")
-        elif user and user.check_password(password):
+        
+        if user and user.check_password(password):
                 login_user(user)
                 session['user_id'] = user.id
                 session['last_activity'] = datetime.now()
