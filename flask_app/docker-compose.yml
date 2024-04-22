@@ -10,6 +10,7 @@ services:
     depends_on:
       - db
       - stripe-cli 
+    restart: always  
   db:
     image: postgres:latest
     volumes:
