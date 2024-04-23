@@ -67,11 +67,6 @@ CREATE ROLE you_id_database WITH LOGIN PASSWORD 'you_password';
 CREATE DATABASE you_name_database OWNER you_id_database;
 ```
 
-Rendez-vous dans ce lien pour vous inscrire un compte sur strip et suivez les étapes pour la création du compte
-```
-https://stripe.com/fr/connect
-```
-
 Importer le lien du projet et puis créez votre environnement virtuel
 ```
 git clone https://github.com/vincent-tran-94/Quiz_students_PTD_application.git
@@ -88,18 +83,18 @@ Installer les dépendances
 pip install -r requirements.txt 
 ```
 
-Copier les informations ci-dessous fichier et Ajouter le fichier config.cfg 
+Ajouter le fichier config.cfg et copier les informations ci-dessous:
 ```
 MAIL_SERVER='your_smtp.gmail.com'
 MAIL_USERNAME='your_mail@gmail.com'
-MAIL_DEFAULT_SENDER = 'your_mail@gmailcom'  
+MAIL_DEFAULT_SENDER = 'your_mail@gmail.com'  
 MAIL_PASSWORD='your_password_given_gmail_smtp'
 MAIL_PORT=465
 MAIL_USE_SSL=True
 MAIL_USE_TLS=False
 ```
 
-Copier les informations ci-dessous fichier et Ajouter le fichier .env
+Ajouter le fichier .env et copier les informations ci-dessous:
 ```
 [App]
 HOST='you_host_public_or_local'
@@ -125,13 +120,16 @@ ID_TAXE_RATE='you_ID_TAX'
 ID_COUPON='you_ID_COUPON'
 ```
 
+Rendez-vous dans ce lien pour vous inscrire un compte sur strip et suivez les étapes pour créer votre premier compte de test
+```
+https://stripe.com/fr/connect
+```
 Si vous êtes en local, lancez cette commande du stripe CLI.
-Elle permet de démarrer un écouteur qui surveille les événements Stripe sur votre compte et les redirige vers un endpoint HTTP spécifié
-Les webhooks vous permettent de recevoir des notifications en temps réel des événements sur votre compte Stripe, comme les paiements réussis, les abonnements créés, etc. Vous pouvez alors extraire les informations nécessaires, telles que le nom du produit et l'adresse du client, à partir des données fournies dans ces webhooks.
-Si vous voulez se connecter mettez votre API KEY pour activer le CLI du webhook
 ```
 stripe listen --forward-to http://localhost:5000/stripe_webhook --api-key YOU_API_KEY
 ```
+Elle permet de démarrer un écouteur qui surveille les événements Stripe sur votre compte et les redirige vers un endpoint HTTP spécifié
+Les webhooks vous permettent de recevoir des notifications en temps réel des événements sur votre compte Stripe, comme les paiements réussis, les abonnements créés, etc. Vous pouvez alors extraire les informations nécessaires, telles que le nom du produit et l'adresse du client, à partir des données fournies dans ces webhooks. Mettez votre API KEY pour activer le CLI du webhook
 
 Lancer votre application Flask pour démarrer votre serveur à l'aide de docker
 ```
