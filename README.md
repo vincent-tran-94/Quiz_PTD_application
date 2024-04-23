@@ -59,6 +59,14 @@ Cette application va permet aux participants d'apprendre et de découvrir des no
 - PostgreSQL
 - Stripe CLI
 
+Dirigez vous à l'invite de commande sur Pgsql et connectez-vous à votre compte.
+Ensuite, vous devez créer un ID de l'utilisateur avec votre mot de passe et votre nom de la base de données <br>
+en lançant ces deux commandes: 
+```
+CREATE ROLE you_id_database WITH LOGIN PASSWORD 'you_password';
+CREATE DATABASE you_name_database OWNER you_id_database;
+```
+
 Rendez-vous dans ce lien pour vous inscrire un compte sur strip et suivez les étapes pour la création du compte
 ```
 https://stripe.com/fr/connect
