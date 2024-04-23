@@ -45,7 +45,7 @@ Cette application va permet aux participants d'apprendre et de découvrir des no
 - choix_categorie 
 
 ## Base de données PostgreSQL
-- participants.db # On dispose de 4 tables:
+- participants.db # On dispose de 6 tables:
     - User : Nombre de participants ayant inscrit l'application du quiz
     - participant : Le nombre de participants ayant rempli le formulaire
     - reponse_participant : Le nombre de réponses effectués par un participant
