@@ -175,6 +175,7 @@ def formulaire():
                                   adresse=adresse,
                                   code_postal=code_postal,
                                   ville=ville,
+                                  pays=pays,
                                   niveau_etude=niveau_etude,
                                   statut=statut,
                                   centre_interet=centre_interet, 
