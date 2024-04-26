@@ -144,7 +144,7 @@ Rendez-vous dans ce lien pour vous inscrire un compte sur strip et suivez les é
 ```
 https://stripe.com/fr/connect
 ```
-Si vous êtes en local, lancez cette commande du stripe CLI.
+Sur une autre console, si vous êtes en local, lancez cette commande du stripe CLI.
 ```
 stripe listen --forward-to http://localhost:5000/stripe_webhook --api-key YOU_API_KEY
 ```
