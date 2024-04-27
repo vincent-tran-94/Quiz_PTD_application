@@ -105,7 +105,7 @@ pip install -r requirements.txt
 
 Ajouter le fichier config.cfg et copier les informations ci-dessous:
 ```
-MAIL_SERVER='your_smtp.gmail.com'
+MAIL_SERVER='smtp.gmail.com'
 MAIL_USERNAME='asso.ptdlegalquiz@gmail.com'
 MAIL_DEFAULT_SENDER = 'asso.ptdlegalquiz@gmail.com'  
 MAIL_PASSWORD='qbrt vxbf vjnb ridl'
