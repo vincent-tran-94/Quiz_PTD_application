@@ -106,9 +106,9 @@ pip install -r requirements.txt
 Ajouter le fichier config.cfg et copier les informations ci-dessous:
 ```
 MAIL_SERVER='your_smtp.gmail.com'
-MAIL_USERNAME='your_mail@gmail.com'
-MAIL_DEFAULT_SENDER = 'your_mail@gmail.com'  
-MAIL_PASSWORD='your_password_given_gmail_smtp'
+MAIL_USERNAME='asso.ptdlegalquiz@gmail.com'
+MAIL_DEFAULT_SENDER = 'asso.ptdlegalquiz@gmail.com'  
+MAIL_PASSWORD='qbrt vxbf vjnb ridl'
 MAIL_PORT=465
 MAIL_USE_SSL=True
 MAIL_USE_TLS=False
@@ -117,9 +117,9 @@ MAIL_USE_TLS=False
 Ajouter le fichier .env et copier les informations ci-dessous:
 ```
 [App]
-HOST='you_host_public_or_local'
-PORT='youport'
-MAIL_ASSOCIATION_CONTACT='you_mail_association@gmail.com'
+HOST='0.0.0.0'
+PORT='5000'
+MAIL_ASSOCIATION_CONTACT='asso.ptdlegalquiz@gmail.com'
 SECRET_KEY='you_secret_key' 
 
 [Database]
