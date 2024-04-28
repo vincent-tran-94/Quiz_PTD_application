@@ -430,18 +430,23 @@ def confirm_cancel_subscription():
 
         if request.method == 'POST':
             # Cancel the subscription
-            subscription = stripe.Subscription.modify(
-                get_subscription_id,
-                cancel_at_period_end=True
-            )
-            cancel_date_formatted = date_after_one_month()
-            message = f"Votre abonnement a été annulé avec succès jusqu'à la fin de la période du {cancel_date_formatted}."
-            send_cancel_sub_email(message,get_customer_email)
+            stripe.Subscription.cancel(get_subscription_id)
 
+            scheduler.remove_job(str(current_user.id))
             # Delete StripeCustomer record
             db.session.delete(customer_email)
             db.session.commit()
 
+            message = f"Votre abonnement a été résilié avec succès. Aucune facture ne sera générée pour les mois à venir."
+            send_cancel_sub_email(message,get_customer_email)
+            
+
     return render_template("cancel_sub.html", message=message)
 
 
+def end_period_subscription():
+    customer_email = StripeCustomer.query.filter_by(email=current_user.email).first()
+
+    # Delete StripeCustomer record
+    db.session.delete(customer_email)
+    db.session.commit()

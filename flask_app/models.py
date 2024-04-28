@@ -9,8 +9,6 @@ import os
 from dotenv import load_dotenv
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
-from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
-
 
 load_dotenv() #Importer les paramètres de l'identification
 app = Flask(__name__,template_folder='template',static_url_path='/static')
@@ -31,15 +29,12 @@ db = SQLAlchemy(app)
 
 app.config.from_pyfile('config.cfg')
 
+jobstore = SQLAlchemyJobStore(url=db_uri)
 jobstores = {
-        'default': SQLAlchemyJobStore(url=db_uri)
+        'default': jobstore
     }
 
-executors = {
-    'default': ThreadPoolExecutor(20),
-    'processpool': ProcessPoolExecutor(5)
-}
-scheduler = BackgroundScheduler(jobstores=jobstores, executors=executors)
+scheduler = BackgroundScheduler(jobstores=jobstores,job_defaults={'misfire_grace_time': None})
 
 """
 Liste des tables constitués dans notre base de données 

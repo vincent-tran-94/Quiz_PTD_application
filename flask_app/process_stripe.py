@@ -20,12 +20,6 @@ def create_stripe_customer(new_product_customer,email_customer,id_customer,id_su
     else:
         return None 
     
-def date_after_one_month():
-    current_date = datetime.now()
-    cancel_date = current_date + timedelta(days=30)
-    date_formatted = cancel_date.strftime("%d %B")
-    return date_formatted
-
 
 def update_participant_essais(new_product_customer=None, email=None):
     with app.app_context():
@@ -39,13 +33,17 @@ def update_participant_essais(new_product_customer=None, email=None):
                 for participant_response in participant_responses:
                     # Vérifier si la réponse du participant existe
                     if participant_response is not None:
-                        last_update = participant_response.date_creation
-                        # Vérifier si la dernière mise à jour a eu lieu il y a plus d'un mois
-                        if datetime.now() - last_update > timedelta(days=30):  
-                            # Mettre à jour le nombre d'essais
-                            participant_response.nb_essais += 3
-                            # Mettre à jour la date de création pour refléter la mise à jour
-                            participant_response.date_creation = datetime.now().strftime('%d %B %Y %H:%M:%S')
+                        participant_response.nb_essais += 3
+                        # Mettre à jour la date de création pour refléter la mise à jour
+                        participant_response.date_creation = datetime.now().strftime('%d %B %Y %H:%M:%S')
+
+                        #Sauvegarder sur un fichier log à répertoire nommé log_essais
+                        log_data = f"Client à jour: {customer.email} - {datetime.now().strftime('%d %B %Y %H:%M:%S')} - Nombre d'essais: {participant_response.nb_essais} - Catégorie: {participant_response.categorie}  \n"
+                        log_directory = "log_essais"
+                        log_filename = os.path.join(log_directory,f"log_essais.txt")
+                        with open(log_filename, "a",encoding="utf-8-sig") as file:
+                            file.write(log_data)
+
                 # Commit des changements à la base de données une fois pour toutes les réponses traitées
                 db.session.commit()
 

@@ -1,6 +1,6 @@
 from models import *
 import stripe
-from flask import render_template, url_for, request, abort
+from flask import render_template, url_for, request, abort, session
 from flask_login import login_required
 from mail import send_invoice_email
 from process_stripe import create_stripe_customer, update_participant_essais
@@ -136,15 +136,18 @@ def stripe_webhook():
     
      # Handle the checkout.session.completed event
     if event['type'] == 'checkout.session.completed':
-        session = event['data']['object']
-        product_description = stripe.checkout.Session.list_line_items(session, limit=1)['data'][0]['description']
+        session_checkout = event['data']['object'] 
+        product_description = stripe.checkout.Session.list_line_items(session_checkout , limit=1)['data'][0]['description']
         #print("product_description",product_description)
         email_customer = stripe.checkout.Session.list(limit=3)["data"][0]["customer_details"]["email"]
         id_customer = stripe.checkout.Session.list(limit=3)["data"][0]["customer"]
         id_subscription= stripe.checkout.Session.list(limit=3)["data"][0]["subscription"]
         print("Successful payment and creation database StripeCustomer")
         create_stripe_customer(product_description,email_customer,id_customer,id_subscription)
-        #scheduler.add_job(update_participant_essais, 'interval', days=30,args=[product_description, email_customer])
+        customer = StripeCustomer.query.filter_by(email=email_customer).first()
+        if customer: 
+            scheduler.add_job(update_participant_essais,'interval',days=30,args=[product_description, email_customer],id=str(customer.participant_id))
+
 
     if event['type'] == 'invoice.created':
         invoice_id = event['data']['object']['id']
