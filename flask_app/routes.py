@@ -439,7 +439,7 @@ def confirm_cancel_subscription():
 
             message = f"Votre abonnement a été résilié avec succès. Aucune facture ne sera générée pour les mois à venir."
             send_cancel_sub_email(message,get_customer_email)
-            print(f"Suscription canceled by {customer_email}")
+            print(f"Subcription canceled by {customer_email}")
             
 
     return render_template("cancel_sub.html", message=message)
