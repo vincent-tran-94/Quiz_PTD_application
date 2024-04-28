@@ -444,10 +444,3 @@ def confirm_cancel_subscription():
 
     return render_template("cancel_sub.html", message=message)
 
-
-def end_period_subscription():
-    customer_email = StripeCustomer.query.filter_by(email=current_user.email).first()
-
-    # Delete StripeCustomer record
-    db.session.delete(customer_email)
-    db.session.commit()
