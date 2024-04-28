@@ -142,17 +142,19 @@ def stripe_webhook():
         email_customer = stripe.checkout.Session.list(limit=3)["data"][0]["customer_details"]["email"]
         id_customer = stripe.checkout.Session.list(limit=3)["data"][0]["customer"]
         id_subscription= stripe.checkout.Session.list(limit=3)["data"][0]["subscription"]
-        print("Successful payment and creation database StripeCustomer")
         create_stripe_customer(product_description,email_customer,id_customer,id_subscription)
+        print("Successful payment and creation database StripeCustomer")
         customer = StripeCustomer.query.filter_by(email=email_customer).first()
         if customer: 
             scheduler.add_job(update_participant_essais,'interval',days=30,args=[product_description, email_customer],id=str(customer.participant_id))
+            print(f"Add job in database apscheduler {email_customer}")
 
 
     if event['type'] == 'invoice.created':
         invoice_id = event['data']['object']['id']
-        print(f"Creation invoice {invoice_id}.")
         send_invoice_email(invoice_id)
+        print(f"Creation invoice {invoice_id}.")
+
        
     return '', 200
 
