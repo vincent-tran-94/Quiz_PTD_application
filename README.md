@@ -20,7 +20,7 @@ Cette application va permet aux participants d'apprendre et de découvrir des no
 Bonjour
 
 ## Description de l'application 
-# Partie Backend
+###  Partie Backend
 - app.py # Application principale 
 - models.py # Modélisation des données 
 - mail.py #Procédure de confirmation de mail
@@ -35,7 +35,7 @@ Bonjour
 - .env Fichier de configuration pour les variables d'environnements
 - config.cfg Fichier de configuration pour activer le serveur STMP du GMAIL
 
-# Partie Frontend
+### Partie Frontend
 - Framework (React,Vuejs,...)
 
 ## Formulaire pour la participation du concours du quiz
