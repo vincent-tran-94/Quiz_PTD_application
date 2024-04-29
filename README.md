@@ -94,7 +94,7 @@ CREATE DATABASE you_name_database OWNER you_id_database;
 
 Importer le lien du projet et puis créez votre environnement virtuel
 ```
-git clone https://github.com/vincent-tran-94/Quiz_students_PTD_application.git
+git clone https://github.com/Preserve-ton-Droit/Quiz_PTD_application.git
 python3 -m venv env
 source env/Scripts/activate
 ```
