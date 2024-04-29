@@ -17,7 +17,7 @@ Voici la consigne de l'application:
 &rarr; Le classement des 50 meilleurs participants (pour chaque mois et année) ayant répondu tout les catégories  <br>
 
 Cette application va permet aux participants d'apprendre et de découvrir des notions sur le domaine  juridique, humanitaire, culturel et social dans notre société en général.
-Bonjour
+
 
 ## Description de l'application 
 ###  Partie Backend
