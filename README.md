@@ -161,7 +161,9 @@ Les webhooks vous permettent de recevoir des notifications en temps réel des é
 Lancer votre application Flask pour démarrer votre serveur à l'aide de docker
 ```
 docker-compose build
+```
 docker-compose up -d
+```
 
 Sur une autre console pour avoir votre adresse IP de l'image sur Pgadmin, vous devez lancer cette ligne de commande pour récupérer son adresse IP 
 ```
