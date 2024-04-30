@@ -116,7 +116,7 @@ SECRET_KEY='you_secret_key'
 [Database]
 ID_DATABASE="you_id_database"
 PASSWORD_DATABASE="you_password" 
-ADDRESS_IP="you_address_ip_database" Si vous êtes en local mettez localhost sinon mettre le nom de l'image de docker
+ADDRESS_IP="you_address_ip_database"  "ATTENTION: SI vous êtes en local mettez localhost sinon mettre le nom de l'image de docker db"
 NAME_DATABASE="you_name_database"
 
 [STRIPE]
