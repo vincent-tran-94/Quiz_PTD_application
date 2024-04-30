@@ -162,9 +162,9 @@ Lancer votre application Flask pour démarrer votre serveur à l'aide de docker
 ```
 docker-compose build
 ```
+```
 docker-compose up -d
 ```
-
 Sur une autre console pour avoir votre adresse IP de l'image sur Pgadmin, vous devez lancer cette ligne de commande pour récupérer son adresse IP 
 ```
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' flask_app-db-1
