@@ -17,9 +17,10 @@ Voici la consigne de l'application:
 &rarr; Le classement des 50 meilleurs participants (pour chaque mois et année) ayant répondu tout les catégories  <br>
 
 Cette application va permet aux participants d'apprendre et de découvrir des notions sur le domaine  juridique, humanitaire, culturel et social dans notre société en général.
-Bonjour
+
 
 ## Description de l'application 
+###  Partie Backend
 - app.py # Application principale 
 - models.py # Modélisation des données 
 - mail.py #Procédure de confirmation de mail
@@ -29,11 +30,15 @@ Bonjour
 - static/videos # Liste des vidéos
 - static/styles # Fichiers CSS
 - static/JS #Fichiers de JavaScript 
-- questions/ # Fichiers JSON contenant une série de questions
+- questions/ # Fichiers JSON contenant une série de questions*
+- log_essais/ #Fichier de log qui permet de mettre à jour tout les mois le nombre d'essais par utilisateur
 - .env Fichier de configuration pour les variables d'environnements
 - config.cfg Fichier de configuration pour activer le serveur STMP du GMAIL
-## Formulaire pour la participation du concours du quiz
 
+### Partie Frontend
+- Framework (React,Vuejs,...)
+
+## Formulaire pour la participation du concours du quiz
 - nom 
 - prenom 
 - adresse 
@@ -52,14 +57,14 @@ Bonjour
     - reponse_participant : Le nombre de réponses effectués par un participant
     - contact: contact client des participants soumis dans l'application 
     - strip_customer: Client ayant payé un abonnement sur-mesure en l'utilisant l'API Stripe
-    - parrainage : Parrain pour avoir le code de réduction pour plus tard on souhaitera de collaborer aux autres participants 
+    - parrainage : Parrain pour avoir le code de réduction pour plus tard on souhaitera de collaborer aux autres participants
+    - apscheduler_job: Nombre de travailleurs qui permet de planifier les tâches lorsqu'on incrémente le nombre d'essais
 
 ## Installation et setup
 - Version Python 3.11.7
 - Docker
 - PostgreSQL
 - Stripe CLI
-
 
 Tout d'abord, vous devez installer Postgresql et choisissez la dernière version: 
 ```
@@ -89,7 +94,7 @@ CREATE DATABASE you_name_database OWNER you_id_database;
 
 Importer le lien du projet et puis créez votre environnement virtuel
 ```
-git clone https://github.com/vincent-tran-94/Quiz_students_PTD_application.git
+git clone https://github.com/Preserve-ton-Droit/Quiz_PTD_application.git
 python3 -m venv env
 source env/Scripts/activate
 ```
@@ -151,6 +156,10 @@ stripe listen --forward-to http://localhost:5000/stripe_webhook --api-key YOU_AP
 Elle permet de démarrer un écouteur qui surveille les événements Stripe sur votre compte et les redirige vers un endpoint HTTP spécifié
 Les webhooks vous permettent de recevoir des notifications en temps réel des événements sur votre compte Stripe, comme les paiements réussis, les abonnements créés, etc. Vous pouvez alors extraire les informations nécessaires, telles que le nom du produit et l'adresse du client, à partir des données fournies dans ces webhooks. Mettez votre API KEY pour activer le CLI du webhook
 
+Si vous voulez avoir votre adresse IP de l'image sur Pgadmin, vous devez lancer cette ligne de commande pour récupérer son adresse IP
+```
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' flask_app-db-1
+```
 
 Lancer votre application Flask pour démarrer votre serveur à l'aide de docker
 ```
