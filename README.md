@@ -169,8 +169,6 @@ Sur une autre console pour avoir votre adresse IP de l'image sur Pgadmin, vous d
 ```
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' flask_app-db-1
 ```
-
-```
 Si vous voulez arrêter les conteneurs 
 ```
 docker-compose down 
