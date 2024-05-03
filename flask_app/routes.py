@@ -50,7 +50,7 @@ def check_inactive_session():
             last_activity_naive = last_activity.replace(tzinfo=None)
             # Calculer la durée depuis la dernière activité
             inactive_duration = datetime.now() - last_activity_naive
-            if inactive_duration > timedelta(seconds=MAX_INACTIVITY_DURATION):
+            if inactive_duration > timedelta(minutes=MAX_INACTIVITY_DURATION):
                 # Déconnecter l'utilisateur
                 logout_user()
                 session.pop('user_id', None)
