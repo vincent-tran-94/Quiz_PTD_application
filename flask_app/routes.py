@@ -50,11 +50,12 @@ def check_inactive_session():
             last_activity_naive = last_activity.replace(tzinfo=None)
             # Calculer la durée depuis la dernière activité
             inactive_duration = datetime.now() - last_activity_naive
-            if inactive_duration > timedelta(minutes=MAX_INACTIVITY_DURATION):
+            if inactive_duration > timedelta(seconds=MAX_INACTIVITY_DURATION):
                 # Déconnecter l'utilisateur
                 logout_user()
+                session.pop('user_id', None)
                 flash("Votre session a expiré en raison d'une inactivité prolongée", "warning")
-                return redirect(url_for('login'))
+                return redirect(url_for('accueil'))
     # Mettre à jour le temps de la dernière activité à chaque requête
     session['last_activity'] = datetime.now()
     
@@ -77,8 +78,8 @@ def login():
                 flash("Vous êtes déjà connecté", "info")
             else:
                 login_user(user)
-                session['user_id'] = user.id
                 session['last_activity'] = datetime.now()
+                session['user_id'] = user.id
                 participant = Participant.query.filter_by(participant_id=user.id).first()
                 if participant:
                     return redirect(url_for('accueil'))  # Rediriger vers la page de catégorie
