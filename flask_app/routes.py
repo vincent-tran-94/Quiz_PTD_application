@@ -36,7 +36,7 @@ def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if 'user_id' not in session:
-            flash("Vous devez vous connecter pour accéder à cette fonctionnalité", "error")
+            flash("Veuillez vous connecter pour accéder à cette fonctionnalité", "error")
             return redirect(url_for('accueil'))  # Rediriger vers la page de connexion
         return f(*args, **kwargs)
     return decorated_function
