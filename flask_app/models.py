@@ -13,6 +13,7 @@ from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 load_dotenv() #Importer les paramètres de l'identification
 app = Flask(__name__,template_folder='template',static_url_path='/static')
 
+
 # #Host configuration and port 
 host = os.getenv("HOST")
 port = os.getenv("PORT")

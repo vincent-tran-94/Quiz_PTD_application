@@ -12,7 +12,7 @@
 </style>
 <body>
   <img src="{{ url_for('static', filename=image_filename) }}" alt="Image PTD"  class="img-custom">
-    <form method="post" action="/">
+    <form method="post" action="/login">
     <div class="container">
         <div class="row mt-5">
           <div class="spContainer mx-auto">
@@ -50,6 +50,9 @@
                       <a class="text-black font-weight-bold regStr" href="register">Nouveau compte</a>
                       <a class="text-black font-weight-bold regStr" href="delete_account">Suppression compte</a>
                   </div>
+                  <div style="margin-top: 30px;"> <!-- Ajout de marge supplémentaire -->
+                    <a class="text-black font-weight-bold regStr" href="{{ url_for('accueil') }}">Revenir vers la page accueil</a>
+                </div>
               </div>
             </div>
           </div>

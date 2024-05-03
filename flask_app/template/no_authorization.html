@@ -14,7 +14,7 @@
     <div class="container">
         <h1>Permission requis</h1>
         <p>{{ message }}</p>
-        <a href="/accueil" class="text-black font-weight-bold regStr"> Revenir vers la page accueil</a>
+        <a href="{{ url_for('accueil') }}" class="text-black font-weight-bold regStr"> Revenir vers la page accueil</a>
     </div>
     <!-- Inclure le script JavaScript de Bootstrap (optionnel si vous n'utilisez pas les fonctionnalités JavaScript de Bootstrap) -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

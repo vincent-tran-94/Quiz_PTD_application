@@ -1,7 +1,6 @@
 from models import *
 import stripe
-from flask import render_template, url_for, request, abort, session
-from flask_login import login_required
+from flask import render_template, url_for, request, abort
 from mail import send_invoice_email
 from process_stripe import create_stripe_customer, update_participant_essais
 
@@ -21,6 +20,7 @@ COMMAND pour récupérer le nom du produit acheté par le client marche seulemen
 stripe listen --forward-to http://127.0.0.1:5000/stripe_webhook
 and enter your secret_endpoint_webhook
 """
+
 
 # Créer un code de réduction
 def create_promotion_code(coupon_id):    
@@ -67,26 +67,7 @@ def create_checkout_session():
     return session
 
 
-@app.route('/souscription')
-@login_required
-def souscription():
-    session = stripe.checkout.Session.create(
-        payment_method_types=['card'],
-        line_items=[{
-            'price': id_product_bronze,
-            'quantity': 1,
-        }],
-        subscription_data={
-            'default_tax_rates': [taxe_rate],
-        },
-        mode='subscription',
-        allow_promotion_codes=True,
-        success_url=url_for('thanks', _external=True) + '?session_id={CHECKOUT_SESSION_ID}',
-        cancel_url=url_for('souscription', _external=True),
-    )
-    return render_template('sidebar/souscription.html', checkout_session_id=session['id'], checkout_public_key=app.config['STRIPE_PUBLIC_KEY'])
         
-    
 @app.route('/stripe_pay')
 def stripe_pay():
     session = stripe.checkout.Session.create(
@@ -109,7 +90,6 @@ def stripe_pay():
     }
 
 @app.route('/thanks')
-@login_required
 def thanks():
     return render_template('thanks.html')
 

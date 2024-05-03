@@ -36,7 +36,7 @@
         <p id="thank-you-message" style="display: none;">Merci pour votre avis !</p>
         <div class="link-container">
             <a href="{{ url_for('permission_route_data_csv') }}" class="btn btn-success">Télécharger vos données CSV</a>
-            <a href="/accueil" class="text-black font-weight-bold regStr home-link">Revenir vers la page d'accueil</a>
+            <a href="{{ url_for('accueil') }}" class="text-black font-weight-bold regStr home-link">Revenir vers la page d'accueil</a>
         </div>
     </div>
     <!-- Inclure le script JavaScript de Bootstrap (optionnel si vous n'utilisez pas les fonctionnalités JavaScript de Bootstrap) -->
