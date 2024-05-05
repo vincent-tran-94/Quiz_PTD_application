@@ -67,10 +67,10 @@ Cette application va permet aux participants d'apprendre et de découvrir des no
 - Stripe CLI
 
 Tout d'abord, vous devez installer Postgresql et choisissez la dernière version: 
+### A savoir que l'installation sur PgAdmin marche la connexion uniquement sur votre propre système
 ```
 https://www.postgresql.org/download/
 ```
-
 Dirigez vous à l'invite de commande sur Pgsql et connectez-vous à votre compte.
 Ensuite, vous devez créer un ID de l'utilisateur avec votre mot de passe et votre nom de la base de données <br>
 en lançant ces deux commandes: 
@@ -78,20 +78,6 @@ en lançant ces deux commandes:
 CREATE ROLE you_id_database WITH LOGIN PASSWORD 'you_password';
 CREATE DATABASE you_name_database OWNER you_id_database;
 ```
-
-Rendez-vous dans ce lien pour vous inscrire un compte sur strip et suivez les étapes pour la création du compte
-```
-https://www.postgresql.org/download/
-```
-
-Dirigez vous à l'invite de commande sur Pgsql et connectez-vous à votre compte.
-Ensuite, vous devez créer un ID de l'utilisateur avec votre mot de passe et votre nom de la base de données <br>
-en lançant ces deux commandes: 
-```
-CREATE ROLE you_id_database WITH LOGIN PASSWORD 'you_password';
-CREATE DATABASE you_name_database OWNER you_id_database;
-```
-
 Importer le lien du projet et puis créez votre environnement virtuel
 ```
 git clone https://github.com/Preserve-ton-Droit/Quiz_PTD_application.git
@@ -130,7 +116,7 @@ SECRET_KEY='you_secret_key'
 [Database]
 ID_DATABASE="you_id_database"
 PASSWORD_DATABASE="you_password" 
-ADDRESS_IP="you_address_ip_database" Si vous êtes en local mettez localhost sinon mettre le nom de l'image de docker
+ADDRESS_IP="you_address_ip_database"  "ATTENTION: SI vous êtes en local mettez localhost sinon mettre le nom de l'image de docker db"
 NAME_DATABASE="you_name_database"
 
 [STRIPE]
@@ -156,15 +142,28 @@ stripe listen --forward-to http://localhost:5000/stripe_webhook --api-key YOU_AP
 Elle permet de démarrer un écouteur qui surveille les événements Stripe sur votre compte et les redirige vers un endpoint HTTP spécifié
 Les webhooks vous permettent de recevoir des notifications en temps réel des événements sur votre compte Stripe, comme les paiements réussis, les abonnements créés, etc. Vous pouvez alors extraire les informations nécessaires, telles que le nom du produit et l'adresse du client, à partir des données fournies dans ces webhooks. Mettez votre API KEY pour activer le CLI du webhook
 
-Si vous voulez avoir votre adresse IP de l'image sur Pgadmin, vous devez lancer cette ligne de commande pour récupérer son adresse IP
+Dans ke fuchier docker-compose, vous devez configurer la connexion de l'utilisateur de PGADMIN ainsi que votre connexion à la base de données.
+Connexion vers PGAdmin
 ```
-docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' flask_app-db-1
+PGADMIN_DEFAULT_EMAIL: you_mail
+PGADMIN_DEFAULT_PASSWORD: you_password
 ```
-
+Connexion vers la base de données dans PgAdmin que vous avez configuré dans le fichier.env
+```
+POSTGRES_USER: YOUR_ID_DATABASE 
+POSTGRES_PASSWORD: YOUR_PASSWORD_DATABASE
+POSTGRES_DB: YOUR_NAME_DATABASE
+```
 Lancer votre application Flask pour démarrer votre serveur à l'aide de docker
 ```
 docker-compose build
+```
+```
 docker-compose up -d
+```
+Sur une autre console pour avoir votre adresse IP de l'image sur Pgadmin, vous devez lancer cette ligne de commande pour récupérer son adresse IP 
+```
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' flask_app-db-1
 ```
 Si vous voulez arrêter les conteneurs 
 ```
