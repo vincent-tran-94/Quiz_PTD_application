@@ -10,6 +10,7 @@ from permission import *
 import csv
 import io
 from process_stripe import *
+from functools import wraps
 
 """
 CONSIGNES POUR LANCER l'APPLICATION:
@@ -31,6 +32,14 @@ login_manager.init_app(app)
 def load_user(user_id):
     return db.session.get(User, user_id)
 
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'user_id' not in session:
+            flash("Veuillez vous connecter pour accéder à cette fonctionnalité", "error")
+            return redirect(url_for('accueil'))  # Rediriger vers la page de connexion
+        return f(*args, **kwargs)
+    return decorated_function
 
 # Middleware pour vérifier l'inactivité de l'utilisateur
 @app.before_request
@@ -44,31 +53,33 @@ def check_inactive_session():
             if inactive_duration > timedelta(minutes=MAX_INACTIVITY_DURATION):
                 # Déconnecter l'utilisateur
                 logout_user()
+                session.pop('user_id', None)
                 flash("Votre session a expiré en raison d'une inactivité prolongée", "warning")
-                return redirect(url_for('login'))
+                return redirect(url_for('accueil'))
     # Mettre à jour le temps de la dernière activité à chaque requête
     session['last_activity'] = datetime.now()
     
 
 #Fonction de la première connexion
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     image_filename = 'images/logo_PTD.jpg'
 
-    if current_user.is_authenticated:
-        return redirect('accueil')
-    
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
+
 
         # Recherche de l'utilisateur dans la base de données
         user = User.query.filter_by(email=email).first()
         
         if user and user.check_password(password):
+            if current_user.is_authenticated:
+                flash("Vous êtes déjà connecté", "info")
+            else:
                 login_user(user)
-                session['user_id'] = user.id
                 session['last_activity'] = datetime.now()
+                session['user_id'] = user.id
                 participant = Participant.query.filter_by(participant_id=user.id).first()
                 if participant:
                     return redirect(url_for('accueil'))  # Rediriger vers la page de catégorie
@@ -79,20 +90,14 @@ def login():
         
     return render_template('setup_user/login.html',image_filename=image_filename)
 
-#Fonction qui permet de faire un retour vers le login 
-@login_manager.unauthorized_handler
-def unauthorized_callback():
-    logout_user()
-    return redirect(url_for('login'))
 
 #Fonction de déconnexion
 @app.route('/logout')
-@login_required
 def logout():
     logout_user()
     session.pop('user_id', None)
     flash("Vous avez été déconnecté avec succès", "success")
-    return redirect(url_for('login'))
+    return redirect(url_for('accueil'))
 
 
 #Fonction de changement de mot de passe en cas de problème 
@@ -188,8 +193,7 @@ def formulaire():
 
 
 #Fonction de l'affichage page d'accueil
-@app.route('/accueil')
-@login_required
+@app.route('/')
 def accueil():
     image_filename = 'images/logo_PTD.jpg'
     image_background = 'images/background_image.jpg'
@@ -206,7 +210,6 @@ def profil():
 
 #Fonction de contact client avec l'association
 @app.route('/contact', methods=['GET', 'POST'])
-@login_required
 def contact():
     participant_id = session.get('user_id')
     if request.method == 'POST':
@@ -440,7 +443,26 @@ def confirm_cancel_subscription():
             message = f"Votre abonnement a été résilié avec succès. Aucune facture ne sera générée pour les mois à venir."
             send_cancel_sub_email(message,get_customer_email)
             print(f"Subcription canceled by {customer_email}")
-            
 
     return render_template("cancel_sub.html", message=message)
+
+
+@app.route('/souscription')
+@login_required
+def souscription():
+    session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=[{
+            'price': id_product_bronze,
+            'quantity': 1,
+        }],
+        subscription_data={
+            'default_tax_rates': [taxe_rate],
+        },
+        mode='subscription',
+        allow_promotion_codes=True,
+        success_url=url_for('thanks', _external=True) + '?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url=url_for('souscription', _external=True),
+    )
+    return render_template('sidebar/souscription.html', checkout_session_id=session['id'], checkout_public_key=app.config['STRIPE_PUBLIC_KEY'])
 

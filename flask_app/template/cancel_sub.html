@@ -23,7 +23,7 @@
         {% if message %}
         <p>{{ message }}</p>
         {% endif %}
-        <a href="/accueil" class="text-black font-weight-bold regStr"> Revenir vers la page d'accueil</a>
+        <a href="{{ url_for('accueil') }}" class="text-black font-weight-bold regStr"> Revenir vers la page d'accueil</a>
     </div>
     <!-- Inclure le script JavaScript de Bootstrap (optionnel si vous n'utilisez pas les fonctionnalités JavaScript de Bootstrap) -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

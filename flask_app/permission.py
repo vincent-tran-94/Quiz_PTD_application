@@ -1,6 +1,6 @@
 from flask import redirect, render_template
 from models import *
-from flask_login import login_required, current_user
+from flask_login import current_user
 
 # Fonction utilitaire pour vérifier le rôle de l'utilisateur
 def check_role(user_id, role):
@@ -9,9 +9,9 @@ def check_role(user_id, role):
         return True
     return False
 
+
 # Route protégée par le rôle "bronze"
 @app.route('/permission_route_dashboard')
-@login_required
 def permission_route_dashboard():
     if check_role(current_user.get_id(), 'Bronze'):
         return redirect('dashboard')
@@ -19,7 +19,6 @@ def permission_route_dashboard():
         return render_template("no_authorization.html",message="Il faut opter pour un abonnement minimum.")
 
 @app.route('/permission_route_resultats')
-@login_required
 def permission_route_resultats():
     if check_role(current_user.get_id(), 'Bronze'):
         return redirect('progression')
@@ -28,7 +27,6 @@ def permission_route_resultats():
 
 
 @app.route('/permission_route_data_csv')
-@login_required
 def permission_route_data_csv():
     if check_role(current_user.get_id(), 'Bronze'):
         return redirect('download_csv')
