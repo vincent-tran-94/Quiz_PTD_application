@@ -430,7 +430,6 @@ def confirm_cancel_subscription():
     if customer_email:
         get_subscription_id = customer_email.id_subscription
         get_customer_email = customer_email.email
-
         if request.method == 'POST':
             # Cancel the subscription
             stripe.Subscription.cancel(get_subscription_id)

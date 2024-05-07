@@ -103,6 +103,15 @@ def confirm_delete(token):
     try:
         email= serializer.loads(token, max_age=3600)
         user = User.query.filter_by(email=email).first()
+        customer_email = StripeCustomer.query.filter_by(email=email).first()
+        if customer_email:
+                get_subscription_id = customer_email.id_subscription
+                get_customer_email = customer_email.email
+                stripe.Subscription.cancel(get_subscription_id)
+                scheduler.remove_job(str(user.id))
+                message = f"Votre abonnement a été résilié avec succès. Aucune facture ne sera générée pour les mois à venir."
+                send_cancel_sub_email(message,get_customer_email)
+                print(f"Subcription canceled by {customer_email}")
         if user:
             # Créez une liste des classes de modèles que vous souhaitez supprimer
             tables_to_delete = [ReponseParticipant, Contact, Participant, StripeCustomer, Parrainage]
