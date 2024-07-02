@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1920,height=1080, initial-scale=1">
-    <title>Accueil PTDlegalQuiz</title>
+    <title>Accueil</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css?v=1" rel="stylesheet">
     <link href="{{ url_for('static', filename='styles/home.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='styles/sidebar.css') }}" rel="stylesheet">
@@ -46,7 +46,7 @@
     
     <section id="banner">
         <div class="title">
-            <h1>Bienvenue à la page de PTDlegalQuiz ! </h1>
+            <h1>Bienvenue à la page de l'association Préserve Ton Droit ! </h1>
             <h2>Rejoignez-nous pour apprendre et agir.</h2>
             <h2>Découvrez maintenant l'association à travers les deux vidéos</h2>
         </div>
@@ -57,13 +57,13 @@
             <source src="{{ url_for('static', filename='videos/Qui_sommes_nous_PTD.mp4') }}" type="video/mp4">
         </video>
         <video width="510" height="410" controls>
-            <source src="{{ url_for('static', filename='videos/don_association.mp4') }}" type="video/mp4">
+            <source src="{{ url_for('static', filename='videos/video-court-metrage-hackathon.mp4') }}" type="video/mp4">
         </video>
     </div>
     <script src="{{ url_for('static', filename='js/videos.js') }}"></script>
     <section id="description">
         <div class="container">
-            <p><strong> PTDlegalQuiz est une application pédagogique de concours de quiz qui propose une expérience 
+            <p><strong> Ton Choix, ton Droit est une application pédagogique de concours de quiz qui propose une expérience 
             enrichissante dans quatre catégories distinctes : droit, juridique, humanitaire et sociologie. </strong>
             Chaque participant a l'opportunité de tester ses connaissances dans chacune de ces catégories, avec une 
             participation unique autorisée par catégorie. Une fois que vous avez soumis aux questionnaires, 
