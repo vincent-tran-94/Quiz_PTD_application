@@ -31,9 +31,10 @@ def open_file_json_from_directory(directory):
     
     # Mélanger toutes les questions
     random.shuffle(all_questions)
-    selected_questions = all_questions[:30]
+    selected_questions = all_questions[:15]
 
     return selected_questions
+
 
 def save_questions(directory):
 
@@ -41,7 +42,7 @@ def save_questions(directory):
     
      # Ajouter des numérotations à chaque question
     for i, question in enumerate(save_questions, 1):
-        question['number'] = i  # Ajouter un numéro à la questio
+        question['number'] = i  # Ajouter un numéro à la question
     
     # Créer un nouveau dictionnaire contenant les questions mélangées
     shuffled_data = {"questions": save_questions}

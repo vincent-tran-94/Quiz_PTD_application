@@ -4,13 +4,20 @@ document.addEventListener('copy', function(e) {
     // Afficher un message ou effectuer une autre action
 });
 
-var timer = 600; // 12 minutes
+var timer = 600; // 1 minutes
 var warnings = 0;
 let ButtonClicked = false;
 var isRedirected = false; // Ajout de la variable pour suivre si la redirection a eu lieu
 
+function updateProgressBar() {
+    var progressBar = document.getElementById('progressBar');
+    var percentage = ((600 - timer) / 600) * 100;
+    progressBar.style.width = percentage + '%';
+}
+
 function reduceTime() {
     timer -= 30;
+    updateProgressBar();
     var minutes = Math.floor(timer / 60);
     var seconds = timer % 60;
     document.getElementById('countdown').innerHTML = 'Temps restant : ' + minutes + 'm ' + seconds + 's';
@@ -50,9 +57,7 @@ document.addEventListener('visibilitychange', function () {
 document.addEventListener('DOMContentLoaded', function () {
     var countdown = setInterval(function () {
         timer--;
-        var minutes = Math.floor(timer / 60);
-        var seconds = timer % 60;
-        document.getElementById('countdown').innerHTML = 'Temps restant : ' + minutes + 'm ' + seconds + 's';
+        updateProgressBar();
         if (timer <= 0) {
             clearInterval(countdown);
             if (!isRedirected) {

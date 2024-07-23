@@ -9,7 +9,9 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_v2_PTD.jpg') }}">
 </head>
 <body>
-    <div id="countdown">Temps restant : 10m 0s </div>
+    <div id="progressContainer">
+        <div id="progressBar"></div>
+    </div>
     <div class="container mt-5">
         <form id="questionnaireForm" method="post">
             <h1>Test sur {{ categorie }} </h1>

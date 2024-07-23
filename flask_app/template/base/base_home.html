@@ -148,7 +148,27 @@
 
     <!-- Script Chatbot -->
     <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
-    <script src="https://mediafiles.botpress.cloud/e65acda0-a401-4abf-9229-870cedc63f9b/webchat/config.js" defer></script>
+    <script>
+    window.botpressWebChat.init({
+        "composerPlaceholder": "Tapez votre message ici...",
+        "botConversationDescription": "Nous sommes ici pour vous aider !",
+        "botId": "e65acda0-a401-4abf-9229-870cedc63f9b",
+        "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
+        "messagingUrl": "https://messaging.botpress.cloud",
+        "clientId": "e65acda0-a401-4abf-9229-870cedc63f9b",
+        "webhookId": "01a2a9b5-3d3c-4af5-b85f-042c2b587bc7",
+        "lazySocket": true,
+        "themeName": "prism",
+        "botName": "PTD Assist",
+        "stylesheet": "https://webchat-styler-css.botpress.app/prod/code/46f4e45c-83ee-4578-9d35-bc3d43610ac5/v94922/style.css",
+        "frontendVersion": "v1",
+        "useSessionStorage": true,
+        "theme": "prism",
+        "themeColor": "#2563eb",
+        "allowedOrigins": []
+    });
+    </script>
+    
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
