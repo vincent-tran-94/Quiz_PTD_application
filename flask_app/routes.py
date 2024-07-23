@@ -266,6 +266,7 @@ def categorie_questions(categorie):
         session['data_json'] = save_questions(directory)
 
     data_json = session['data_json']
+    
 
     if request.method == 'POST':
         traitement_reponses(data_json,categorie)

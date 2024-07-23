@@ -1,9 +1,3 @@
-document.addEventListener('copy', function(e) {
-    // Annuler l'action de copie par défaut
-    e.preventDefault();
-    // Afficher un message ou effectuer une autre action
-});
-
 var timer = 600; // 1 minutes
 var warnings = 0;
 let ButtonClicked = false;
@@ -18,9 +12,7 @@ function updateProgressBar() {
 function reduceTime() {
     timer -= 30;
     updateProgressBar();
-    var minutes = Math.floor(timer / 60);
-    var seconds = timer % 60;
-    document.getElementById('countdown').innerHTML = 'Temps restant : ' + minutes + 'm ' + seconds + 's';
+    saveTimer();
     if (timer <= 0) {
         clearInterval(countdown);
         if (!isRedirected) {
@@ -42,6 +34,19 @@ function handleWarnings() {
     }
 }
 
+function saveTimer() {
+    localStorage.setItem('remainingTime', timer);
+}
+
+function loadTimer() {
+    var storedTime = localStorage.getItem('remainingTime');
+    if (storedTime !== null) {
+        timer = parseInt(storedTime, 10);
+    } else {
+        timer = 600; // Initialiser à 600 secondes (10 minutes) si aucune valeur n'est trouvée
+    }
+}
+
 document.querySelector('.btn.btn-primary.mt-3').addEventListener('click', function() {
     ButtonClicked = true;
 });
@@ -55,9 +60,12 @@ document.addEventListener('visibilitychange', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
+    loadTimer(); // Charger le timer depuis le stockage local
+    updateProgressBar();
     var countdown = setInterval(function () {
         timer--;
         updateProgressBar();
+        saveTimer();
         if (timer <= 0) {
             clearInterval(countdown);
             if (!isRedirected) {
