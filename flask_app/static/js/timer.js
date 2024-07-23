@@ -40,10 +40,21 @@ function saveTimer() {
 
 function loadTimer() {
     var storedTime = localStorage.getItem('remainingTime');
-    if (storedTime !== null) {
+    if (storedTime !== null && !isNaN(storedTime)) {
         timer = parseInt(storedTime, 10);
-    } else {
+    } else if (timer == 0) {
         timer = 600; // Initialiser à 600 secondes (10 minutes) si aucune valeur n'est trouvée
+    }
+}
+
+function handleTimerEnd() {
+    timer = 0; // Réinitialiser le timer à 0
+    localStorage.removeItem('remainingTime'); // Supprimer l'entrée du stockage local
+    if (!isRedirected) {
+        alert('Le temps est écoulé. Vous allez être redirigé vers la page des résultats.');
+        window.location.href = "{{ url_for('progression') }}"; // Redirection vers la page d'accueil
+        document.forms["questionnaireForm"].submit(); // Soumettre le formulaire lorsque le temps est écoulé
+        isRedirected = true; // Marquer que la redirection a eu lieu
     }
 }
 
@@ -68,12 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
         saveTimer();
         if (timer <= 0) {
             clearInterval(countdown);
-            if (!isRedirected) {
-            alert('Le temps est écoulé. Vous allez être redirigé vers la page des résultats.');
-            window.location.href = "{{ url_for('progression') }}"; // Redirection vers la page d'accueil
-            document.forms["questionnaireForm"].submit(); // Soumettre le formulaire lorsque le temps est écoulé
-            isRedirected = true; // Marquer que la redirection a eu lieu
-            }
+            handleTimerEnd();
         }
     }, 1000); // Mettre à jour toutes les secondes
 });
