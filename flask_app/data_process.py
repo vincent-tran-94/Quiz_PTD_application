@@ -114,29 +114,29 @@ def filter_data_by_month_year(data, month, year):
 #Fonction de traitement de réponse qui permet de calculer le nombre de réponses correctes et incorrectes pour chaque questionnaire dans une catégorie 
 def traitement_reponses(data_json, categorie):
     participant_id = session.get('user_id')
-    answers = request.form
+    answers = session.get('answers', {})
     correct_answers = 0
 
-    # Initialiser un dictionnaire vide pour stocker les réponses
-    result_dict_answers = {}
+    # # Initialiser un dictionnaire vide pour stocker les réponses
+    # result_dict_answers = {}
 
-    # Parcourir les éléments de l'ImmutableMultiDict
-    for key in answers.keys():
-        # Vérifier si la clé est différente de 'participant_id'
-        if key != 'participant_id':
-            # Vérifier si la clé est déjà dans le dictionnaire résultant
-            if key in result_dict_answers:
-                # Si la clé existe déjà, ajouter la valeur à la liste existante
-                result_dict_answers[key].append(answers.getlist(key))
-            else:
-                # Si la clé n'existe pas encore, créer une nouvelle liste avec la valeur
-                result_dict_answers[key] = answers.getlist(key)
+    # # Parcourir les éléments de l'ImmutableMultiDict
+    # for key in answers.keys():
+    #     # Vérifier si la clé est différente de 'participant_id'
+    #     if key != 'participant_id':
+    #         # Vérifier si la clé est déjà dans le dictionnaire résultant
+    #         if key in result_dict_answers:
+    #             # Si la clé existe déjà, ajouter la valeur à la liste existante
+    #             result_dict_answers[key].append(answers.getlist(key))
+    #         else:
+    #             # Si la clé n'existe pas encore, créer une nouvelle liste avec la valeur
+    #             result_dict_answers[key] = answers.getlist(key)
 
     # Créer un dictionnaire pour stocker les réponses correctes attendues pour chaque question
     correct_responses_dict = {question['question']: question['reponse_correcte'] if isinstance(question['reponse_correcte'], list) else [question['reponse_correcte']] for question in data_json['questions']}
 
     # Vérifiez les réponses
-    for question_id, user_response in result_dict_answers.items():
+    for question_id, user_response in answers.items():
         if question_id in correct_responses_dict:
             reponses_donnes =  correct_responses_dict[question_id]
             if isinstance(reponses_donnes, list):

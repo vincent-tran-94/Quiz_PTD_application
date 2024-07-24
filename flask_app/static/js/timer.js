@@ -1,11 +1,12 @@
-var timer = 600; // 1 minutes
+var initialTimer = 600; // 10 minutes
+var timer = initialTimer;
 var warnings = 0;
 let ButtonClicked = false;
-var isRedirected = false; // Ajout de la variable pour suivre si la redirection a eu lieu
+var isRedirected = false; // Variable to track if redirection has occurred
 
 function updateProgressBar() {
     var progressBar = document.getElementById('progressBar');
-    var percentage = ((600 - timer) / 600) * 100;
+    var percentage = ((initialTimer - timer) / initialTimer) * 100;
     progressBar.style.width = percentage + '%';
 }
 
@@ -16,9 +17,9 @@ function reduceTime() {
     if (timer <= 0) {
         clearInterval(countdown);
         if (!isRedirected) {
-        window.location.href = "{{ url_for('progression') }}"; // Redirection vers la page d'accueil
-        document.forms["questionnaireForm"].submit(); // Soumettre le formulaire lorsque le temps est écoulé
-        isRedirected = true; // Marquer que la redirection a eu lieu
+            window.location.href = "{{ url_for('progression') }}"; // Redirect to the progression page
+            document.forms["questionnaireForm"].submit(); // Submit the form when time is up
+            isRedirected = true; // Mark that the redirection has occurred
         }
     }
 }
@@ -42,26 +43,25 @@ function loadTimer() {
     var storedTime = localStorage.getItem('remainingTime');
     if (storedTime !== null && !isNaN(storedTime)) {
         timer = parseInt(storedTime, 10);
-    } else if (timer == 0) {
-        timer = 600; // Initialiser à 600 secondes (10 minutes) si aucune valeur n'est trouvée
+    } else {
+        timer = initialTimer; // Initialize to 600 seconds (10 minutes) if no value is found
     }
 }
 
 function handleTimerEnd() {
-    timer = 0; // Réinitialiser le timer à 0
-    localStorage.removeItem('remainingTime'); // Supprimer l'entrée du stockage local
+    timer = initialTimer; // Reset the timer to the initial value
+    localStorage.removeItem('remainingTime'); // Remove the entry from local storage
     if (!isRedirected) {
         alert('Le temps est écoulé. Vous allez être redirigé vers la page des résultats.');
-        window.location.href = "{{ url_for('progression') }}"; // Redirection vers la page d'accueil
-        document.forms["questionnaireForm"].submit(); // Soumettre le formulaire lorsque le temps est écoulé
-        isRedirected = true; // Marquer que la redirection a eu lieu
+        window.location.href = "{{ url_for('progression') }}"; // Redirect to the progression page
+        document.forms["questionnaireForm"].submit(); // Submit the form when time is up
+        isRedirected = true; // Mark that the redirection has occurred
     }
 }
 
 document.querySelector('.btn.btn-primary.mt-3').addEventListener('click', function() {
     ButtonClicked = true;
 });
-
 
 document.addEventListener('visibilitychange', function () {
     if (!ButtonClicked) {
@@ -71,7 +71,7 @@ document.addEventListener('visibilitychange', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    loadTimer(); // Charger le timer depuis le stockage local
+    loadTimer(); // Load the timer from local storage
     updateProgressBar();
     var countdown = setInterval(function () {
         timer--;
@@ -81,6 +81,12 @@ document.addEventListener('DOMContentLoaded', function () {
             clearInterval(countdown);
             handleTimerEnd();
         }
-    }, 1000); // Mettre à jour toutes les secondes
-});
+    }, 1000); // Update every second
 
+    // Add event listener to the form to clear the timer only if submit button is clicked
+    document.getElementById('questionnaireForm').addEventListener('submit', function(event) {
+        if (document.activeElement && document.activeElement.id === 'submitButton') {
+            localStorage.removeItem('remainingTime');
+        }
+    });
+});

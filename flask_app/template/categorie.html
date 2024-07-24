@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catégorie {{ categorie }}</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/categorie.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/categorie.css') }}">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_v2_PTD.jpg') }}">
 </head>
 <body>
@@ -15,29 +15,35 @@
     <div class="container mt-5">
         <form id="questionnaireForm" method="post">
             <h1>Test sur {{ categorie }} </h1>
-            {% for question in questions %}
             <div class="card mt-3">
                 <div class="card-body">
-                    <h5 class="card-title"> {{ question.number }}- {{ question.question }}</h5>
+                    <h5 class="card-title">{{ current_question.number }}- {{ current_question.question }}</h5>
                     <div class="form-check">
-                        {% if question.options %}
-                        {% for option, text in question.options.items() %}
-                            <input class="form-check-input" type="radio" name="{{ question.question }}" id="{{ option }}" value="{{ option }}">
+                        {% if current_question.options %}
+                        {% for option, text in current_question.options.items() %}
+                            <input class="form-check-input" type="radio" name="answer" id="{{ option }}" value="{{ option }}" {% if option in saved_answers %}checked{% endif %}>
                             <label class="form-check-label" for="{{ option }}">{{ text }}</label><br>
                         {% endfor %}
-                    {% endif %}
-                    {% if question.multi_options %}
-                        {% for option, text in question.multi_options.items() %}
-                            <input class="form-check-input" type="checkbox" name="{{ question.question }}" id="{{ option }}" value="{{ option }}">
+                        {% endif %}
+                        {% if current_question.multi_options %}
+                        {% for option, text in current_question.multi_options.items() %}
+                            <input class="form-check-input" type="checkbox" name="answer" id="{{ option }}" value="{{ option }}" {% if option in saved_answers %}checked{% endif %}>
                             <label class="form-check-label" for="{{ option }}">{{ text }}</label><br>
                         {% endfor %}
-                    {% endif %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
-            {% endfor %}
+            <input type="hidden" name="current_question_index" value="{{ current_question_index }}">
             <input type="hidden" name="participant_id" value="{{ participant_id }}">
-            <button type="submit" class="btn btn-primary mt-3">Soumettre</button>
+            {% if current_question_index > 0 %}
+            <button type="submit" class="btn btn-secondary mt-3" name="action" value="previous" id="previousButton" >Précédent</button>
+            {% endif %}
+            {% if current_question_index < total_questions - 1 %}
+            <button type="submit" class="btn btn-primary mt-3" name="action" value="next" id="nextButton">Suivant</button>
+            {% else %}
+            <button type="submit" class="btn btn-primary mt-3" name="action" value="submit" id="submitButton">Soumettre</button>
+            {% endif %}
         </form>
     </div>
     <script src="{{ url_for('static', filename='js/timer.js') }}"></script>

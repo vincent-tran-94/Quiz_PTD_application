@@ -237,11 +237,9 @@ def contact():
 
 
 
-#Fonction pour se diriger le choix du catégorie 
 @app.route('/categorie/<categorie>', methods=['GET', 'POST'])
 @login_required
 def categorie_questions(categorie):
-
     participant_id = session.get('user_id')
     reponse_existe = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
 
@@ -250,7 +248,7 @@ def categorie_questions(categorie):
         if nb_essais_restant == 0:
             flash("Vous avez déjà soumis les réponses pour cette catégorie.", "info")
             return redirect(url_for('accueil'))
-        else: 
+        else:
             reponse_existe.nb_essais -= 1
 
     categories_directories = {
@@ -262,18 +260,50 @@ def categorie_questions(categorie):
 
     directory = categories_directories[categorie]
     if 'data_json' not in session:
-        # Si les données ne sont pas déjà stockées dans la session, chargez-les à partir des fichiers JSON
         session['data_json'] = save_questions(directory)
 
     data_json = session['data_json']
-    
+    total_questions = len(data_json['questions'])
+
+    if 'answers' not in session:
+        session['answers'] = {}
 
     if request.method == 'POST':
-        traitement_reponses(data_json,categorie)
-        session.pop('data_json', None)
-        return redirect(url_for('progression'))
-    
-    return render_template('categorie.html', questions=data_json['questions'],categorie=categorie)
+        current_question_index = int(request.form['current_question_index'])
+
+        action = request.form.get('action', 'submit')  # Valeur par défaut à 'submit' si le temps s'écoule pour chaque action effectué
+        answer = request.form.getlist('answer')  #Valeur de réponse pour prendre la liste de tout les réponses
+
+        question_text = data_json['questions'][current_question_index]['question']
+        session['answers'][question_text] = answer
+ 
+        if action == 'next' and current_question_index < total_questions - 1:
+            current_question_index += 1
+        elif action == 'previous' and current_question_index > 0:
+            current_question_index -= 1
+        elif action == 'submit'or current_question_index >= total_questions - 1:
+            traitement_reponses(data_json, categorie)
+            session.pop('data_json', None)
+            session.pop('answers', None)
+            return redirect(url_for('progression'))
+
+        current_question = data_json['questions'][current_question_index]
+    else:
+        current_question_index = 0
+        current_question = data_json['questions'][current_question_index]
+
+    # Récupérer les réponses enregistrées pour la question actuelle
+    saved_answers = session['answers'].get(current_question['question'], [])
+
+    return render_template('categorie.html', 
+                           current_question=current_question, 
+                           current_question_index=current_question_index,
+                           total_questions=total_questions,
+                           saved_answers=saved_answers,
+                           categorie=categorie,
+                           participant_id=participant_id)
+
+
 
 #Fonction des résultats obtenus après le remplissage des questionnaires
 @app.route('/progression')
