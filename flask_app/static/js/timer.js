@@ -1,19 +1,22 @@
-var initialTimer = 600; // 10 minutes
+var initialTimer = 300; // 5 minutes
 var timer = initialTimer;
 var warnings = 0;
 let ButtonClicked = false;
 var isRedirected = false; // Variable to track if redirection has occurred
+var countdown;
+var startTime;
 
+// Function to update the progress bar
 function updateProgressBar() {
     var progressBar = document.getElementById('progressBar');
     var percentage = ((initialTimer - timer) / initialTimer) * 100;
     progressBar.style.width = percentage + '%';
 }
 
+// Function to reduce time by 30 seconds and update UI
 function reduceTime() {
     timer -= 30;
     updateProgressBar();
-    saveTimer();
     if (timer <= 0) {
         clearInterval(countdown);
         if (!isRedirected) {
@@ -24,6 +27,7 @@ function reduceTime() {
     }
 }
 
+// Function to handle warnings
 function handleWarnings() {
     if (!ButtonClicked && !isRedirected) {
         if (warnings == 1) {
@@ -35,22 +39,31 @@ function handleWarnings() {
     }
 }
 
-function saveTimer() {
-    localStorage.setItem('remainingTime', timer);
+// Function to save the start time in sessionStorage
+function saveStartTime() {
+    sessionStorage.setItem('startTime', startTime);
 }
 
+// Function to load the timer from sessionStorage (Gestion des cookies)
 function loadTimer() {
-    var storedTime = localStorage.getItem('remainingTime');
-    if (storedTime !== null && !isNaN(storedTime)) {
-        timer = parseInt(storedTime, 10);
+    var storedStartTime = sessionStorage.getItem('startTime');
+    if (storedStartTime !== null) {
+        startTime = parseInt(storedStartTime, 10);
+        var elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+        timer = initialTimer - elapsedTime;
+        if (timer <= 0) {
+            timer = 0;
+        }
     } else {
-        timer = initialTimer; // Initialize to 600 seconds (10 minutes) if no value is found
+        startTime = Date.now();
+        timer = initialTimer;
     }
 }
 
+// Function to handle the end of the timer
 function handleTimerEnd() {
     timer = initialTimer; // Reset the timer to the initial value
-    localStorage.removeItem('remainingTime'); // Remove the entry from local storage
+    sessionStorage.removeItem('startTime'); // Remove the entry from session storage
     if (!isRedirected) {
         alert('Le temps est écoulé. Vous allez être redirigé vers la page des résultats.');
         window.location.href = "{{ url_for('progression') }}"; // Redirect to the progression page
@@ -71,12 +84,13 @@ document.addEventListener('visibilitychange', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    loadTimer(); // Load the timer from local storage
+    loadTimer(); // Load the timer from session storage
     updateProgressBar();
-    var countdown = setInterval(function () {
+    saveStartTime(); // Save the start time in session storage
+
+    countdown = setInterval(function () {
         timer--;
         updateProgressBar();
-        saveTimer();
         if (timer <= 0) {
             clearInterval(countdown);
             handleTimerEnd();
@@ -86,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Add event listener to the form to clear the timer only if submit button is clicked
     document.getElementById('questionnaireForm').addEventListener('submit', function(event) {
         if (document.activeElement && document.activeElement.id === 'submitButton') {
-            localStorage.removeItem('remainingTime');
+            sessionStorage.removeItem('startTime');
         }
     });
 });

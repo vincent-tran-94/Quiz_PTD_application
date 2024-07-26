@@ -259,12 +259,15 @@ def categorie_questions(categorie):
     }
 
     directory = categories_directories[categorie]
-    if 'data_json' not in session:
-        session['data_json'] = save_questions(directory)
 
-    data_json = session['data_json']
-    total_questions = len(data_json['questions'])
+    #Récupérer les 15 premiers questions pour chaque utilisateur
+    if 'selected_questions' not in session:
+        session['selected_questions'] = save_questions(directory)
 
+    selected_questions = session['selected_questions']
+    total_questions = len(selected_questions['questions'])
+
+    #Stocker tout les réponses pour chaque question répondu
     if 'answers' not in session:
         session['answers'] = {}
 
@@ -272,9 +275,9 @@ def categorie_questions(categorie):
         current_question_index = int(request.form['current_question_index'])
 
         action = request.form.get('action', 'submit')  # Valeur par défaut à 'submit' si le temps s'écoule pour chaque action effectué
-        answer = request.form.getlist('answer')  #Valeur de réponse pour prendre la liste de tout les réponses
+        answer = request.form.getlist('answer')  #Valeur de réponse stockée dans une liste temporaire
 
-        question_text = data_json['questions'][current_question_index]['question']
+        question_text = selected_questions['questions'][current_question_index]['question']
         session['answers'][question_text] = answer
  
         if action == 'next' and current_question_index < total_questions - 1:
@@ -282,15 +285,15 @@ def categorie_questions(categorie):
         elif action == 'previous' and current_question_index > 0:
             current_question_index -= 1
         elif action == 'submit'or current_question_index >= total_questions - 1:
-            traitement_reponses(data_json, categorie)
-            session.pop('data_json', None)
+            traitement_reponses(selected_questions, categorie)
+            session.pop('selected_questions', None)
             session.pop('answers', None)
             return redirect(url_for('progression'))
 
-        current_question = data_json['questions'][current_question_index]
+        current_question = selected_questions['questions'][current_question_index]
     else:
         current_question_index = 0
-        current_question = data_json['questions'][current_question_index]
+        current_question = selected_questions['questions'][current_question_index]
 
     # Récupérer les réponses enregistrées pour la question actuelle
     saved_answers = session['answers'].get(current_question['question'], [])
