@@ -1,5 +1,5 @@
 .centered-text {
-    position: fixed;
+    position: sticky;
     text-align: center;
     font-family: "Times New Roman", Times, serif; 
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 

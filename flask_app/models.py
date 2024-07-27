@@ -88,7 +88,7 @@ class ReponseParticipant(db.Model):
     incorrect_answers = db.Column(db.Integer)
     success_percentage = db.Column(db.Float)
     categorie = db.Column(db.String(255))
-    nb_essais = db.Column(db.Integer())
+    nb_essais = db.Column(db.Integer)
     date_creation = db.Column(db.DateTime, default=datetime.now().strftime('%d %B %Y %H:%M:%S'))
 
 class Contact(db.Model):
