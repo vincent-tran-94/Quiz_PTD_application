@@ -9,6 +9,8 @@ import os
 from dotenv import load_dotenv
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
+from sqlalchemy import JSON
+
 
 load_dotenv() #Importer les paramètres de l'identification
 app = Flask(__name__,template_folder='template',static_url_path='/static')
@@ -88,6 +90,9 @@ class ReponseParticipant(db.Model):
     incorrect_answers = db.Column(db.Integer)
     success_percentage = db.Column(db.Float)
     categorie = db.Column(db.String(255))
+    selected_questions= db.Column(JSON)
+    answers = db.Column(JSON)
+    correct_responses_dict = db.Column(JSON)
     nb_essais = db.Column(db.Integer)
     date_creation = db.Column(db.DateTime, default=datetime.now().strftime('%d %B %Y %H:%M:%S'))
 

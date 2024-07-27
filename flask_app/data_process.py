@@ -167,6 +167,9 @@ def traitement_reponses(data_json, categorie):
                                           incorrect_answers=incorrect_answers,
                                           success_percentage=success_percentage,
                                           categorie=categorie,
+                                          answers=answers,
+                                          selected_questions=data_json['questions'],
+                                          correct_responses_dict=correct_responses_dict,
                                           nb_essais=default_essai)
         db.session.add(new_response)
     db.session.commit()

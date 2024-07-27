@@ -195,6 +195,8 @@ def formulaire():
 #Fonction de l'affichage page d'accueil
 @app.route('/')
 def accueil():
+    session.pop('selected_questions', None)
+    session.pop('answers', None)
     image_filename = 'images/logo_PTD.jpg'
     image_background = 'images/background_image.jpg'
     image_background_contact = 'images/contact_us_background.jpg'
@@ -286,8 +288,6 @@ def categorie_questions(categorie):
             current_question_index -= 1
         elif action == 'submit'or current_question_index >= total_questions - 1:
             traitement_reponses(selected_questions, categorie)
-            session.pop('selected_questions', None)
-            session.pop('answers', None)
             return redirect(url_for('progression'))
 
         current_question = selected_questions['questions'][current_question_index]
@@ -306,6 +306,28 @@ def categorie_questions(categorie):
                            categorie=categorie,
                            participant_id=participant_id)
 
+@app.route('/details/<categorie>', methods=['GET'])
+@login_required
+def details(categorie):
+    participant_id = session.get('user_id')
+
+    # Récupérer les réponses du participant pour cette catégorie
+    responses = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
+
+    # Si pas de réponse pour cette catégorie
+    if not responses:
+        flash("Aucune réponse trouvée pour cette catégorie.", "warning")
+        return redirect(url_for('progression'))
+    else:
+        participant_answers = responses.answers
+        selected_questions = responses.selected_questions
+        correct_responses_dict = responses.correct_responses_dict
+
+    return render_template('details.html', 
+                           questions=selected_questions, 
+                           correct_responses_dict=correct_responses_dict,
+                           participant_answers=participant_answers,
+                           categorie=categorie)
 
 
 #Fonction des résultats obtenus après le remplissage des questionnaires

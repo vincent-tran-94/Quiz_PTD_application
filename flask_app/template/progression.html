@@ -22,6 +22,7 @@
                 <li>Réponses correctes: {{ result.correct_answers }}</li>
                 <li>Réponses incorrectes: {{ result.incorrect_answers }}</li>
                 <li>Succès pourcentage: {{ result.success_percentage }}%</li>
+                <a href="{{ url_for('details', categorie=result.categorie) }}" class="btn btn-info">Voir les détails</a>
                 <hr>
             {% endfor %}
         </ul>
