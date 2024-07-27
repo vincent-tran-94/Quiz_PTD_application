@@ -160,6 +160,9 @@ def traitement_reponses(data_json, categorie):
         existing_response.correct_answers = correct_answers
         existing_response.incorrect_answers = incorrect_answers
         existing_response.success_percentage = success_percentage
+        existing_response.answers= answers
+        existing_response.selected_questions = data_json['questions']
+        existing_response.correct_responses_dict = correct_responses_dict 
     else:
         # Ajouter un nouvel enregistrement pour ce participant et cette catégorie
         new_response = ReponseParticipant(participant_id=participant_id,
