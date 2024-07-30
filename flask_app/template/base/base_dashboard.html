@@ -93,7 +93,7 @@
                     <tr id="{{ participant[0] }}_row">
                         <td>{{ index}}</td>
                         <td>{{ participant[0] }}</td>
-                        <td>{{ participant[3]}}%</td>
+                        <td>{{ participant[3] | round(2) }}%</td>
                     </tr>
                     {% endfor %}
                     </tbody>

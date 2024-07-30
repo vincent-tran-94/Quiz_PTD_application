@@ -12,6 +12,7 @@ import io
 from process_stripe import *
 from functools import wraps
 
+
 """
 CONSIGNES POUR LANCER l'APPLICATION:
 1) Créer un environnement virtuel et lancer les dépendances
@@ -27,6 +28,10 @@ MAX_INACTIVITY_DURATION=30
 # Créez une instance de LoginManager
 login_manager = LoginManager()
 login_manager.init_app(app)
+
+@app.context_processor
+def utility_processor():
+    return dict(zip=zip)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -237,6 +242,15 @@ def contact():
             
     return redirect(url_for('accueil'))
 
+def get_all_options(questions):
+    all_options = []
+    for question in questions:
+        if 'options' in question:
+            all_options.append(question['options'])
+        elif 'multi_options' in question:
+            all_options.append(question['multi_options'])
+
+    return all_options
 
 
 @app.route('/categorie/<categorie>', methods=['GET', 'POST'])
@@ -268,6 +282,7 @@ def categorie_questions(categorie):
 
     selected_questions = session['selected_questions']
     total_questions = len(selected_questions['questions'])
+    all_options = get_all_options(selected_questions['questions'])
 
     #Stocker tout les réponses pour chaque question répondu
     if 'answers' not in session:
@@ -287,7 +302,7 @@ def categorie_questions(categorie):
         elif action == 'previous' and current_question_index > 0:
             current_question_index -= 1
         elif action == 'submit'or current_question_index >= total_questions - 1:
-            traitement_reponses(selected_questions, categorie)
+            traitement_reponses(selected_questions,all_options,categorie)
             return redirect(url_for('progression'))
 
         current_question = selected_questions['questions'][current_question_index]
@@ -308,6 +323,7 @@ def categorie_questions(categorie):
 
 @app.route('/details/<categorie>', methods=['GET'])
 @login_required
+
 def details(categorie):
     participant_id = session.get('user_id')
 
@@ -319,13 +335,15 @@ def details(categorie):
         flash("Aucune réponse trouvée pour cette catégorie.", "warning")
         return redirect(url_for('progression'))
     else:
-        participant_answers = responses.answers
         selected_questions = responses.selected_questions
+        participant_answers = responses.answers
+        options_dict = responses.options
         correct_responses_dict = responses.correct_responses_dict
 
     return render_template('details.html', 
-                           questions=selected_questions, 
+                           questions=selected_questions,
                            correct_responses_dict=correct_responses_dict,
+                           options_dict=options_dict,
                            participant_answers=participant_answers,
                            categorie=categorie)
 

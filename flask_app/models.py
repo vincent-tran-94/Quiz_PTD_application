@@ -91,6 +91,7 @@ class ReponseParticipant(db.Model):
     success_percentage = db.Column(db.Float)
     categorie = db.Column(db.String(255))
     selected_questions= db.Column(JSON)
+    options = db.Column(JSON)
     answers = db.Column(JSON)
     correct_responses_dict = db.Column(JSON)
     nb_essais = db.Column(db.Integer)

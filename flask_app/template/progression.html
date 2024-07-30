@@ -19,9 +19,9 @@
         <ul>
             {% for result in participant_results %}
                 <li>Catégorie: {{ result.categorie }}</li>
-                <li>Réponses correctes: {{ result.correct_answers }}</li>
-                <li>Réponses incorrectes: {{ result.incorrect_answers }}</li>
-                <li>Succès pourcentage: {{ result.success_percentage }}%</li>
+                <li>Pourcentage de succès: {{ result.success_percentage }}%</li>
+                <li>Réponses correctes: {{ result.correct_answers }} / 15 </li>
+                <li>Réponses incorrectes: {{ result.incorrect_answers }} / 15</li>
                 <a href="{{ url_for('details', categorie=result.categorie) }}" class="btn btn-info">Voir les détails</a>
                 <hr>
             {% endfor %}
@@ -36,7 +36,7 @@
         </div>
         <p id="thank-you-message" style="display: none;">Merci pour votre avis !</p>
         <div class="link-container">
-            <a href="{{ url_for('permission_route_data_csv') }}" class="btn btn-success">Télécharger vos données CSV</a>
+            <a href="{{ url_for('permission_route_data_csv') }}" class="btn btn-success">Télécharger vos données (format Excel)</a>
             <a href="{{ url_for('accueil') }}" class="text-black font-weight-bold regStr home-link">Revenir vers la page d'accueil</a>
         </div>
     </div>

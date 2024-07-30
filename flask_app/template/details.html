@@ -13,9 +13,15 @@
     <div class="container mt-5">
         <h1 class="mb-4">Détails des réponses pour la catégorie: {{ categorie }}</h1>
         <ul class="list-group">
-            {% for question in questions %}
+            {% for question, options in zip(questions, options_dict) %}
                 <li class="list-group-item">
-                    <p><strong>Question:</strong> {{ question.question }}</p>
+                    <p><strong>Question:</strong> {{ question.question }}</p>   
+                    <p><strong>Options possibles:</strong></p>
+                    <ul>
+                        {% for key, option in options.items() %}
+                            <li>{{ key }}: {{ option }}</li>
+                        {% endfor %}
+                    </ul>         
                     <p><strong>Votre réponse:</strong> 
                         {% if participant_answers.get(question.question) %}
                             {{ participant_answers[question.question] | join(', ') }}

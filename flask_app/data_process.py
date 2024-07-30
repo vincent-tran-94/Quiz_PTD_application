@@ -112,7 +112,7 @@ def filter_data_by_month_year(data, month, year):
     return filtered_data
 
 #Fonction de traitement de réponse qui permet de calculer le nombre de réponses correctes et incorrectes pour chaque questionnaire dans une catégorie 
-def traitement_reponses(data_json, categorie):
+def traitement_reponses(data_json, all_options,categorie):
     participant_id = session.get('user_id')
     answers = session.get('answers', {})
     correct_answers = 0
@@ -161,6 +161,7 @@ def traitement_reponses(data_json, categorie):
         existing_response.incorrect_answers = incorrect_answers
         existing_response.success_percentage = success_percentage
         existing_response.answers= answers
+        existing_response.options = all_options
         existing_response.selected_questions = data_json['questions']
         existing_response.correct_responses_dict = correct_responses_dict 
     else:
@@ -170,8 +171,9 @@ def traitement_reponses(data_json, categorie):
                                           incorrect_answers=incorrect_answers,
                                           success_percentage=success_percentage,
                                           categorie=categorie,
-                                          answers=answers,
                                           selected_questions=data_json['questions'],
+                                          answers=answers,
+                                          options=all_options,
                                           correct_responses_dict=correct_responses_dict,
                                           nb_essais=default_essai)
         db.session.add(new_response)

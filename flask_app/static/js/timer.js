@@ -104,3 +104,54 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+//Fonction pour griser le bouton Soumettre ou Suivant quand l'utilisateur doit choisir une réponse  
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('questionnaireForm');
+    const nextButton = document.getElementById('nextButton');
+    const submitButton = document.getElementById('submitButton');
+    const inputs = form.querySelectorAll('input[name="answer"]');
+
+    function checkAnswerSelected() {
+        let answerSelected = false;
+        inputs.forEach(input => {
+            if (input.checked) {
+                answerSelected = true;
+            }
+        });
+        if (answerSelected) {
+            if (nextButton) nextButton.disabled = false;
+            if (submitButton) submitButton.disabled = false;
+        } else {
+            if (nextButton) nextButton.disabled = true;
+            if (submitButton) submitButton.disabled = true;
+        }
+    }
+
+    inputs.forEach(input => {
+        input.addEventListener('change', checkAnswerSelected);
+    });
+
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+    }, false);
+
+    // Disable keyboard shortcuts for copy and paste
+    document.addEventListener('keydown', function (e) {
+        // Check if Ctrl key is pressed
+        if (e.ctrlKey) {
+            // Disable Ctrl+C (Copy)
+            if (e.key === 'c' || e.key === 'C') {
+                e.preventDefault();
+            }
+            // Disable Ctrl+V (Paste)
+            if (e.key === 'v' || e.key === 'V') {
+                e.preventDefault();
+            }
+        }
+    }, false);
+
+    checkAnswerSelected(); // Initial check on page load
+
+});
