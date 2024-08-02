@@ -9,13 +9,15 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_v2_PTD.jpg') }}">
 </head>
 <body>
-    <div id="progressContainer">
-        <div id="progressBar"></div>
+    <nav class="navbar navbar-light bg-light custom-navbar">
+        <a class="navbar-brand">Test sur {{ categorie }}</a>
+    </nav>
+    <div id="progressContainer" class="custom-progress-container">
+        <div id="progressBar" class="custom-progress-bar"></div>
     </div>
     <div class="container mt-5">
         <form id="questionnaireForm" method="post">
-            <h1>Test sur {{ categorie }} </h1>
-            <div class="card mt-3">
+            <div class="card mt-3 custom-card">
                 <div class="card-body">
                     <h5 class="card-title">{{ current_question.number }}- {{ current_question.question }}</h5>
                     <div class="form-check">
@@ -37,12 +39,12 @@
             <input type="hidden" name="current_question_index" value="{{ current_question_index }}">
             <input type="hidden" name="participant_id" value="{{ participant_id }}">
             {% if current_question_index > 0 %}
-            <button type="submit" class="btn btn-secondary mt-3" name="action" value="previous" id="previousButton" >Précédent</button>
+            <button type="submit" class="btn btn-secondary mt-3 custom-btn-previous" name="action" value="previous" id="previousButton">Précédent</button>
             {% endif %}
             {% if current_question_index < total_questions - 1 %}
-            <button type="submit" class="btn btn-primary mt-3" name="action" value="next" id="nextButton">Suivant</button>
+            <button type="submit" class="btn btn-primary mt-3 custom-btn-next hidden" name="action" value="next" id="nextButton">Suivant</button>
             {% else %}
-            <button type="submit" class="btn btn-primary mt-3" name="action" value="submit" id="submitButton">Soumettre</button>
+            <button type="submit" class="btn btn-primary mt-3 custom-btn-submit hidden" name="action" value="submit" id="submitButton">Soumettre</button>
             {% endif %}
         </form>
     </div> 

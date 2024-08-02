@@ -46,7 +46,7 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-# Middleware pour vérifier l'inactivité de l'utilisateur
+#Middleware pour vérifier l'inactivité de l'utilisateur
 @app.before_request
 def check_inactive_session():
     if current_user.is_authenticated:
@@ -73,7 +73,6 @@ def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-
 
         # Recherche de l'utilisateur dans la base de données
         user = User.query.filter_by(email=email).first()

@@ -8,12 +8,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/formulaire.css') }}">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_v2_PTD.jpg') }}">
+    <style>
+        .error-message {
+            color: red;
+        }
+    </style>
 </head>
 <body class="body-top-right">
     <img src="{{ url_for('static', filename=image_filename) }}" alt="Image PTD"  class="img-custom">
     <div class="container">
         <h1 class="text-center">Formulaire pour l'association Préserve ton droit</h1>
-        <form action="/formulaire" method="post" class="card p-4">
+        <form action="/formulaire" method="post" class="card p-4" id="formulaire-ptd">
             <div class="form-group">
                 <label for="nom">Votre nom:</label>
                 <input type="text" id="nom" name="nom" required>
@@ -31,7 +36,8 @@
 
             <div class="form-group">
                 <label for="code_postal">Votre code postal actuel:</label>
-                <input type="text" id="code_postal" name="code_postal" required>
+                <input type="text" id="code_postal" name="code_postal" pattern="\d+" required oninvalid="this.setCustomValidity('Veuillez entrer uniquement des chiffres pour le code postal.')" oninput="setCustomValidity('')">
+                <div class="error-message" id="code_postal_error"></div>
             </div>
 
             <div class="form-group">
@@ -94,5 +100,18 @@
             </div>
         </form>
     </div>
+    <script>
+        document.getElementById('formulaire-ptd').addEventListener('submit', function(event) {
+            var codePostal = document.getElementById('code_postal');
+            if (!/^\d+$/.test(codePostal.value)) {
+                event.preventDefault();
+                codePostal.setCustomValidity('Veuillez entrer uniquement des chiffres pour le code postal.');
+                document.getElementById('code_postal_error').textContent = 'Veuillez entrer uniquement des chiffres pour le code postal.';
+            } else {
+                codePostal.setCustomValidity('');
+                document.getElementById('code_postal_error').textContent = '';
+            }
+        });
+    </script>
 </body>
 </html>

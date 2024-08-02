@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 from sqlalchemy import JSON
+from datetime import timedelta
 
 
 load_dotenv() #Importer les paramètres de l'identification
@@ -27,6 +28,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
+app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=14)
 
 db = SQLAlchemy(app)
 

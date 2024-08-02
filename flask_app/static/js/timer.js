@@ -1,4 +1,4 @@
-var initialTimer = 300; // 5 minutes
+var initialTimer = 600; // 10 minutes
 var timer = initialTimer;
 var warnings = 0;
 let ButtonClicked = false;
@@ -16,14 +16,11 @@ function updateProgressBar() {
 // Function to reduce time by 30 seconds and update UI
 function reduceTime() {
     timer -= 30;
+    saveTimer();
     updateProgressBar();
     if (timer <= 0) {
         clearInterval(countdown);
-        if (!isRedirected) {
-            window.location.href = "{{ url_for('progression') }}"; // Redirect to the progression page
-            document.forms["questionnaireForm"].submit(); // Submit the form when time is up
-            isRedirected = true; // Mark that the redirection has occurred
-        }
+        handleTimerEnd();
     }
 }
 
@@ -39,23 +36,23 @@ function handleWarnings() {
     }
 }
 
-// Function to save the start time in sessionStorage
-function saveStartTime() {
-    sessionStorage.setItem('startTime', startTime);
+// Function to save the timer in sessionStorage
+function saveTimer() {
+    sessionStorage.setItem('remainingTime', timer);
+    sessionStorage.setItem('lastSaveTime', Date.now());
 }
 
-// Function to load the timer from sessionStorage (Gestion des cookies)
+// Function to load the timer from sessionStorage
 function loadTimer() {
-    var storedStartTime = sessionStorage.getItem('startTime');
-    if (storedStartTime !== null) {
-        startTime = parseInt(storedStartTime, 10);
-        var elapsedTime = Math.floor((Date.now() - startTime) / 1000);
-        timer = initialTimer - elapsedTime;
+    var storedTimer = sessionStorage.getItem('remainingTime');
+    var lastSaveTime = sessionStorage.getItem('lastSaveTime');
+    if (storedTimer !== null && lastSaveTime !== null) {
+        var elapsedTime = Math.floor((Date.now() - parseInt(lastSaveTime, 10)) / 1000);
+        timer = parseInt(storedTimer, 10) - elapsedTime;
         if (timer <= 0) {
             timer = 0;
         }
     } else {
-        startTime = Date.now();
         timer = initialTimer;
     }
 }
@@ -63,7 +60,8 @@ function loadTimer() {
 // Function to handle the end of the timer
 function handleTimerEnd() {
     timer = initialTimer; // Reset the timer to the initial value
-    sessionStorage.removeItem('startTime'); // Remove the entry from session storage
+    sessionStorage.removeItem('remainingTime'); // Remove the entry from session storage
+    sessionStorage.removeItem('lastSaveTime'); // Remove the entry from session storage
     if (!isRedirected) {
         alert('Le temps est écoulé. Vous allez être redirigé vers la page des résultats.');
         window.location.href = "{{ url_for('progression') }}"; // Redirect to the progression page
@@ -86,26 +84,27 @@ document.addEventListener('visibilitychange', function () {
 document.addEventListener('DOMContentLoaded', function () {
     loadTimer(); // Load the timer from session storage
     updateProgressBar();
-    saveStartTime(); // Save the start time in session storage
 
     countdown = setInterval(function () {
         timer--;
-        updateProgressBar();
         if (timer <= 0) {
             clearInterval(countdown);
             handleTimerEnd();
+        } else {
+            saveTimer(); // Save the remaining time in session storage
+            updateProgressBar();
         }
     }, 1000); // Update every second
 
     // Add event listener to the form to clear the timer only if submit button is clicked
     document.getElementById('questionnaireForm').addEventListener('submit', function(event) {
         if (document.activeElement && document.activeElement.id === 'submitButton') {
-            sessionStorage.removeItem('startTime');
+            sessionStorage.removeItem('remainingTime');
+            sessionStorage.removeItem('lastSaveTime');
         }
     });
 });
 
-//Fonction pour griser le bouton Soumettre ou Suivant quand l'utilisateur doit choisir une réponse  
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('questionnaireForm');
     const nextButton = document.getElementById('nextButton');
@@ -119,23 +118,37 @@ document.addEventListener('DOMContentLoaded', function () {
                 answerSelected = true;
             }
         });
-        if (answerSelected) {
-            if (nextButton) nextButton.disabled = false;
-            if (submitButton) submitButton.disabled = false;
-        } else {
-            if (nextButton) nextButton.disabled = true;
-            if (submitButton) submitButton.disabled = true;
+
+        // Show or hide the submit button based on the selection
+        if (submitButton) {
+            if (answerSelected) {
+                submitButton.classList.remove('hidden');
+                submitButton.disabled = false;
+            } else {
+                submitButton.classList.add('hidden');
+                submitButton.disabled = true;
+            }
+        }
+
+        // Show or hide the next button based on the selection
+        if (nextButton) {
+            if (answerSelected) {
+                nextButton.classList.remove('hidden');
+                nextButton.disabled = false;
+            } else {
+                nextButton.classList.add('hidden');
+                nextButton.disabled = true;
+            }
         }
     }
 
+    // Attach event listeners
     inputs.forEach(input => {
         input.addEventListener('change', checkAnswerSelected);
     });
 
-    // Disable right-click context menu
-    document.addEventListener('contextmenu', function (e) {
-        e.preventDefault();
-    }, false);
+    // Initial check in case there are pre-selected answers (e.g., when navigating back)
+    checkAnswerSelected();
 
     // Disable keyboard shortcuts for copy and paste
     document.addEventListener('keydown', function (e) {
@@ -151,7 +164,4 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }, false);
-
-    checkAnswerSelected(); // Initial check on page load
-
 });
