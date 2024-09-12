@@ -18,23 +18,20 @@ Fonction de récupération de données et de procédure de données
 selected_questions = []  
 
 #Fonction pour récupérer tout les fichiers JSON sur l'ensemble des questionnaires
-def open_file_json_from_directory(directory):
-    json_files = [file for file in os.listdir(directory) if file.endswith('.json')]
-    if not json_files:
-        return None
+def open_file_json_from_directory(path):
     all_questions = []
-
-    for json_file in json_files:
-        with open(os.path.join(directory, json_file), 'r', encoding='utf-8') as file:
+    
+    # Vérifier si le chemin est un fichier
+    if os.path.isfile(path) and path.endswith('.json'):
+        with open(path, 'r', encoding='utf-8') as file:
             data_json = json.load(file)
             all_questions.extend(data_json['questions'])
     
     # Mélanger toutes les questions
     random.shuffle(all_questions)
-    selected_questions = all_questions[:15]
+    selected_questions = all_questions[:20]
 
     return selected_questions
-
 
 def save_questions(directory):
 
@@ -112,25 +109,10 @@ def filter_data_by_month_year(data, month, year):
     return filtered_data
 
 #Fonction de traitement de réponse qui permet de calculer le nombre de réponses correctes et incorrectes pour chaque questionnaire dans une catégorie 
-def traitement_reponses(data_json, all_options,categorie):
+def traitement_reponses(data_json, all_options,categorie,sujet,all_explications):
     participant_id = session.get('user_id')
     answers = session.get('answers', {})
     correct_answers = 0
-
-    # # Initialiser un dictionnaire vide pour stocker les réponses
-    # result_dict_answers = {}
-
-    # # Parcourir les éléments de l'ImmutableMultiDict
-    # for key in answers.keys():
-    #     # Vérifier si la clé est différente de 'participant_id'
-    #     if key != 'participant_id':
-    #         # Vérifier si la clé est déjà dans le dictionnaire résultant
-    #         if key in result_dict_answers:
-    #             # Si la clé existe déjà, ajouter la valeur à la liste existante
-    #             result_dict_answers[key].append(answers.getlist(key))
-    #         else:
-    #             # Si la clé n'existe pas encore, créer une nouvelle liste avec la valeur
-    #             result_dict_answers[key] = answers.getlist(key)
 
     # Créer un dictionnaire pour stocker les réponses correctes attendues pour chaque question
     correct_responses_dict = {question['question']: question['reponse_correcte'] if isinstance(question['reponse_correcte'], list) else [question['reponse_correcte']] for question in data_json['questions']}
@@ -153,7 +135,7 @@ def traitement_reponses(data_json, all_options,categorie):
     default_essai = 1
 
     # Vérifiez si une réponse existe déjà pour ce participant dans cette catégorie
-    existing_response = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
+    existing_response = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie,sujet=sujet).first()
 
     if existing_response:
         # Mettre à jour les données existantes
@@ -162,6 +144,7 @@ def traitement_reponses(data_json, all_options,categorie):
         existing_response.success_percentage = success_percentage
         existing_response.answers= answers
         existing_response.options = all_options
+        existing_response.explication = all_explications
         existing_response.selected_questions = data_json['questions']
         existing_response.correct_responses_dict = correct_responses_dict 
     else:
@@ -171,9 +154,11 @@ def traitement_reponses(data_json, all_options,categorie):
                                           incorrect_answers=incorrect_answers,
                                           success_percentage=success_percentage,
                                           categorie=categorie,
+                                          sujet=sujet,
                                           selected_questions=data_json['questions'],
                                           answers=answers,
                                           options=all_options,
+                                          explication=all_explications,
                                           correct_responses_dict=correct_responses_dict,
                                           nb_essais=default_essai)
         db.session.add(new_response)

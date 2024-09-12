@@ -251,12 +251,46 @@ def get_all_options(questions):
 
     return all_options
 
+def get_all_explications(questions): 
+    all_explications = [] 
+    for question in questions: 
+        all_explications.append(question['explication'])
+    return all_explications
 
-@app.route('/categorie/<categorie>', methods=['GET', 'POST'])
+
+# Chemin de base où se trouvent les dossiers des catégories
+
+@app.route('/choice_categories/<choice_categorie>', methods=['GET', 'POST'])
 @login_required
-def categorie_questions(categorie):
+def choice_categories(choice_categorie):
+    BASE_DIR = 'questions'  # Remplacez par le chemin réel où se trouvent vos dossiers de catégories
+    # Initialiser la liste des sujets
+    list_subjects = [] 
+
+    # Construire le chemin vers le dossier de la catégorie choisie
+    category_path = os.path.join(BASE_DIR, choice_categorie)
+    
+    if os.path.exists(category_path) and os.path.isdir(category_path):
+        # Récupérer la liste des fichiers JSON dans le dossier et enlever l'extension .json
+        list_subjects = [
+            os.path.splitext(subject)[0] for subject in os.listdir(category_path)
+            if os.path.isfile(os.path.join(category_path, subject)) and subject.endswith('.json')
+        ]
+
+    if request.method == 'POST':
+        selected_subject = request.form.get('selected_subject')
+        return redirect(url_for('categorie_questions', categorie=choice_categorie, sujet=selected_subject))
+
+    # Renvoyer le template avec les sujets
+    return render_template('choice_subject.html', choice_categorie=choice_categorie, list_subjects=list_subjects)
+
+
+
+@app.route('/categorie/<categorie>/<sujet>', methods=['GET', 'POST'])
+@login_required
+def categorie_questions(categorie,sujet):
     participant_id = session.get('user_id')
-    reponse_existe = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
+    reponse_existe = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie,sujet=sujet).first()
 
     if reponse_existe:
         nb_essais_restant = reponse_existe.nb_essais
@@ -273,7 +307,7 @@ def categorie_questions(categorie):
         'sociologie': 'questions/sociologie'
     }
 
-    directory = categories_directories[categorie]
+    directory = os.path.join(categories_directories[categorie], f"{sujet}.json")
 
     #Récupérer les 15 premiers questions pour chaque utilisateur
     if 'selected_questions' not in session:
@@ -282,6 +316,7 @@ def categorie_questions(categorie):
     selected_questions = session['selected_questions']
     total_questions = len(selected_questions['questions'])
     all_options = get_all_options(selected_questions['questions'])
+    all_explications = get_all_explications(selected_questions['questions'])
 
     #Stocker tout les réponses pour chaque question répondu
     if 'answers' not in session:
@@ -301,7 +336,7 @@ def categorie_questions(categorie):
         elif action == 'previous' and current_question_index > 0:
             current_question_index -= 1
         elif action == 'submit'or current_question_index >= total_questions - 1:
-            traitement_reponses(selected_questions,all_options,categorie)
+            traitement_reponses(selected_questions,all_options,categorie,sujet,all_explications)
             return redirect(url_for('progression'))
 
         current_question = selected_questions['questions'][current_question_index]
@@ -318,16 +353,16 @@ def categorie_questions(categorie):
                            total_questions=total_questions,
                            saved_answers=saved_answers,
                            categorie=categorie,
+                           sujet=sujet,
                            participant_id=participant_id)
 
-@app.route('/details/<categorie>', methods=['GET'])
+@app.route('/details/<categorie>/<sujet>', methods=['GET'])
 @login_required
-
-def details(categorie):
+def details(categorie,sujet):
     participant_id = session.get('user_id')
 
     # Récupérer les réponses du participant pour cette catégorie
-    responses = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
+    responses = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie,sujet=sujet).first()
 
     # Si pas de réponse pour cette catégorie
     if not responses:
@@ -337,14 +372,19 @@ def details(categorie):
         selected_questions = responses.selected_questions
         participant_answers = responses.answers
         options_dict = responses.options
+        explication = responses.explication
         correct_responses_dict = responses.correct_responses_dict
+
 
     return render_template('details.html', 
                            questions=selected_questions,
                            correct_responses_dict=correct_responses_dict,
                            options_dict=options_dict,
                            participant_answers=participant_answers,
-                           categorie=categorie)
+                           explication=explication,
+                           categorie=categorie,
+                           sujet=sujet
+                           )
 
 
 #Fonction des résultats obtenus après le remplissage des questionnaires
@@ -355,7 +395,7 @@ def progression():
     
     # Récupérer les résultats du participant depuis la base de données
     participant_results = ReponseParticipant.query.filter_by(participant_id=participant_id).all()
-    
+
     # Vous pouvez également récupérer d'autres informations pertinentes ici, par exemple, le nom du participant, etc.
     participant_info = Participant.query.filter_by(participant_id=participant_id).first()
     

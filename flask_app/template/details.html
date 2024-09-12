@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Détails des réponses pour la catégorie: {{ categorie }}</h1>
+        <h1 class="mb-4">Détails des réponses pour la catégorie: {{ categorie }} pour le sujet {{ sujet }}</h1>
         <ul class="list-group">
             {% for question, options in zip(questions, options_dict) %}
                 <li class="list-group-item">
@@ -35,6 +35,8 @@
                     {% else %}
                         <p class="text-danger"><i class="fas fa-times-circle"></i> Incorrect</p>
                     {% endif %}
+                    <!-- Afficher l'explication pour chaque question -->
+                    <p><strong>Explication:</strong> {{ question.explication }}</p>
                 </li>
             {% endfor %}
         </ul>

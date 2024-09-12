@@ -94,29 +94,29 @@
             {% endwith %}
         <div class="row mt-3">
             <div class="col-md-3">
-                <a href="{{ url_for('categorie_questions', categorie='droit') }}" class="btn btn-primary btn-lg btn-block">Droit</a>
+                <a href="{{ url_for('choice_categories', choice_categorie='droit') }}" class="btn btn-primary btn-lg btn-block">Droit</a>
             </div>
             <div class="col-md-3">
-                <a href="{{ url_for('categorie_questions', categorie='humanitaire') }}" class="btn btn-success btn-lg btn-block">Humanitaire</a>
+                <a href="{{ url_for('choice_categories', choice_categorie='humanitaire') }}" class="btn btn-success btn-lg btn-block">Humanitaire</a>
             </div>
             <div class="col-md-3">
-                <a href="{{ url_for('categorie_questions', categorie='culturel') }}" class="btn btn-info btn-lg btn-block">Culturel</a>
+                <a href="{{ url_for('choice_categories', choice_categorie='culturel') }}" class="btn btn-info btn-lg btn-block">Culturel</a>
             </div>
             <div class="col-md-3">
-                <a href="{{ url_for('categorie_questions', categorie='sociologie') }}" class="btn btn-dark btn-lg btn-block">Sociologie</a>
+                <a href="{{ url_for('choice_categories', choice_categorie='sociologie') }}" class="btn btn-dark btn-lg btn-block">Sociologie</a>
             </div>
         </div>
         <div class="row mt-4">
             <div style="text-align:center"> <p><strong>Si vous souhaitez participer à nouveau au quiz ou connaitre plus votre progression, 
-                veuillez souscrire à un abonnement pour découvrir les offres disponibles. </br> 
-                Si vous rencontrez des difficultés, n'hésitez pas à nous contacter ci-dessous. 👇 </style> </strong> </p> 
-                <div class="col-md-4 offset-md-4" style="padding-left: 20px;">
+                veuillez souscrire à un abonnement pour découvrir les offres disponibles.👇 </br> 
+                <div class="col-md-4 offset-md-4" style="padding-left: 20px; margin-bottom: 20px;">
                     <a href="{{ url_for('souscription') }}" class="btn btn-warning btn-lg btn-block">S'abonner</a>
                 </div>
+                Si vous rencontrez des difficultés, n'hésitez pas à nous contacter ci-dessous. 👇 </style> </strong> </p> 
             </div>
         </div>
     </div>
-    <section id="contact" style="padding: 40px 100px; margin-top: 10px;">
+    <section id="contact" style="padding: 40px 100px;">
         <div class="container">
             <h2 class="text-left">Contactez-nous</h2>
             <p class="text-left">Pour toute question ou demande d'information, veuillez remplir le formulaire ci-dessous :</p>
