@@ -1,852 +1,308 @@
 {
-    "thematique": "culturel",
+    "thematique": "histoire musicale",
     "questions": [
         {
-            "question": "Vrai ou faux : Le Fantôme de l'Opéra est basé sur un roman français du XIXe siècle.",
+            "question": "Quel genre musical est souvent associé à la lutte pour les droits civiques aux États-Unis dans les années 1960 ?",
             "options": {
-                "a": "Vrai",
-                "b": "Faux"
+                "a": "Le jazz",
+                "b": "Le blues",
+                "c": "La soul"
             },
-            "reponse_correcte": "a"
+            "reponse_correcte": "c",
+            "explication": "La soul est souvent associée à la lutte pour les droits civiques aux États-Unis, avec des artistes comme Aretha Franklin et Sam Cooke."
         },
         {
-            "question": "Dans quelle ville se déroule l'intrigue de la comédie musicale Les Misérables ?",
-            "options": {
-                "a": "Paris",
-                "b": "Londres",
-                "c": "New York"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Vrai ou faux : La pièce de théâtre Roméo et Juliette a été écrite par William Shakespeare.",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Vrai ou faux : Le compositeur Wolfgang Amadeus Mozart est l'auteur de l'opéra Don Giovanni.",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Quel film a remporté l'Oscar du meilleur film en 2019 ?",
-            "options": {
-                "a": "Green Book : Sur les routes du sud",
-                "b": "Parasite",
-                "c": "Nomadland"
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Vrai ou faux : La chanteuse Madonna a remporté un Oscar pour sa performance dans le film Evita.",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Qui a réalisé le film musical Les Misérables sorti en 2012 ?",
-            "options": {
-                "a": "Tom Hooper",
-                "b": "Baz Luhrmann",
-                "c": "Rob Marshall"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Combien de films composent la trilogie du Seigneur des Anneaux réalisée par Peter Jackson ?",
-            "options": {
-                "a": "Deux",
-                "b": "Trois",
-                "c": "Quatre"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Vrai ou faux : Le film musical Chicago est basé sur une pièce de théâtre.",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Quel célèbre compositeur a écrit la musique de la comédie musicale Les Misérables ?",
-            "options": {
-                "a": "Andrew Lloyd Webber",
-                "b": "Stephen Sondheim",
-                "c": "Claude-Michel Schönberg"
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Dans quel film Alfred Hitchcock fait-il une apparition furtive en arrière-plan ?",
-            "options": {
-                "a": "Fenêtre sur cour",
-                "b": "Psychose",
-                "c": "Les Oiseaux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Vrai ou faux : Le compositeur italien Giuseppe Verdi est l'auteur de l'opéra La Traviata.",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Dans quel film Leonardo DiCaprio incarne-t-il le personnage de Jack Dawson ?",
-            "options": {
-                "a": "Titanic",
-                "b": "Inception",
-                "c": "The Revenant"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Combien de comédies musicales composent le film Les Parapluies de Cherbourg ?",
-            "options": {
-                "a": "Une",
-                "b": "Deux",
-                "c": "Trois"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Vrai ou faux : Le compositeur russe Piotr Ilitch Tchaïkovski est l'auteur du ballet Le Lac des cygnes.",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Qui a réalisé le film musical Moulin Rouge sorti en 2001 ?",
-            "options": {
-                "a": "Baz Luhrmann",
-                "b": "Tim Burton",
-                "c": "Rob Marshall"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Quel est le titre de la chanson emblématique du film Casablanca, interprétée par Dooley Wilson ?",
-            "options": {
-                "a": "'As Time Goes By'",
-                "b": "'Moon River'",
-                "c": "'Somewhere Over the Rainbow'"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Vrai ou faux : Le film La La Land a remporté l'Oscar du meilleur film en 2017.",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Dans quelle pièce de théâtre célèbre trouve-t-on le personnage de Cyrano de Bergerac ?",
-            "options": {
-                "a": "Les Fourberies de Scapin",
-                "b": "Cyrano de Bergerac",
-                "c": "Le Misanthrope"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Vrai ou faux : Le compositeur allemand Richard Wagner est l'auteur de l'opéra Carmen.",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Dans quel film Quentin Tarantino a-t-il introduit le personnage de Jules Winnfield, joué par Samuel L. Jackson ?",
-            "options": {
-                "a": "Reservoir Dogs",
-                "b": "Pulp Fiction",
-                "c": "Jackie Brown"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Vrai ou faux : Le film musical Les Misérables est basé sur un roman de Victor Hugo.",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Dans quelle ville se déroule l'action du film musical West Side Story ?",
-            "options": {
-                "a": "Los Angeles",
-                "b": "New York",
-                "c": "Chicago"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Quel acteur a interprété le rôle principal dans le film Gladiator, réalisé par Ridley Scott ?",
-            "options": {
-                "a": "Brad Pitt",
-                "b": "Russell Crowe",
-                "c": "Leonardo DiCaprio"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Vrai ou faux : Le film Titanic a été réalisé par James Cameron ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Quel réalisateur a remporté le plus grand nombre d'Oscars ?",
-            "options": {
-                "a": "Steven Spielberg",
-                "b": "Martin Scorsese",
-                "c": "Francis Ford Coppola"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Vrai ou faux : Le compositeur John Williams est connu pour sa musique dans la saga Harry Potter ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Quel célèbre dramaturge a écrit la pièce de théâtre Roméo et Juliette ?",
-            "options": {
-                "a": "Anton Tchekhov",
-                "b": "William Shakespeare",
-                "c": "Henrik Ibsen"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Quel célèbre réalisateur a réalisé le film Le Parrain ?",
-            "options": {
-                "a": "Martin Scorsese",
-                "b": "Francis Ford Coppola",
-                "c": "Quentin Tarantino"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Vrai ou faux : Le film Avatar a été réalisé par Christopher Nolan ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Dans quelle ville se déroule l'intrigue du film musical West Side Story ?",
-            "options": {
-                "a": "Los Angeles",
-                "b": "New York",
-                "c": "Chicago"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Qui a interprété le rôle de Batman dans le film The Dark Knight réalisé par Christopher Nolan ?",
-            "options": {
-                "a": "Christian Bale",
-                "b": "Ben Affleck",
-                "c": "Robert Pattinson"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Vrai ou faux : Le compositeur John Williams a composé la musique de la saga Star Wars ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Qui a réalisé le film Le Roi Lion, un classique de l'animation Disney ?",
-            "options": {
-                "a": "John Lasseter",
-                "b": "Brad Bird",
-                "c": "Roger Allers et Rob Minkoff"
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Combien d'Oscars a remporté le film La La Land lors de la cérémonie des Oscars 2017 ?",
-            "options": {
-                "a": "6",
-                "b": "11",
-                "c": "14"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Vrai ou faux : Le compositeur Hans Zimmer est connu pour sa musique dans le film Inception ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Quel film a remporté l'Oscar du meilleur film en 2018 ?",
-            "options": {
-                "a": "La Forme de l'eau",
-                "b": "Birdman",
-                "c": "Moonlight"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Quel célèbre écrivain a écrit le roman qui a inspiré le film Le Seigneur des Anneaux ?",
-            "options": {
-                "a": "J.K. Rowling",
-                "b": "George R.R. Martin",
-                "c": "J.R.R. Tolkien"
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Vrai ou faux : Le film The Godfather (Le Parrain) a été réalisé par Martin Scorsese ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Quel réalisateur est connu pour son travail sur les films d'animation tels que Toy Story et Cars ?",
-            "options": {
-                "a": "Hayao Miyazaki",
-                "b": "John Lasseter",
-                "c": "Brad Bird"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Dans quelle ville se déroule l'action du film musical Les Misérables ?",
-            "options": {
-                "a": "Paris",
-                "b": "Londres",
-                "c": "New York"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Qui a interprété le rôle principal dans le film Forrest Gump réalisé par Robert Zemeckis ?",
-            "options": {
-                "a": "Tom Hanks",
-                "b": "Denzel Washington",
-                "c": "Leonardo DiCaprio"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Vrai ou faux : Le compositeur Ennio Morricone a composé la musique du film Il était une fois dans l'Ouest ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Qui a réalisé le film Titanic, un des plus grands succès commerciaux de tous les temps ?",
-            "options": {
-                "a": "James Cameron",
-                "b": "Peter Jackson",
-                "c": "George Lucas"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Combien de fois le réalisateur Steven Spielberg a-t-il remporté l'Oscar du meilleur réalisateur ?",
-            "options": {
-                "a": "2",
-                "b": "4",
-                "c": "3"
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Quel célèbre dramaturge a écrit la pièce de théâtre Hamlet ?",
-            "options": {
-                "a": "Anton Tchekhov",
-                "b": "William Shakespeare",
-                "c": "Henrik Ibsen"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Qu'est-ce que la Croix-Rouge et son rôle dans les crises humanitaires ?",
-            "options": {
-                "a": "Organisation humanitaire fournissant aide médicale et secours d'urgence.",
-                "b": "Agence gouvernementale pour la collecte de fonds.",
-                "c": "ONG promouvant la paix mondiale."
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Dans quel film classique de Stanley Kubrick apparaît le personnage de Jack Torrance, interprété par Jack Nicholson ?",
-            "options": {
-                "a": "2001 : L'Odyssée de l'espace",
-                "b": "Shining",
-                "c": "Orange mécanique"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Quel acteur a remporté un Oscar pour son rôle dans le film The Godfather (Le Parrain) ?",
-            "options": {
-                "a": "Al Pacino",
-                "b": "Robert De Niro",
-                "c": "Marlon Brando"
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Vrai ou faux : La pièce de théâtre Roméo et Juliette a été écrite par William Shakespeare ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Qui a réalisé le film musical La La Land, nominé pour plusieurs Oscars ?",
-            "options": {
-                "a": "Steven Spielberg",
-                "b": "Damien Chazelle",
-                "c": "Christopher Nolan"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Combien de fois la comédie musicale Cats a-t-elle été adaptée au cinéma ?",
-            "options": {
-                "a": "Jamais",
-                "b": "Une fois",
-                "c": "Deux fois"
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Combien de films composent la trilogie du Seigneur des Anneaux réalisée par Peter Jackson ?",
-            "options": {
-                "a": "Deux",
-                "b": "Trois",
-                "c": "Quatre"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Vrai ou faux : Le compositeur russe Piotr Ilitch Tchaïkovski est l'auteur du ballet Le Lac des cygnes ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Vrai ou faux : Le compositeur italien Giuseppe Verdi est l'auteur de l'opéra La Traviata ?",
-            "options": {
-                "a": "Vrai",
-                "b": "Faux"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Qui a réalisé le film musical Moulin Rouge sorti en 2001 ?",
-            "options": {
-                "a": "Baz Luhrmann",
-                "b": "Tim Burton",
-                "c": "Rob Marshall"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Dans quelle pièce de théâtre célèbre trouve-t-on le personnage de Cyrano de Bergerac ?",
-            "options": {
-                "a": "Les Fourberies de Scapin",
-                "b": "Cyrano de Bergerac",
-                "c": "Le Misanthrope"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Quel réalisateur est connu pour son travail sur les films d'animation tels que Le Voyage de Chihiro et Mon voisin Totoro ?",
-            "options": {
-                "a": "Hayao Miyazaki",
-                "b": "Isao Takahata",
-                "c": "Mamoru Hosoda"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Dans quel film Quentin Tarantino a-t-il introduit le personnage de Jules Winnfield, joué par Samuel L. Jackson ?",
-            "options": {
-                "a": "Reservoir Dogs",
-                "b": "Pulp Fiction",
-                "c": "Jackie Brown"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Quel réalisateur est connu pour son travail sur les comédies musicales telles que Singin' in the Rain et Un Américain à Paris ?",
-            "options": {
-                "a": "Stanley Donen",
-                "b": "Gene Kelly",
-                "c": "Vincente Minnelli"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Quels sont les droits protégés par le droit d'auteur dans le domaine du cinéma ?",
+            "question": "Quels sont des instruments typiquement utilisés dans la musique classique ?",
             "multi_options": {
-                "a": "Le droit de réaliser des copies non autorisées",
-                "b": "Le droit de reproduire, distribuer et communiquer au public un film",
-                "c": "Le droit de rejouer un film en public",
-                "d": "Le droit de réaliser des critiques de films"
+                "a": "Le piano",
+                "b": "La guitare électrique",
+                "c": "Le violon",
+                "d": "Le saxophone"
             },
             "reponse_correcte": [
-                "b",
+                "a",
                 "c"
-            ]
+            ],
+            "explication": "Le piano et le violon sont des instruments essentiels dans la musique classique."
         },
         {
-            "question": "Quelles sont les personnes concernées par les droits voisins dans le domaine musical ?",
-            "multi_options": {
-                "a": "Les compositeurs",
-                "b": "Les interprètes",
-                "c": "Les producteurs phonographiques",
-                "d": "Les arrangeurs"
+            "question": "Le rock and roll est un genre musical qui a émergé aux États-Unis dans les années 1950.",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
             },
-            "reponse_correcte": [
-                "b",
-                "c"
-            ]
+            "reponse_correcte": "a",
+            "explication": "Le rock and roll a émergé aux États-Unis dans les années 1950, avec des artistes comme Elvis Presley et Chuck Berry."
         },
         {
-            "question": "Quelles sont les utilisations autorisées des œuvres protégées par le droit d'auteur ?",
-            "multi_options": {
-                "a": "L'adaptation",
-                "b": "La distribution",
-                "c": "La reproduction",
-                "d": "L'utilisation à des fins éducatives"
+            "question": "Le terme 'DJ' fait référence à __________ dans le contexte de la musique moderne.",
+            "options": {
+                "a": "un danseur",
+                "b": "un producteur de musique",
+                "c": "un disc-jockey"
             },
-            "reponse_correcte": [
-                "d"
-            ]
+            "reponse_correcte": "c",
+            "explication": "Le terme 'DJ' signifie 'disc-jockey', une personne qui mixe des morceaux de musique."
         },
         {
-            "question": "Quels sont les droits protégés par la propriété intellectuelle dans le domaine théâtral ?",
+            "question": "Le jazz a ses racines dans les traditions musicales afro-américaines.",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "a",
+            "explication": "Le jazz est profondément enraciné dans les traditions musicales afro-américaines, notamment le blues et le ragtime."
+        },
+        {
+            "question": "Les années 1980 ont vu l'émergence de la musique __________, qui mélange des éléments de punk rock et de musique électronique.",
+            "options": {
+                "a": "disco",
+                "b": "new wave",
+                "c": "reggae"
+            },
+            "reponse_correcte": "b",
+            "explication": "La new wave est un genre musical qui a émergé dans les années 1980, mélangeant des éléments de punk rock et de musique électronique."
+        },
+        {
+            "question": "Quels éléments sont caractéristiques de la musique baroque ?",
             "multi_options": {
-                "a": "Le droit de réaliser des représentations publiques",
-                "b": "Le droit de créer des adaptations",
-                "c": "Le droit de répliquer des décors",
-                "d": "Le droit de modifier les dialogues"
+                "a": "La complexité rythmique",
+                "b": "L'utilisation du clavecin",
+                "c": "Les improvisations",
+                "d": "Les harmonies simples"
             },
             "reponse_correcte": [
                 "a",
                 "b"
-            ]
+            ],
+            "explication": "La musique baroque est caractérisée par sa complexité rythmique et l'utilisation fréquente du clavecin."
         },
         {
-            "question": "Quelles sont les utilisations autorisées des enregistrements musicaux protégés ?",
+            "question": "La musique reggae est originaire de Jamaïque.",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "a",
+            "explication": "Le reggae est un genre musical qui a émergé en Jamaïque à la fin des années 1960."
+        },
+        {
+            "question": "Le mouvement punk est né dans les années __________.",
+            "options": {
+                "a": "1960",
+                "b": "1970",
+                "c": "1980"
+            },
+            "reponse_correcte": "b",
+            "explication": "Le mouvement punk a émergé dans les années 1970, caractérisé par une attitude rebelle et des chansons courtes et rapides."
+        },
+        {
+            "question": "Le hip-hop inclut des éléments tels que le rap, le DJing, le breakdancing et __________.",
+            "options": {
+                "a": "la guitare acoustique",
+                "b": "le graff",
+                "c": "l'opéra"
+            },
+            "reponse_correcte": "b",
+            "explication": "Le hip-hop inclut des éléments comme le rap, le DJing, le breakdancing, et le graff."
+        },
+        {
+            "question": "Quel compositeur est célèbre pour ses symphonies, telles que la 'Symphonie n°9' ?",
+            "options": {
+                "a": "Wolfgang Amadeus Mozart",
+                "b": "Ludwig van Beethoven",
+                "c": "Frédéric Chopin"
+            },
+            "reponse_correcte": "b",
+            "explication": "Ludwig van Beethoven est connu pour ses symphonies, notamment la célèbre 'Symphonie n°9'."
+        },
+        {
+            "question": "Les Beatles sont souvent considérés comme les pionniers de la musique rock.",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "a",
+            "explication": "Les Beatles ont été des pionniers dans la musique rock, influençant de nombreux artistes et genres."
+        },
+        {
+            "question": "La musique électronique est souvent associée à l'utilisation de __________.",
+            "options": {
+                "a": "synthétiseurs",
+                "b": "violons",
+                "c": "trombones"
+            },
+            "reponse_correcte": "a",
+            "explication": "La musique électronique utilise principalement des synthétiseurs et des logiciels pour créer des sons."
+        },
+        {
+            "question": "Quel genre musical est originaire du sud des États-Unis et est souvent caractérisé par des paroles sur les difficultés de la vie ?",
+            "options": {
+                "a": "Le country",
+                "b": "Le blues",
+                "c": "Le jazz"
+            },
+            "reponse_correcte": "b",
+            "explication": "Le blues est originaire du sud des États-Unis et se distingue par ses paroles exprimant souvent les difficultés de la vie."
+        },
+        {
+            "question": "Quels compositeurs sont associés à la période classique de la musique ?",
             "multi_options": {
-                "a": "La reproduction pour un usage privé",
-                "b": "La diffusion en public",
-                "c": "La vente sans permission",
-                "d": "La modification sans consentement"
+                "a": "Johann Sebastian Bach",
+                "b": "Ludwig van Beethoven",
+                "c": "Wolfgang Amadeus Mozart",
+                "d": "Richard Wagner"
+            },
+            "reponse_correcte": [
+                "b",
+                "c"
+            ],
+            "explication": "Ludwig van Beethoven et Wolfgang Amadeus Mozart sont des compositeurs emblématiques de la période classique."
+        },
+        {
+            "question": "L'opéra est une forme d'art qui combine la musique, le théâtre et __________.",
+            "options": {
+                "a": "la peinture",
+                "b": "la danse",
+                "c": "le cinéma"
+            },
+            "reponse_correcte": "b",
+            "explication": "L'opéra est une forme d'art qui combine la musique, le théâtre, et souvent la danse."
+        },
+        {
+            "question": "Bob Dylan est souvent associé au mouvement de __________ des années 1960.",
+            "options": {
+                "a": "rock psychédélique",
+                "b": "folk",
+                "c": "hip-hop"
+            },
+            "reponse_correcte": "b",
+            "explication": "Bob Dylan est un icône du mouvement folk des années 1960, connu pour ses chansons protestataires."
+        },
+        {
+            "question": "La musique classique se limite principalement à des compositions pour orchestres.",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "b",
+            "explication": "La musique classique inclut une variété de formes, dont des compositions pour piano, quatuors à cordes, et opéras, en plus des orchestres."
+        },
+        {
+            "question": "Quels éléments sont typiques du reggae ?",
+            "multi_options": {
+                "a": "Rythme syncopé",
+                "b": "Paroles engagées",
+                "c": "Utilisation du synthétiseur",
+                "d": "Guitare électrique distordue"
             },
             "reponse_correcte": [
                 "a",
                 "b"
-            ]
+            ],
+            "explication": "Le reggae est caractérisé par un rythme syncopé et des paroles souvent engagées socialement."
         },
         {
-            "question": "Quels sont les éléments protégés par le droit d'auteur dans le domaine de la musique ?",
+            "question": "Le style 'barbershop' est un type de __________.",
+            "options": {
+                "a": "jazz instrumental",
+                "b": "chant a cappella",
+                "c": "danse"
+            },
+            "reponse_correcte": "b",
+            "explication": "Le style 'barbershop' est un type de chant a cappella harmonieux, souvent interprété par des quatuors."
+        },
+        {
+            "question": "Le développement du microphone a influencé l'évolution du style vocal des chanteurs dans la musique populaire.",
+            "options": {
+                "a": "Vrai",
+                "b": "Faux"
+            },
+            "reponse_correcte": "a",
+            "explication": "L'introduction du microphone a permis aux chanteurs de développer un style vocal plus intime, notamment dans le jazz et la pop."
+        },
+        {
+            "question": "Le concept d'album conceptuel, où toutes les chansons sont liées par un thème commun, a été popularisé par __________.",
+            "options": {
+                "a": "The Beatles",
+                "b": "The Rolling Stones",
+                "c": "Elvis Presley"
+            },
+            "reponse_correcte": "a",
+            "explication": "The Beatles ont popularisé l'idée d'album conceptuel avec 'Sgt. Pepper's Lonely Hearts Club Band'."
+        },
+        {
+            "question": "La musique country est souvent associée à __________.",
+            "options": {
+                "a": "les zones urbaines",
+                "b": "les zones rurales",
+                "c": "les discothèques"
+            },
+            "reponse_correcte": "b",
+            "explication": "La musique country est traditionnellement associée aux zones rurales et évoque souvent des thèmes de vie à la campagne."
+        },
+        {
+            "question": "Le mouvement 'grunge' est devenu populaire dans les années 1990 dans la ville de __________.",
+            "options": {
+                "a": "New York",
+                "b": "Los Angeles",
+                "c": "Seattle"
+            },
+            "reponse_correcte": "c",
+            "explication": "Le mouvement grunge a émergé à Seattle dans les années 1990, avec des groupes comme Nirvana."
+        },
+        {
+            "question": "Le terme 'sampling' dans la musique désigne l'utilisation de __________.",
+            "options": {
+                "a": "nouveaux instruments",
+                "b": "morceaux de musique préexistants",
+                "c": "paroles improvisées"
+            },
+            "reponse_correcte": "b",
+            "explication": "Le 'sampling' est l'acte de réutiliser des extraits de morceaux de musique existants pour créer une nouvelle composition."
+        },
+        {
+            "question": "Les inégalités de genre dans l'industrie musicale se manifestent souvent par __________.",
+            "options": {
+                "a": "l'accès à la radio",
+                "b": "la représentation des femmes dans les rôles de direction",
+                "c": "les ventes d'albums"
+            },
+            "reponse_correcte": "b",
+            "explication": "Les inégalités de genre dans l'industrie musicale se manifestent souvent par une sous-représentation des femmes dans les rôles de direction."
+        },
+        {
+            "question": "Quel genre musical est lié aux chants de travail des esclaves afro-américains ?",
+            "options": {
+                "a": "Le gospel",
+                "b": "Le blues",
+                "c": "Le jazz"
+            },
+            "reponse_correcte": "b",
+            "explication": "Le blues trouve ses origines dans les chants de travail des esclaves afro-américains, reflétant souvent leurs luttes."
+        },
+        {
+            "question": "Quels sont les effets de l'autotune sur la voix d'un chanteur ?",
             "multi_options": {
-                "a": "Les paroles",
-                "b": "Les mélodies",
-                "c": "Les arrangements",
-                "d": "Les enregistrements audio"
+                "a": "Correction de la justesse",
+                "b": "Ajout d'effets électroniques",
+                "c": "Distorsion de la voix",
+                "d": "Amélioration de la respiration"
             },
             "reponse_correcte": [
                 "a",
-                "b",
-                "c"
-            ]
+                "b"
+            ],
+            "explication": "L'autotune corrige la justesse de la voix et peut ajouter des effets électroniques, mais ne corrige pas la respiration."
         },
         {
-            "question": "Quelles sont les sanctions possibles en cas de violation du droit d'auteur dans le domaine du cinéma ?",
-            "multi_options": {
-                "a": "Des amendes financières",
-                "b": "La confiscation de copies illégales",
-                "c": "Des peines de prison",
-                "d": "Des restrictions de voyages"
-            },
-            "reponse_correcte": [
-                "a",
-                "b",
-                "c"
-            ]
-        },
-        {
-            "question": "Quelles sont les fonctions principales du droit d'auteur dans le domaine cinématographique ?",
-            "multi_options": {
-                "a": "Protéger les droits des réalisateurs",
-                "b": "Garantir la rémunération des acteurs",
-                "c": "Prévenir la copie non autorisée des films",
-                "d": "Assurer la protection des œuvres cinématographiques"
-            },
-            "reponse_correcte": [
-                "c",
-                "d"
-            ]
-        },
-        {
-            "question": "Quelles sont les personnes protégées par les droits voisins dans le domaine théâtral ?",
-            "multi_options": {
-                "a": "Les dramaturges",
-                "b": "Les acteurs",
-                "c": "Les metteurs en scène",
-                "d": "Les producteurs de spectacles"
-            },
-            "reponse_correcte": [
-                "b",
-                "c",
-                "d"
-            ]
-        },
-        {
-            "question": "Quels éléments sont couverts par la propriété intellectuelle dans le domaine de la musique ?",
-            "multi_options": {
-                "a": "Les paroles de chansons",
-                "b": "Les enregistrements audio",
-                "c": "Les compositions musicales",
-                "d": "Les arrangements musicaux"
-            },
-            "reponse_correcte": [
-                "a",
-                "c",
-                "d"
-            ]
-        },
-        {
-            "question": "Quelles actions sont considérées comme des violations des droits d'auteur dans le domaine du 7ème art ?",
-            "multi_options": {
-                "a": "La reproduction non autorisée d'un film",
-                "b": "La distribution illégale de copies d'un film",
-                "c": "La diffusion non autorisée d'un film sur Internet",
-                "d": "La réalisation de critiques de films"
-            },
-            "reponse_correcte": [
-                "a",
-                "b",
-                "c"
-            ]
-        },
-        {
-            "question": "_______ est une forme d'art dramatique qui combine musique, chant, danse et dialogue pour raconter une histoire.",
+            "question": "La musique classique se caractérise souvent par des œuvres longues et complexes.",
             "options": {
-                "a": "La tragédie",
-                "b": "Le théâtre musical",
-                "c": "La comédie"
+                "a": "Vrai",
+                "b": "Faux"
             },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Le _______ est une comédie musicale populaire basée sur le roman de Victor Hugo, 'Les Misérables'.",
-            "options": {
-                "a": "Le Fantôme de l'Opéra",
-                "b": "Cats",
-                "c": "Les Misérables"
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Un _______ est une pièce de théâtre musical qui est principalement chantée plutôt que parlée.",
-            "options": {
-                "a": "opéra",
-                "b": "opérette",
-                "c": "opéra-bouffe"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "_______ est un compositeur célèbre connu pour ses opéras, dont 'La Traviata' et 'Rigoletto'.",
-            "options": {
-                "a": "Wolfgang Amadeus Mozart",
-                "b": "Giuseppe Verdi",
-                "c": "Richard Wagner"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Dans le théâtre, le _______ est l'endroit où se trouvent les spectateurs.",
-            "options": {
-                "a": "proscenium",
-                "b": "orchestre",
-                "c": "parterre"
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Le _______ est une pièce musicale théâtrale souvent caractérisée par des dialogues parlés, des chansons et des danses.",
-            "options": {
-                "a": "ballet",
-                "b": "opéra",
-                "c": "spectacle de variétés"
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Un _______ est un droit exclusif accordé à un créateur pour protéger ses œuvres artistiques.",
-            "options": {
-                "a": "copyright",
-                "b": "brevet",
-                "c": "marque déposée"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Dans le théâtre, le _______ est le texte écrit de la pièce, y compris les dialogues et les indications de mise en scène.",
-            "options": {
-                "a": "script",
-                "b": "scénario",
-                "c": "livret"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "_______ est une pièce de théâtre musical basée sur le roman de Gaston Leroux, mettant en vedette un mystérieux personnage masqué.",
-            "options": {
-                "a": "Le Roi Lion",
-                "b": "Cats",
-                "c": "Le Fantôme de l'Opéra"
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Dans le théâtre, le _______ est un personnage qui s'adresse directement au public pour commenter l'action de la pièce.",
-            "options": {
-                "a": "figurant",
-                "b": "monologue",
-                "c": "narrateur"
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Le _______ est un compositeur célèbre connu pour ses opéras romantiques, dont 'Tannhäuser' et 'Tristan et Isolde'.",
-            "options": {
-                "a": "Wolfgang Amadeus Mozart",
-                "b": "Giuseppe Verdi",
-                "c": "Richard Wagner"
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Un _______ est un spectacle de théâtre musical caractérisé par des numéros de danse et de musique.",
-            "options": {
-                "a": "revue",
-                "b": "cabaret",
-                "c": "opéra comique"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Le _______ est le terme utilisé pour désigner l'ensemble des acteurs, chanteurs et danseurs d'une production théâtrale.",
-            "options": {
-                "a": "ensemble",
-                "b": "troupe",
-                "c": "distribution"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Un _______ est un type de spectacle de variétés qui met en vedette des performances musicales, des sketches comiques et d'autres numéros divertissants.",
-            "options": {
-                "a": "comédie musicale",
-                "b": "cabaret",
-                "c": "opérette"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Le _______ est le droit moral d'un créateur sur son œuvre, qui comprend le droit d'être reconnu comme l'auteur et de s'opposer à toute modification de l'œuvre.",
-            "options": {
-                "a": "droit d'auteur",
-                "b": "droit de suite",
-                "c": "droit moral"
-            },
-            "reponse_correcte": "c"
-        },
-        {
-            "question": "Dans le théâtre, le _______ est un type de comédie musicale qui parodie ou satirise un sujet sérieux ou une œuvre existante.",
-            "options": {
-                "a": "revue",
-                "b": "opérette",
-                "c": "parodie"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Un _______ est un ensemble de musiciens qui accompagnent les chanteurs et les danseurs dans une production théâtrale.",
-            "options": {
-                "a": "orchestre",
-                "b": "ensemble vocal",
-                "c": "bande sonore"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "Dans le théâtre musical, le _______ est un passage chanté qui révèle les pensées ou les émotions d'un personnage.",
-            "options": {
-                "a": "aria",
-                "b": "duo",
-                "c": "refrain"
-            },
-            "reponse_correcte": "a"
-        },
-        {
-            "question": "_______ est un compositeur de musique de théâtre connu pour ses œuvres telles que 'Sweeney Todd' et 'Into the Woods'.",
-            "options": {
-                "a": "Andrew Lloyd Webber",
-                "b": "Stephen Sondheim",
-                "c": "Cole Porter"
-            },
-            "reponse_correcte": "b"
-        },
-        {
-            "question": "Le _______ est un terme utilisé pour désigner une chanson qui est répétée à plusieurs reprises dans une comédie musicale, généralement avec des paroles qui reflètent le thème central de la pièce.",
-            "options": {
-                "a": "motif musical",
-                "b": "refrain",
-                "c": "leitmotiv"
-            },
-            "reponse_correcte": "b"
+            "reponse_correcte": "a",
+            "explication": "La musique classique est connue pour ses compositions longues et complexes, telles que les symphonies et les opéras."
         }
     ]
 }
