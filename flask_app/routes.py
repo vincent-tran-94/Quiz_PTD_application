@@ -414,12 +414,13 @@ def download_csv():
     writer = csv.writer(output, delimiter=';')
     
     # Écrire l'en-tête du fichier CSV
-    writer.writerow(['Catégorie', 'Réponses correctes', 'Réponses incorrectes', 'Succès pourcentage'])
+    writer.writerow(['Catégorie', 'Sujets','Réponses correctes', 'Réponses incorrectes', 'Succès pourcentage'])
 
     # Écrire les données de chaque résultat dans le fichier CSV
     for result in participant_results:
         writer.writerow([
             result.categorie,
+            result.sujet,
             result.correct_answers,
             result.incorrect_answers,
             result.success_percentage
