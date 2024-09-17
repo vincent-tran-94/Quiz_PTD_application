@@ -282,7 +282,7 @@ def choice_categories(choice_categorie):
         return redirect(url_for('categorie_questions', categorie=choice_categorie, sujet=selected_subject))
 
     # Renvoyer le template avec les sujets
-    return render_template('choice_subject.html', choice_categorie=choice_categorie, list_subjects=list_subjects)
+    return render_template('sidebar/choice_subject.html', choice_categorie=choice_categorie, list_subjects=list_subjects)
 
 
 

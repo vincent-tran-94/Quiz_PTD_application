@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choix des Sujets</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles/sidebar.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/choice_subject.css') }}">
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_v2_PTD.jpg') }}">
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+    <div class="container">
+        <h1 class="text-center">Choix de la catégorie : <strong>{{ choice_categorie }} </strong></h1>
+        
+        <div class="quiz-instructions">
+            <h2>Consignes du Quiz</h2>
+            <p>
+                <strong>Ton droit, ton choix</strong> est une application pédagogique qui propose des quiz dans quatre catégories : <em>droit, humanitaire, sociologie</em> 
+                et plus encore. Vous pouvez tester vos connaissances dans une seule catégorie à la fois, avec une participation unique par catégorie. 
+                Les résultats seront affichés après soumission. 
+                Vous pourrez revoir la correction de chaque sujet pour chaque catégorie du quiz, avec des explications détaillées 
+                pour chaque question, ainsi que le pourcentage de réussite pour chaque sujet attribué à cette catégorie.
+            </p>
+            <ul>
+                <li><i class='bx bx-check-circle'></i> Questions à choix multiple ou réponse unique</li>
+                <li><i class='bx bx-check-circle'></i> Vrai ou Faux</li>
+                <li><i class='bx bx-edit'></i> Questions à trous</li>
+                <li><i class='bx bx-time'></i> Timer : 10 minutes pour répondre à 15 questions</li>
+                <li><i class='bx bx-alarm-exclamation'></i> Pénalité de 30 secondes pour sortie du navigateur</li>
+            </ul>
+            <p class="text-danger"><i class='bx bx-error'></i> Attention ! Deux sorties du navigateur entraîneront la perte de temps.</p>
+            <p class="text-danger"><i class='bx bx-error'></i><strong>Note importante : Il est interdit de copier-coller les questions et les réponses. Le non-respect de cette consigne peut entraîner l'annulation de votre participation. </strong></p>
+            <p class="text-info"><i class='bx bx-info-circle'></i> Choisissez le sujet qui vous intéresse le plus parmi ceux proposés ci-dessous.</p>
+        
+            <div class="encouragement text-center">
+                <p>Bon courage ! <i class='bx bx-smile'></i></p>
+            </div>
+        </div>
+
+        <h2 class="available-subjects text-center">Liste des sujets disponibles</h2>
+
+        {% if list_subjects %}
+            <form method="POST" class="subject-form">
+                {% for subject in list_subjects %}
+                    <button type="submit" name="selected_subject" value="{{ subject }}" class="subject-button btn btn-primary btn-block">
+                        {{ subject.replace('_', ' ') }}
+                    </button>
+                {% endfor %}
+            </form>
+        {% else %}
+            <p>Aucun sujet trouvé pour cette catégorie.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

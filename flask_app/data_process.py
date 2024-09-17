@@ -29,7 +29,7 @@ def open_file_json_from_directory(path):
     
     # Mélanger toutes les questions
     random.shuffle(all_questions)
-    selected_questions = all_questions[:20]
+    selected_questions = all_questions[:15]
 
     return selected_questions
 

@@ -1,0 +1,129 @@
+/* Ajoutez vos styles personnalisés ici */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #EAF6FF; /* Nouvelle couleur de fond plus vivante */
+    padding: 20px;
+    margin: 0;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+
+h1 {
+    color: #333333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.quiz-instructions {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-left: 5px solid #007bff;
+}
+
+.quiz-instructions h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.quiz-instructions ul {
+    list-style-type: none;
+    padding-left: 0;
+    color: #555;
+}
+
+.quiz-instructions li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.quiz-instructions li i {
+    margin-right: 8px;
+    color: #007bff; /* Couleur des icônes */
+}
+
+.quiz-instructions p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Section Bon courage */
+.encouragement p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #28a745;
+    margin-bottom: 20px;
+}
+
+.encouragement i {
+    color: #28a745;
+    font-size: 24px;
+}
+
+/* Titre des sujets disponibles */
+.available-subjects {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Mise à jour des boutons de sujet pour une taille plus petite */
+.subject-button {
+    font-size: 14px; /* Réduction de la taille de la police */
+    padding: 6px 10px; /* Réduction de la taille des boutons */
+    margin: 8px 0;
+    border-radius: 6px;
+    border: none;
+    background-color: #19468A; /* Couleur de base des boutons */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Les boutons prennent toute la largeur pour être bien alignés */
+    max-width: 400px; /* Limite la largeur maximale */
+    margin: 8px auto; /* Centrage automatique */
+}
+
+.subject-button:hover {
+    background-color: #A9215A; /* Couleur au survol */
+    transform: scale(1.05); /* Léger agrandissement au survol */
+}
+
+.text-danger {
+    color: #ff425f;
+    font-weight: bold;
+}
+
+.text-info {
+    color: #17a2b8;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.text-info i {
+    margin-right: 8px;
+}
+
+/* Form styling */
+.subject-form {
+    text-align: center;
+}
+
+.quiz-instructions li strong {
+    color: #ff425f; /* Couleur de mise en avant de la consigne importante */
+}
