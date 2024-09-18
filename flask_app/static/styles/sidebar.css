@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -5,6 +7,29 @@
   font-family: "Poppins", sans-serif;
 }
 
+.aside-background {
+  display: flex;
+  position: static;
+  background-color: rgba(37,37,37);
+  padding: 25px; 
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 13%;
+  right: 25px;
+}
+.social-icons a {
+  margin: 0 10px; /* Marge entre les éléments */
+}
+
+.social-logo {
+  width: 30px; /* Redimensionner tous les logos en 30px de largeur */
+  height: auto; /* Hauteur automatique pour conserver les proportions */
+  margin-right: 3px; /* Espacement entre les logos */
+}
 
 nav {
   position: fixed;
@@ -14,7 +39,9 @@ nav {
   width: 100%;
   display: flex;
   align-items: center;
+  background:   rgba(37,37,37);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Valeur élevée pour s'assurer que le menu soit devant les autres éléments */
 }
 
 nav .logo {
@@ -27,14 +54,14 @@ nav .logo {
 .logo .menu-icon {
   position: sticky;
   color: white;
-  font-size: 24px;
+  font-size: 28px;
   margin-right: 14px;
   cursor: pointer;
 }
 .logo .logo-name {
   position: sticky;
   color: white;
-  font-size: 22px;
+  font-size: 25px;
   font-weight: 500;
 }
 
@@ -45,7 +72,7 @@ nav .sidebar {
     left: -100%;
     height: 100%;
     width: 280px;
-    background-color:  rgba(52, 73, 94);
+    background-color:  rgba(17, 58, 122);
     color: white;
     padding: 20px;
     box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
@@ -78,7 +105,7 @@ nav.open .sidebar {
 }
 
 .lists .nav-link:hover {
-  background-color: #4070f4;
+  background-color: #A9215A;
 }
 .nav-link .icon {
   margin-right: 14px;
@@ -111,4 +138,11 @@ nav.open ~ .overlay {
   pointer-events: auto;
 }
 
+.menu-icon {
+  transition: color 0.3s ease; /* Ajoute une transition pour rendre le changement plus fluide */
+}
+
+.menu-icon:hover {
+  color: rgba(255, 221, 112); /* Change la couleur en vert lors du survol */
+}
 

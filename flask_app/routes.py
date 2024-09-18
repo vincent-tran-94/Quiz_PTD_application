@@ -95,6 +95,8 @@ def login():
     return render_template('setup_user/login.html',image_filename=image_filename)
 
 
+
+
 #Fonction de déconnexion
 @app.route('/logout')
 def logout():
@@ -112,9 +114,11 @@ def forgot_password():
         try:
             user = User.query.filter_by(email=email).one()
             reset_password_email(user)
-            return render_template('setup_user/confirmation.html', message='Un lien de réinitialisation de mot de passe a été envoyé à votre adresse e-mail.')
+            return render_template('setup_user/confirmation.html', 
+                                   message='Un lien de réinitialisation de mot de passe a été envoyé à votre adresse e-mail.')
         except NoResultFound:
-            return render_template('setup_user/confirmation.html', message='Adresse e-mail non trouvée.')
+            return render_template('setup_user/confirmation.html', 
+                                   message='Adresse e-mail non trouvée.')
         
     return render_template('setup_user/forgot_password.html')
 
@@ -126,11 +130,17 @@ def delete_account():
         try: 
             user = User.query.filter_by(email=email).one()
             delete_account_email(user)
-            return render_template('setup_user/confirmation.html', message='Un lien de suppresion de compte a été envoyé à votre adresse e-mail.')
+            return render_template('setup_user/confirmation.html', 
+                                   message='Un lien de suppresion de compte a été envoyé à votre adresse e-mail.')
         except NoResultFound:
-            return render_template('setup_user/confirmation.html', message='Adresse e-mail non trouvée.')
+            return render_template('setup_user/confirmation.html', 
+                                   message='Adresse e-mail non trouvée.')
         
     return render_template("setup_user/delete_account.html")
+
+@app.route('/test')
+def test():
+    return render_template("page.html")
 
 
 #Fonction de désinscription
@@ -146,9 +156,11 @@ def register():
         if not existing_email:
             send_confirmation_email(nom=nom,prenom=prenom,email=email,password=password)
                    
-            return render_template('setup_user/confirmation.html', message='Un e-mail de confirmation a été envoyé à votre adresse.')
+            return render_template('setup_user/confirmation.html', 
+                                   message='Un e-mail de confirmation a été envoyé à votre adresse.')
         else:
-            return render_template('setup_user/confirmation.html', message='Vous êtes déjà inscrit.')
+            return render_template('setup_user/confirmation.html', 
+                                   message='Vous êtes déjà inscrit.')
 
 
     return render_template('setup_user/register.html')
@@ -175,7 +187,8 @@ def formulaire():
         champs_requis = [nom, prenom, adresse,code_postal,ville,pays, niveau_etude, statut, centre_interet, choix_categorie]
 
         if not champs_requis:
-            return render_template('formulaire.html', message="Veuillez remplir tous les champs.")
+            return render_template('formulaire.html', 
+                                   message="Veuillez remplir tous les champs.")
         
 
         participant = Participant(participant_id=participant_id,
@@ -193,7 +206,9 @@ def formulaire():
         db.session.commit()
         return redirect(url_for('accueil'))
 
-    return render_template('formulaire.html', message=None,image_filename=image_filename)
+    return render_template('formulaire.html', 
+                           message=None,
+                           image_filename=image_filename)
 
 
 #Fonction de l'affichage page d'accueil
@@ -204,14 +219,17 @@ def accueil():
     image_filename = 'images/logo_PTD.jpg'
     image_background = 'images/background_image.jpg'
     image_background_contact = 'images/contact_us_background.jpg'
-    return render_template('sidebar/home.html',image_filename=image_filename,image_background=image_background,image_background_contact=image_background_contact)
+    return render_template('choice_template.html',image_filename=image_filename,
+                           image_background=image_background,
+                           image_background_contact=image_background_contact,
+                           base_template='home')
 
 
 @app.route('/profil')
 def profil():
     participant_id = session.get('user_id')
     user = Participant.query.get(participant_id)
-    return render_template('sidebar/profil.html', user=user)
+    return render_template('choice_template.html', user=user,base_template='profil')
 
 
 #Fonction de contact client avec l'association
@@ -233,7 +251,8 @@ def contact():
         db.session.commit()
 
         try: 
-            msg = Message(f'Application PTDlegalQuiz - Nouveau message de la part de {nom}', recipients=[mail_association],body=f"Nom: {nom}\nEmail: {email}\nTel: {tel}\nMessage: {message}")
+            msg = Message(f'Application PTDlegalQuiz - Nouveau message de la part de {nom}', 
+                          recipients=[mail_association],body=f"Nom: {nom}\nEmail: {email}\nTel: {tel}\nMessage: {message}")
             mail.send(msg)
         except Exception as e:
             print('Une erreur s\'est produite lors de l\'envoi du message.')
@@ -282,7 +301,7 @@ def choice_categories(choice_categorie):
         return redirect(url_for('categorie_questions', categorie=choice_categorie, sujet=selected_subject))
 
     # Renvoyer le template avec les sujets
-    return render_template('sidebar/choice_subject.html', choice_categorie=choice_categorie, list_subjects=list_subjects)
+    return render_template('choice_template.html', choice_categorie=choice_categorie, list_subjects=list_subjects,base_template='choice_subject')
 
 
 
@@ -440,6 +459,7 @@ def download_csv():
 @login_required
 def dashboard():
     image_filename = 'images/logo_PTD.jpg'
+    base_template='dashboard'
 
     ReponsesParticipant = ReponseParticipant.query.all()
     if ReponsesParticipant:
@@ -459,20 +479,22 @@ def dashboard():
             indexed_filtered_participants = list(enumerate(filtered_participants, start=1))
 
             
-            return render_template('sidebar/dashboard.html', graph_json_success=graph_json_success, 
+            return render_template('choice_template.html', graph_json_success=graph_json_success, 
                             graph_json_participants=graph_json_participants, 
                             graph_json_participants_month= graph_json_participants_month,
                             top_participants=indexed_filtered_participants, 
                             selected_month=month,
                             selected_year=year,
-                            image_filename=image_filename)
+                            image_filename=image_filename,
+                            base_template=base_template)
 
 
-        return render_template('sidebar/dashboard.html', graph_json_success=graph_json_success, 
+        return render_template('choice_template.html', graph_json_success=graph_json_success, 
                             graph_json_participants=graph_json_participants, 
                             graph_json_participants_month= graph_json_participants_month,
                             top_participants=indexed_top_participants, 
-                            image_filename=image_filename)
+                            image_filename=image_filename,
+                            base_template=base_template)
     else: 
         return redirect(url_for('accueil'))
     
@@ -488,7 +510,10 @@ def my_subscriptions():
     essais_restants_par_categorie = {}
     for essai_restant in essais_restants:
         essais_restants_par_categorie[essai_restant.categorie] = essai_restant.nb_essais 
-    return render_template("sidebar/my_subscriptions.html", subscriptions=subscriptions, essais_restants_par_categorie=essais_restants_par_categorie)
+    return render_template("choice_template.html", 
+                           subscriptions=subscriptions, 
+                           essais_restants_par_categorie=essais_restants_par_categorie,
+                           base_template='my_subscriptions')
 
 @app.route("/parrainage",methods=['GET', 'POST'])
 @login_required
@@ -577,5 +602,8 @@ def souscription():
         success_url=url_for('thanks', _external=True) + '?session_id={CHECKOUT_SESSION_ID}',
         cancel_url=url_for('souscription', _external=True),
     )
-    return render_template('sidebar/souscription.html', checkout_session_id=session['id'], checkout_public_key=app.config['STRIPE_PUBLIC_KEY'])
+    return render_template('choice_template.html', 
+                           checkout_session_id=session['id'], 
+                           checkout_public_key=app.config['STRIPE_PUBLIC_KEY'],
+                           base_template='souscription')
 

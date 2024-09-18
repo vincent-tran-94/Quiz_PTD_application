@@ -1,0 +1,24 @@
+{% if base_template == "choice_subject" %}
+    {% set base_file = "base_choice_subject.html" %}
+
+{% elif base_template == "dashboard" %}
+    {% set base_file = "base_dashboard.html" %}
+
+{% elif base_template == "home" %}
+    {% set base_file = "base_home.html" %}
+
+{% elif base_template == "profil" %}
+    {% set base_file = "base_profil.html" %}
+
+{% elif base_template == "my_subscriptions" %}
+    {% set base_file = "base_my_subscriptions.html" %}
+
+{% elif base_template == "souscription" %}
+    {% set base_file = "base_souscription.html" %}
+{% endif %}
+
+{% extends "base/" + base_file %}
+
+{% block content %}
+    {% include "menu_bar.html" %}
+{% endblock %}

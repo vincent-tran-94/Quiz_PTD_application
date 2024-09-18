@@ -31,19 +31,11 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 }
 
-.aside-background {
-    display: flex;
-    position: static;
-    background-color: rgba(52, 73, 94);
-    padding: 25px; 
-}
-
-
 .img-custom {
     position: absolute;
     width: 250px;
     height: 220px;
-    top: 4.8%;
+    top: 7.6%;
     right: 2%;
 }
 
@@ -57,6 +49,9 @@
     top: 100%;
 }
 
+#banner {
+    padding-top: 70px; /* Ajuste la valeur selon tes besoins */
+}
 
 .title {
     text-align: center;
@@ -71,24 +66,6 @@
     width: 60%; /* Réduit la largeur de la bannière à 70% de la largeur du conteneur parent */
 }
 
-
-.social-logo {
-    width: 30px; /* Redimensionner tous les logos en 30px de largeur */
-    height: auto; /* Hauteur automatique pour conserver les proportions */
-    margin-right: 3px; /* Espacement entre les logos */
-}
-
-
-.social-icons {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 0%;
-    right: 753px;
-}
-.social-icons a {
-    margin: 0 10px; /* Marge entre les éléments */
-}
 
 
 

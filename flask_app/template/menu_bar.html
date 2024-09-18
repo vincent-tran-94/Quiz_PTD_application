@@ -1,13 +1,25 @@
 <!-- templates/menu_bar.html -->
 <nav>
     <div class="logo">
-        <i class="bx bx-menu menu-icon" style="padding-bottom: 18px;"></i>
-        <span class="logo-name" style="padding-bottom: 20px;">Menu application</span>
+        <i class="bx bx-menu menu-icon"></i>
+        <span class="logo-name">Préserve ton Droit</span>
+        <aside class="aside-background">
+            <div class="social-icons">
+                <a href="https://www.instagram.com/preservetondroit/?next=https%3A%2F%2Fwww.instagram.com%2Fmanav.manglani%2Fp%2FBv3PDqigZZZ%2F%3F__coig_login%3D1" target="_blank" class="btn btn-light">
+                    <img src="{{ url_for('static', filename='images/instagram_logo.jpeg') }}" alt="Instagram" class="social-logo"> Instagram</a>
+                <a href="https://twitter.com/PrsvTonDroit" target="_blank" class="btn btn-light" >
+                    <img src="{{ url_for('static', filename='images/twitter_logo.png') }}" alt="Twitter" class="social-logo" > Twitter</a>
+                <a href="https://www.tiktok.com/@preservetondroit?_t=8l4BIYlTWO9&_r=1"  target="_blank" class="btn btn-light" >
+                    <img src="{{ url_for('static', filename='images/tiktok_logo.png') }}" target="_blank" alt="TikTok" class="social-logo"> Tiktok</a>
+                <a href="https://www.paypal.com/paypalme/PreserveTonDroit"  target="_blank" class="btn btn-light" >
+                    <img src="{{ url_for('static', filename='images/paypal_logo.png') }}" target="_blank" alt="Paypal" class="social-logo">Paypal</a>
+                </div>
+        </aside> 
     </div>
     <div class="sidebar">
         <div class="logo">
             <i class="bx bx-menu menu-icon"> </i>
-            <span class="logo-name"> Préserve ton droit</span>
+            <span class="logo-name"> Menu </span>
         </div>
         <div class="sidebar-content">
             <ul class="lists">
@@ -87,3 +99,5 @@
         </div>
     </div>
 </nav>
+<section class="overlay"></section>
+<script src="{{ url_for('static', filename='js/menu_bar.js') }}"></script>

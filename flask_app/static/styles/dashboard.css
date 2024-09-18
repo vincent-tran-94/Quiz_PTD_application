@@ -2,13 +2,17 @@
     text-align: center;
 }
 
+.container { 
+    margin-top: 70px;
+}
+
  /* Ajout de bordures et d'ombres pour les graphiques */
  .graph-container {
     border: 1px solid #ccc; /* Bordure grise */
     border-radius: 5px; /* Coins arrondis */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Ombre */
     padding: 10px; /* Espacement intérieur */
-    margin-bottom: 20px; /* Marge inférieure pour séparation */
+    margin-bottom: 40px; /* Marge inférieure pour séparation */
 }
 
 body {
