@@ -1,9 +1,14 @@
 import os
 from datetime import timedelta
 
+id_database = "vincenttran"
+password_database = "associationptd"
+address_ip = "localhost"
+name_database = "participants"
+
 class Config:
     SECRET_KEY = '_5#y2L"F4Q8z\n\xec]/' 
-    SQLALCHEMY_DATABASE_URI = f"postgresql://{os.getenv('ID_DATABASE')}:{os.getenv('PASSWORD_DATABASE')}@{os.getenv('ADDRESS_IP')}:5432/{os.getenv('NAME_DATABASE')}"
+    SQLALCHEMY_DATABASE_URI = f"postgresql://{id_database}:{password_database}@{address_ip}:5432/{name_database}"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SESSION_PERMANENT = False
     SESSION_TYPE = "filesystem"
