@@ -9,24 +9,6 @@
     <link href="{{ url_for('static', filename='styles/sidebar.css') }}" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_v2_PTD.jpg') }}">
-   <style>
-        body {
-            position: static;
-            background-image: url("{{ url_for('static',filename=image_background)}}");
-            background-size: cover;
-            background-repeat: no-repeat;
-            color: #000;
-            overflow: auto; 
-            min-height: 100%;
-        }
-        #contact {
-            background-image: url("{{ url_for('static',filename=image_background_contact)}}");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: right center;
-            color: white;
-        }
-    </style>
 </head>
 <body>
     {% block content %}
@@ -50,22 +32,17 @@
     <script src="{{ url_for('static', filename='js/videos.js') }}"></script>
     <section id="description">
         <div class="container">
-            <p><strong> Ton Choix, ton Droit est une application pédagogique de concours de quiz qui propose une expérience 
-            enrichissante dans quatre catégories distinctes : droit, juridique, humanitaire et sociologie. </strong>
-            Chaque participant a l'opportunité de tester ses connaissances dans chacune de ces catégories, avec une 
-            participation unique autorisée par catégorie. Une fois que vous avez soumis aux questionnaires, 
-            les résultats sont affichés sur une page dédiée à la visualisation.  </br> 
+            <p><strong>Ton droit, ton choix est une plateforme de concours de quiz offrant une expérience captivante 
+            à travers quatre catégories distinctes : droit, juridique, humanitaire et sociologie. </strong>
+            Chaque participant peut tester ses connaissances dans chacune de ces catégories, avec une seule participation autorisée par catégorie. 
+            Après avoir complété les questionnaires, les résultats sont affichés sur une page dédiée. </br> 
             <strong> <span style="color: rgba(155, 10, 10, 0.98);">
-            Le classement prend en compte si vous avez choisi tout les catégories. Vous avez un essai gratuit disponible pour vous ! </br> 
-            Chaque catégorie possède un total de 15 questions et les questionnaires sont mélangés aléatoirement.
-            Vous avez 10 minutes pour répondre à tout les questions. A savoir si vous sortez du quiz, vous perdrez 30 secondes chaque fois que cela se produira, au bout la deuxième fois. </br>  </span> 
-            Au niveau des récompenses, on peut proposer </span> <span style="color: rgb(39, 120, 80);"> soit des livres juridiques, 
-            des produits alimentaires, des vêtements, des produits high-tech à gagner ! </span> 
-            <div style="text-align:center"> Bon courage à vous ! Amusez-vous bien !</style> </strong> </p>
+            Le classement prend en compte votre participation dans toutes les catégories. 
+            Vous bénéficiez de trois essais gratuits par catégorie après votre premier choix du sujet !  </br> </span> 
+            Quant aux récompenses, vous pourrez gagner </span> <span style="color: rgb(39, 120, 80);"> des livres juridiques, 
+            des produits alimentaires, des vêtements ou encore des articles high-tech.</span> 
         </div>
     </section>
-
-        <img src="{{ url_for('static', filename=image_filename) }}" alt="Image PTD"  class="img-custom">
         <h2 class="centered-text top-margin">Choisissez des catégories suivantes que vous souhaitez prendre :</h2>
         <div class="container mt-5" style="margin-bottom: 100px;">
             {% with messages = get_flashed_messages() %}
@@ -97,7 +74,8 @@
             <div style="text-align:center"> <p><strong>Si vous souhaitez participer à nouveau au quiz ou connaitre plus votre progression, 
                 veuillez souscrire à un abonnement pour découvrir les offres disponibles.👇 </br> 
                 <div class="col-md-4 offset-md-4" style="padding-left: 20px; margin-bottom: 20px;">
-                    <a href="{{ url_for('souscription') }}" class="btn btn-warning btn-lg btn-block">S'abonner</a>
+                    <!-- <a href="{{ url_for('souscription') }}" class="btn btn-warning btn-lg btn-block">S'abonner</a> -->
+                    <a href="#" class="btn btn-warning btn-lg btn-block">S'abonner</a>
                 </div>
                 Si vous rencontrez des difficultés, n'hésitez pas à nous contacter ci-dessous. 👇 </style> </strong> </p> 
             </div>

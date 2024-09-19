@@ -1,3 +1,21 @@
+body {
+    position: static;
+    background-image: url('images/background_image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #000;
+    overflow: auto; 
+    min-height: 100%;
+}
+#contact {
+    background-image: url("images/contact_us_background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right center;
+    color: white;
+}
+
+
 .centered-text {
     position: sticky;
     text-align: center;
@@ -65,7 +83,5 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ajoute une ombre lisse */
     width: 60%; /* Réduit la largeur de la bannière à 70% de la largeur du conteneur parent */
 }
-
-
 
 

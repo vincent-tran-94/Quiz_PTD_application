@@ -1,45 +1,11 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 import uuid
 from sqlalchemy.dialects.postgresql import UUID
 from datetime import datetime
-import os
-from dotenv import load_dotenv
-from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 from sqlalchemy import JSON
-from datetime import timedelta
-
-
-load_dotenv() #Importer les paramètres de l'identification
-app = Flask(__name__,template_folder='template',static_url_path='/static')
-
-
-# #Host configuration and port 
-host = os.getenv("HOST")
-port = os.getenv("PORT")
-mail_association = os.getenv("MAIL_ASSOCIATION_CONTACT")
-
-app.secret_key = os.getenv('SECRET_KEY')
-db_uri = f"postgresql://{os.getenv('ID_DATABASE')}:{os.getenv('PASSWORD_DATABASE')}@{os.getenv('ADDRESS_IP')}:5432/{os.getenv('NAME_DATABASE')}"
-app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=14)
-
-db = SQLAlchemy(app)
-
-app.config.from_pyfile('config.cfg')
-
-jobstore = SQLAlchemyJobStore(url=db_uri)
-jobstores = {
-        'default': jobstore
-    }
-
-scheduler = BackgroundScheduler(jobstores=jobstores,job_defaults={'misfire_grace_time': None})
+from config import *
+from app import *
 
 """
 Liste des tables constitués dans notre base de données 

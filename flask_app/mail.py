@@ -1,9 +1,10 @@
 from flask import render_template, redirect, url_for, flash
 from models import *
+from app import *
+from config import * 
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadSignature
 from flask import request
-from launch_stripe import *
 import requests
 
 """
@@ -14,6 +15,7 @@ Fonctions de fonctionnalité de login et d'inscription via par mail (on peut cha
 
 # Initialiser Flask-Mail
 mail = Mail(app)
+app.secret_key = app.config['SECRET_KEY']
 
 # Clé secrète pour la création de tokens
 SECRET_KEY = app.secret_key # Changez ceci par une clé réelle et sécurisée

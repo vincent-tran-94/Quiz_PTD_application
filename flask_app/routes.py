@@ -1,16 +1,22 @@
+import csv
+import io
+
 from models import *
+from app import *
+from config import *
+
 from flask import render_template, request, redirect, url_for, session, flash, make_response
 from flask_login import LoginManager,login_required, logout_user, login_user, current_user
+from functools import wraps
+
 from sqlalchemy.orm.exc import NoResultFound
+
 from vizualisation import *
 from launch_stripe import * 
 from mail import *
 from data_process import *
 from permission import * 
-import csv
-import io
 from process_stripe import *
-from functools import wraps
 
 
 """
@@ -68,7 +74,6 @@ def check_inactive_session():
 #Fonction de la première connexion
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    image_filename = 'images/logo_PTD.jpg'
 
     if request.method == 'POST':
         email = request.form['email']
@@ -92,7 +97,7 @@ def login():
         else:
             flash("Nom d'utilisateur ou mot de passe invalide", "error")  # Message flash pour l'erreur
         
-    return render_template('setup_user/login.html',image_filename=image_filename)
+    return render_template('setup_user/login.html')
 
 
 
@@ -171,7 +176,6 @@ def register():
 @app.route('/formulaire', methods=['GET', 'POST'])
 @login_required
 def formulaire():
-    image_filename = 'images/logo_PTD.jpg'
     participant_id = session.get('user_id')
     if request.method == 'POST':
         nom = request.form['nom']
@@ -207,8 +211,7 @@ def formulaire():
         return redirect(url_for('accueil'))
 
     return render_template('formulaire.html', 
-                           message=None,
-                           image_filename=image_filename)
+                           message=None)
 
 
 #Fonction de l'affichage page d'accueil
@@ -216,12 +219,7 @@ def formulaire():
 def accueil():
     session.pop('selected_questions', None)
     session.pop('answers', None)
-    image_filename = 'images/logo_PTD.jpg'
-    image_background = 'images/background_image.jpg'
-    image_background_contact = 'images/contact_us_background.jpg'
-    return render_template('choice_template.html',image_filename=image_filename,
-                           image_background=image_background,
-                           image_background_contact=image_background_contact,
+    return render_template('choice_template.html',
                            base_template='home')
 
 
@@ -251,6 +249,7 @@ def contact():
         db.session.commit()
 
         try: 
+            mail_association = app.config['MAIL_ASSOCIATION_CONTACT']
             msg = Message(f'Application PTDlegalQuiz - Nouveau message de la part de {nom}', 
                           recipients=[mail_association],body=f"Nom: {nom}\nEmail: {email}\nTel: {tel}\nMessage: {message}")
             mail.send(msg)
@@ -458,7 +457,6 @@ def download_csv():
 @app.route('/dashboard',methods=['GET', 'POST'])
 @login_required
 def dashboard():
-    image_filename = 'images/logo_PTD.jpg'
     base_template='dashboard'
 
     ReponsesParticipant = ReponseParticipant.query.all()
@@ -485,7 +483,6 @@ def dashboard():
                             top_participants=indexed_filtered_participants, 
                             selected_month=month,
                             selected_year=year,
-                            image_filename=image_filename,
                             base_template=base_template)
 
 
@@ -493,7 +490,6 @@ def dashboard():
                             graph_json_participants=graph_json_participants, 
                             graph_json_participants_month= graph_json_participants_month,
                             top_participants=indexed_top_participants, 
-                            image_filename=image_filename,
                             base_template=base_template)
     else: 
         return redirect(url_for('accueil'))
@@ -541,7 +537,7 @@ def parrainage():
             message = "Ce participant a déjà un parrain."
         else:
             # Créer un code de parrainage
-            coupon_parrain = create_promotion_code(coupon_id)
+            coupon_parrain = create_promotion_code(app.config['COUPON_ID'])
 
             # Enregistrer le parrainage dans la base de données
             parrainage = Parrainage(participant_id=current_user.id, email=participant_email, 
@@ -591,11 +587,11 @@ def souscription():
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=[{
-            'price': id_product_bronze,
+            'price': app.config['ID_PRODUCT_BRONZE'],
             'quantity': 1,
         }],
         subscription_data={
-            'default_tax_rates': [taxe_rate],
+            'default_tax_rates': app.config['TAXE_RATE'],
         },
         mode='subscription',
         allow_promotion_codes=True,

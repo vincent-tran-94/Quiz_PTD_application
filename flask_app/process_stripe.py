@@ -1,5 +1,7 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 from models import *
+from config import *
+from app import *
 
 #Fonction pour la création des abonnements stockés sur une base de données
 def create_stripe_customer(new_product_customer,email_customer,id_customer,id_subscription):

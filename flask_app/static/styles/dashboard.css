@@ -16,7 +16,9 @@
 }
 
 body {
-    background-color: #f0f0f0; /* Couleur gris clair */
+    background-image: url('images/background_award.jpg');
+    background-size: cover; /* Pour que l'image couvre toute la zone */
+    background-position: center; /* Pour centrer l'image */
     position: relative;
     overflow: auto; 
     min-height: 100%;

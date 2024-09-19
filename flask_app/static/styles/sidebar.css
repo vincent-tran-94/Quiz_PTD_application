@@ -61,7 +61,7 @@ nav .logo {
 .logo .logo-name {
   position: sticky;
   color: white;
-  font-size: 25px;
+  font-size: 24px;
   font-weight: 500;
 }
 
@@ -99,7 +99,7 @@ nav.open .sidebar {
   display: flex;
   align-items: center;
   margin: 8px 0;
-  padding: 14px 12px;
+  padding: 14px 10px;
   border-radius: 8px;
   text-decoration: none;
 }
@@ -113,7 +113,7 @@ nav.open .sidebar {
   color: white;
 }
 .nav-link .link {
-  font-size: 16px;
+  font-size: 15px;
   color: white;
   font-weight: 400;
 }

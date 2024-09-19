@@ -1,19 +1,10 @@
 from models import *
+from app import *
+from config import *
 import stripe
 from flask import render_template, url_for, request, abort
 from mail import send_invoice_email
 from process_stripe import create_stripe_customer, update_participant_essais
-
-app.config['STRIPE_PUBLIC_KEY'] = os.getenv('STRIPE_PUBLIC_KEY')
-app.config['STRIPE_SECRET_KEY'] = os.getenv('STRIPE_SECRET_KEY')
-stripe.api_key = app.config['STRIPE_SECRET_KEY']
-
-id_product_bronze =  os.getenv('ID_PRODUCT_BRONZE')
-id_product_silver = os.getenv('ID_PRODUCT_SILVER')
-id_product_gold = os.getenv('ID_PRODUCT_GOLD')
-taxe_rate = os.getenv('ID_TAXE_RATE')
-secret_endpoint_webhook = os.getenv('STRIPE_SECRET_ENDPOINT')
-coupon_id = os.getenv('ID_COUPON')
 
 """
 COMMAND pour récupérer le nom du produit acheté par le client marche seulement en local
@@ -53,11 +44,11 @@ def create_checkout_session():
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=[{
-            'price': id_product_bronze,
+            'price': app.config['ID_PRODUCT_BRONZE'], 
             'quantity': 1,
         }],
         subscription_data={
-            'default_tax_rates': [taxe_rate],
+            'default_tax_rates': app.config['TAXE_RATE'],
         },
         mode='subscription',
         allow_promotion_codes=True,
@@ -73,11 +64,11 @@ def stripe_pay():
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=[{
-            'price': id_product_bronze,
+            'price': app.config['ID_PRODUCT_BRONZE'],
             'quantity': 1,
         }],
         subscription_data={
-            'default_tax_rates': [taxe_rate],
+            'default_tax_rates': app.config['TAXE_RATE'],
         },
         mode='subscription',
         allow_promotion_codes=True,
@@ -99,7 +90,7 @@ def stripe_webhook():
         abort(400)
     payload = request.get_data()
     sig_header = request.environ.get('HTTP_STRIPE_SIGNATURE')
-    endpoint_secret = secret_endpoint_webhook 
+    endpoint_secret = app.config['STRIPE_SECRET_ENDPOINT']  
     event = None
     try:
         event = stripe.Webhook.construct_event(

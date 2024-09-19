@@ -33,7 +33,8 @@ h1 {
 }
 
 .quiz-instructions h2 {
-    font-size: 22px;
+    text-align: center;
+    font-size: 28px;
     font-weight: bold;
     color: #333;
     margin-bottom: 15px;
