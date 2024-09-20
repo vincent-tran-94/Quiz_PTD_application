@@ -37,27 +37,7 @@
                     </a>
                 </li>
                 {% endif %}
-                {% if 'user_id' in session %}
-                <li class="list">
-                    <a href="{{ url_for('profil') }}" class="nav-link">
-                        <i class='bx bx-user-pin icon' ></i>
-                        <span class="link">Profil</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="{{ url_for('dashboard') }}" class="nav-link">
-                        <i class="bx bxs-dashboard icon"></i>
-                        <span class="link">Dashboard et classement</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="{{ url_for('progression') }}" class="nav-link">
-                        <i class="bx bx-list-check icon"></i>
-                        <span class="link">Votre progression</span>
-                    </a>
-                </li>
-                {% endif %}
-                <li class="list">
+                <li class="list"></li>
                     <a href="#" class="nav-link">
                         <i class="bx bx-group icon"></i>
                         <span class="link">Qui sommes-nous ?</span>
@@ -82,6 +62,24 @@
                     </a>
                 </li>
                 {% if 'user_id' in session %}
+                <li class="list">
+                    <a href="{{ url_for('profil') }}" class="nav-link">
+                        <i class='bx bx-user-pin icon' ></i>
+                        <span class="link">Profil</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{{ url_for('dashboard') }}" class="nav-link">
+                        <i class="bx bxs-dashboard icon"></i>
+                        <span class="link">Dashboard et classement</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{{ url_for('progression') }}" class="nav-link">
+                        <i class="bx bx-list-check icon"></i>
+                        <span class="link">Votre progression</span>
+                    </a>
+                </li>
                 <li class="list">
                     <!-- <a href="{{ url_for('parrainage') }}" class="nav-link"> -->
                     <a href="#" class="nav-link">
