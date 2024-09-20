@@ -5,6 +5,10 @@ from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 from config import Config
 import stripe
 
+"""
+Initialisation de l'application Flask
+"""
+
 app = Flask(__name__, template_folder='template', static_url_path='/static')
 
 # Charger les fichiers de configurations

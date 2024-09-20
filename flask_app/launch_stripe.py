@@ -1,6 +1,5 @@
 from models import *
 from app import *
-from config import *
 import stripe
 from flask import render_template, url_for, request, abort
 from mail import send_invoice_email

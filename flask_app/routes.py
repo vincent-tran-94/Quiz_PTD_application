@@ -3,7 +3,6 @@ import io
 
 from models import *
 from app import *
-from config import *
 
 from flask import render_template, request, redirect, url_for, session, flash, make_response
 from flask_login import LoginManager,login_required, logout_user, login_user, current_user
@@ -43,6 +42,7 @@ def utility_processor():
 def load_user(user_id):
     return db.session.get(User, user_id)
 
+#Gérer les connexions pour les différents routes
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):

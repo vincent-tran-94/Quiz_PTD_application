@@ -4,7 +4,6 @@ import uuid
 from sqlalchemy.dialects.postgresql import UUID
 from datetime import datetime
 from sqlalchemy import JSON
-from config import *
 from app import *
 
 """

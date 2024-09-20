@@ -1,7 +1,6 @@
 from flask import render_template, redirect, url_for, flash
 from models import *
 from app import *
-from config import * 
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadSignature
 from flask import request

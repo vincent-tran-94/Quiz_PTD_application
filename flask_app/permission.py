@@ -1,7 +1,6 @@
 from flask import redirect, render_template
 from models import *
 from flask_login import current_user
-from config import *
 from app import *
 
 # Fonction utilitaire pour vérifier le rôle de l'utilisateur

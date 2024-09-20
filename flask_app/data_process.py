@@ -1,7 +1,6 @@
 import os
 import random
 from models import *
-from app import *
 from flask import session
 import json
 from sqlalchemy import func, extract, distinct
