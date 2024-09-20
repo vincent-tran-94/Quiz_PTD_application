@@ -227,7 +227,22 @@ def accueil():
 def profil():
     participant_id = session.get('user_id')
     user = Participant.query.get(participant_id)
-    return render_template('choice_template.html', user=user,base_template='profil')
+
+    # check if a record exists for them in the StripeCustomer table
+    subscriptions = StripeCustomer.query.filter_by(participant_id=current_user.id).all()
+    # Récupérez les essais restants pour chaque catégorie
+    essais_restants = ReponseParticipant.query.filter_by(participant_id=current_user.id).all()
+    
+    # Créez un dictionnaire pour stocker les essais restants par catégorie
+    essais_restants_par_categorie = {}
+    for essai_restant in essais_restants:
+        essais_restants_par_categorie[essai_restant.categorie] = essai_restant.nb_essais 
+
+
+    return render_template('choice_template.html', user=user,
+                           subscriptions=subscriptions, 
+                           essais_restants_par_categorie=essais_restants_par_categorie,
+                           base_template='profil')
 
 
 #Fonction de contact client avec l'association
@@ -258,22 +273,6 @@ def contact():
             print(e)
             
     return redirect(url_for('accueil'))
-
-def get_all_options(questions):
-    all_options = []
-    for question in questions:
-        if 'options' in question:
-            all_options.append(question['options'])
-        elif 'multi_options' in question:
-            all_options.append(question['multi_options'])
-
-    return all_options
-
-def get_all_explications(questions): 
-    all_explications = [] 
-    for question in questions: 
-        all_explications.append(question['explication'])
-    return all_explications
 
 
 # Chemin de base où se trouvent les dossiers des catégories
@@ -321,8 +320,8 @@ def categorie_questions(categorie,sujet):
     categories_directories = {
         'droit': 'questions/droit',
         'humanitaire': 'questions/humanitaire',
-        'culturel': 'questions/culturel',
-        'sociologie': 'questions/sociologie'
+        'sociologie': 'questions/sociologie',
+        'vulgarisation': 'questions/vulgarisation'
     }
 
     directory = os.path.join(categories_directories[categorie], f"{sujet}.json")
@@ -494,22 +493,6 @@ def dashboard():
     else: 
         return redirect(url_for('accueil'))
     
-@app.route("/my_subscriptions")
-@login_required  
-def my_subscriptions():
-    # check if a record exists for them in the StripeCustomer table
-    subscriptions = StripeCustomer.query.filter_by(participant_id=current_user.id).all()
-    # Récupérez les essais restants pour chaque catégorie
-    essais_restants = ReponseParticipant.query.filter_by(participant_id=current_user.id).all()
-    
-    # Créez un dictionnaire pour stocker les essais restants par catégorie
-    essais_restants_par_categorie = {}
-    for essai_restant in essais_restants:
-        essais_restants_par_categorie[essai_restant.categorie] = essai_restant.nb_essais 
-    return render_template("choice_template.html", 
-                           subscriptions=subscriptions, 
-                           essais_restants_par_categorie=essais_restants_par_categorie,
-                           base_template='my_subscriptions')
 
 @app.route("/parrainage",methods=['GET', 'POST'])
 @login_required

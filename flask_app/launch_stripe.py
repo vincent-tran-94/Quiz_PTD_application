@@ -6,12 +6,6 @@ from flask import render_template, url_for, request, abort
 from mail import send_invoice_email
 from process_stripe import create_stripe_customer, update_participant_essais
 
-"""
-COMMAND pour récupérer le nom du produit acheté par le client marche seulement en local
-stripe listen --forward-to http://127.0.0.1:5000/stripe_webhook
-and enter your secret_endpoint_webhook
-"""
-
 
 # Créer un code de réduction
 def create_promotion_code(coupon_id):    

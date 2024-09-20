@@ -23,7 +23,7 @@ def text_all_white_figure(fig):
 
 colors = {'droit': 'rgb(31, 119, 180)', 
               'humanitaire': 'rgb(44, 160, 44)', 
-              'culturel': 'rgb(23, 190, 207)',
+              'vulgarisation': 'rgb(23, 190, 207)',
               'sociologie': 'rgb(255,127,80)'}
 
 def get_participants_by_month():

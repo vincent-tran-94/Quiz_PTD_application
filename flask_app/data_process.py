@@ -58,7 +58,7 @@ def get_participant_name(participant_id):
 
 #Fonction pour récupérer le pourcentage de réussite pour chaque catégorie
 def get_success_percentage_by_category(participant_id):
-    categories = ['droit', 'humanitaire', 'culturel', 'sociologie']
+    categories = ['droit', 'humanitaire', 'vulgarisation', 'sociologie']
     success_percentages = {}
     for category in categories:
         participant_results = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=category).first()
@@ -78,6 +78,24 @@ def get_month_year(participant_id):
     else:
         return None, None
     
+
+def get_all_options(questions):
+    all_options = []
+    for question in questions:
+        if 'options' in question:
+            all_options.append(question['options'])
+        elif 'multi_options' in question:
+            all_options.append(question['multi_options'])
+
+    return all_options
+
+def get_all_explications(questions): 
+    all_explications = [] 
+    for question in questions: 
+        all_explications.append(question['explication'])
+    return all_explications
+
+
     
 #Fonction pour récupérer les 10 premiers participants ayant répondu les questionnaires pour TOUT les catégories et seront affichés
 #pour chaque mois et l'année

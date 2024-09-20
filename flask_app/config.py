@@ -1,10 +1,20 @@
 import os
 from datetime import timedelta
 
+"""
+Configuration de base pour se connecter à la base de données PostgreSQL
+"""
+
 id_database = "vincenttran"
 password_database = "associationptd"
 address_ip = "localhost"
 name_database = "participants"
+
+"""
+Commande de webhook pour récupérer le nom du produit acheté par le client marche seulement en local
+stripe listen --forward-to http://127.0.0.1:5000/stripe_webhook
+and enter your secret_endpoint_webhook
+"""
 
 class Config:
     SECRET_KEY = '_5#y2L"F4Q8z\n\xec]/' 

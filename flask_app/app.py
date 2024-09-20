@@ -7,9 +7,9 @@ import stripe
 
 app = Flask(__name__, template_folder='template', static_url_path='/static')
 
-# Charger les configurations depuis config.py
-app.config.from_object(Config)
-app.config.from_pyfile('config.cfg')
+# Charger les fichiers de configurations
+app.config.from_object(Config) #Fichier de configuration pour notre application 
+app.config.from_pyfile('config.cfg') #Fichier de configuration pour faire la transaction des mails automatiques 
 
 db = SQLAlchemy(app)
 
@@ -20,5 +20,3 @@ jobstores = {
 scheduler = BackgroundScheduler(jobstores=jobstores, job_defaults={'misfire_grace_time': None})
 
 stripe.api_key = app.config['STRIPE_SECRET_KEY']
-
-

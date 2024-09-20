@@ -29,12 +29,15 @@
                         <span class="link">Accueil</span>
                     </a>
                 </li>
+                {% if not 'user_id' in session %}
                 <li class="list">
                     <a href="{{ url_for('login') }}" class="nav-link">
                     <i class='bx bxs-user-circle icon'></i>
                     <span class="link">Connexion</span>
                     </a>
                 </li>
+                {% endif %}
+                {% if 'user_id' in session %}
                 <li class="list">
                     <a href="{{ url_for('profil') }}" class="nav-link">
                         <i class='bx bx-user-pin icon' ></i>
@@ -53,6 +56,7 @@
                         <span class="link">Votre progression</span>
                     </a>
                 </li>
+                {% endif %}
                 <li class="list">
                     <a href="#" class="nav-link">
                         <i class="bx bx-group icon"></i>
@@ -77,12 +81,7 @@
                         <span class="link">Dons Paypal</span>
                     </a>
                 </li>
-                <li class="list">
-                    <a href="{{ url_for('my_subscriptions') }}" class="nav-link">
-                        <i class="bx bx-envelope icon"></i>
-                        <span class="link">Abonnements</span>
-                    </a>
-                </li>
+                {% if 'user_id' in session %}
                 <li class="list">
                     <!-- <a href="{{ url_for('parrainage') }}" class="nav-link"> -->
                     <a href="#" class="nav-link">
@@ -96,6 +95,7 @@
                         <span class="link">Déconnexion</span>
                     </a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>
