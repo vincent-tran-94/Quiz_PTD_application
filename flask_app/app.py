@@ -24,3 +24,4 @@ jobstores = {
 scheduler = BackgroundScheduler(jobstores=jobstores, job_defaults={'misfire_grace_time': None})
 
 stripe.api_key = app.config['STRIPE_SECRET_KEY']
+

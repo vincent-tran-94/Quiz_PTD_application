@@ -10,9 +10,10 @@ password_database = "associationptd"
 address_ip = "localhost"
 name_database = "participants"
 
+
 """
 Commande de webhook pour récupérer le nom du produit acheté par le client marche seulement en local
-stripe listen --forward-to http://127.0.0.1:5000/stripe_webhook
+stripe listen --forward-to http://localhost:5000/stripe_webhook --api-key YOU_API_KEY
 and enter your secret_endpoint_webhook
 """
 
@@ -23,9 +24,9 @@ class Config:
     SESSION_PERMANENT = False
     SESSION_TYPE = "filesystem"
     REMEMBER_COOKIE_DURATION = timedelta(days=14)
-    HOST = os.getenv('HOST')  
-    PORT = os.getenv('PORT')  
-    MAIL_ASSOCIATION_CONTACT = os.getenv("MAIL_ASSOCIATION_CONTACT")
+    HOST = '0.0.0.0'
+    PORT = 5000 
+    MAIL_ASSOCIATION_CONTACT = 'contact@preserve-ton-droit.com'
     STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
     STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
     ID_PRODUCT_BRONZE = os.getenv('ID_PRODUCT_BRONZE')

@@ -265,7 +265,7 @@ def contact():
 
         try: 
             mail_association = app.config['MAIL_ASSOCIATION_CONTACT']
-            msg = Message(f'Application PTDlegalQuiz - Nouveau message de la part de {nom}', 
+            msg = Message(f'Site de Préserve Ton Droit - Nouveau message de la part de {nom}', 
                           recipients=[mail_association],body=f"Nom: {nom}\nEmail: {email}\nTel: {tel}\nMessage: {message}")
             mail.send(msg)
         except Exception as e:
@@ -312,8 +312,8 @@ def categorie_questions(categorie,sujet):
     if reponse_existe:
         nb_essais_restant = reponse_existe.nb_essais
         if nb_essais_restant == 0:
-            flash("Vous avez déjà soumis les réponses pour cette catégorie.", "info")
-            return redirect(url_for('accueil'))
+            flash(f"Vous avez épuisé tout vos essais pour le sujet: {sujet.replace('_',' ')} ", "info")
+            return redirect(url_for('choice_categories', choice_categorie=categorie))
         else:
             reponse_existe.nb_essais -= 1
 
@@ -574,7 +574,7 @@ def souscription():
             'quantity': 1,
         }],
         subscription_data={
-            'default_tax_rates': app.config['TAXE_RATE'],
+            'default_tax_rates': [app.config['TAXE_RATE']],
         },
         mode='subscription',
         allow_promotion_codes=True,

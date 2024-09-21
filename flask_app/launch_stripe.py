@@ -61,7 +61,7 @@ def stripe_pay():
             'quantity': 1,
         }],
         subscription_data={
-            'default_tax_rates': app.config['TAXE_RATE'],
+            'default_tax_rates': [app.config['TAXE_RATE']],
         },
         mode='subscription',
         allow_promotion_codes=True,
@@ -119,7 +119,6 @@ def stripe_webhook():
         send_invoice_email(invoice_id)
         print(f"Creation invoice {invoice_id}.")
 
-       
     return '', 200
 
 

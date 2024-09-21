@@ -20,10 +20,10 @@
             <h2><strong>  Bienvenue sur notre plateforme Ton droit, ton choix ! </strong> </h2>
             <h3>Consignes du Quiz</h3>
             <p>
-                Vous avez la possibilité de tester vos connaissances dans une seule catégorie à la fois, avec une participation unique par catégorie. 
-                Les résultats seront révélés après la soumission du quiz.
-                Vous pourrez revoir la correction de chaque sujet pour chaque catégorie du quiz, avec des explications détaillées 
-                pour chaque question, ainsi que le pourcentage de réussite pour chaque sujet attribué à cette catégorie.
+                Vous avez la possibilité de tester vos connaissances dans une seule catégorie à la fois, 
+                avec une participation unique par catégorie. 
+                Les résultats seront dévoilés après avoir soumis le quiz. 
+                Chaque sujet sera accompagné d'une correction détaillée, avec des explications pour chaque question et le pourcentage de réussite correspondant à chaque sujet dans cette catégorie.
             </p>
             <ul>
                 <li><i class='bx bx-check-circle'></i> Questions à choix multiple ou réponse unique</li>
@@ -39,6 +39,18 @@
             <div class="encouragement text-center">
                 <p>Bon courage ! Amusez-vous bien ! <i class='bx bx-smile'></i></p>
             </div>
+
+            {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="alert alert-info">
+                            <ul>
+                                {% for message in messages %}
+                                    <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+            {% endwith %}
         </div>
 
         <h2 class="available-subjects text-center">Liste des sujets disponibles</h2>

@@ -150,7 +150,7 @@ def traitement_reponses(data_json, all_options,categorie,sujet,all_explications)
     total_questions = len(data_json['questions'])
     incorrect_answers = total_questions - correct_answers
     success_percentage = round((correct_answers / total_questions) * 100,2)
-    default_essai = 3
+    default_essai = 2
 
     # Vérifiez si une réponse existe déjà pour ce participant dans cette catégorie
     existing_response = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie,sujet=sujet).first()
