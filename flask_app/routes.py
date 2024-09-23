@@ -391,7 +391,6 @@ def categorie_questions(categorie,sujet):
     selected_questions = session['selected_questions']
     total_questions = len(selected_questions['questions'])
     all_options = get_all_options(selected_questions['questions'])
-    all_explications = get_all_explications(selected_questions['questions'])
 
     #Stocker tout les réponses pour chaque question répondu
     if 'answers' not in session:
@@ -411,7 +410,7 @@ def categorie_questions(categorie,sujet):
         elif action == 'previous' and current_question_index > 0:
             current_question_index -= 1
         elif action == 'submit'or current_question_index >= total_questions - 1:
-            traitement_reponses(selected_questions,all_options,categorie,sujet,all_explications)
+            traitement_reponses(selected_questions,all_options,categorie,sujet)
             return redirect(url_for('progression'))
 
         current_question = selected_questions['questions'][current_question_index]
@@ -447,7 +446,6 @@ def details(categorie,sujet):
         selected_questions = responses.selected_questions
         participant_answers = responses.answers
         options_dict = responses.options
-        explication = responses.explication
         correct_responses_dict = responses.correct_responses_dict
 
 
@@ -456,7 +454,6 @@ def details(categorie,sujet):
                            correct_responses_dict=correct_responses_dict,
                            options_dict=options_dict,
                            participant_answers=participant_answers,
-                           explication=explication,
                            categorie=categorie,
                            sujet=sujet
                            )
