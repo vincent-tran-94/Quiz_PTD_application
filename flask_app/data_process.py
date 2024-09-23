@@ -94,6 +94,17 @@ def get_all_explications(questions):
         all_explications.append(question['explication'])
     return all_explications
 
+from datetime import datetime
+
+def format_date_fr(date):
+    months = [
+        "janvier", "février", "mars", "avril", "mai", "juin",
+        "juillet", "août", "septembre", "octobre", "novembre", "décembre"
+    ]
+    day = date.day
+    month = months[date.month - 1]  # Les mois commencent à 0
+    year = date.year
+    return f"{day} {month}, {year}"
 
     
 #Fonction pour récupérer les 10 premiers participants ayant répondu les questionnaires pour TOUT les catégories et seront affichés

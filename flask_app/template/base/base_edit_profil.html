@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modifier le Profil - PTD</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/edit_profil.css') }}">
+    <link href="{{ url_for('static', filename='styles/sidebar.css') }}" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_v2_PTD.jpg') }}">
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+    <div class="container mt-5">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white text-center">
+                <h2><i class="bx bxs-edit"></i> Modifier vos informations personnelles</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('update_profil') }}">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="nom"><i class='bx bx-user'></i> Nom:</label>
+                            <input type="text" class="form-control" id="nom" name="nom" value="{{ user.nom if user.nom else '' }}">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="prenom"><i class='bx bx-user'></i> Prénom:</label>
+                            <input type="text" class="form-control" id="prenom" name="prenom" value="{{ user.prenom if user.prenom else '' }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adresse"><i class='bx bx-home'></i> Adresse:</label>
+                        <input type="text" class="form-control" id="adresse" name="adresse" value="{{ user.adresse if user.adresse else '' }}">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="code_postal"><i class='bx bx-envelope'></i> Code Postal:</label>
+                            <input type="text" class="form-control" id="code_postal" name="code_postal" value="{{ user.code_postal if user.code_postal else '' }}">
+                            <span id="code_postal_error" class="text-danger small"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="ville"><i class='bx bx-map'></i> Ville:</label>
+                            <input type="text" class="form-control" id="ville" name="ville" value="{{ user.ville if user.ville else '' }}">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="pays"><i class='bx bx-globe'></i> Pays:</label>
+                            <input type="text" class="form-control" id="pays" name="pays" value="{{ user.pays if user.pays else '' }}">
+                        </div>
+                    </div>
+
+                    <!-- Menu déroulant pour Niveau d'Étude -->
+                    <div class="form-group">
+                        <label for="niveau_etude">Niveau d'Étude:</label>
+                        <select id="niveau_etude" class="form-control" name="niveau_etude">
+                            <option value="CAP/BAP" {% if user.niveau_etude == 'CAP/BAP' %} selected {% endif %}>CAP/BAP</option>
+                            <option value="Baccalauréat" {% if user.niveau_etude == 'Baccalauréat' %} selected {% endif %}>Baccalauréat</option>
+                            <option value="BTS/DEUST/DEUG" {% if user.niveau_etude == 'BTS/DEUST/DEUG' %} selected {% endif %}>BTS/DEUST/DEUG</option>
+                            <option value="Licence" {% if user.niveau_etude == 'Licence' %} selected {% endif %}>Licence</option>
+                            <option value="Diplôme Ingénieur" {% if user.niveau_etude == 'Diplôme Ingénieur' %} selected {% endif %}>Diplôme Ingénieur</option>
+                            <option value="Master 1" {% if user.niveau_etude == 'Master 1' %} selected {% endif %}>Master 1</option>
+                            <option value="Master 2" {% if user.niveau_etude == 'Master 2' %} selected {% endif %}>Master 2</option>
+                            <option value="Doctorat" {% if user.niveau_etude == 'Doctorat' %} selected {% endif %}>Doctorat</option>
+                            <option value="Non défini" {% if user.niveau_etude == 'Non défini' %} selected {% endif %}>Non défini</option>
+                            <option value="Autre" {% if user.niveau_etude == 'Autre' %} selected {% endif %}>Autre</option>
+                        </select>
+                    </div>
+
+                    <!-- Menu déroulant pour Statut -->
+                    <div class="form-group">
+                        <label for="statut"><i class='bx bx-briefcase'></i> Statut:</label>
+                        <select id="statut" class="form-control" name="statut" required>
+                            <option value="Etudiant" {% if user.statut == 'Etudiant' %}selected{% endif %}>Etudiant</option>
+                            <option value="Employé" {% if user.statut == 'Employé' %}selected{% endif %}>Employé</option>
+                            <option value="Sportif de haut niveau" {% if user.statut == 'Sportif de haut niveau' %}selected{% endif %}>Sportif de haut niveau</option>
+                            <option value="Chef d'entreprise" {% if user.statut == 'Chef d\'entreprise' %}selected{% endif %}>Chef d'entreprise</option>
+                            <option value="Artiste" {% if user.statut == 'Artiste' %}selected{% endif %}>Artiste</option>
+                            <option value="Producteur" {% if user.statut == 'Producteur' %}selected{% endif %}>Producteur</option>
+                            <option value="Indépendant" {% if user.statut == 'Indépendant' %}selected{% endif %}>Indépendant</option>
+                            <option value="En recherche d'emploi" {% if user.statut == 'En recherche d\'emploi' %}selected{% endif %}>En recherche d'emploi</option>
+                            <option value="Autre" {% if user.statut == 'Autre' %}selected{% endif %}>Autre</option>
+                        </select>
+                    </div>
+
+                    <!-- Menu déroulant pour Choix Catégorie -->
+                    <div class="form-group">
+                        <label for="choix_categorie">Choix Catégorie:</label>
+                        <select id="choix_categorie" class="form-control" name="choix_categorie">
+                            <option value="Droit" {% if user.choix_categorie == 'Droit' %} selected {% endif %}>Droit</option>
+                            <option value="Humanitaire" {% if user.choix_categorie == 'Humanitaire' %} selected {% endif %}>Humanitaire</option>
+                            <option value="Vulgarisation" {% if user.choix_categorie == 'Vulgarisation' %} selected {% endif %}>Vulgarisation</option>
+                            <option value="Sociologie" {% if user.choix_categorie == 'Sociologie' %} selected {% endif %}>Sociologie</option>
+                        </select>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success btn-lg"><i class='bx bx-check-circle'></i> Valider</button>
+                        <a href="{{ url_for('profil') }}" class="btn btn-secondary btn-lg"><i class='bx bx-x-circle'></i> Annuler</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

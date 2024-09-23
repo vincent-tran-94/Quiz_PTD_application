@@ -6,28 +6,49 @@
     <title>Progression Quiz - PTD</title>
     <!-- Inclure les fichiers CSS de Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/confirmation.css') }}"> 
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_v2_PTD.jpg') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/confirmation.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/progression.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- Vous pouvez inclure vos styles CSS personnalisés ici -->
 </head>
 <body>
-    <div class="container">
-        <h1 class="small-font">Résultats du participant: {{ participant_info.nom }} {{ participant_info.prenom }}</h1>
-        <ul>
-            {% for result in participant_results %}
-                <li>Catégorie: {{ result.categorie }}</li>
-                <li>Sujet de la catégorie: {{ result.sujet }}</li>
-                <li>Pourcentage de succès: {{ result.success_percentage }}%</li>
-                <li>Réponses correctes: {{ result.correct_answers }} / 15 </li>
-                <li>Réponses incorrectes: {{ result.incorrect_answers }} / 15</li>
-                <a href="{{ url_for('details', categorie=result.categorie,sujet=result.sujet) }}" class="btn btn-info">Voir les détails</a>
-                <hr>
+    <!-- Header -->
+    <header class="header text-center py-3">
+        <img src="{{ url_for('static', filename='images/logo_v2_PTD.jpg') }}" alt="Logo PTD" class="logo">
+        <h1 class="main-title">Résultats du quiz</h1>
+        <p class="participant-name">{{ participant_info.nom }} {{ participant_info.prenom }}</p>
+    </header>
+
+    <!-- Résultats du participant -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <!-- Afficher les résultats groupés par catégorie -->
+            {% for categorie, results in grouped_results.items() %}
+                <div class="col-12 mt-3">
+                    <h3 class="text-primary">{{ categorie }}</h3>
+                    <div class="row">
+                        {% for result in results %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ result.sujet.replace('_',' ') }}</h5>
+                                        <p class="card-text">Pourcentage de succès: {{ result.success_percentage }}%</p>
+                                        <p class="card-text">Réponses correctes: {{ result.correct_answers }} / 15</p>
+                                        <p class="card-text">Réponses incorrectes: {{ result.incorrect_answers }} / 15</p>
+                                        <a href="{{ url_for('details', categorie=result.categorie, sujet=result.sujet) }}" class="btn btn-info">Voir les détails</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
             {% endfor %}
-        </ul>
-        <header>Qu'avez-vous pensé de ce quiz ?</header>
+        </div>
+    </div>
+
+    <!-- Section de feedback -->
+    <div class="container text-center">
+        <header class="feedback-title">Qu'avez-vous pensé de ce quiz ?</header>
         <div class="rating">
             <span class="star" data-rating="1"><i class="fas fa-star"></i></span>
             <span class="star" data-rating="2"><i class="fas fa-star"></i></span>
@@ -36,13 +57,15 @@
             <span class="star" data-rating="5"><i class="fas fa-star"></i></span>
         </div>
         <p id="thank-you-message" style="display: none;">Merci pour votre avis !</p>
-        <div class="link-container">
-            <!-- <a href="{{ url_for('permission_route_data_csv') }}" class="btn btn-success">Télécharger vos données (format Excel)</a> -->
-            <a href="{{ url_for('download_csv') }}" class="btn btn-success">Télécharger vos données (format Excel)</a>
-            <a href="{{ url_for('accueil') }}" class="text-black font-weight-bold regStr home-link">Revenir vers la page d'accueil</a>
-        </div>
     </div>
-    <!-- Inclure le script JavaScript de Bootstrap (optionnel si vous n'utilisez pas les fonctionnalités JavaScript de Bootstrap) -->
+
+    <!-- Section de téléchargement et retour -->
+    <div class="container text-center link-container mt-4">
+        <a href="{{ url_for('download_csv') }}" class="btn btn-success">Télécharger vos données (format Excel)</a>
+        <a href="{{ url_for('accueil') }}" class="btn btn-secondary">Revenir à l'accueil</a>
+    </div>
+
+    <!-- Script Bootstrap et JS pour la notation -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="{{ url_for('static', filename='js/rate.js') }}"></script>
 </body>

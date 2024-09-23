@@ -84,4 +84,13 @@ body {
     width: 60%; /* Réduit la largeur de la bannière à 70% de la largeur du conteneur parent */
 }
 
+.email {
+    display: block;
+    margin: 5px 0;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
 

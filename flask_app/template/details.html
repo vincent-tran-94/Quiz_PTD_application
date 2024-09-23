@@ -8,42 +8,62 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_v2_PTD.jpg') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/details.css') }}">
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Détails des réponses pour la catégorie: {{ categorie }} pour le sujet {{ sujet.replace('_', ' ') }}</h1>
+        <!-- En-tête -->
+        <div class="header text-center mb-4">
+            <h1 class="category-title">Détails des réponses {{ categorie }}</h1>
+            <h3 class="subject-title">{{ sujet.replace('_', ' ') }}</h3>
+        </div>
+        
+        <!-- Liste des réponses -->
         <ul class="list-group">
             {% for question, options in zip(questions, options_dict) %}
-                <li class="list-group-item">
+                <li class="list-group-item mb-4">
+                    <!-- Question -->
                     <p><strong>Question:</strong> {{ question.question }}</p>   
+
+                    <!-- Options de réponse -->
                     <p><strong>Options possibles:</strong></p>
-                    <ul>
+                    <ul class="options-list">
                         {% for key, option in options.items() %}
                             <li>{{ key }}: {{ option }}</li>
                         {% endfor %}
                     </ul>         
+
+                    <!-- Réponse du participant -->
                     <p><strong>Votre réponse:</strong> 
                         {% if participant_answers.get(question.question) %}
-                            {{ participant_answers[question.question] | join(', ') }}
+                            <span class="text-primary">{{ participant_answers[question.question] | join(', ') }}</span>
                         {% else %}
                             <span class="text-warning">Pas de réponse donnée</span>
                         {% endif %}
                     </p>
-                    <p><strong>Réponse correcte:</strong> {{ correct_responses_dict[question.question] | join(', ') }}</p>
+
+                    <!-- Réponse correcte -->
+                    <p><strong>Réponse correcte:</strong> <span class="text-success">{{ correct_responses_dict[question.question] | join(', ') }}</span></p>
+
+                    <!-- Statut de la réponse (correcte/incorrecte) -->
                     {% if participant_answers.get(question.question) == correct_responses_dict[question.question] %}
                         <p class="text-success"><i class="fas fa-check-circle"></i> Correct</p>
                     {% else %}
                         <p class="text-danger"><i class="fas fa-times-circle"></i> Incorrect</p>
                     {% endif %}
-                    <!-- Afficher l'explication pour chaque question -->
+
+                    <!-- Explication de la réponse -->
                     <p><strong>Explication:</strong> {{ question.explication }}</p>
                 </li>
             {% endfor %}
         </ul>
-        <div class="mt-4">
+
+        <!-- Bouton de retour -->
+        <div class="mt-4 text-center">
             <a href="{{ url_for('progression') }}" class="btn btn-primary">Retour aux résultats</a>
         </div>
     </div>
+
     <!-- Inclure le script JavaScript de Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

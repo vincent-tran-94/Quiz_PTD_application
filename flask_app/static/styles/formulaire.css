@@ -65,3 +65,7 @@ select {
     margin-top: 200px; /* Ajustez cette valeur selon votre besoin */
     margin-right: 250px; /* Ajustez cette valeur selon votre besoin */
 }
+
+.error-message {
+    color: red;
+}

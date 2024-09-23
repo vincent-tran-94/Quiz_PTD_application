@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1920,height=1080, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Profil - PTD</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/profil.css') }}"> 
@@ -11,56 +11,94 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_v2_PTD.jpg') }}">
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
-    <div class="container">
+  {% block content %}
+  {% endblock %}
+    <div class="container profile-container">
         <div class="row">
-            <div class="col-md-6">
-                <h2>Informations Personnelles</h2>
-                <ul class="list-group">
-                    <li class="list-group-item"><strong>Nom:</strong> {{ user.nom if user.nom else "" }}</li>
-                    <li class="list-group-item"><strong>Prénom:</strong> {{ user.prenom if user.prenom else "" }}</li>
-                    <li class="list-group-item"><strong>Adresse:</strong> {{ user.adresse if user.adresse else "" }}</li>
-                    <li class="list-group-item"><strong>Code Postal:</strong> {{ user.code_postal if user.code_postal else "" }}</li>
-                    <li class="list-group-item"><strong>Ville:</strong> {{ user.ville if user.ville else "" }}</li>
-                    <li class="list-group-item"><strong>Pays:</strong> {{ user.pays if user.pays else "" }}</li>
-                </ul>
+            <!-- Informations Personnelles -->
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h3><i class='bx bxs-user'></i> Informations Personnelles</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>Nom:</strong> {{ user.nom if user.nom else "" }}</li>
+                            <li class="list-group-item"><strong>Prénom:</strong> {{ user.prenom if user.prenom else "" }}</li>
+                            <li class="list-group-item"><strong>Adresse:</strong> {{ user.adresse if user.adresse else "" }}</li>
+                            <li class="list-group-item"><strong>Code Postal:</strong> {{ user.code_postal if user.code_postal else "" }}</li>
+                            <li class="list-group-item"><strong>Ville:</strong> {{ user.ville if user.ville else "" }}</li>
+                            <li class="list-group-item"><strong>Pays:</strong> {{ user.pays if user.pays else "" }}</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6">
-                <h2>Autres Informations</h2>
-                <ul class="list-group">
-                    <li class="list-group-item"><strong>Niveau d'Étude:</strong> {{ user.niveau_etude if user.niveau_etude else "" }}</li>
-                    <li class="list-group-item"><strong>Statut:</strong> {{ user.statut if user.statut else "" }}</li>
-                    <li class="list-group-item"><strong>Centre d'Intérêt:</strong> {{ user.centre_interet if user.centre_interet else "" }}</li>
-                    <li class="list-group-item"><strong>Choix Catégorie:</strong> {{ user.choix_categorie if user.choix_categorie else "" }}</li>
-                </ul>
+
+            <!-- Autres Informations -->
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h3><i class='bx bxs-info-circle'></i> Autres Informations</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>Niveau d'Étude:</strong> {{ user.niveau_etude if user.niveau_etude else "" }}</li>
+                            <li class="list-group-item"><strong>Statut:</strong> {{ user.statut if user.statut else "" }}</li>
+                            <li class="list-group-item"><strong>Centre d'Intérêt:</strong> {{ user.centre_interet if user.centre_interet else "" }}</li>
+                            <li class="list-group-item"><strong>Choix Catégorie:</strong> {{ user.choix_categorie if user.choix_categorie else "" }}</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        <h1 class="mb-4 small-font">Mes Abonnements</h1>
-      <div class="list-group">
-        {% if subscriptions %}
-          {% for subscription in subscriptions %}
-          <div class="list-group-item">
-            <h5 class="mb-1">{{ subscription.name_product }}</h5>
-            <p class="mb-1">Date de souscription: {{ subscription.date_creation.strftime('%d %B, %Y') }}</p>
-            <form action="/cancel_subscription" method="post">
-              <input type="hidden" name="subscription_id" value="{{ subscription.id }}">
-              <button type="submit" class="btn btn-danger">Annuler l'abonnement</button>
-            </form>
-          </div>
-          {% endfor %}
-        {% else %}
-          <h5>Vous n'avez pas souscrit à un abonnement.</h5>
-        {% endif %}
-        <h1 class="mb-4 small-font">Nombre d'essais restants pour chaque catégorie</h1>
-        {% for categorie, nb_essais in essais_restants_par_categorie.items() %}
-        <div class="list-group-item">
-            <h5 class="mb-1">{{ categorie }}</h5>
-            <p class="mb-1">Essais restants: {{ nb_essais }}</p>
+
+        <!-- Bouton Modifier le Profil -->
+        <div class="text-center mb-5">
+            <a href="{{ url_for('edit_profil') }}" class="btn btn-lg btn-warning"><i class='bx bxs-edit-alt'></i> Modifier le profil</a>
         </div>
-        {% endfor %}
-      </div>
+
+        <!-- Abonnements -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title">Mes Abonnements</h2>
+                <div class="list-group">
+                    {% if subscriptions %}
+                        {% for subscription in subscriptions %}
+                        <div class="list-group-item">
+                            <h5 class="mb-1"><i class='bx bxs-bookmark'></i> {{ subscription.name_product }}</h5>
+                            <p class="mb-1">Date de souscription: {{ subscription.date_creation_fr }}</p>
+                            <form action="/cancel_subscription" method="post">
+                                <input type="hidden" name="subscription_id" value="{{ subscription.id }}">
+                                <button type="submit" class="btn btn-danger">Annuler l'abonnement</button>
+                            </form>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="no-subscriptions">
+                            <h5><i class='bx bx-info-circle'></i> Vous n'avez pas souscrit à un abonnement.</h5>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Essais Restants -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <h2 class="section-title">Nombre d'essais restants pour chaque catégorie</h2>
+                <div class="list-group">
+                    {% for categorie, nb_essais in essais_restants_par_categorie.items() %}
+                    <div class="list-group-item">
+                        <h5 class="mb-1"><i class='bx bxs-cube'></i> {{ categorie }}</h5>
+                        <p class="mb-1">Essais restants: {{ nb_essais }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

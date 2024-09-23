@@ -1,5 +1,6 @@
 import csv
 import io
+from collections import defaultdict
 
 from models import *
 from app import *
@@ -222,7 +223,6 @@ def accueil():
     return render_template('choice_template.html',
                            base_template='home')
 
-
 @app.route('/profil')
 def profil():
     participant_id = session.get('user_id')
@@ -237,12 +237,70 @@ def profil():
     essais_restants_par_categorie = {}
     for essai_restant in essais_restants:
         essais_restants_par_categorie[essai_restant.categorie] = essai_restant.nb_essais 
-
+    
+    # Formater les dates en français
+    for subscription in subscriptions:
+        subscription.date_creation_fr = format_date_fr(subscription.date_creation)
 
     return render_template('choice_template.html', user=user,
                            subscriptions=subscriptions, 
                            essais_restants_par_categorie=essais_restants_par_categorie,
                            base_template='profil')
+
+@app.route('/update_profil', methods=['POST'])
+def update_profil():
+    participant_id = session.get('user_id')
+    user = Participant.query.get(participant_id)
+
+    # Récupérer les données du formulaire
+    nom = request.form.get('nom')
+    prenom = request.form.get('prenom')
+    adresse = request.form.get('adresse')
+    code_postal = request.form.get('code_postal')
+    ville = request.form.get('ville')
+    pays = request.form.get('pays')
+    niveau_etude = request.form.get('niveau_etude')
+    statut = request.form.get('statut')
+    centre_interet = request.form.get('centre_interet')
+    choix_categorie = request.form.get('choix_categorie')
+
+    # Mettre à jour les informations dans la base de données
+    if nom:
+        user.nom = nom
+    if prenom:
+        user.prenom = prenom
+    if adresse:
+        user.adresse = adresse
+    if code_postal.isdigit():
+        user.code_postal = int(code_postal)
+    if ville:
+        user.ville = ville
+    if pays:
+        user.pays = pays
+    if niveau_etude:
+        user.niveau_etude = niveau_etude
+    if statut:
+        user.statut = statut
+    if centre_interet:
+        user.centre_interet = centre_interet
+    if choix_categorie:
+        user.choix_categorie = choix_categorie
+
+    # Sauvegarder les changements dans la base de données
+    db.session.commit()
+    
+    # Redirection vers la page de profil
+    return redirect(url_for('profil'))
+
+
+@app.route('/edit_profil')
+def edit_profil():
+    participant_id = session.get('user_id')
+    user = Participant.query.get(participant_id)
+
+    return render_template('choice_template.html', user=user,
+                           base_template='edit_profil')
+
 
 
 #Fonction de contact client avec l'association
@@ -404,7 +462,6 @@ def details(categorie,sujet):
                            )
 
 
-#Fonction des résultats obtenus après le remplissage des questionnaires
 @app.route('/progression')
 @login_required
 def progression():
@@ -413,10 +470,17 @@ def progression():
     # Récupérer les résultats du participant depuis la base de données
     participant_results = ReponseParticipant.query.filter_by(participant_id=participant_id).all()
 
-    # Vous pouvez également récupérer d'autres informations pertinentes ici, par exemple, le nom du participant, etc.
+    # Récupérer les informations du participant (nom, prénom, etc.)
     participant_info = Participant.query.filter_by(participant_id=participant_id).first()
     
-    return render_template('progression.html', participant_results=participant_results, participant_info=participant_info)
+    # Grouper les résultats par catégorie
+    grouped_results = defaultdict(list)
+    for result in participant_results:
+        grouped_results[result.categorie].append(result)
+
+    return render_template('progression.html', 
+                           grouped_results=grouped_results, 
+                           participant_info=participant_info)
 
 @app.route('/download_csv')
 @login_required

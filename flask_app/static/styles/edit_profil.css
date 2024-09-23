@@ -1,0 +1,95 @@
+/* Couleur de fond de la page */
+body {
+    background-color: #f7f7f7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    padding-top: 80px; /* Ajuste la valeur selon tes besoins */
+    max-width: 800px;
+}
+
+.card {
+    border-radius: 15px;
+    border: none;
+}
+
+.card-header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 20px; /* Réduit si nécessaire */
+}
+
+/* Style pour les champs de formulaire */
+.form-control {
+    padding: 10px; /* Réduisez le padding si nécessaire */
+}
+
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 0.5rem; /* Ajustez cet espace si nécessaire */
+}
+
+.form-row {
+    display: flex; /* Cela peut aider à aligner correctement les éléments */
+    flex-wrap: wrap; /* Pour gérer les débordements */
+    justify-content: space-between; /* Pour un meilleur espacement */
+}
+
+/* Style pour les boutons */
+.btn-lg {
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Icônes dans les champs */
+.bx {
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.text-danger {
+    font-size: 14px;
+}
+
+
+select.form-control {
+    width: 100%;
+    min-width: 200px; /* Ajustez si nécessaire */
+    padding: 1px; /* Réduisez si nécessaire */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Points de suspension pour le texte trop long */
+}

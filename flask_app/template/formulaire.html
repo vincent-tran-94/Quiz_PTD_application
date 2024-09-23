@@ -8,11 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/formulaire.css') }}">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_v2_PTD.jpg') }}">
-    <style>
-        .error-message {
-            color: red;
-        }
-    </style>
 </head>
 <body class="body-top-right">
     <img src="{{ url_for('static', filename=image_filename) }}" alt="Image PTD"  class="img-custom">
@@ -91,7 +86,7 @@
                 <select id="choix_categorie" name="choix_categorie" required>
                     <option value="Droit">Droit</option>
                     <option value="Humanitaire">Humanitaire</option>
-                    <option value="Culturel">Culturel</option>
+                    <option value="Vulgarisation">Vulgarisation</option>
                     <option value="Sociologie">Sociologie</option>
                 </select>
             </div>

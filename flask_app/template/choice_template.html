@@ -15,6 +15,10 @@
 
 {% elif base_template == "souscription" %}
     {% set base_file = "base_souscription.html" %}
+
+{% elif base_template == "edit_profil" %}
+    {% set base_file = "base_edit_profil.html" %}
+    
 {% endif %}
 
 {% extends "base/" + base_file %}

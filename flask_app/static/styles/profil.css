@@ -1,65 +1,79 @@
-
+/* Couleur de fond de la page */
 body {
-    background-color: rgba(128, 128, 128, 0.5); /* Couleur gris foncé */
-  }
+  background-color: #f2f2f2;
+}
 
-.container { 
-    margin-top: 70px;
+.container {
+  padding-top: 100px; /* Ajuste la valeur selon tes besoins */
 }
 
 
-/* Style pour le titre principal */
-.profile-title {
-    text-align: center;
-    margin-bottom: 30px;
+.profile-container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Style pour les listes d'informations */
-.profile-info {
-    margin-bottom: 20px;
+/* Style pour les sections de cartes */
+.card {
+  border-radius: 10px;
 }
 
-/* Style pour chaque élément de la liste */
-.profile-info-item {
-    border: none;
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
+.card-header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size: 18px;
 }
 
-/* Style pour le paragraphe de description */
-.profile-description {
-    margin-top: 30px;
+/* Style pour les titres de section */
+.section-title {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
 }
 
+/* Bouton Modifier le profil */
+.btn-lg {
+  padding: 15px 30px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
 
-/* Style pour le titre principal */
-h1 {
-    color: #333; /* Couleur du texte */
-    text-align: center; /* Centrer le texte */
-  }
-  
-  /* Style pour les éléments de la liste d'abonnements */
-  .list-group-item {
-    background-color: #f8f9fa; /* Couleur de fond */
-    border: 1px solid #dee2e6; /* Bordure */
-    margin-bottom: 10px; /* Marge en bas entre les éléments */
-  }
-  
-  /* Style pour le texte des éléments de la liste */
-  .list-group-item h5 {
-    color: #007bff; /* Couleur du titre */
-  }
-  
-  .list-group-item p {
-    color: #666; /* Couleur du texte normal */
-  }
-  
-  /* Style pour le message "Vous n'avez pas encore souscrit à des abonnements." */
-  .no-subscriptions {
-    color: #999; /* Couleur du texte */
-    text-align: center; /* Centrer le texte */
-  }
-  
-  .small-font {
-    font-size: 24px; /* Choisissez une taille de police appropriée */
+/* Listes d'abonnements et essais restants */
+.list-group-item {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.list-group-item:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Style pour les titres dans les listes */
+.list-group-item h5 {
+  color: #007bff;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.list-group-item p {
+  color: #555;
+}
+
+/* Icônes */
+.bx {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.no-subscriptions {
+  text-align: center;
+  color: #999;
+  padding: 20px;
 }

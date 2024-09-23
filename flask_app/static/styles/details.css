@@ -1,0 +1,126 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Couleurs de l'en-tête */
+.header {
+    background-color: #19468A; /* Bleu foncé pour un meilleur contraste */
+    color: white; /* Texte blanc pour ressortir */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Titre de la catégorie et sujet */
+.category-title {
+    font-size: 2.5rem;
+    color: white; /* Jaune vif pour plus de lisibilité */
+}
+
+.subject-title {
+    font-size: 1.8rem;
+    color: white; /* Texte blanc */
+}
+
+/* Liste des réponses et explications */
+.list-group-item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.list-group-item:hover {
+    transform: translateY(-5px);
+}
+
+.options-list {
+    margin-left: 20px;
+    list-style-type: none;
+}
+
+.options-list li {
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+/* Options et réponses */
+.text-primary {
+    color: #007bff; /* Bleu standard */
+    font-weight: bold;
+}
+
+.text-success {
+    color: #28a745; /* Vert foncé */
+    font-weight: bold;
+}
+
+.text-danger {
+    color: #dc3545; /* Rouge foncé */
+    font-weight: bold;
+}
+
+.text-warning {
+    color: #ffc107; /* Jaune foncé mais plus visible */
+    font-weight: bold;
+}
+
+/* Modification de l'option 'correcte/incorrecte' */
+.fa-check-circle {
+    color: #28a745; /* Vert foncé */
+}
+
+.fa-times-circle {
+    color: #dc3545; /* Rouge foncé */
+}
+
+/* Bouton de retour */
+.btn-primary {
+    background-color: #0069d9;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Bleu plus foncé au hover */
+}
+
+/* Bouton de retour */
+.btn-primary {
+    background-color: #0069d9;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Bleu plus foncé au hover */
+}
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .header {
+        text-align: center;
+    }
+    
+    .category-title {
+        font-size: 1.8rem;
+    }
+
+    .subject-title {
+        font-size: 1.5rem;
+    }
+}
