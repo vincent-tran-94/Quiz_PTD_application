@@ -51,6 +51,13 @@ class Participant(db.Model):
     choix_categorie = db.Column(db.String(255))
     date_creation = db.Column(db.DateTime, default=datetime.now().strftime('%d %B %Y %H:%M:%S'))
 
+class NbEssaisParticipant(db.Model):
+    id = db.Column(db.Integer(),primary_key=True)
+    participant_id = db.Column(UUID(as_uuid=True), db.ForeignKey('participant.participant_id'),unique=False)
+    categorie = db.Column(db.String(255))
+    nb_essais = db.Column(db.Integer)
+    date_creation = db.Column(db.DateTime, default=datetime.now().strftime('%d %B %Y %H:%M:%S'))
+
 
 class ReponseParticipant(db.Model):
     id = db.Column(db.Integer(),primary_key=True)
@@ -64,7 +71,6 @@ class ReponseParticipant(db.Model):
     options = db.Column(JSON)
     answers = db.Column(JSON)
     correct_responses_dict = db.Column(JSON)
-    nb_essais = db.Column(db.Integer)
     date_creation = db.Column(db.DateTime, default=datetime.now().strftime('%d %B %Y %H:%M:%S'))
 
 class Contact(db.Model):

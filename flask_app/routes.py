@@ -271,7 +271,7 @@ def profil():
     # check if a record exists for them in the StripeCustomer table
     subscriptions = StripeCustomer.query.filter_by(participant_id=current_user.id).all()
     # Récupérez les essais restants pour chaque catégorie
-    essais_restants = ReponseParticipant.query.filter_by(participant_id=current_user.id).all()
+    essais_restants = NbEssaisParticipant.query.filter_by(participant_id=current_user.id).all()
     
     # Créez un dictionnaire pour stocker les essais restants par catégorie
     essais_restants_par_categorie = {}
@@ -380,6 +380,16 @@ def contact():
 @app.route('/choice_categories/<choice_categorie>', methods=['GET', 'POST'])
 @login_required
 def choice_categories(choice_categorie):
+    participant_id = session.get('user_id')
+    reponse_existe = NbEssaisParticipant.query.filter_by(participant_id=participant_id, categorie=choice_categorie).first()
+    
+    if reponse_existe:
+        nb_essais_restant = reponse_existe.nb_essais
+        if nb_essais_restant == 0:
+            flash(f"Vous avez épuisé tout vos essais pour le categorie: {choice_categorie} ", "info")
+            return redirect(url_for('accueil', choice_categorie=choice_categorie))
+
+    
     BASE_DIR = 'questions'  # Remplacez par le chemin réel où se trouvent vos dossiers de catégories
     # Initialiser la liste des sujets
     list_subjects = [] 
@@ -407,16 +417,8 @@ def choice_categories(choice_categorie):
 @login_required
 def categorie_questions(categorie,sujet):
     participant_id = session.get('user_id')
-    reponse_existe = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie,sujet=sujet).first()
-
-    if reponse_existe:
-        nb_essais_restant = reponse_existe.nb_essais
-        if nb_essais_restant == 0:
-            flash(f"Vous avez épuisé tout vos essais pour le sujet: {sujet.replace('_',' ')} ", "info")
-            return redirect(url_for('choice_categories', choice_categorie=categorie))
-        else:
-            reponse_existe.nb_essais -= 1
-    
+    reponse_existe = NbEssaisParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
+    reponse_existe.nb_essais -= 1
     categories_directories = {
         'droit': 'questions/droit',
         'humanitaire': 'questions/humanitaire',
@@ -505,42 +507,51 @@ def details(categorie,sujet):
 @login_required
 def progression():
     participant_id = session.get('user_id')
-    
+
     # Récupérer les résultats du participant depuis la base de données
     participant_results = ReponseParticipant.query.filter_by(participant_id=participant_id).all()
 
     # Récupérer les informations du participant (nom, prénom, etc.)
     participant_info = Participant.query.filter_by(participant_id=participant_id).first()
-    
+
     # Grouper les résultats par catégorie
     grouped_results = defaultdict(list)
     for result in participant_results:
         grouped_results[result.categorie].append(result)
 
+    # Compter le nombre de quiz pour chaque catégorie
+    quiz_counts = session.get('quiz_counts', {})
+    for categorie, results in grouped_results.items():
+        if categorie not in quiz_counts:
+            quiz_counts[categorie] = {'completed': 0, 'deleted': 0}
+        quiz_counts[categorie]['completed'] = len(results)  # Compte le nombre de quiz effectués
+
     return render_template('progression.html', 
                            grouped_results=grouped_results, 
-                           participant_info=participant_info)
+                           participant_info=participant_info,
+                           quiz_counts=quiz_counts)
 
-@app.route('/supprimer_sujet')
+
+@app.route('/supprimer_sujet/<categorie>/<sujet>', methods=['GET'])
 @login_required
-def supprimer_sujet():
-    categorie = request.args.get('categorie')
-    sujet = request.args.get('sujet')
+def supprimer_sujet(categorie, sujet):
     participant_id = session.get('user_id')
 
-    # Rechercher le sujet dans la base de données pour ce participant
-    result_to_delete = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie, sujet=sujet).first()
+    # Supprimer le sujet de la base de données
+    ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie, sujet=sujet).delete()
+    db.session.commit()  # Confirmer la suppression
 
-    if result_to_delete:
-        # Supprimer le sujet
-        db.session.delete(result_to_delete)
-        db.session.commit()
-        flash(f"Le sujet '{sujet.replace('_', ' ')}' a été supprimé avec succès.", "success")
+    # Incrémenter le compteur de quiz supprimés pour la catégorie
+    quiz_counts = session.get('quiz_counts', {})
+
+    if categorie in quiz_counts:
+        quiz_counts[categorie]['deleted'] += 1  # Incrémenter le nombre de quiz supprimés
     else:
-        flash(f"Le sujet '{sujet.replace('_', ' ')}' n'existe pas ou a déjà été supprimé.", "danger")
+        quiz_counts[categorie] = {'completed': 0, 'deleted': 1}  # Initialiser si catégorie n'existe pas
 
-    # Rediriger vers la page de progression
-    return redirect(url_for('progression'))
+    session['quiz_counts'] = quiz_counts  # Sauvegarder les nouvelles valeurs dans la session
+
+    return redirect(url_for('progression'))  # Rediriger vers la page de progression
 
 
 @app.route('/download_csv')

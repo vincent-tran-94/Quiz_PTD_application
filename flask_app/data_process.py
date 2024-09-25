@@ -155,8 +155,14 @@ def traitement_reponses(data_json, all_options,categorie,sujet):
     total_questions = len(data_json['questions'])
     incorrect_answers = total_questions - correct_answers
     success_percentage = round((correct_answers / total_questions) * 100,2)
-    default_essai = 2
+    default_essai = 3
 
+    new_categories_essais = NbEssaisParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
+    if not new_categories_essais:
+        new_essais = NbEssaisParticipant(participant_id=participant_id, categorie=categorie, nb_essais=default_essai)
+        db.session.add(new_essais)
+        db.session.commit() 
+    
     # Vérifiez si une réponse existe déjà pour ce participant dans cette catégorie
     existing_response = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie,sujet=sujet).first()
 
@@ -180,8 +186,7 @@ def traitement_reponses(data_json, all_options,categorie,sujet):
                                           selected_questions=data_json['questions'],
                                           answers=answers,
                                           options=all_options,
-                                          correct_responses_dict=correct_responses_dict,
-                                          nb_essais=default_essai)
+                                          correct_responses_dict=correct_responses_dict)
         db.session.add(new_response)
     db.session.commit()
 

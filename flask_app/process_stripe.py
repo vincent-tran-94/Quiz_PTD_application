@@ -31,7 +31,7 @@ def update_participant_essais(new_product_customer=None, email=None):
             # Vérifier si le client a un abonnement Bronze
             if customer.name_product == new_product_customer:
                 # Rechercher toutes les réponses du participant correspondant dans ReponseParticipant
-                participant_responses = ReponseParticipant.query.filter_by(participant_id=customer.participant_id).all()
+                participant_responses = NbEssaisParticipant.query.filter_by(participant_id=customer.participant_id).all()
                 for participant_response in participant_responses:
                     # Vérifier si la réponse du participant existe
                     if participant_response is not None:
