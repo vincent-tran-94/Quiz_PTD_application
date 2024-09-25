@@ -140,7 +140,7 @@ def charte():
     if user_id:
         user = User.query.get(user_id)  # Récupérer l'utilisateur depuis la base de données
         return render_template('charte.html', user=user)
-    return render_template('charte.html')
+    return render_template('charte.html',user=None)
 
 #Fonction de déconnexion
 @app.route('/logout')
