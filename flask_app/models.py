@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import uuid
 from sqlalchemy.dialects.postgresql import UUID
 from datetime import datetime
-from sqlalchemy import JSON, Boolean
+from sqlalchemy import JSON
 from app import *
 
 """
@@ -17,7 +17,7 @@ class User(db.Model):
     email = db.Column(db.String(255),unique=True)
     password_hash = db.Column(db.String(255)) 
     date_creation = db.Column(db.DateTime, default=datetime.now().strftime('%d %B %Y %H:%M:%S'))
-    policy_accepted = db.Column(db.Boolean, default=False)  # Ajoutez cette ligne
+    policy_accepted = db.Column(db.Boolean, default=False) 
 
 
     def is_authenticated(self):
