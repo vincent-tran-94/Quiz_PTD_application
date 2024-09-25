@@ -104,16 +104,17 @@ def format_date_fr(date):
 #pour chaque mois et l'année
 def get_top_50_participants():
     top_participants = db.session.query(ReponseParticipant.participant_id,
-                                        extract('year', ReponseParticipant.date_creation).label('response_year'),
-                                        extract('month', ReponseParticipant.date_creation).label('response_month'),
-                                        func.avg(ReponseParticipant.success_percentage).label('total_success_percentage')) \
-                                 .group_by(ReponseParticipant.participant_id, 
-                                           extract('year', ReponseParticipant.date_creation),
-                                           extract('month', ReponseParticipant.date_creation)) \
-                                 .having(func.count(distinct(ReponseParticipant.categorie)) == 4) \
-                                 .order_by(func.avg(ReponseParticipant.success_percentage).desc()) \
-                                 .limit(50) \
-                                 .all()
+                                    extract('year', ReponseParticipant.date_creation).label('response_year'),
+                                    extract('month', ReponseParticipant.date_creation).label('response_month'),
+                                    func.avg(ReponseParticipant.success_percentage).label('total_success_percentage')) \
+                             .group_by(ReponseParticipant.participant_id, 
+                                       extract('year', ReponseParticipant.date_creation),
+                                       extract('month', ReponseParticipant.date_creation)) \
+                             .having(func.count(distinct(ReponseParticipant.categorie)) == 4) \
+                             .having(func.count(distinct(ReponseParticipant.sujet)) >= 2) \
+                             .order_by(func.avg(ReponseParticipant.success_percentage).desc()) \
+                             .limit(50) \
+                             .all()
     
     top_participants_info = []
     for participant_id, response_year, response_month, total_success_percentage in top_participants:

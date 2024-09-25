@@ -521,6 +521,28 @@ def progression():
                            grouped_results=grouped_results, 
                            participant_info=participant_info)
 
+@app.route('/supprimer_sujet')
+@login_required
+def supprimer_sujet():
+    categorie = request.args.get('categorie')
+    sujet = request.args.get('sujet')
+    participant_id = session.get('user_id')
+
+    # Rechercher le sujet dans la base de données pour ce participant
+    result_to_delete = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie, sujet=sujet).first()
+
+    if result_to_delete:
+        # Supprimer le sujet
+        db.session.delete(result_to_delete)
+        db.session.commit()
+        flash(f"Le sujet '{sujet.replace('_', ' ')}' a été supprimé avec succès.", "success")
+    else:
+        flash(f"Le sujet '{sujet.replace('_', ' ')}' n'existe pas ou a déjà été supprimé.", "danger")
+
+    # Rediriger vers la page de progression
+    return redirect(url_for('progression'))
+
+
 @app.route('/download_csv')
 @login_required
 def download_csv():

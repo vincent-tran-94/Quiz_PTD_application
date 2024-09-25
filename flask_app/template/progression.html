@@ -19,6 +19,7 @@
         <p class="participant-name">{{ participant_info.nom }} {{ participant_info.prenom }}</p>
     </header>
 
+
     <!-- Résultats du participant -->
     <div class="container mt-5">
         <div class="row justify-content-center">
@@ -36,6 +37,15 @@
                                         <p class="card-text">Réponses correctes: {{ result.correct_answers }} / 15</p>
                                         <p class="card-text">Réponses incorrectes: {{ result.incorrect_answers }} / 15</p>
                                         <a href="{{ url_for('details', categorie=result.categorie, sujet=result.sujet) }}" class="btn btn-info">Voir les détails</a>
+                                        <!-- Bouton pour activer la confirmation -->
+                                        <button class="btn btn-danger" onclick="showConfirmation('{{ result.categorie }}', '{{ result.sujet }}', this)">Supprimer</button>
+
+                                        <!-- Zone de confirmation (cachée par défaut) -->
+                                        <div class="confirmation-message" style="display:none; margin-top:10px;">
+                                            <p>Êtes-vous sûr de vouloir supprimer le sujet <strong>{{ result.sujet.replace('_', ' ') }}</strong> ?</p>
+                                            <a href="{{ url_for('supprimer_sujet', categorie=result.categorie, sujet=result.sujet) }}" class="btn btn-danger">Confirmer</a>
+                                            <button class="btn btn-info" onclick="hideConfirmation(this)">Annuler</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -69,4 +79,29 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="{{ url_for('static', filename='js/rate.js') }}"></script>
 </body>
+<script>
+    let isDeleting = false; // Indicateur de suppression
+
+function showConfirmation(categorie, sujet, button) {
+    isDeleting = true; // Activation de l'indicateur de suppression
+    button.style.display = 'none';
+    const confirmationDiv = button.nextElementSibling;
+    confirmationDiv.style.display = 'block';
+}
+
+function hideConfirmation(cancelButton) {
+    isDeleting = false; // Désactivation de l'indicateur de suppression
+    const confirmationDiv = cancelButton.parentElement;
+    confirmationDiv.style.display = 'none';
+    const deleteButton = confirmationDiv.previousElementSibling;
+    deleteButton.style.display = 'inline-block';
+}
+
+document.querySelector('.btn-secondary').addEventListener('click', function(e) {
+    if (isDeleting) {
+        e.preventDefault(); // Empêche le redirection si une suppression est en cours
+        alert("Veuillez confirmer ou annuler la suppression avant de naviguer ailleurs.");
+    }
+});
+</script>
 </html>
