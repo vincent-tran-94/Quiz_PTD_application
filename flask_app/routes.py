@@ -159,10 +159,10 @@ def forgot_password():
         try:
             user = User.query.filter_by(email=email).one()
             reset_password_email(user)
-            return render_template('setup_user/confirmation.html', 
+            return render_template('setup_user/forgot_password.html', 
                                    message='Un lien de réinitialisation de mot de passe a été envoyé à votre adresse e-mail.')
         except NoResultFound:
-            return render_template('setup_user/confirmation.html', 
+            return render_template('setup_user/forgot_password.html', 
                                    message='Adresse e-mail non trouvée.')
         
     return render_template('setup_user/forgot_password.html')
@@ -175,10 +175,10 @@ def delete_account():
         try: 
             user = User.query.filter_by(email=email).one()
             delete_account_email(user)
-            return render_template('setup_user/confirmation.html', 
+            return render_template('setup_user/delete_account.html', 
                                    message='Un lien de suppresion de compte a été envoyé à votre adresse e-mail.')
         except NoResultFound:
-            return render_template('setup_user/confirmation.html', 
+            return render_template('setup_user/delete_account.html', 
                                    message='Adresse e-mail non trouvée.')
         
     return render_template("setup_user/delete_account.html")
@@ -192,17 +192,22 @@ def register():
         prenom = request.form['prenom']
         email = request.form['email']
         password = request.form['password']
-    
+        confirm_password = request.form['confirm_password']  # récupérer la confirmation du mot de passe
+        
+        # Vérifier si les mots de passe correspondent
+        if password != confirm_password:
+            return render_template('setup_user/register.html', 
+                                   message='Les mots de passe ne correspondent pas.')
+        
+        # Vérifier si l'email existe déjà
         existing_email = User.query.filter_by(email=email).first()
         if not existing_email:
-            send_confirmation_email(nom=nom,prenom=prenom,email=email,password=password)
-                   
-            return render_template('setup_user/confirmation.html', 
+            send_confirmation_email(nom=nom, prenom=prenom, email=email, password=password)
+            return render_template('setup_user/register.html', 
                                    message='Un e-mail de confirmation a été envoyé à votre adresse.')
         else:
-            return render_template('setup_user/confirmation.html', 
+            return render_template('setup_user/register.html', 
                                    message='Vous êtes déjà inscrit.')
-
 
     return render_template('setup_user/register.html')
 

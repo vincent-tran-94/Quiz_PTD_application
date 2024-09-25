@@ -26,8 +26,9 @@
                 </div>
               </div>
               <div class="d-inline text-center mb-3">
-                <div class="form-group mx-auto">
-                    <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
+                <div class="form-group mx-auto position-relative">
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>
+                  <i class="far fa-eye position-absolute" id="togglePassword" style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
                 </div>
               </div>
               <div class="d-inline text-left mb-3">
@@ -57,6 +58,19 @@
           </div>
         </div>
       </div>
-    </form>  
+    </form>
+    <script>
+      const togglePassword = document.querySelector('#togglePassword');
+      const password = document.querySelector('#password');
+    
+      togglePassword.addEventListener('click', function () {
+        // Basculer entre le type "password" et "text"
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        
+        // Basculer l'icône entre l'œil ouvert et fermé
+        this.classList.toggle('fa-eye-slash');
+      });
+    </script>
 </body>
 </html>
