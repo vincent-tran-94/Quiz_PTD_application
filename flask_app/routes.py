@@ -47,9 +47,24 @@ def load_user(user_id):
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
+        user_id = session.get('user_id')
+        user = User.query.get(user_id)
+        participant = Participant.query.filter_by(participant_id=user.id).first()
+
         if 'user_id' not in session:
             flash("Veuillez vous connecter pour accéder à cette fonctionnalité", "error")
             return redirect(url_for('accueil'))  # Rediriger vers la page de connexion
+    
+        # Vérification de l'acceptation de la politique de confidentialité
+        if user and not user.policy_accepted:  # Si l'utilisateur est connecté mais n'a pas accepté la politique
+            flash("Vous devez accepter la politique de confidentialité pour continuer.", "error")
+            return redirect(url_for('accueil'))  # Rediriger vers la page de consentement
+        
+        # Vérification du remplissage du formulaire par l'utilisateur
+        if not participant:
+            flash("Vous devez remplir votre formulaire de profil.", "error")
+            return redirect(url_for('accueil'))  # Rediriger vers la page de consentement
+
         return f(*args, **kwargs)
     return decorated_function
 
@@ -75,7 +90,6 @@ def check_inactive_session():
 #Fonction de la première connexion
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -93,24 +107,49 @@ def login():
                 participant = Participant.query.filter_by(participant_id=user.id).first()
                 if participant:
                     return redirect(url_for('accueil'))  # Rediriger vers la page de catégorie
-                else:
-                    return redirect(url_for('formulaire'))  # Rediriger vers le formulaire si l'utilisateur n'a pas rempli
+                elif not user.policy_accepted:
+                    # Redirigez l'utilisateur vers la page de consentement si la politique n'est pas acceptée
+                    return redirect(url_for('consentement'))  
+                elif user.policy_accepted and not participant:
+                    return redirect(url_for('formulaire')) # Rediriger vers le formulaire si l'utilisateur n'a pas rempli
         else:
             flash("Nom d'utilisateur ou mot de passe invalide", "error")  # Message flash pour l'erreur
         
     return render_template('setup_user/login.html')
 
 
+@app.route('/consentement', methods=['GET', 'POST'])
+def consentement():
+    if request.method == 'POST':
+        if 'accept_policy' in request.form:
+            # L'utilisateur a accepté la politique de confidentialité
+            user = User.query.filter_by(id=session['user_id']).first()
+            user.policy_accepted = True
+            db.session.commit()  # Sauvegarde dans la base de données
+            return redirect(url_for('formulaire'))
+        else:
+            # L'utilisateur n'a pas coché la case
+            flash('Vous devez accepter la politique de confidentialité pour continuer.', 'error')
+            return redirect(url_for('consentement'))
+    return render_template('consentement.html')
 
+# Page des détails de la charte de confidentialité
+@app.route('/charte')
+def charte():
+    user_id = session.get('user_id')  # Récupérer l'utilisateur connecté depuis la session
+    if user_id:
+        user = User.query.get(user_id)  # Récupérer l'utilisateur depuis la base de données
+        return render_template('charte.html', user=user)
+    return render_template('charte.html')
 
 #Fonction de déconnexion
 @app.route('/logout')
 def logout():
     logout_user()
     session.pop('user_id', None)
+    session.pop('policy_accepted',None)
     flash("Vous avez été déconnecté avec succès", "success")
     return redirect(url_for('accueil'))
-
 
 #Fonction de changement de mot de passe en cas de problème 
 @app.route('/forgot_password', methods=['GET', 'POST'])
@@ -144,12 +183,8 @@ def delete_account():
         
     return render_template("setup_user/delete_account.html")
 
-@app.route('/test')
-def test():
-    return render_template("page.html")
 
-
-#Fonction de désinscription
+#Fonction de Inscription
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -175,7 +210,6 @@ def register():
 
 #Fonction de formulaire de renseignement du participant pour connaitre les informations du participant
 @app.route('/formulaire', methods=['GET', 'POST'])
-@login_required
 def formulaire():
     participant_id = session.get('user_id')
     if request.method == 'POST':
@@ -193,20 +227,20 @@ def formulaire():
 
         if not champs_requis:
             return render_template('formulaire.html', 
-                                   message="Veuillez remplir tous les champs.")
+                                message="Veuillez remplir tous les champs.")
         
 
         participant = Participant(participant_id=participant_id,
-                                  nom=nom, 
-                                  prenom=prenom, 
-                                  adresse=adresse,
-                                  code_postal=code_postal,
-                                  ville=ville,
-                                  pays=pays,
-                                  niveau_etude=niveau_etude,
-                                  statut=statut,
-                                  centre_interet=centre_interet, 
-                                  choix_categorie=choix_categorie)
+                                nom=nom, 
+                                prenom=prenom, 
+                                adresse=adresse,
+                                code_postal=code_postal,
+                                ville=ville,
+                                pays=pays,
+                                niveau_etude=niveau_etude,
+                                statut=statut,
+                                centre_interet=centre_interet, 
+                                choix_categorie=choix_categorie)
         db.session.add(participant)
         db.session.commit()
         return redirect(url_for('accueil'))
@@ -224,6 +258,7 @@ def accueil():
                            base_template='home')
 
 @app.route('/profil')
+@login_required
 def profil():
     participant_id = session.get('user_id')
     user = Participant.query.get(participant_id)
@@ -248,6 +283,7 @@ def profil():
                            base_template='profil')
 
 @app.route('/update_profil', methods=['POST'])
+@login_required
 def update_profil():
     participant_id = session.get('user_id')
     user = Participant.query.get(participant_id)
@@ -294,6 +330,7 @@ def update_profil():
 
 
 @app.route('/edit_profil')
+@login_required
 def edit_profil():
     participant_id = session.get('user_id')
     user = Participant.query.get(participant_id)
@@ -374,7 +411,7 @@ def categorie_questions(categorie,sujet):
             return redirect(url_for('choice_categories', choice_categorie=categorie))
         else:
             reponse_existe.nb_essais -= 1
-
+    
     categories_directories = {
         'droit': 'questions/droit',
         'humanitaire': 'questions/humanitaire',

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920,height=1080, initial-scale=1">
+    <title>Politique de Confidentialité - PTD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link href="{{ url_for('static', filename='styles/consentement.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo_v2_PTD.jpg') }}">
+</head>
+<body></body>
+    <div class="container">
+        <div class="card px-4 py-5 shadow">
+            <h2>Politique de Confidentialité</h2>
+            <p>
+                En utilisant nos services, vous acceptez notre politique de confidentialité. Veuillez la lire attentivement avant de poursuivre.
+                <a href="{{ url_for('charte') }}">Charte complète de la politique de confidentialité</a>.
+            </p>
+            
+            <!-- Formulaire d'acceptation de la politique de confidentialité -->
+            <form method="POST" action="/consentement">
+                <div class="form-group">
+                    <!-- Case à cocher pour accepter la politique de confidentialité -->
+                    <label for="accept_policy">J'accepte la Politique de Confidentialité</label>
+                    <input type="checkbox" id="accept_policy" name="accept_policy">
+                </div>
+
+                <!-- Afficher le message d'erreur si la case n'est pas cochée -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% for category, message in messages %}
+                    <p class="error-message">{{ message }}</p>
+                  {% endfor %}
+                {% endwith %}
+                <button type="submit" class="btn btn-primary">Continuer</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
