@@ -74,3 +74,32 @@ body{
     margin-right: 830px; /* Ajustez cette valeur selon votre besoin */
 }
 
+/* Media Query pour les écrans plus petits (moins de 600px) */
+@media (max-width: 763px) {
+  .img-custom {
+      position: relative; /* Change la position pour qu'elle soit relative */
+      width: 100%; /* Prend toute la largeur de l'écran */
+      height: auto; /* Ajuste la hauteur automatiquement */
+      margin-top: 20px; /* Réduit le margin-top pour les petits écrans */
+      margin-right: 0; /* Retire le margin-right */
+  }
+
+  .btn-primary {
+      width: 100%; /* Bouton prend toute la largeur */
+  }
+
+  .inpSp {
+      width: 100%; /* Champs de saisie prennent toute la largeur */
+  }
+
+  .regStr {
+      text-align: center; /* Centre le texte pour la responsivité */
+  }
+}
+
+/* Media Query pour les écrans entre 600px et 900px */
+@media (min-width: 600px) and (max-width: 900px) {
+  .spContainer {
+      max-width: 90%; /* Laisse un peu d'espace sur les côtés */
+  }
+}

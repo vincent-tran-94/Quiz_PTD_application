@@ -130,7 +130,7 @@ nav.open .sidebar {
   opacity: 0;
   pointer-events: none;
   transition: all 0.4s ease;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0);
 }
 nav.open ~ .overlay {
   opacity: 1;
@@ -146,3 +146,64 @@ nav.open ~ .overlay {
   color: rgba(255, 221, 112); /* Change la couleur en vert lors du survol */
 }
 
+/* Pour les mobiles (jusqu'à 600px) */
+@media only screen and (max-width: 600px) {
+  
+nav {
+    display: flex;
+    justify-content: space-between; /* Espacer le logo à gauche et les boutons à droite */
+    align-items: center;
+    padding: 10px 1px; /* Ajouter du padding pour ne pas coller les éléments au bord */
+}
+
+nav .sidebar {
+  padding: 5px;
+}
+
+.nav-link .icon {
+  margin-right: 12px;
+  font-size: 12px;
+}
+.nav-link .link {
+  font-size: 12px;
+}
+
+nav .sidebar {
+  width: 230px;
+}
+
+.logo .menu-icon {
+  font-size: 15px; /* Réduire la taille de l'icône */
+  margin-right: 10px;
+}
+
+.logo .logo-name {
+  font-size: 10px; /* Réduire la taille du texte du logo */
+}
+
+.btn.btn-light {
+  padding: 3px 0.8px;   /* Réduction du padding sur petits écrans */
+  font-size: 6px;     /* Taille de texte plus petite */
+  margin-right: 0.5px;         /* Réduction de l'espacement */
+  margin-top: 15px;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+}
+
+.social-icons a {
+  margin: 0 5px; /* Ajuster l'espacement entre les boutons blancs */
+}
+
+.social-logo {
+  width: 11px; /* Redimensionner tous les logos en 30px de largeur */
+  height: auto; /* Hauteur automatique pour conserver les proportions */
+  margin-right: 3px; /* Espacement entre les logos */
+}
+
+.aside-background {
+  padding: 20px; /* Moins d'espace autour du conteneur */
+}
+}

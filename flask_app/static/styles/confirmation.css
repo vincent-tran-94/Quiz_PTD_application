@@ -79,3 +79,35 @@ header {
 .home-link {
     margin-top: 20px; /* Choisissez la valeur de marge appropriée */
 }
+
+/* Media Queries pour rendre le site responsive */
+@media (max-width: 600px) {
+    body {
+        padding: 10px; /* Réduit le padding pour les petits écrans */
+    }
+
+    .container {
+        padding: 20px; /* Réduit le padding pour les petits écrans */
+        width: 100%; /* Prend toute la largeur sur mobile */
+    }
+
+    h1 {
+        font-size: 24px; /* Ajuste la taille du titre */
+    }
+
+    p {
+        font-size: 16px; /* Réduit la taille du texte */
+    }
+
+    .star {
+        font-size: 20px; /* Ajuste la taille des étoiles */
+    }
+
+    .small-font {
+        font-size: 20px; /* Ajuste la taille de la petite police */
+    }
+
+    .link-container {
+        align-items: center; /* Centre les liens pour une meilleure lisibilité */
+    }
+}

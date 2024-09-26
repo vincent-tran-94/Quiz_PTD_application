@@ -69,3 +69,18 @@ select {
 .error-message {
     color: red;
 }
+
+/* Styles pour les écrans mobiles */
+@media (max-width: 600px) {
+    .img-custom {
+        display: none; /* Cache l'image sur les petits écrans */
+    }
+
+    body {
+        padding: 10px; /* Réduit le padding pour les petits écrans */
+    }
+
+    .container {
+        margin: 10px; /* Réduit la marge pour les petits écrans */
+    }
+}

@@ -130,3 +130,41 @@ h1 {
     color: #ff425f; /* Couleur de mise en avant de la consigne importante */
 }
 
+
+/* Pour les mobiles (jusqu'à 600px) */
+@media only screen and (max-width: 600px) {
+    .container {
+        padding: 20px; /* Réduction du padding pour mobile */
+        margin-top: 100px; /* Réduction de l'espacement en haut */
+    }
+
+    h1 {
+        font-size: 22px; /* Taille de police plus petite */
+    }
+
+    .quiz-instructions h2 {
+        font-size: 20px; /* Réduction de la taille de la police pour mobile */
+    }
+
+    .quiz-instructions p, 
+    .quiz-instructions li {
+        font-size: 14px; /* Ajustement de la taille de la police */
+    }
+
+    .encouragement p {
+        font-size: 20px; /* Texte plus petit pour mobile */
+    }
+
+    .available-subjects {
+        font-size: 18px; /* Réduction de la taille de la police */
+    }
+
+    .subject-button {
+        font-size: 12px; /* Police plus petite pour les boutons */
+        padding: 8px 10px; /* Moins de padding pour mobile */
+    }
+
+    .subject-button:hover {
+        transform: scale(1.03); /* Légère réduction de l'effet de hover */
+    }
+}

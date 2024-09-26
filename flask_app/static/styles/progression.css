@@ -150,3 +150,92 @@ h3 {
 .confirmation-message p {
     margin-bottom: 10px;
 }
+
+@media (max-width: 768px) {
+    /* Container adjustments for smaller screens */
+    .container {
+        padding: 10px;
+    }
+
+    /* Header */
+    .header {
+        padding: 15px;
+    }
+
+    .header .logo {
+        height: 50px;
+        margin-bottom: 8px;
+    }
+
+    .main-title {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .participant-name {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    /* Result Cards */
+    .results-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .result-card {
+        width: 100%;
+        margin: 10px 0;
+        padding: 15px;
+    }
+
+    .category-title {
+        font-size: 1.2rem;
+    }
+
+    .result-card p {
+        font-size: 0.9rem;
+    }
+
+    /* Rating Section */
+    .star {
+        font-size: 1.5rem;
+    }
+
+    .feedback-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    #thank-you-message {
+        font-size: 1rem;
+    }
+
+    /* Buttons */
+    .btn-success,
+    .btn-secondary {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    .link-container a {
+        display: block;
+        margin: 10px 0;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .card {
+        margin-bottom: 15px;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .confirmation-message {
+        flex-direction: column;
+        text-align: center;
+    }
+}

@@ -71,3 +71,50 @@ body {
 .hidden {
     display: none;
 }
+
+/* Pour les appareils mobiles */
+@media only screen and (max-width: 600px) {
+    .custom-navbar {
+        font-size: 0.9em; /* Ajuste la taille de la police de la navbar */
+    }
+
+    .navbar-brand {
+        font-size: 1.2em; /* Réduit la taille du logo de la navbar */
+    }
+
+    .custom-progress-container {
+        width: 80%; /* Plus large pour les petits écrans */
+        height: 15px; /* Réduit la hauteur de la barre de progression */
+    }
+
+    .custom-card {
+        margin: 10px; /* Ajouter un peu de marge autour des cartes */
+        padding: 10px; /* Réduire les espacements */
+    }
+
+    .custom-btn-previous, .custom-btn-next, .custom-btn-submit {
+        width: 100%; /* Les boutons prennent toute la largeur de l'écran */
+        padding: 10px; /* Plus d'espace vertical */
+    }
+
+    .custom-progress-bar {
+        line-height: 15px; /* Aligner le texte au centre avec une hauteur réduite */
+    }
+}
+
+/* Pour les tablettes */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .custom-navbar {
+        font-size: 1em; /* Taille de la police plus adaptée */
+    }
+
+    .custom-progress-container {
+        width: 70%; /* Progress bar un peu plus large que sur mobile */
+        height: 18px; /* Légèrement plus grande */
+    }
+
+    .custom-btn-previous, .custom-btn-next, .custom-btn-submit {
+        width: 48%; /* Deux boutons côte à côte sur tablettes */
+        margin: 1%;
+    }
+}

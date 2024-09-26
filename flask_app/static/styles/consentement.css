@@ -50,3 +50,35 @@ input[type="checkbox"] {
 .error-message {
     color: red;
 }
+
+
+/* Media Queries pour rendre le site responsive */
+@media (max-width: 600px) {
+    .container {
+        width: 90%; /* Réduit la largeur maximale pour les petits écrans */
+        margin: 20px auto; /* Réduit les marges sur les petits écrans */
+    }
+
+    .form-group {
+        flex-direction: column; /* Empile les éléments sur les petits écrans */
+        align-items: flex-start; /* Aligne les éléments à gauche */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="checkbox"] {
+        width: 100%; /* Champs prennent toute la largeur */
+        margin-left: 0; /* Retire l'espacement sur les petits écrans */
+    }
+
+    .btn-primary {
+        width: 100%; /* Bouton prend toute la largeur sur mobile */
+    }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+    .container {
+        max-width: 80%; /* Laisse un peu d'espace sur les côtés pour les écrans moyens */
+    }
+}

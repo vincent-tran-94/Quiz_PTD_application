@@ -1,5 +1,4 @@
 body {
-    position: static;
     background-image: url('images/background_image.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -63,12 +62,23 @@ body {
 }
 
 .video {
-    margin-left: 450px; 
-    top: 100%;
+    display: flex;
+    justify-content: center; /* Centre les vidéos horizontalement */
+    align-items: center;     /* Centre les vidéos verticalement, si nécessaire */
+    flex-wrap: wrap;         /* Permet de passer à la ligne si la taille est réduite */
+}
+
+#description {
+    padding-top: 30px; /* Ajuste la valeur selon tes besoins */
 }
 
 #banner {
     padding-top: 70px; /* Ajuste la valeur selon tes besoins */
+    padding-right: 400px; /* Ajuste la valeur selon tes besoins */
+    display: flex;
+    justify-content: center; /* Centre les vidéos horizontalement */
+    align-items: center;     /* Centre les vidéos verticalement, si nécessaire */
+    flex-wrap: wrap;         /* Permet de passer à la ligne si la taille est réduite */
 }
 
 .title {
@@ -92,5 +102,4 @@ body {
 footer p {
     margin: 5px 0;
 }
-
 

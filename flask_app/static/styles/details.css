@@ -111,7 +111,7 @@ body {
 
 
 /* Mobile responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     .header {
         text-align: center;
     }
