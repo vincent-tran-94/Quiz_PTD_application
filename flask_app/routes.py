@@ -147,7 +147,6 @@ def charte():
 def logout():
     logout_user()
     session.pop('user_id', None)
-    session.pop('policy_accepted',None)
     flash("Vous avez été déconnecté avec succès", "success")
     return redirect(url_for('accueil'))
 
@@ -388,8 +387,8 @@ def choice_categories(choice_categorie):
         if nb_essais_restant == 0:
             flash(f"Vous avez épuisé tout vos essais pour le categorie: {choice_categorie} ", "info")
             return redirect(url_for('accueil', choice_categorie=choice_categorie))
+            
 
-    
     BASE_DIR = 'questions'  # Remplacez par le chemin réel où se trouvent vos dossiers de catégories
     # Initialiser la liste des sujets
     list_subjects = [] 
@@ -418,7 +417,9 @@ def choice_categories(choice_categorie):
 def categorie_questions(categorie,sujet):
     participant_id = session.get('user_id')
     reponse_existe = NbEssaisParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
-    reponse_existe.nb_essais -= 1
+    if reponse_existe:
+        reponse_existe.nb_essais -= 1
+    
     categories_directories = {
         'droit': 'questions/droit',
         'humanitaire': 'questions/humanitaire',
@@ -516,6 +517,7 @@ def progression():
 
     # Grouper les résultats par catégorie
     grouped_results = defaultdict(list)
+
     for result in participant_results:
         grouped_results[result.categorie].append(result)
 
@@ -523,7 +525,7 @@ def progression():
     quiz_counts = session.get('quiz_counts', {})
     for categorie, results in grouped_results.items():
         if categorie not in quiz_counts:
-            quiz_counts[categorie] = {'completed': 0, 'deleted': 0}
+            quiz_counts[categorie] = {'completed': 0, 'deleted':0}
         quiz_counts[categorie]['completed'] = len(results)  # Compte le nombre de quiz effectués
 
     return render_template('progression.html', 
@@ -541,15 +543,18 @@ def supprimer_sujet(categorie, sujet):
     ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=categorie, sujet=sujet).delete()
     db.session.commit()  # Confirmer la suppression
 
-    # Incrémenter le compteur de quiz supprimés pour la catégorie
+    # Récupérer les quiz_counts depuis la session
     quiz_counts = session.get('quiz_counts', {})
 
-    if categorie in quiz_counts:
-        quiz_counts[categorie]['deleted'] += 1  # Incrémenter le nombre de quiz supprimés
-    else:
-        quiz_counts[categorie] = {'completed': 0, 'deleted': 1}  # Initialiser si catégorie n'existe pas
+    # Initialiser la catégorie dans quiz_counts si elle n'existe pas
+    if categorie not in quiz_counts:
+        quiz_counts[categorie] = {'completed': 0, 'deleted': 0}  # Initialisation des compteurs
 
-    session['quiz_counts'] = quiz_counts  # Sauvegarder les nouvelles valeurs dans la session
+    # Incrémenter le nombre de quiz supprimés
+    quiz_counts[categorie]['deleted'] += 1
+
+    # Sauvegarder les nouvelles valeurs dans la session
+    session['quiz_counts'] = quiz_counts
 
     return redirect(url_for('progression'))  # Rediriger vers la page de progression
 
