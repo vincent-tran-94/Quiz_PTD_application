@@ -65,14 +65,7 @@ body{
     font-weight:900;
   }
 
-  .img-custom {
-    position: absolute;
-    right: 0;
-    width: 250px;
-    height: 220px;
-    margin-top: 650px; /* Ajustez cette valeur selon votre besoin */
-    margin-right: 830px; /* Ajustez cette valeur selon votre besoin */
-}
+
 
 /* Media Query pour les écrans plus petits (moins de 600px) */
 @media (max-width: 763px) {

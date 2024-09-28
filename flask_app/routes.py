@@ -49,7 +49,7 @@ def login_required(f):
     def decorated_function(*args, **kwargs):
         user_id = session.get('user_id')
         user = User.query.get(user_id)
-        participant = Participant.query.filter_by(participant_id=user.id).first()
+        participant = Participant.query.filter_by(participant_id=user_id).first()
 
         if 'user_id' not in session:
             flash("Veuillez vous connecter pour accéder à cette fonctionnalité", "error")
