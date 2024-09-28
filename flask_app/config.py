@@ -23,7 +23,6 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SESSION_PERMANENT = False
     SESSION_TYPE = "filesystem"
-    REMEMBER_COOKIE_DURATION = timedelta(days=14)
     HOST = '0.0.0.0'
     PORT = 5000 
     MAIL_ASSOCIATION_CONTACT = 'contact@preserve-ton-droit.com'
@@ -35,3 +34,5 @@ class Config:
     TAXE_RATE = os.getenv('ID_TAXE_RATE')
     STRIPE_SECRET_ENDPOINT = os.getenv('STRIPE_SECRET_ENDPOINT')
     COUPON_ID = os.getenv('ID_COUPON')
+    MAX_INACTIVITY_DURATION=30
+
