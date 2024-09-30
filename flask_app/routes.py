@@ -18,6 +18,8 @@ from data_process import *
 from permission import * 
 from process_stripe import *
 
+import locale
+
 
 """
 CONSIGNES POUR LANCER l'APPLICATION:
@@ -383,7 +385,7 @@ def choice_categories(choice_categorie):
     if reponse_existe:
         nb_essais_restant = reponse_existe.nb_essais
         if nb_essais_restant == 0:
-            flash(f"Vous avez épuisé tout vos essais pour le categorie: {choice_categorie} ", "info")
+            flash(f"Vous avez épuisé tout vos essais pour la catégorie: {choice_categorie} ", "info")
             return redirect(url_for('accueil', choice_categorie=choice_categorie))
             
 
@@ -507,6 +509,9 @@ def details(categorie,sujet):
 def progression():
     participant_id = session.get('user_id')
 
+    # Définir la locale en français
+    locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
+
     # Récupérer les résultats du participant depuis la base de données
     participant_results = ReponseParticipant.query.filter_by(participant_id=participant_id).all()
 
@@ -517,13 +522,19 @@ def progression():
     grouped_results = defaultdict(list)
 
     for result in participant_results:
-        grouped_results[result.categorie].append(result)
+        grouped_results[result.categorie].append({
+            'sujet': result.sujet,
+            'success_percentage': result.success_percentage,
+            'correct_answers': result.correct_answers,
+            'incorrect_answers': result.incorrect_answers,
+            'date_creation': result.date_creation.strftime('%A %d %B %Y %H:%M:%S')  # Date en format FR
+        })
 
     # Compter le nombre de quiz pour chaque catégorie
     quiz_counts = session.get('quiz_counts', {})
     for categorie, results in grouped_results.items():
         if categorie not in quiz_counts:
-            quiz_counts[categorie] = {'completed': 0, 'deleted':0}
+            quiz_counts[categorie] = {'completed': 0, 'deleted': 0}
         quiz_counts[categorie]['completed'] = len(results)  # Compte le nombre de quiz effectués
 
     return render_template('progression.html', 
