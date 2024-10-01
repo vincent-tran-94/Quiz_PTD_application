@@ -102,10 +102,7 @@
                 event.preventDefault();
                 codePostal.setCustomValidity('Veuillez entrer uniquement des chiffres pour le code postal.');
                 document.getElementById('code_postal_error').textContent = 'Veuillez entrer uniquement des chiffres pour le code postal.';
-            } else {
-                codePostal.setCustomValidity('');
-                document.getElementById('code_postal_error').textContent = '';
-            }
+            } 
         });
     </script>
 </body>

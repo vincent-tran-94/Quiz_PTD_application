@@ -38,7 +38,7 @@
                                     <p class="card-text">Pourcentage de succès: {{ result.success_percentage }}%</p>
                                     <p class="card-text">Réponses correctes: {{ result.correct_answers }} / 15</p>
                                     <p class="card-text">Réponses incorrectes: {{ result.incorrect_answers }} / 15</p>
-                                    <p class="card-text">Date d'ajout : {{ result.date_creation }}</p> <!-- Ajout de la date -->
+                                    <p class="card-text">Date et heure d'ajout : {{ result.date_creation }}</p> 
                                     <a href="{{ url_for('details', categorie=categorie, sujet=result.sujet) }}" class="btn btn-info">Voir les détails</a>
                                     <button class="btn btn-danger" onclick="showConfirmation('{{ categorie }}', '{{ result.sujet }}', this)">Supprimer</button>
     

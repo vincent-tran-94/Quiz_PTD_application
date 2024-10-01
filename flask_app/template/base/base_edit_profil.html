@@ -39,7 +39,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="code_postal"><i class='bx bx-envelope'></i> Code Postal:</label>
-                            <input type="text" class="form-control" id="code_postal" name="code_postal" value="{{ user.code_postal if user.code_postal else '' }}">
+                            <input type="text" class="form-control" name="code_postal" pattern="\d+"  value="{{ user.code_postal if user.code_postal else '' }}" required oninvalid="this.setCustomValidity('Veuillez entrer uniquement des chiffres pour le code postal.')" oninput="setCustomValidity('')">
                             <span id="code_postal_error" class="text-danger small"></span>
                         </div>
                         <div class="form-group col-md-4">
@@ -105,4 +105,14 @@
         </div>
     </div>
 </body>
+<script>
+    document.getElementById('bx bx-envelope').addEventListener('submit', function(event) {
+        var codePostal = document.getElementById('code_postal');
+        if (!/^\d+$/.test(codePostal.value)) {
+            event.preventDefault();
+            codePostal.setCustomValidity('Veuillez entrer uniquement des chiffres pour le code postal.');
+            document.getElementById('code_postal_error').textContent = 'Veuillez entrer uniquement des chiffres pour le code postal.';
+        } 
+    });
+</script>
 </html>
