@@ -20,7 +20,7 @@ from process_stripe import *
 
 import locale
 
-
+locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
 """
 CONSIGNES POUR LANCER l'APPLICATION:
 1) Créer un environnement virtuel et lancer les dépendances
@@ -233,7 +233,6 @@ def formulaire():
             return render_template('formulaire.html', 
                                 message="Veuillez remplir tous les champs.")
         
-
         participant = Participant(participant_id=participant_id,
                                 nom=nom, 
                                 prenom=prenom, 
@@ -246,7 +245,23 @@ def formulaire():
                                 centre_interet=centre_interet, 
                                 choix_categorie=choix_categorie)
         db.session.add(participant)
+    
+        default_essai = 3
+        categories = ['droit', 'sociologie', 'humanitaire', 'vulgarisation']
+
+        # Boucle sur chaque catégorie
+        for categorie in categories:
+            # Vérifie si une ligne pour ce participant et cette catégorie existe déjà
+            new_categories_essais = NbEssaisParticipant.query.filter_by(participant_id=participant_id, categorie=categorie).first()
+            
+            # Si aucune ligne n'existe pour cette catégorie, on en crée une nouvelle
+            if not new_categories_essais:
+                new_essais = NbEssaisParticipant(participant_id=participant_id, categorie=categorie, nb_essais=default_essai)
+                db.session.add(new_essais)
+
+        # On commit les ajouts après la boucle
         db.session.commit()
+        
         return redirect(url_for('accueil'))
 
     return render_template('formulaire.html', 
@@ -509,9 +524,6 @@ def details(categorie,sujet):
 def progression():
     participant_id = session.get('user_id')
 
-    # Définir la locale en français
-    locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
-
     # Récupérer les résultats du participant depuis la base de données
     participant_results = ReponseParticipant.query.filter_by(participant_id=participant_id).all()
 
@@ -527,7 +539,7 @@ def progression():
             'success_percentage': result.success_percentage,
             'correct_answers': result.correct_answers,
             'incorrect_answers': result.incorrect_answers,
-            'date_creation': result.date_creation.strftime('%A %d %B %Y %H:%M:%S')  # Date en format FR
+            'date_creation': result.date_creation.strftime('%A %d %B %Y').capitalize() + ' à ' + result.date_creation.strftime('%H:%M')
         })
 
     # Compter le nombre de quiz pour chaque catégorie

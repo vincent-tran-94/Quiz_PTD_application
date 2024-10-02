@@ -115,6 +115,8 @@ def confirm_delete(token):
                 print(f"Subcription canceled by {customer_email}")
         if user:
             # Créez une liste des classes de modèles que vous souhaitez supprimer
+            NbEssaisParticipant.query.filter_by(participant_id=user.id).delete()
+            
             tables_to_delete = [ReponseParticipant, Contact, Participant, StripeCustomer, Parrainage]
             # Utilisez une boucle pour parcourir chaque classe de modèle et supprimer les entrées associées à l'utilisateur
             for table in tables_to_delete:

@@ -46,6 +46,7 @@
                             <li class="list-group-item"><strong>Statut:</strong> {{ user.statut if user.statut else "" }}</li>
                             <li class="list-group-item"><strong>Centre d'Intérêt:</strong> {{ user.centre_interet if user.centre_interet else "" }}</li>
                             <li class="list-group-item"><strong>Choix Catégorie:</strong> {{ user.choix_categorie if user.choix_categorie else "" }}</li>
+                            <li class="list-group-item"><strong>Création du compte:</strong> {{ user.date_creation.strftime('%A %d %B %Y') if user.date_creation else "" }}</li>
                         </ul>
                     </div>
                 </div>
