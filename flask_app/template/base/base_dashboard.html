@@ -52,7 +52,17 @@
             </div>
         </div>
         <div class="background-rectangle">
-            <h1>Classement les 50 premiers participants ayant répondu tout les catégories</h1>
+            <h1 style="text-align: center;">Classement les 20 premiers participants ayant répondu tout les catégories</h1>
+            <p style="text-align: center; color: #fff"> Nom du participant : {{ participant_name }} </p> 
+            <div style="text-align: center;">
+                {% if is_in_top_20 %}
+                    <p style="color: green; font-size: 18px;">Vous êtes dans le classement global !</p>
+                {% elif is_not_in_top_20 and has_answered_all_categories %}
+                    <p style="color: orange; font-size: 18px;">Vous n'êtes pas dans le top 20.</p>
+                {% else %}
+                    <p style="color: red; font-size: 18px;">Vous n'avez pas complété toutes les catégories.</p>
+                {% endif %}
+            </div>
             <form action="/dashboard" method="POST" onsumbit="saveFilters()">
                 <input type="text" style="margin-left: 50px;" id="searchInput" onkeyup="searchTable()" placeholder="Rechercher par nom...">
                 <label for="month" style="color: #fff; text-indent: 20px; display: inline-block;">Mois:</label>

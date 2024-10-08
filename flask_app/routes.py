@@ -619,15 +619,39 @@ def download_csv():
 @login_required
 def dashboard():
     base_template='dashboard'
+    participant_id = session.get('user_id')
 
     ReponsesParticipant = ReponseParticipant.query.all()
     if ReponsesParticipant:
         graph_json_success = get_participants_success_percentage()
         graph_json_participants = get_participants_count_by_category()
         graph_json_participants_month = get_participants_by_month()
-        top_participants = get_top_50_participants()
+        top_participants = get_top_20_participants()
         indexed_top_participants = list(enumerate(top_participants, start=1))
     
+        # Vérifier si le participant actuel est dans le top 20
+        is_in_top_20 = False
+        is_not_in_top_20 = False
+        has_answered_all_categories = False
+
+        # Vérifier si le participant a répondu à toutes les catégories
+        for participant in top_participants:
+            if participant[0] == get_participant_name(participant_id):
+                is_in_top_20 = True
+                break
+
+        # Si le participant n'est pas dans le top 20, mais a répondu à toutes les catégories
+        if not is_in_top_20:
+            participant_data = db.session.query(ReponseParticipant.participant_id, 
+                                                func.count(distinct(ReponseParticipant.categorie)).label('category_count')) \
+                                         .filter(ReponseParticipant.participant_id == participant_id) \
+                                         .group_by(ReponseParticipant.participant_id) \
+                                         .first()
+            if participant_data and participant_data.category_count == 4:  # Vérifier s'il a répondu à toutes les catégories
+                is_not_in_top_20 = True
+                has_answered_all_categories = True
+
+
         if request.method == 'POST':
             # Récupérer les données du formulaire de filtrage
             year = int(request.form.get('year'))  # Convertir le mois en entier
@@ -644,6 +668,10 @@ def dashboard():
                             top_participants=indexed_filtered_participants, 
                             selected_month=month,
                             selected_year=year,
+                            is_in_top_20=is_in_top_20,
+                            is_not_in_top_20=is_not_in_top_20,
+                            participant_name=get_participant_name(participant_id),
+                            has_answered_all_categories=has_answered_all_categories,
                             base_template=base_template)
 
 
@@ -651,10 +679,11 @@ def dashboard():
                             graph_json_participants=graph_json_participants, 
                             graph_json_participants_month= graph_json_participants_month,
                             top_participants=indexed_top_participants, 
+                            is_in_top_20=is_in_top_20,
+                            is_not_in_top_20=is_not_in_top_20,
+                            participant_name=get_participant_name(participant_id),
+                            has_answered_all_categories=has_answered_all_categories,
                             base_template=base_template)
-    else: 
-        return redirect(url_for('accueil'))
-    
 
 @app.route("/parrainage",methods=['GET', 'POST'])
 @login_required

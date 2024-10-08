@@ -102,7 +102,7 @@ def format_date_fr(date):
     
 #Fonction pour récupérer les 10 premiers participants ayant répondu les questionnaires pour TOUT les catégories et seront affichés
 #pour chaque mois et l'année
-def get_top_50_participants():
+def get_top_20_participants():
     top_participants = db.session.query(ReponseParticipant.participant_id,
                                     extract('year', ReponseParticipant.date_creation).label('response_year'),
                                     extract('month', ReponseParticipant.date_creation).label('response_month'),
@@ -113,7 +113,7 @@ def get_top_50_participants():
                              .having(func.count(distinct(ReponseParticipant.categorie)) == 4) \
                              .having(func.count(distinct(ReponseParticipant.sujet)) >= 2) \
                              .order_by(func.avg(ReponseParticipant.success_percentage).desc()) \
-                             .limit(50) \
+                             .limit(20) \
                              .all()
     
     top_participants_info = []
