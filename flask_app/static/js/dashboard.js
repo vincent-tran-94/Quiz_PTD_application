@@ -1,5 +1,5 @@
+// Fonction de filtrage par nom
 function searchTable() {
-    // Récupérer la valeur saisie dans l'input de recherche
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("searchInput");
     filter = input.value.toUpperCase();
@@ -20,14 +20,7 @@ function searchTable() {
     }
 }
 
-// Obtenir la date actuelle
-var currentDate = new Date();
-// Sélectionner le mois actuel
-document.getElementById('month').value = currentDate.getMonth() + 1;
-// Sélectionner l'année actuelle
-document.getElementById('year').value = currentDate.getFullYear();
-
-
+// Sauvegarder les filtres de mois et année dans le localStorage
 function saveFilters() {
     var selectedMonth = document.getElementById('month').value;
     var selectedYear = document.getElementById('year').value;
@@ -35,13 +28,15 @@ function saveFilters() {
     localStorage.setItem('selectedYear', selectedYear);
 }
 
-// Ajouter un gestionnaire d'événements pour le bouton "Filtrer"
-document.getElementById('participantsTable').addEventListener('click', saveFilters);
-
-// Obtenir les valeurs sélectionnées précédemment et les restaurer
+// Charger les filtres de mois et année précédemment sélectionnés depuis le localStorage
 var selectedMonth = localStorage.getItem('selectedMonth');
 var selectedYear = localStorage.getItem('selectedYear');
 if (selectedMonth && selectedYear) {
     document.getElementById('month').value = selectedMonth;
     document.getElementById('year').value = selectedYear;
 }
+
+// Attacher la sauvegarde des filtres de mois et année au bouton "Filtrer par Mois/Année"
+document.getElementById('participantsTable').addEventListener('click', function() {
+    saveFilters();
+});

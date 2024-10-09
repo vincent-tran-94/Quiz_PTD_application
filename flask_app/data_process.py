@@ -111,7 +111,6 @@ def get_top_20_participants():
                                        extract('year', ReponseParticipant.date_creation),
                                        extract('month', ReponseParticipant.date_creation)) \
                              .having(func.count(distinct(ReponseParticipant.categorie)) == 4) \
-                             .having(func.count(distinct(ReponseParticipant.sujet)) >= 2) \
                              .order_by(func.avg(ReponseParticipant.success_percentage).desc()) \
                              .limit(20) \
                              .all()
@@ -126,6 +125,7 @@ def get_top_20_participants():
 #Fonction qui permet de filtrer les données des participants en fonction du mois et de l'année sélectionné
 def filter_data_by_month_year(data, month, year):
     filtered_data = []
+
     for participant_name, response_year, response_month, total_success_percentage in data:
         if response_month == month and response_year == year:
             filtered_data.append((participant_name, response_year, response_month, total_success_percentage))

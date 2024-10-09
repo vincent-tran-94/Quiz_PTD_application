@@ -627,12 +627,20 @@ def dashboard():
         graph_json_participants = get_participants_count_by_category()
         graph_json_participants_month = get_participants_by_month()
         top_participants = get_top_20_participants()
-        indexed_top_participants = list(enumerate(top_participants, start=1))
-    
+
+        #Filtrage de la date automatique quand l'utilisateur va afficher les premiers résultats du mois actuel
+        current_date = datetime.now()
+        current_month = current_date.month
+        current_year = current_date.year
+
+        filtered_participants = filter_data_by_month_year(top_participants,current_month, current_year)
+        indexed_filtered_participants = list(enumerate(filtered_participants, start=1))
+
         # Vérifier si le participant actuel est dans le top 20
         is_in_top_20 = False
         is_not_in_top_20 = False
         has_answered_all_categories = False
+        categories_not_up_to_date = False
 
         # Vérifier si le participant a répondu à toutes les catégories
         for participant in top_participants:
@@ -642,47 +650,54 @@ def dashboard():
 
         # Si le participant n'est pas dans le top 20, mais a répondu à toutes les catégories
         if not is_in_top_20:
-            participant_data = db.session.query(ReponseParticipant.participant_id, 
-                                                func.count(distinct(ReponseParticipant.categorie)).label('category_count')) \
+            participant_data = db.session.query(ReponseParticipant.participant_id,
+                                                func.count(distinct(ReponseParticipant.categorie)).label('category_count'),
+                                                func.max(extract('year', ReponseParticipant.date_creation)).label('last_year'),
+                                                func.max(extract('month', ReponseParticipant.date_creation)).label('last_month'),
+                                                )\
                                          .filter(ReponseParticipant.participant_id == participant_id) \
                                          .group_by(ReponseParticipant.participant_id) \
                                          .first()
+            
             if participant_data and participant_data.category_count == 4:  # Vérifier s'il a répondu à toutes les catégories
-                is_not_in_top_20 = True
-                has_answered_all_categories = True
+                last_year =  participant_data.last_year
+                last_month =  participant_data.last_month
 
+                # Vérifier si le participant a répondu à toutes les catégories pour la dernière date
+                responses_last_date = db.session.query(
+                    func.count(distinct(ReponseParticipant.categorie)).label('category_count')
+                ).filter(
+                    ReponseParticipant.participant_id == participant_id,
+                    extract('year', ReponseParticipant.date_creation) == last_year,
+                    extract('month', ReponseParticipant.date_creation) == last_month
+                ).group_by(ReponseParticipant.participant_id).first()
+
+                # Si le participant n'a pas répondu à toutes les catégories pour le dernier mois
+                if responses_last_date and responses_last_date.category_count < 4:
+                    categories_not_up_to_date = True 
+                    is_not_in_top_20 = True
+                    has_answered_all_categories = True
 
         if request.method == 'POST':
             # Récupérer les données du formulaire de filtrage
             year = int(request.form.get('year'))  # Convertir le mois en entier
             month = int(request.form.get('month'))  # Convertir le mois en entier
-            
-            # Effectuer les opérations de filtrage en fonction du mois sélectionné
-            filtered_participants = filter_data_by_month_year(top_participants, month,year)
-            indexed_filtered_participants = list(enumerate(filtered_participants, start=1))
 
-            
-            return render_template('choice_template.html', graph_json_success=graph_json_success, 
-                            graph_json_participants=graph_json_participants, 
-                            graph_json_participants_month= graph_json_participants_month,
-                            top_participants=indexed_filtered_participants, 
-                            selected_month=month,
-                            selected_year=year,
-                            is_in_top_20=is_in_top_20,
-                            is_not_in_top_20=is_not_in_top_20,
-                            participant_name=get_participant_name(participant_id),
-                            has_answered_all_categories=has_answered_all_categories,
-                            base_template=base_template)
+            filtered_participants = filter_data_by_month_year(top_participants, month,year )
+            indexed_filtered_participants = list(enumerate(filtered_participants, start=1))
 
 
         return render_template('choice_template.html', graph_json_success=graph_json_success, 
                             graph_json_participants=graph_json_participants, 
                             graph_json_participants_month= graph_json_participants_month,
-                            top_participants=indexed_top_participants, 
+                            top_participants=indexed_filtered_participants, 
+                            selected_month=current_month,
+                            selected_year=current_year,
                             is_in_top_20=is_in_top_20,
                             is_not_in_top_20=is_not_in_top_20,
                             participant_name=get_participant_name(participant_id),
                             has_answered_all_categories=has_answered_all_categories,
+                            categories_not_up_to_date=categories_not_up_to_date,
                             base_template=base_template)
 
 @app.route("/parrainage",methods=['GET', 'POST'])

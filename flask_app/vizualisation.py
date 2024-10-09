@@ -27,20 +27,28 @@ colors = {'droit': 'rgb(31, 119, 180)',
               'sociologie': 'rgb(255,127,80)'}
 
 def get_participants_by_month():
-    # Récupérer les données de la base de données
+    # Récupérer les données de la base de données (vérifier que les années 2024 à 2026 sont incluses)
     participants_data = db.session.query(ReponseParticipant.date_creation).all()
 
     # Créer un DataFrame Pandas à partir des données
     df = pd.DataFrame(participants_data, columns=['date_creation'])
 
-    # Extraire le mois à partir de la colonne 'date_creation'
+    # Extraire l'année et le mois à partir de la colonne 'date_creation'
+    df['year'] = df['date_creation'].dt.year
     df['month'] = df['date_creation'].dt.month
 
-    # Compter le nombre de participants pour chaque mois
-    participants_by_month = df['month'].value_counts().sort_index()
+    # Filtrer les données pour les années de 2024 à 2026
+    df = df[df['year'].isin([2024, 2025, 2026])]
 
-    #Remplir tout les participants à 0 pour le reste du mois en utilisant la méthode reindex.
-    participants_by_month = participants_by_month.reindex(range(1, 13), fill_value=0) 
+    # Créer un dictionnaire pour stocker les données par année
+    participants_by_year = {}
+    
+    # Compter le nombre de participants pour chaque mois pour chaque année
+    for year in [2024, 2025, 2026]:
+        monthly_counts = df[df['year'] == year]['month'].value_counts().sort_index()
+        # Remplir avec 0 pour les mois sans participants
+        monthly_counts = monthly_counts.reindex(range(1, 13), fill_value=0)
+        participants_by_year[year] = monthly_counts
 
     # Traduire les mois en français
     french_months = {
@@ -57,30 +65,33 @@ def get_participants_by_month():
         11: 'Novembre',
         12: 'Décembre'
     }
-    
-    #Mapper les valeurs de l'index de la série participants_by_month aux noms des mois en français.
-    participants_by_month.index = participants_by_month.index.map(french_months)
 
-    # Créer le graphique à barres
-    bar_chart = go.Bar(
-        x=participants_by_month.index,
-        y=participants_by_month.values,
-        marker=dict(color=['skyblue', 'salmon', 'lightgreen', 'orange', 'lightblue', 'yellow', 
-                           'pink', 'cyan', 'purple', 'lime', 'brown', 'grey']),
-    )
+    # Créer les différentes traces pour chaque année dans le graphique
+    traces = []
+    colors = {'2024': 'skyblue', '2025': 'salmon', '2026': 'lightgreen'}
+    for year, counts in participants_by_year.items():
+        trace = go.Bar(
+            x=[french_months[month] for month in counts.index],
+            y=counts.values,
+            name=f'Année {year}',
+            marker=dict(color=colors[str(year)])
+        )
+        traces.append(trace)
 
+    # Layout du graphique
     layout = go.Layout(
-        title="Évolution mensuelle en 2024 du nombre de participants par catégorie aux questionnaires",
+        title="Évolution mensuelle (2024-2026) du nombre de participants par catégorie aux questionnaires",
         xaxis=dict(title="Mois"),
-        yaxis=dict(title="Nombre de participants",dtick=10),
-        width=1070, 
-        height=400,  
+        yaxis=dict(title="Nombre de participants", dtick=10),
+        width=1070,
+        height=400,
         paper_bgcolor='rgb(40, 55, 71)',
         plot_bgcolor='rgb(40, 55, 71)',  # Couleur de fond de la figure
         yaxis_gridcolor='white',  # Couleur de la grille sur l'axe des y
+        barmode='group'  # Pour afficher les barres groupées par mois
     )
 
-    fig = go.Figure(data=[bar_chart], layout=layout)
+    fig = go.Figure(data=traces, layout=layout)
     text_all_white_figure(fig)
 
     # Convertir le graphique en JSON
