@@ -53,7 +53,7 @@
         </div>
         <div class="background-rectangle">
             <h1 style="text-align: center;">Classement les 20 premiers participants ayant répondu tout les catégories</h1>
-            <p style="text-align: center; color: #fff"> Nom du participant : {{ participant_name }} </p> 
+            <p style="text-align: center; color: #fff"> Nom du participant : {{ participant_name }} ajouté depuis le {{ selected_month }} / {{ selected_year }} </p> 
             <div style="text-align: center;">
                 {% if is_in_top_20 %}
                     <p style="color: green; font-size: 18px;">Vous êtes dans le classement global !</p>
@@ -65,11 +65,10 @@
                     <p style="color: red; font-size: 18px;">Vous n'avez pas complété toutes les catégories.</p>
                 {% endif %}
             </div>
-            <form action="/dashboard" method="POST" onsumbit="saveFilters()">
+            <form action="/dashboard" method="POST">
                 <!-- Champ de recherche par nom -->
-                <input type="text" style="margin-left: 50px;" id="searchInput" placeholder="Rechercher par nom...">
-                <input id="nameFilterButton" type="button" value="Filtrer par nom" onclick="searchTable()">
-            
+                <input type="text" style="margin-left: 50px;" id="searchInput" name="searchInput" placeholder="Rechercher par nom..." value="{{ request.form.get('searchInput', '') }}">
+
                 <!-- Sélecteur de mois -->
                 <label for="month" style="color: #fff; text-indent: 20px; display: inline-block;">Mois:</label>
                 <select id="month" name="month">
@@ -96,7 +95,7 @@
                 </select>
         
                 <!-- Bouton de filtrage par mois/année -->
-                <input id="participantsTable" type="submit" value="Filtrer par mois/année">
+                <input id="submitButton" type="submit" value="Rechercher et Filtrer">
             </form>
             
             <!-- Tableau avec les participants -->
@@ -120,6 +119,5 @@
             </table>
         </div>
     </div> 
-    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 </body>
 </html>

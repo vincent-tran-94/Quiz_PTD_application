@@ -630,11 +630,12 @@ def dashboard():
 
         #Filtrage de la date automatique quand l'utilisateur va afficher les premiers résultats du mois actuel
         current_date = datetime.now()
-        current_month = current_date.month
-        current_year = current_date.year
 
-        filtered_participants = filter_data_by_month_year(top_participants,current_month, current_year)
-        indexed_filtered_participants = list(enumerate(filtered_participants, start=1))
+        # Initialiser les valeurs par défaut les mois et les années 
+        selected_month = current_date.month
+        selected_year = current_date.year
+        search_name = ""
+
 
         # Vérifier si le participant actuel est dans le top 20
         is_in_top_20 = False
@@ -642,15 +643,14 @@ def dashboard():
         has_answered_all_categories = False
         categories_not_up_to_date = False
 
-        # Vérifier si le participant a répondu à toutes les catégories
+        # Vérifier si le participant a répondu à toutes les catégories et récupérer le dernier mois et année ajoutée 
         for participant in top_participants:
             if participant[0] == get_participant_name(participant_id):
                 is_in_top_20 = True
                 break
-
-        # Si le participant n'est pas dans le top 20, mais a répondu à toutes les catégories
-        if not is_in_top_20:
-            participant_data = db.session.query(ReponseParticipant.participant_id,
+                
+        #Récupérer la dernière date du participant pour la réponse du participant du quiz
+        participant_data = db.session.query(ReponseParticipant.participant_id,
                                                 func.count(distinct(ReponseParticipant.categorie)).label('category_count'),
                                                 func.max(extract('year', ReponseParticipant.date_creation)).label('last_year'),
                                                 func.max(extract('month', ReponseParticipant.date_creation)).label('last_month'),
@@ -658,12 +658,14 @@ def dashboard():
                                          .filter(ReponseParticipant.participant_id == participant_id) \
                                          .group_by(ReponseParticipant.participant_id) \
                                          .first()
-            
+
+        # Si le participant n'est pas dans le top 20, mais a répondu à toutes les catégories
+        if not is_in_top_20:
             if participant_data and participant_data.category_count == 4:  # Vérifier s'il a répondu à toutes les catégories
                 last_year =  participant_data.last_year
                 last_month =  participant_data.last_month
 
-                # Vérifier si le participant a répondu à toutes les catégories pour la dernière date
+                # Vérifier si le participant a répondu à la toute dernière date du Quiz
                 responses_last_date = db.session.query(
                     func.count(distinct(ReponseParticipant.categorie)).label('category_count')
                 ).filter(
@@ -671,6 +673,7 @@ def dashboard():
                     extract('year', ReponseParticipant.date_creation) == last_year,
                     extract('month', ReponseParticipant.date_creation) == last_month
                 ).group_by(ReponseParticipant.participant_id).first()
+
 
                 # Si le participant n'a pas répondu à toutes les catégories pour le dernier mois
                 if responses_last_date and responses_last_date.category_count < 4:
@@ -680,19 +683,31 @@ def dashboard():
 
         if request.method == 'POST':
             # Récupérer les données du formulaire de filtrage
-            year = int(request.form.get('year'))  # Convertir le mois en entier
-            month = int(request.form.get('month'))  # Convertir le mois en entier
+            selected_month = int(request.form.get('month'))  # Mois sélectionné
+            selected_year = int(request.form.get('year'))  # Année sélectionnée
+            search_name = request.form.get('searchInput', "").strip()  # Nom recherché
 
-            filtered_participants = filter_data_by_month_year(top_participants, month,year )
-            indexed_filtered_participants = list(enumerate(filtered_participants, start=1))
+            filtered_participants = filter_data_by_month_year(top_participants,selected_month,selected_year)
 
+            #Si on souhaite de rechercher le nom du participant 
+            if search_name:
+                # Supposons que search_name contient un nom complet sous la forme "Nom Prénom"
+                # On parcourt chaque élement pour rechercher le nom du participant exact
+                filtered_participants = [p for p in filtered_participants if search_name.lower() in p[0].lower()]
+        
+        else:
+            #On affiche tout les participants qui seront le mois actuel ou l'année
+            filtered_participants = filter_data_by_month_year(top_participants, selected_month, selected_year)
+
+        indexed_filtered_participants = list(enumerate(filtered_participants, start=1))
 
         return render_template('choice_template.html', graph_json_success=graph_json_success, 
                             graph_json_participants=graph_json_participants, 
                             graph_json_participants_month= graph_json_participants_month,
                             top_participants=indexed_filtered_participants, 
-                            selected_month=current_month,
-                            selected_year=current_year,
+                            selected_month=selected_month,
+                            selected_year=selected_year,
+                            search_name=search_name,
                             is_in_top_20=is_in_top_20,
                             is_not_in_top_20=is_not_in_top_20,
                             participant_name=get_participant_name(participant_id),
