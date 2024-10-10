@@ -53,16 +53,16 @@
         </div>
         <div class="background-rectangle">
             <h1 style="text-align: center;">Classement les 20 premiers participants ayant répondu tout les catégories</h1>
-            <p style="text-align: center; color: #fff"> Nom du participant : {{ participant_name }} ajouté depuis le {{ selected_month }} / {{ selected_year }} </p> 
+            <p style="text-align: center; color: #fff"> Nom du participant : {{ participant_name }} </p> 
             <div style="text-align: center;">
                 {% if is_in_top_20 %}
-                    <p style="color: green; font-size: 18px;">Vous êtes dans le classement global !</p>
+                    <p style="color: #90EE90; font-size: 18px;">Vous êtes dans le classement global !</p>
                 {% elif is_not_in_top_20 and has_answered_all_categories and not categories_not_up_to_date %}
-                    <p style="color: orange; font-size: 18px;">Vous n'êtes pas dans le top 20.</p>
+                    <p style="color: #f1762c; font-size: 18px;">Vous n'êtes pas dans le top 20.</p>
                 {% elif categories_not_up_to_date %}
-                    <p style="color: red; font-size: 18px;">Vos catégories ne sont pas à jour pour les derniers mois.</p>
+                    <p style="color: #ec5359; font-size: 18px;">Vos catégories ne sont pas à jour pour les derniers mois.</p>
                 {% else %}
-                    <p style="color: red; font-size: 18px;">Vous n'avez pas complété toutes les catégories.</p>
+                    <p style="color: #ec5359; font-size: 18px;">Vous n'avez pas complété toutes les catégories.</p>
                 {% endif %}
             </div>
             <form action="/dashboard" method="POST">

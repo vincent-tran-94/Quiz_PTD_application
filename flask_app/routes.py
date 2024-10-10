@@ -661,7 +661,10 @@ def dashboard():
 
         # Si le participant n'est pas dans le top 20, mais a répondu à toutes les catégories
         if not is_in_top_20:
+            is_not_in_top_20 = True
+
             if participant_data and participant_data.category_count == 4:  # Vérifier s'il a répondu à toutes les catégories
+                has_answered_all_categories = True
                 last_year =  participant_data.last_year
                 last_month =  participant_data.last_month
 
@@ -678,8 +681,7 @@ def dashboard():
                 # Si le participant n'a pas répondu à toutes les catégories pour le dernier mois
                 if responses_last_date and responses_last_date.category_count < 4:
                     categories_not_up_to_date = True 
-                    is_not_in_top_20 = True
-                    has_answered_all_categories = True
+
 
         if request.method == 'POST':
             # Récupérer les données du formulaire de filtrage
