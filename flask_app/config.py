@@ -35,4 +35,8 @@ class Config:
     STRIPE_SECRET_ENDPOINT = os.getenv('STRIPE_SECRET_ENDPOINT')
     COUPON_ID = os.getenv('ID_COUPON')
     MAX_INACTIVITY_DURATION=30
+    BASE_DIR = 'thematiques'
+    LIST_CATEGORIES = ['droit', 'humanitaire', 'sociologie', 'vulgarisation']
+
+
 

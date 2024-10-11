@@ -82,7 +82,7 @@ def check_inactive_session():
                 logout_user()
                 session.pop('user_id', None)
                 flash("Votre session a expiré en raison d'une inactivité prolongée", "warning")
-                return redirect(url_for('accueil'))
+                return redirect(url_for('login'))
     # Mettre à jour le temps de la dernière activité à chaque requête
     session['last_activity'] = datetime.now()
     
@@ -404,12 +404,11 @@ def choice_categories(choice_categorie):
             return redirect(url_for('accueil', choice_categorie=choice_categorie))
             
 
-    BASE_DIR = 'questions'  # Remplacez par le chemin réel où se trouvent vos dossiers de catégories
     # Initialiser la liste des sujets
     list_subjects = [] 
 
     # Construire le chemin vers le dossier de la catégorie choisie
-    category_path = os.path.join(BASE_DIR, choice_categorie)
+    category_path = os.path.join(app.config['BASE_DIR'], choice_categorie)
     
     if os.path.exists(category_path) and os.path.isdir(category_path):
         # Récupérer la liste des fichiers JSON dans le dossier et enlever l'extension .json
@@ -436,10 +435,7 @@ def categorie_questions(categorie,sujet):
         reponse_existe.nb_essais -= 1
     
     categories_directories = {
-        'droit': 'questions/droit',
-        'humanitaire': 'questions/humanitaire',
-        'sociologie': 'questions/sociologie',
-        'vulgarisation': 'questions/vulgarisation'
+        category: f'{app.config["BASE_DIR"]}/{category}' for category in app.config["LIST_CATEGORIES"]
     }
 
     directory = os.path.join(categories_directories[categorie], f"{sujet}.json")

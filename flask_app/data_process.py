@@ -55,28 +55,6 @@ def get_participant_name(participant_id):
     else:
         return "Participant introuvable"
 
-#Fonction pour récupérer le pourcentage de réussite pour chaque catégorie
-def get_success_percentage_by_category(participant_id):
-    categories = ['droit', 'humanitaire', 'vulgarisation', 'sociologie']
-    success_percentages = {}
-    for category in categories:
-        participant_results = ReponseParticipant.query.filter_by(participant_id=participant_id, categorie=category).first()
-        if participant_results:
-            success_percentages[category] = participant_results.success_percentage
-        else:
-            success_percentages[category] = 0.0
-    return success_percentages
-
-#Fonction pour récupérer le mois et l'année répondu pour chaque participant
-def get_month_year(participant_id):
-    participant = Participant.query.filter_by(participant_id=participant_id).first()
-    if participant:
-        month = participant.date_creation.strftime('%B')
-        year = participant.date_creation.year
-        return month, year
-    else:
-        return None, None
-    
 
 def get_all_options(questions):
     all_options = []
@@ -144,10 +122,10 @@ def traitement_reponses(data_json, all_options,categorie,sujet):
     for question_id, user_response in answers.items():
         if question_id in correct_responses_dict:
             reponses_donnes =  correct_responses_dict[question_id]
-            if isinstance(reponses_donnes, list):
+            if isinstance(reponses_donnes, list):   #Pour les réponses à choix multiples 
                 if set(reponses_donnes) == set(user_response):
                     correct_answers += 1
-            elif isinstance(reponses_donnes, str):
+            elif isinstance(reponses_donnes, str): #Pour les réponses à choix unique
                 if reponses_donnes == user_response:
                     correct_answers  += 1
 

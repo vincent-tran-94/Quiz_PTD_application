@@ -68,7 +68,7 @@
             <form action="/dashboard" method="POST">
                 <!-- Champ de recherche par nom -->
                 <input type="text" style="margin-left: 50px;" id="searchInput" name="searchInput" placeholder="Rechercher par nom..." value="{{ request.form.get('searchInput', '') }}">
-
+                <button type="button" onclick="document.getElementById('searchInput').value = '';">Effacer</button>
                 <!-- Sélecteur de mois -->
                 <label for="month" style="color: #fff; text-indent: 20px; display: inline-block;">Mois:</label>
                 <select id="month" name="month">
@@ -95,7 +95,7 @@
                 </select>
         
                 <!-- Bouton de filtrage par mois/année -->
-                <input id="submitButton" type="submit" value="Rechercher et Filtrer">
+                <input id="submitButton" type="submit" value="Rechercher">
             </form>
             
             <!-- Tableau avec les participants -->
